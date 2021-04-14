@@ -1,0 +1,11 @@
+# Add files here to ignore them from prettier formatting
+/dist
+/coverage
+/tmp
+/node_modules
+/nginx
+/.vscode
+/.idea
+package-lock.json
+package.json
+yarn.lock
