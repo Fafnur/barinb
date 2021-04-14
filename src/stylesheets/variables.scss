@@ -1,0 +1,27 @@
+$grid-breakpoints: (
+  xs: 0,
+  nm: 320px,
+  im: 360px,
+  mkm: 400px,
+  mm: 480px,
+  sm: 550px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  hg: 1400px,
+  xh: 1600px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1160px,
+  hg: 1360px,
+);
+
+$color-default: mat-color($mat-gray, 900);
+$color-primary: mat-color($mat-indigo, 500);
+$color-active: mat-color($mat-indigo, 700);
+$color-accent: mat-color($mat-pink, A200);
+$color-danger: mat-color($mat-red, 500);
