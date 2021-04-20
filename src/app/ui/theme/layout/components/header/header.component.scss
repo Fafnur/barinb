@@ -1,0 +1,14 @@
+@import 'src/stylesheets/utils';
+
+.header-logo {
+  text-decoration: none;
+}
+
+.header-brand {
+  color: white;
+  text-transform: uppercase;
+}
+
+.header-spacer {
+  flex-grow: 1;
+}
