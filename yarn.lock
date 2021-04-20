@@ -6783,7 +6783,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@4.17.21, lodash@4.x, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
+lodash@4.17.21, lodash@4.x, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.5, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -7246,6 +7246,11 @@ next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
+
+ng-mocks@^11.10.1:
+  version "11.10.1"
+  resolved "https://registry.yarnpkg.com/ng-mocks/-/ng-mocks-11.10.1.tgz#6a88d75e4d36f564990736bae3fd6f0538096e16"
+  integrity sha512-1yugJMvI4bP4e+aW1ZQ6ZM9kFcOY4ZWfhIyK0Nuu4ftuE9jg9eoAG3BL6rzhlq0tNFau+8jrqxHnNrJxxOyfiw==
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -10208,6 +10213,13 @@ ts-jest@26.x, ts-jest@^26.5.5:
     mkdirp "1.x"
     semver "7.x"
     yargs-parser "20.x"
+
+ts-mockito@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/ts-mockito/-/ts-mockito-2.6.1.tgz#bc9ee2619033934e6fad1c4455aca5b5ace34e73"
+  integrity sha512-qU9m/oEBQrKq5hwfbJ7MgmVN5Gu6lFnIGWvpxSjrqq6YYEVv+RwVFWySbZMBgazsWqv6ctAyVBpo9TmAxnOEKw==
+  dependencies:
+    lodash "^4.17.5"
 
 ts-node@~8.3.0:
   version "8.3.0"
