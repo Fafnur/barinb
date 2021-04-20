@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MockComponents } from 'ng-mocks';
 
 import { FooterComponent } from './footer.component';
 
@@ -8,9 +11,9 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
-    })
-    .compileComponents();
+      imports: [MatButtonModule],
+      declarations: [FooterComponent, MockComponents(MatIcon)],
+    }).compileComponents();
   });
 
   beforeEach(() => {

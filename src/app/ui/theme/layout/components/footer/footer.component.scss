@@ -1,0 +1,41 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: mat-color($mat-gray, 300);
+  text-align: center;
+  align-items: center;
+
+  @include media-breakpoint-up(sm) {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+.footer-spacer {
+  flex-grow: 1;
+}
+
+.footer-copyright {
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(sm) {
+    margin-bottom: 0;
+  }
+}
+
+.footer-link {
+  margin: 0 0.15rem;
+}
+
+.footer-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

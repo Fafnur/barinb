@@ -11,14 +11,16 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "module": "es2020",
+    "module": "esnext",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@app/ui/theme/layout": ["src/app/ui/theme/layout/index.ts"]
+      "@app/ui/theme/layout": ["src/app/ui/theme/layout/index.ts"],
+      "@app/ui/icons": ["src/app/ui/icons/index.ts"]
     }
   },
   "angularCompilerOptions": {
