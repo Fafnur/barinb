@@ -19,5 +19,6 @@ module.exports = {
   moduleNameMapper: {
     '@app/ui/theme/layout': ['<rootDir>/src/app/ui/theme/layout/index.ts'],
     '@app/ui/icons': ['<rootDir>/src/app/ui/icons/index.ts'],
+    '@app/core/common': ['<rootDir>/src/app/core/common/index.ts'],
   },
 };
