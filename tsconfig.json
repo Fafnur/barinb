@@ -18,6 +18,7 @@
     "target": "es2015",
     "module": "esnext",
     "lib": ["es2018", "dom"],
+    "allowJs": true,
     "paths": {
       "@app/ui/theme/layout": ["src/app/ui/theme/layout/index.ts"],
       "@app/ui/icons": ["src/app/ui/icons/index.ts"],
