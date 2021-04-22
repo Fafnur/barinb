@@ -23,10 +23,15 @@
       "@app/ui/theme/layout": ["src/app/ui/theme/layout/index.ts"],
       "@app/ui/icons": ["src/app/ui/icons/index.ts"],
       "@app/core/common": ["src/app/core/common/index.ts"],
+      "@app/core/logger": ["src/app/core/logger/index.ts"],
       "@app/core/storage": ["src/app/core/storage/index.ts"],
       "@app/core/store/root": ["src/app/core/store/root/index.ts"],
       "@app/core/store/watcher": ["src/app/core/store/watcher/index.ts"],
-      "@app/core/store/utils": ["src/app/core/store/utils/index.ts"]
+      "@app/core/store/utils": ["src/app/core/store/utils/index.ts"],
+      "@app/rooms/common": ["src/app/rooms/common/index.ts"],
+      "@app/rooms/storage": ["src/app/rooms/storage/index.ts"],
+      "@app/rooms/service": ["src/app/rooms/service/index.ts"],
+      "@app/rooms/state": ["src/app/rooms/state/index.ts"]
     }
   },
   "angularCompilerOptions": {
