@@ -21,6 +21,10 @@
     "@angular/platform-browser": "~11.2.10",
     "@angular/platform-browser-dynamic": "~11.2.10",
     "@angular/router": "~11.2.10",
+    "@ngrx/effects": "^11.1.1",
+    "@ngrx/router-store": "^11.1.1",
+    "@ngrx/store": "^11.1.1",
+    "@ngrx/store-devtools": "^11.1.1",
     "rxjs": "^6.6.7",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.3"
@@ -36,6 +40,7 @@
     "@angular/cli": "~11.2.9",
     "@angular/compiler-cli": "~11.2.10",
     "@angular/localize": "11.2.10",
+    "@ngrx/schematics": "^11.1.1",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.41",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
