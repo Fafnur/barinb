@@ -23,5 +23,6 @@ module.exports = {
     '@app/core/storage': ['<rootDir>/src/app/core/storage/index.ts'],
     '@app/core/store/root': ['<rootDir>/src/app/core/store/root/index.ts'],
     '@app/core/store/watcher': ['<rootDir>/src/app/core/store/watcher/index.ts'],
+    '@app/core/store/utils': ['<rootDir>/src/app/core/store/utils/index.ts'],
   },
 };

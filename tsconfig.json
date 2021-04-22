@@ -25,7 +25,8 @@
       "@app/core/common": ["src/app/core/common/index.ts"],
       "@app/core/storage": ["src/app/core/storage/index.ts"],
       "@app/core/store/root": ["src/app/core/store/root/index.ts"],
-      "@app/core/store/watcher": ["src/app/core/store/watcher/index.ts"]
+      "@app/core/store/watcher": ["src/app/core/store/watcher/index.ts"],
+      "@app/core/store/utils": ["src/app/core/store/utils/index.ts"]
     }
   },
   "angularCompilerOptions": {
