@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { select, Store } from '@ngrx/store';
+import { Action, select, Store } from '@ngrx/store';
 
 import * as RoomActions from './room.actions';
 import { RoomState } from './room.reducer';
@@ -14,6 +14,10 @@ export class RoomFacade {
   constructor(private readonly store: Store<RoomState>) {}
 
   loadRooms(): void {
-    this.store.dispatch(RoomActions.loadRooms());
+    this.dispatch(RoomActions.loadRooms());
+  }
+
+  private dispatch(action: Action): void {
+    this.store.dispatch(action);
   }
 }
