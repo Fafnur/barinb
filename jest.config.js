@@ -29,5 +29,6 @@ module.exports = {
     '@app/rooms/storage': ['<rootDir>/src/app/rooms/storage/index.ts'],
     '@app/rooms/service': ['<rootDir>/src/app/rooms/service/index.ts'],
     '@app/rooms/state': ['<rootDir>/src/app/rooms/state/index.ts'],
+    '@app/booking/page': ['<rootDir>/src/app/booking/page/index.ts'],
   },
 };
