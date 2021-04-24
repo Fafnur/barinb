@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 import { Room } from '@app/rooms/common';
 import { RoomService } from '@app/rooms/service';
-import { RoomFacade } from '@app/rooms/state';
 
 @Component({
   selector: 'app-booking-page',
@@ -14,11 +13,9 @@ import { RoomFacade } from '@app/rooms/state';
 export class BookingPageComponent implements OnInit {
   rooms$!: Observable<Room[]>;
 
-  constructor(private readonly roomFacade: RoomFacade, private readonly roomService: RoomService) {}
+  constructor(private readonly roomService: RoomService) {}
 
   ngOnInit(): void {
-    this.roomFacade.loadRooms();
-
     this.rooms$ = this.roomService.rooms$;
   }
 }
