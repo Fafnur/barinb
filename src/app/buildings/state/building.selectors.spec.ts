@@ -4,7 +4,7 @@ import { BUILDING_FEATURE_KEY, buildingInitialState, BuildingState, RoomPartialS
 import * as BuildingSelectors from './building.selectors';
 import { BUILDINGS_LOAD_ERROR, BUILDINGS_STUB } from './building.stub';
 
-describe('Room Selectors', () => {
+describe('Building Selectors', () => {
   const getState = (payload: Partial<BuildingState>): RoomPartialState => createStore(BUILDING_FEATURE_KEY, buildingInitialState, payload);
 
   it('selectBuildings() should return buildings', () => {

@@ -40,7 +40,7 @@ describe('BuildingEffects', () => {
   });
 
   describe('loadBuildings$', () => {
-    it('should return signed in', () => {
+    it('should return load buildings success', () => {
       const action = BuildingActions.loadBuildings();
 
       const completion = BuildingActions.loadBuildingsSuccess({ payload: BUILDINGS_STUB });
@@ -53,7 +53,7 @@ describe('BuildingEffects', () => {
       expect(effects.loadBuildings$).toBeObservable(expected);
     });
 
-    it('should return sign in error', () => {
+    it('should return load buildings failure', () => {
       const action = BuildingActions.loadBuildings();
       const completion = BuildingActions.loadBuildingsFailure({ payload: BUILDINGS_LOAD_ERROR });
 
