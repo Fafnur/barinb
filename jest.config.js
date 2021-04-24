@@ -33,6 +33,10 @@ module.exports = {
     '@app/buildings/storage': ['<rootDir>/src/app/buildings/storage/index.ts'],
     '@app/buildings/service': ['<rootDir>/src/app/buildings/service/index.ts'],
     '@app/buildings/state': ['<rootDir>/src/app/buildings/state/index.ts'],
+    '@app/persons/common': ['<rootDir>/src/app/persons/common/index.ts'],
+    '@app/persons/storage': ['<rootDir>/src/app/persons/storage/index.ts'],
+    '@app/persons/service': ['<rootDir>/src/app/persons/service/index.ts'],
+    '@app/persons/state': ['<rootDir>/src/app/persons/state/index.ts'],
     '@app/booking/page': ['<rootDir>/src/app/booking/page/index.ts'],
   },
 };
