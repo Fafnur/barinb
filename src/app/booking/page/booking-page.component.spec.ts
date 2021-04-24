@@ -6,7 +6,7 @@ import { RoomFacade } from '@app/rooms/state';
 
 import { BookingPageComponent } from './booking-page.component';
 
-describe('PageComponent', () => {
+describe('BookingPageComponent', () => {
   let component: BookingPageComponent;
   let fixture: ComponentFixture<BookingPageComponent>;
 

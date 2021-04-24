@@ -6,7 +6,7 @@ import { RoomService } from '@app/rooms/service';
 import { RoomFacade } from '@app/rooms/state';
 
 @Component({
-  selector: 'app-page',
+  selector: 'app-booking-page',
   templateUrl: './booking-page.component.html',
   styleUrls: ['./booking-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
