@@ -40,7 +40,7 @@ describe('RoomEffects', () => {
   });
 
   describe('loadRooms$', () => {
-    it('should return signed in', () => {
+    it('should return load rooms success', () => {
       const action = RoomActions.loadRooms();
       const completion = RoomActions.loadRoomsSuccess({ payload: ROOMS_STUB });
 
@@ -52,7 +52,7 @@ describe('RoomEffects', () => {
       expect(effects.loadRooms$).toBeObservable(expected);
     });
 
-    it('should return sign in error', () => {
+    it('should return load rooms failure', () => {
       const action = RoomActions.loadRooms();
       const completion = RoomActions.loadRoomsFailure({ payload: ROOM_LOAD_ERROR });
 
