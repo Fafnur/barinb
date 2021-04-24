@@ -15,3 +15,8 @@ export const selectBuilding = createSelector(
   selectBuildingState,
   (state: BuildingState, props: Entity): Building | null => state.buildings?.find((building) => building.id === props.id) ?? null
 );
+
+export const selectBuildingsByPerson = createSelector(
+  selectBuildingState,
+  (state: BuildingState, props: Entity): Building[] | null => state.buildings?.filter((building) => building.person === props.id) ?? null
+);

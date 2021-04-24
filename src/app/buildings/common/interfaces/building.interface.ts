@@ -2,7 +2,7 @@ export interface Building {
   id: number;
   name: string;
   rooms: number[];
-  owner: number;
+  person: number;
   city: string;
   address: string;
   latitude: number;

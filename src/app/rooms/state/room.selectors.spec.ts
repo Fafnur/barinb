@@ -27,4 +27,11 @@ describe('Room Selectors', () => {
 
     expect(result).toEqual(ROOM_STUB);
   });
+
+  it('selectRoomsByBuilding() should return rooms by building id', () => {
+    const state = getState({ rooms: ROOMS_STUB });
+    const results = RoomSelectors.selectRoomsByBuilding(state, { id: ROOM_STUB.building });
+
+    expect(results?.length).toBe(ROOMS_STUB.length);
+  });
 });

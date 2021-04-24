@@ -27,4 +27,11 @@ describe('Building Selectors', () => {
 
     expect(result).toEqual(BUILDING_STUB);
   });
+
+  it('selectBuildingsByPerson() should return buildings by person', () => {
+    const state = getState({ buildings: BUILDINGS_STUB });
+    const results = BuildingSelectors.selectBuildingsByPerson(state, { id: BUILDING_STUB.person });
+
+    expect(results?.length).toBe(BUILDINGS_STUB.length);
+  });
 });

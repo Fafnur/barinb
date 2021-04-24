@@ -15,3 +15,7 @@ export const selectRoom = createSelector(
   selectRoomState,
   (state: RoomState, props: Entity): Room | null => state.rooms?.find((room) => room.id === props.id) ?? null
 );
+
+export const selectRoomsByBuilding = createSelector(selectRoomState, (state: RoomState, props: Entity): Room[] | null =>
+  state.rooms ? state.rooms.filter((room) => room.building === props.id) : null
+);

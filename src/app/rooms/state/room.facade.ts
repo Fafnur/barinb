@@ -16,6 +16,8 @@ export class RoomFacade {
 
   room$ = (id: number): Observable<Room | null> => this.store.pipe(select(RoomSelectors.selectRoom, { id }));
 
+  roomsByBuilding$ = (id: number): Observable<Room[] | null> => this.store.pipe(select(RoomSelectors.selectRoomsByBuilding, { id }));
+
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly store: Store<RoomState>) {}
 

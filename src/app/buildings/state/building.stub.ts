@@ -2,7 +2,7 @@ import { Building } from '@app/buildings/common';
 
 export const BUILDING_STUB: Building = {
   id: 1,
-  owner: 1,
+  person: 1,
   rooms: [1],
   name: 'Отель Иванов',
   city: 'Санкт-Петербург',

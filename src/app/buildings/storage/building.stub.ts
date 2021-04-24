@@ -3,7 +3,7 @@ import { Building } from '@app/buildings/common';
 export const BUILDINGS_STUB: Building[] = [
   {
     id: 1,
-    owner: 1,
+    person: 1,
     rooms: [1],
     name: 'Отель Иванов',
     city: 'Санкт-Петербург',
@@ -13,7 +13,7 @@ export const BUILDINGS_STUB: Building[] = [
   },
   {
     id: 2,
-    owner: 2,
+    person: 2,
     rooms: [2, 3],
     name: 'Баринтель',
     city: 'Санкт-Петербург',
@@ -23,7 +23,7 @@ export const BUILDINGS_STUB: Building[] = [
   },
   {
     id: 3,
-    owner: 3,
+    person: 3,
     rooms: [4, 5, 6],
     name: 'Парадный',
     city: 'Санкт-Петербург',
@@ -33,7 +33,7 @@ export const BUILDINGS_STUB: Building[] = [
   },
   {
     id: 4,
-    owner: 3,
+    person: 3,
     rooms: [7, 8],
     name: 'Биссектриса',
     city: 'Санкт-Петербург',

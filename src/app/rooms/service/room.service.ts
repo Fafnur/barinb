@@ -11,6 +11,8 @@ export class RoomService {
 
   room$ = (id: number): Observable<Room> => this.roomFacade.room$(id).pipe(filter<any>(Boolean));
 
+  roomsByBuilding$ = (id: number): Observable<Room> => this.roomFacade.roomsByBuilding$(id).pipe(filter<any>(Boolean));
+
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly roomFacade: RoomFacade) {}
 }
