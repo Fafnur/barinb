@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { PersonStorage } from '@app/persons/storage';
 
-import * as BuildingActions from './person.actions';
+import * as PersonActions from './person.actions';
 import { PersonEffects } from './person.effects';
 import { PERSON_FEATURE_KEY, personInitialState } from './person.reducer';
 import { PERSONS_LOAD_ERROR, PERSONS_STUB } from './person.stub';
@@ -41,9 +41,9 @@ describe('PersonEffects', () => {
 
   describe('loadPersons$', () => {
     it('should return load person success', () => {
-      const action = BuildingActions.loadPersons();
+      const action = PersonActions.loadPersons();
 
-      const completion = BuildingActions.loadPersonsSuccess({ payload: PERSONS_STUB });
+      const completion = PersonActions.loadPersonsSuccess({ payload: PERSONS_STUB });
 
       actions$ = hot('-a-|', { a: action });
       const response = cold('-a-|', { a: PERSONS_STUB });
@@ -54,8 +54,8 @@ describe('PersonEffects', () => {
     });
 
     it('should return load person failure', () => {
-      const action = BuildingActions.loadPersons();
-      const completion = BuildingActions.loadPersonsFailure({ payload: PERSONS_LOAD_ERROR });
+      const action = PersonActions.loadPersons();
+      const completion = PersonActions.loadPersonsFailure({ payload: PERSONS_LOAD_ERROR });
 
       actions$ = hot('-a-|', { a: action });
       const response = cold('-#|', {}, PERSONS_LOAD_ERROR);

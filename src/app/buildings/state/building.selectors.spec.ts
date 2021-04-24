@@ -2,7 +2,7 @@ import { createStore } from '@app/core/store/utils';
 
 import { BUILDING_FEATURE_KEY, buildingInitialState, BuildingState, RoomPartialState } from './building.reducer';
 import * as BuildingSelectors from './building.selectors';
-import { BUILDINGS_LOAD_ERROR, BUILDINGS_STUB } from './building.stub';
+import { BUILDING_STUB, BUILDINGS_LOAD_ERROR, BUILDINGS_STUB } from './building.stub';
 
 describe('Building Selectors', () => {
   const getState = (payload: Partial<BuildingState>): RoomPartialState => createStore(BUILDING_FEATURE_KEY, buildingInitialState, payload);
@@ -19,5 +19,12 @@ describe('Building Selectors', () => {
     const results = BuildingSelectors.selectBuildingsLoadError(state);
 
     expect(results).toEqual(BUILDINGS_LOAD_ERROR);
+  });
+
+  it('selectBuilding() should return building by id', () => {
+    const state = getState({ buildings: BUILDINGS_STUB });
+    const result = BuildingSelectors.selectBuilding(state, { id: BUILDING_STUB.id });
+
+    expect(result).toEqual(BUILDING_STUB);
   });
 });

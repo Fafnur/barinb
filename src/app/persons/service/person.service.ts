@@ -9,5 +9,8 @@ import { PersonFacade } from '@app/persons/state';
 export class PersonService {
   persons$: Observable<Person[]> = this.personFacade.persons$.pipe(filter<any>(Boolean));
 
+  person$ = (id: number): Observable<Person> => this.personFacade.person$(id).pipe(filter<any>(Boolean));
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly personFacade: PersonFacade) {}
 }

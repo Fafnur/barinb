@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { Building } from '@app/buildings/common';
 
 import * as BuildingActions from './building.actions';
 import { BuildingState } from './building.reducer';
@@ -11,9 +14,12 @@ export class BuildingFacade {
 
   buildingsLoadError$ = this.store.pipe(select(BuildingSelectors.selectBuildingsLoadError));
 
+  building$ = (id: number): Observable<Building | null> => this.store.pipe(select(BuildingSelectors.selectBuilding, { id }));
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly store: Store<BuildingState>) {}
 
-  loadBuildings(): void {
+  load(): void {
     this.dispatch(BuildingActions.loadBuildings());
   }
 

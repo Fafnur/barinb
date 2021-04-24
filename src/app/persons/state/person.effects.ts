@@ -6,17 +6,17 @@ import { map } from 'rxjs/operators';
 import { fetch } from '@app/core/store/utils';
 import { PersonStorage } from '@app/persons/storage';
 
-import * as BuildingActions from './person.actions';
+import * as PersonActions from './person.actions';
 
 @Injectable()
 export class PersonEffects implements OnInitEffects {
   loadPersons$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(BuildingActions.loadPersons),
+      ofType(PersonActions.loadPersons),
       fetch({
         id: () => 'load-buildings',
-        run: () => this.personStorage.get().pipe(map((payload) => BuildingActions.loadPersonsSuccess({ payload }))),
-        onError: (action, payload) => BuildingActions.loadPersonsFailure({ payload }),
+        run: () => this.personStorage.get().pipe(map((payload) => PersonActions.loadPersonsSuccess({ payload }))),
+        onError: (action, payload) => PersonActions.loadPersonsFailure({ payload }),
       })
     )
   );
@@ -24,6 +24,6 @@ export class PersonEffects implements OnInitEffects {
   constructor(private readonly actions$: Actions, private readonly personStorage: PersonStorage) {}
 
   ngrxOnInitEffects(): Action {
-    return BuildingActions.loadPersons();
+    return PersonActions.loadPersons();
   }
 }

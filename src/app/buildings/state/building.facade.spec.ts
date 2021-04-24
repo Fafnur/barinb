@@ -43,7 +43,7 @@ describe('BuildingFacade', () => {
 
     it('loadBuildings() should load buildings', async (done) => {
       try {
-        facade.loadBuildings();
+        facade.load();
 
         const building = await readFirst(facade.buildings$);
         expect(building?.length).toBe(BUILDINGS_STUB.length);

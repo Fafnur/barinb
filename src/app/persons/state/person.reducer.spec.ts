@@ -1,6 +1,6 @@
 import { createState } from '@app/core/store/utils';
 
-import * as BuildingActions from './person.actions';
+import * as PersonActions from './person.actions';
 import { personInitialState, PersonState, reducer } from './person.reducer';
 import { PERSONS_LOAD_ERROR, PERSONS_STUB } from './person.stub';
 
@@ -9,7 +9,7 @@ describe('Person Reducer', () => {
 
   it('loadPersons() should clear personsLoadError', () => {
     const state = getState({ personsLoadError: PERSONS_LOAD_ERROR });
-    const action = BuildingActions.loadPersons();
+    const action = PersonActions.loadPersons();
     const result = reducer(state, action);
 
     expect(result.personsLoadError).toBeNull();
@@ -17,7 +17,7 @@ describe('Person Reducer', () => {
 
   it('loadPersonsSuccess() should set persons', () => {
     const state = getState();
-    const action = BuildingActions.loadPersonsSuccess({ payload: PERSONS_STUB });
+    const action = PersonActions.loadPersonsSuccess({ payload: PERSONS_STUB });
     const result = reducer(state, action);
 
     expect(result.persons?.length).toBe(PERSONS_STUB.length);
@@ -25,7 +25,7 @@ describe('Person Reducer', () => {
 
   it('loadPersonsFailure() should set personsLoadError', () => {
     const state = getState();
-    const action = BuildingActions.loadPersonsFailure({ payload: PERSONS_LOAD_ERROR });
+    const action = PersonActions.loadPersonsFailure({ payload: PERSONS_LOAD_ERROR });
     const result = reducer(state, action);
 
     expect(result.personsLoadError).toEqual(PERSONS_LOAD_ERROR);
