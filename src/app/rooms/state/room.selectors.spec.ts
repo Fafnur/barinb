@@ -1,8 +1,8 @@
 import { createStore } from '@app/core/store/utils';
 
-import { ROOM_LOAD_ERROR, ROOMS_STUB } from '../testing/room.stub';
 import { ROOM_FEATURE_KEY, roomInitialState, RoomPartialState, RoomState } from './room.reducer';
 import * as RoomSelectors from './room.selectors';
+import { ROOM_LOAD_ERROR, ROOMS_STUB } from './room.stub';
 
 describe('Room Selectors', () => {
   const getState = (payload: Partial<RoomState>): RoomPartialState => createStore(ROOM_FEATURE_KEY, roomInitialState, payload);

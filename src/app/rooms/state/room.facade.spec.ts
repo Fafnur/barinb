@@ -7,10 +7,10 @@ import { of } from 'rxjs';
 import { readFirst } from '@app/core/store/utils';
 import { RoomStorage } from '@app/rooms/storage';
 
-import { ROOMS_STUB } from '../testing/room.stub';
 import { RoomEffects } from './room.effects';
 import { RoomFacade } from './room.facade';
 import { reducer, ROOM_FEATURE_KEY } from './room.reducer';
+import { ROOMS_STUB } from './room.stub';
 
 describe('RoomFacade', () => {
   let facade: RoomFacade;

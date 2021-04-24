@@ -6,10 +6,10 @@ import { Observable } from 'rxjs';
 
 import { RoomStorage } from '@app/rooms/storage';
 
-import { ROOM_LOAD_ERROR, ROOMS_STUB } from '../testing/room.stub';
 import * as RoomActions from './room.actions';
 import { RoomEffects } from './room.effects';
 import { ROOM_FEATURE_KEY, roomInitialState } from './room.reducer';
+import { ROOM_LOAD_ERROR, ROOMS_STUB } from './room.stub';
 
 describe('RoomEffects', () => {
   let actions$: Observable<any>;
