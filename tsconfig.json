@@ -32,6 +32,10 @@
       "@app/rooms/storage": ["src/app/rooms/storage/index.ts"],
       "@app/rooms/service": ["src/app/rooms/service/index.ts"],
       "@app/rooms/state": ["src/app/rooms/state/index.ts"],
+      "@app/building/common": ["src/app/building/common/index.ts"],
+      "@app/building/storage": ["src/app/building/storage/index.ts"],
+      "@app/building/service": ["src/app/building/service/index.ts"],
+      "@app/building/state": ["src/app/building/state/index.ts"],
       "@app/booking/page": ["src/app/booking/page/index.ts"]
     }
   },
