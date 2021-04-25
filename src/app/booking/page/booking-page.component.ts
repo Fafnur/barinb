@@ -13,6 +13,11 @@ import { RoomService } from '@app/rooms/service';
 export class BookingPageComponent implements OnInit {
   rooms$!: Observable<Room[]>;
 
+  options: google.maps.MapOptions = {
+    center: { lat: 40, lng: -20 },
+    zoom: 4,
+  };
+
   constructor(private readonly roomService: RoomService) {}
 
   ngOnInit(): void {
