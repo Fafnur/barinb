@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockComponents } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { RoomService } from '@app/rooms/service';
 
+import { GoogleMapComponent } from '../../maps/shared/google-map.component';
 import { BookingPageComponent } from './booking-page.component';
 
 describe('BookingPageComponent', () => {
@@ -11,7 +13,7 @@ describe('BookingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BookingPageComponent],
+      declarations: [BookingPageComponent, MockComponents(GoogleMapComponent)],
       providers: [
         {
           provide: RoomService,

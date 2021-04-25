@@ -1,4 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { GoogleMap } from '@angular/google-maps';
+import { MockComponents } from 'ng-mocks';
+import { of } from 'rxjs';
+
+import { GoogleMapsService } from '@app/maps/services';
+import { SpinnerComponent } from '@app/ui/spinner';
 
 import { GoogleMapComponent } from './google-map.component';
 
@@ -8,9 +14,16 @@ describe('GoogleMapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GoogleMapComponent ]
-    })
-    .compileComponents();
+      declarations: [GoogleMapComponent, MockComponents(SpinnerComponent, GoogleMap)],
+      providers: [
+        {
+          provide: GoogleMapsService,
+          useValue: {
+            load: jest.fn(() => of(true)),
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
