@@ -19,6 +19,7 @@ module.exports = {
   moduleNameMapper: {
     '@app/ui/theme/layout': ['<rootDir>/src/app/ui/theme/layout/index.ts'],
     '@app/ui/icons': ['<rootDir>/src/app/ui/icons/index.ts'],
+    '@app/ui/spinner': ['<rootDir>/src/app/ui/spinner/index.ts'],
     '@app/core/common': ['<rootDir>/src/app/core/common/index.ts'],
     '@app/core/environments': ['<rootDir>/src/app/core/environments/index.ts'],
     '@app/core/logger': ['<rootDir>/src/app/core/logger/index.ts'],
@@ -39,5 +40,7 @@ module.exports = {
     '@app/persons/service': ['<rootDir>/src/app/persons/service/index.ts'],
     '@app/persons/state': ['<rootDir>/src/app/persons/state/index.ts'],
     '@app/booking/page': ['<rootDir>/src/app/booking/page/index.ts'],
+    '@app/maps/services': ['<rootDir>/src/app/maps/services/index.ts'],
+    '@app/maps/shared': ['<rootDir>/src/app/maps/shared/index.ts'],
   },
 };

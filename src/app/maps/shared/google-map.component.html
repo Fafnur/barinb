@@ -1,0 +1,9 @@
+<ng-container *ngIf="apiLoaded$ | async; then mapLoaded; else mapNotLoaded"></ng-container>
+
+<ng-template #mapLoaded>
+  <google-map [options]="options"></google-map>
+</ng-template>
+
+<ng-template #mapNotLoaded>
+  <app-spinner></app-spinner>
+</ng-template>

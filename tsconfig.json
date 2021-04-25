@@ -22,6 +22,7 @@
     "paths": {
       "@app/ui/theme/layout": ["src/app/ui/theme/layout/index.ts"],
       "@app/ui/icons": ["src/app/ui/icons/index.ts"],
+      "@app/ui/spinner": ["src/app/ui/spinner/index.ts"],
       "@app/core/common": ["src/app/core/common/index.ts"],
       "@app/core/environments": ["src/app/core/environments/index.ts"],
       "@app/core/logger": ["src/app/core/logger/index.ts"],
@@ -41,7 +42,9 @@
       "@app/persons/storage": ["src/app/persons/storage/index.ts"],
       "@app/persons/service": ["src/app/persons/service/index.ts"],
       "@app/persons/state": ["src/app/persons/state/index.ts"],
-      "@app/booking/page": ["src/app/booking/page/index.ts"]
+      "@app/booking/page": ["src/app/booking/page/index.ts"],
+      "@app/maps/services": ["src/app/maps/services/index.ts"],
+      "@app/maps/shared": ["src/app/maps/shared/index.ts"]
     }
   },
   "angularCompilerOptions": {
