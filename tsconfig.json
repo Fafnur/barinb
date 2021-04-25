@@ -23,6 +23,7 @@
       "@app/ui/theme/layout": ["src/app/ui/theme/layout/index.ts"],
       "@app/ui/icons": ["src/app/ui/icons/index.ts"],
       "@app/core/common": ["src/app/core/common/index.ts"],
+      "@app/core/environments": ["src/app/core/environments/index.ts"],
       "@app/core/logger": ["src/app/core/logger/index.ts"],
       "@app/core/storage": ["src/app/core/storage/index.ts"],
       "@app/core/store/root": ["src/app/core/store/root/index.ts"],
