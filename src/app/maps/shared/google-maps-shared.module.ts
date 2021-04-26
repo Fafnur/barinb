@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 import { GoogleMapsServiceModule } from '@app/maps/services';
-import { SpinnerModule } from '@app/ui/spinner';
 
 import { GoogleMapComponent } from './google-map.component';
 
 @NgModule({
-  imports: [CommonModule, GoogleMapsModule, GoogleMapsServiceModule, SpinnerModule],
+  imports: [CommonModule, GoogleMapsModule, GoogleMapsServiceModule],
   declarations: [GoogleMapComponent],
   exports: [GoogleMapComponent],
 })

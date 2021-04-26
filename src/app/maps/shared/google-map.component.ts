@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { MapMarker } from '@app/maps/common';
 import { GoogleMapsService } from '@app/maps/services';
 
 @Component({
@@ -11,6 +12,10 @@ import { GoogleMapsService } from '@app/maps/services';
 })
 export class GoogleMapComponent implements OnInit {
   @Input() options!: google.maps.MapOptions;
+  @Input() markerOptions: google.maps.MarkerOptions = { draggable: false };
+  @Input() markers: MapMarker[] = [];
+
+  @Output() mapMarkerClicked = new EventEmitter<google.maps.LatLngLiteral>();
 
   apiLoaded$!: Observable<boolean>;
 
@@ -18,5 +23,9 @@ export class GoogleMapComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiLoaded$ = this.googleMapsService.load();
+  }
+
+  onMapClick(marker: google.maps.LatLngLiteral): void {
+    this.mapMarkerClicked.emit(marker);
   }
 }

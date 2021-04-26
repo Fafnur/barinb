@@ -21,6 +21,7 @@
     "allowJs": true,
     "paths": {
       "@app/ui/theme/layout": ["src/app/ui/theme/layout/index.ts"],
+      "@app/ui/theme/utils": ["src/app/ui/theme/utils/index.ts"],
       "@app/ui/icons": ["src/app/ui/icons/index.ts"],
       "@app/ui/spinner": ["src/app/ui/spinner/index.ts"],
       "@app/core/common": ["src/app/core/common/index.ts"],
@@ -43,6 +44,7 @@
       "@app/persons/service": ["src/app/persons/service/index.ts"],
       "@app/persons/state": ["src/app/persons/state/index.ts"],
       "@app/booking/page": ["src/app/booking/page/index.ts"],
+      "@app/maps/common": ["src/app/maps/common/index.ts"],
       "@app/maps/services": ["src/app/maps/services/index.ts"],
       "@app/maps/shared": ["src/app/maps/shared/index.ts"]
     }

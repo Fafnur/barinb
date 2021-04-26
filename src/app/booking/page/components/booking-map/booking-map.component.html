@@ -1,0 +1,4 @@
+<ng-container *ngIf="building$ | async as buildings">
+  <app-google-map [options]="options" [markers]="buildings" (mapMarkerClicked)="onMapMarkerClicked($event)"></app-google-map>
+  <ng-content></ng-content>
+</ng-container>

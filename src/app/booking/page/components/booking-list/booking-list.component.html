@@ -1,0 +1,3 @@
+<ng-container *ngIf="building$ | async as buildings">
+  <p *ngFor="let building of buildings">№ {{ building.id }}</p>
+</ng-container>

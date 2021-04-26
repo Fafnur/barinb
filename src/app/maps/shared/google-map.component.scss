@@ -1,0 +1,13 @@
+@import 'src/stylesheets/utils';
+
+.google-map {
+  display: block;
+  height: 100%;
+
+  ::ng-deep .map-container {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    width: 100% !important;
+  }
+}

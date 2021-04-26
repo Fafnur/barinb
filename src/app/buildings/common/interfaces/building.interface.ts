@@ -1,10 +1,8 @@
-export interface Building {
+export interface Building extends google.maps.LatLngLiteral {
   id: number;
   name: string;
   rooms: number[];
   person: number;
   city: string;
   address: string;
-  latitude: number;
-  longitude: number;
 }
