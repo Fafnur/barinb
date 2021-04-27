@@ -1,4 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockComponents } from 'ng-mocks';
+import { of } from 'rxjs';
+
+import { BookingService } from '@app/booking/service';
+import { GoogleMapComponent } from '@app/maps/shared';
 
 import { BookingMapComponent } from './booking-map.component';
 
@@ -8,9 +13,16 @@ describe('BookingMapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookingMapComponent ]
-    })
-    .compileComponents();
+      declarations: [BookingMapComponent, MockComponents(GoogleMapComponent)],
+      providers: [
+        {
+          provide: BookingService,
+          useValue: {
+            mapMarkers$: of([]),
+          } as Partial<BookingService>,
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

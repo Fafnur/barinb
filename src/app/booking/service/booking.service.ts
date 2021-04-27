@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { Building } from '@app/buildings/common';
 import { BuildingService } from '@app/buildings/service';
-import { MapMarker } from '@app/maps/common';
+import { MapMarkerConfig } from '@app/maps/common';
 import { Room } from '@app/rooms/common';
 import { RoomService } from '@app/rooms/service';
 
@@ -16,12 +16,19 @@ export function getFirstRoomOnBuilding(building: Building, rooms: Room[]): Room 
 
 @Injectable()
 export class BookingService {
-  mapMarkers$: Observable<MapMarker[]> = combineLatest([this.buildingService.buildings$, this.roomService.rooms$]).pipe(
+  mapMarkers$: Observable<MapMarkerConfig[]> = combineLatest([this.buildingService.buildings$, this.roomService.rooms$]).pipe(
     map(([buildings, rooms]) => {
-      const markers: MapMarker[] = [];
+      const markers: MapMarkerConfig[] = [];
       buildings.forEach((building) => {
         const firstRoom = getFirstRoomOnBuilding(building, rooms);
-        markers.push({ ...building, label: firstRoom?.price.toString() ?? null });
+        markers.push({
+          ...building,
+          label: {
+            className: 'google-map-marker',
+            text: firstRoom?.price.toString() ?? '',
+            fontWeight: 'bold',
+          },
+        });
       });
 
       return markers;

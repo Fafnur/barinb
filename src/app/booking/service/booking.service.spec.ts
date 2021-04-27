@@ -1,4 +1,8 @@
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+
+import { BuildingService } from '@app/buildings/service';
+import { RoomService } from '@app/rooms/service';
 
 import { BookingService } from './booking.service';
 
@@ -9,12 +13,18 @@ describe('BookingService', () => {
     await TestBed.configureTestingModule({
       providers: [
         BookingService,
-        // {
-        //   provide: RoomFacade,
-        //   useValue: {
-        //     rooms$: of(),
-        //   } as Partial<RoomFacade>,
-        // },
+        {
+          provide: RoomService,
+          useValue: {
+            rooms$: of(),
+          } as Partial<RoomService>,
+        },
+        {
+          provide: BuildingService,
+          useValue: {
+            buildings$: of(),
+          } as Partial<BuildingService>,
+        },
       ],
     }).compileComponents();
 

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GoogleMap } from '@angular/google-maps';
+import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { MockComponents } from 'ng-mocks';
 import { of } from 'rxjs';
 
@@ -14,7 +14,7 @@ describe('GoogleMapComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GoogleMapComponent, MockComponents(SpinnerComponent, GoogleMap)],
+      declarations: [GoogleMapComponent, MockComponents(SpinnerComponent, GoogleMap, MapMarker, MapInfoWindow)],
       providers: [
         {
           provide: GoogleMapsService,

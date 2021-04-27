@@ -10,6 +10,8 @@ import { RoomStateModule } from '@app/rooms/state';
 
 import { BookingPageComponent } from './booking-page.component';
 import { BookingPageRoutingModule } from './booking-page-routing.module';
+import { BookingBoxModule } from './components/booking-box/booking-box.module';
+import { BookingCardModule } from './components/booking-card/booking-card.module';
 import { BookingListModule } from './components/booking-list/booking-list.module';
 import { BookingMapModule } from './components/booking-map/booking-map.module';
 
@@ -24,6 +26,8 @@ import { BookingMapModule } from './components/booking-map/booking-map.module';
     PersonStateModule,
     BookingMapModule,
     BookingListModule,
+    BookingCardModule,
+    BookingBoxModule,
     BookingServiceModule,
   ],
   declarations: [BookingPageComponent],

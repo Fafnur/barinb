@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { BookingService } from '@app/booking/service';
-import { MapMarker } from '@app/maps/common';
+import { MapMarkerConfig } from '@app/maps/common';
 
 @Component({
   selector: 'app-booking-map',
@@ -19,7 +19,8 @@ export class BookingMapComponent implements OnInit {
     zoom: 14,
   };
 
-  mapMarkers$!: Observable<MapMarker[]>;
+  mapMarkers$!: Observable<MapMarkerConfig[]>;
+  markerOptions: google.maps.MarkerOptions = { draggable: false, icon: '/' };
 
   constructor(private readonly bookingService: BookingService) {}
 
@@ -27,5 +28,7 @@ export class BookingMapComponent implements OnInit {
     this.mapMarkers$ = this.bookingService.mapMarkers$;
   }
 
-  onMapMarkerClicked(marker: MapMarker): void {}
+  onMapMarkerClicked(event: MapMarkerConfig): void {
+    console.log(event);
+  }
 }
