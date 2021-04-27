@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Building } from '@app/buildings/common';
-import { BuildingService } from '@app/buildings/service';
+import { BookingService } from '@app/booking/service';
 import { MapMarker } from '@app/maps/common';
 
 @Component({
@@ -20,12 +19,12 @@ export class BookingMapComponent implements OnInit {
     zoom: 14,
   };
 
-  building$!: Observable<Building[]>;
+  mapMarkers$!: Observable<MapMarker[]>;
 
-  constructor(private readonly buildingService: BuildingService) {}
+  constructor(private readonly bookingService: BookingService) {}
 
   ngOnInit(): void {
-    this.building$ = this.buildingService.buildings$;
+    this.mapMarkers$ = this.bookingService.mapMarkers$;
   }
 
   onMapMarkerClicked(marker: MapMarker): void {}

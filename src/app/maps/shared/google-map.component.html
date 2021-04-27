@@ -1,3 +1,9 @@
 <google-map class="google-map" [options]="options" *ngIf="apiLoaded$ | async">
-  <map-marker *ngFor="let marker of markers" [position]="marker" [options]="markerOptions" (mapClick)="onMapClick(marker)"></map-marker>
+  <map-marker
+    *ngFor="let marker of markers"
+    [position]="marker"
+    [label]="marker?.label || ''"
+    [options]="markerOptions"
+    (mapClick)="onMapClick(marker)"
+  ></map-marker>
 </google-map>

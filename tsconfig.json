@@ -44,6 +44,7 @@
       "@app/persons/service": ["src/app/persons/service/index.ts"],
       "@app/persons/state": ["src/app/persons/state/index.ts"],
       "@app/booking/page": ["src/app/booking/page/index.ts"],
+      "@app/booking/service": ["src/app/booking/service/index.ts"],
       "@app/maps/common": ["src/app/maps/common/index.ts"],
       "@app/maps/services": ["src/app/maps/services/index.ts"],
       "@app/maps/shared": ["src/app/maps/shared/index.ts"]

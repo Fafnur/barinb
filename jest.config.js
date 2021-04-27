@@ -41,6 +41,7 @@ module.exports = {
     '@app/persons/service': ['<rootDir>/src/app/persons/service/index.ts'],
     '@app/persons/state': ['<rootDir>/src/app/persons/state/index.ts'],
     '@app/booking/page': ['<rootDir>/src/app/booking/page/index.ts'],
+    '@app/booking/service': ['<rootDir>/src/app/booking/service/index.ts'],
     '@app/maps/common': ['<rootDir>/src/app/maps/common/index.ts'],
     '@app/maps/services': ['<rootDir>/src/app/maps/services/index.ts'],
     '@app/maps/shared': ['<rootDir>/src/app/maps/shared/index.ts'],
