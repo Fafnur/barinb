@@ -1,3 +1,4 @@
 <ng-container *ngIf="bookingVariant$ | async as bookingVariant">
-  <p>{{ bookingVariant.address }}: {{ bookingVariant.firstRoom?.price }}</p>
+  <app-carousel [images]="bookingVariant | bookingVariantImages"></app-carousel>
+  <p>{{ bookingVariant.address }}</p>
 </ng-container>

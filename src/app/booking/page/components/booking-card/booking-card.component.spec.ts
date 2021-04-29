@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockComponents, MockPipes } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { BookingService } from '@app/booking/service';
+import { BookingVariantImagesPipe } from '@app/booking/shared';
+import { CarouselComponent } from '@app/ui/carousel';
 
 import { BookingCardComponent } from './booking-card.component';
 
@@ -11,7 +14,7 @@ describe('BookingCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BookingCardComponent],
+      declarations: [BookingCardComponent, MockComponents(CarouselComponent), MockPipes(BookingVariantImagesPipe)],
       providers: [
         {
           provide: BookingService,
