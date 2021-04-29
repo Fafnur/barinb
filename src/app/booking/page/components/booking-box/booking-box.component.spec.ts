@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
+
+import { BookingService } from '@app/booking/service';
 
 import { BookingBoxComponent } from './booking-box.component';
 
@@ -8,9 +11,16 @@ describe('BookingBoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookingBoxComponent ]
-    })
-    .compileComponents();
+      declarations: [BookingBoxComponent],
+      providers: [
+        {
+          provide: BookingService,
+          useValue: {
+            bookingVariant$: of(),
+          } as Partial<BookingService>,
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

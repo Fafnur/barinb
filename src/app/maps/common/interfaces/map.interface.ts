@@ -1,5 +1,5 @@
-export interface MapMarkerConfig extends google.maps.LatLngLiteral {
-  [key: string]: any;
-
+export interface MapMarkerConfig<T = any> extends google.maps.LatLngLiteral {
   label?: string | google.maps.MarkerLabel | null;
+
+  data: T;
 }

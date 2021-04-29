@@ -29,8 +29,8 @@ export class BookingMapComponent implements OnInit {
     this.mapMarkers$ = this.bookingService.mapMarkers$;
   }
 
-  onMapMarkerClicked(config: MapMarkerConfig): void {
-    this.bookingService.setBookingVariant(config as BookingVariant);
+  onMapMarkerClicked(markerConfig: MapMarkerConfig<BookingVariant>): void {
+    this.bookingService.setBookingVariant(markerConfig.data);
   }
 
   onMapInfoWindowClosed(): void {

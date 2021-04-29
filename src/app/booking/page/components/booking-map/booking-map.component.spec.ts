@@ -19,6 +19,8 @@ describe('BookingMapComponent', () => {
           provide: BookingService,
           useValue: {
             mapMarkers$: of([]),
+            setBookingVariant: jest.fn(),
+            clearBookingVariant: jest.fn(),
           } as Partial<BookingService>,
         },
       ],

@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
+import { BookingFacade } from '@app/booking/state';
 import { BuildingService } from '@app/buildings/service';
 import { RoomService } from '@app/rooms/service';
 
@@ -24,6 +25,14 @@ describe('BookingService', () => {
           useValue: {
             buildings$: of(),
           } as Partial<BuildingService>,
+        },
+        {
+          provide: BookingFacade,
+          useValue: {
+            bookingVariant$: of(),
+            setBookingVariant: jest.fn(),
+            clearBookingVariant: jest.fn(),
+          } as Partial<BookingFacade>,
         },
       ],
     }).compileComponents();

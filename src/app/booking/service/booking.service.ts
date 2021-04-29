@@ -23,15 +23,20 @@ export class BookingService {
       const markers: MapMarkerConfig[] = [];
       buildings.forEach((building) => {
         const firstRoom = getFirstRoomOnBuilding(building, rooms);
-        markers.push({
-          ...building,
-          firstRoom,
+        const marker: MapMarkerConfig<BookingVariant> = {
+          data: {
+            ...building,
+            firstRoom,
+          },
+          lat: building.lat,
+          lng: building.lng,
           label: {
             className: 'google-map-marker',
             text: firstRoom?.price.toString() ?? '',
             fontWeight: 'bold',
           },
-        });
+        };
+        markers.push(marker);
       });
 
       return markers;
