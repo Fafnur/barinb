@@ -1,0 +1,17 @@
+@import 'src/stylesheets/utils';
+
+.carousel-image {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  background-size: cover;
+
+  &.is-active {
+    z-index: 1;
+  }
+}

@@ -1,0 +1,11 @@
+<ng-container *ngIf="images?.length">
+  <app-carousel-slide
+    [image]="image"
+    [active]="active === index"
+    *ngFor="let image of images; let index = index"
+    (click)="onClick()"
+  ></app-carousel-slide>
+
+  <app-carousel-dots [counts]="images.length" [active]="active" (selected)="onSelected($event)"></app-carousel-dots>
+  <app-carousel-navs (prev)="onPrev()" (next)="onNext()"></app-carousel-navs>
+</ng-container>

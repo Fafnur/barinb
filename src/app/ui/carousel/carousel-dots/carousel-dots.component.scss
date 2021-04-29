@@ -1,0 +1,26 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  z-index: 2;
+}
+
+.carousel-dot {
+  margin: 0 0.25rem;
+  display: block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  border: 1px solid mat-color($mat-gray, 400);
+  background-color: white;
+  cursor: pointer;
+
+  &.is-active {
+    box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.66);
+  }
+}

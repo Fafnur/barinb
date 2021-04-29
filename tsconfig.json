@@ -24,6 +24,7 @@
       "@app/ui/theme/utils": ["src/app/ui/theme/utils/index.ts"],
       "@app/ui/icons": ["src/app/ui/icons/index.ts"],
       "@app/ui/spinner": ["src/app/ui/spinner/index.ts"],
+      "@app/ui/carousel": ["src/app/ui/carousel/index.ts"],
       "@app/core/common": ["src/app/core/common/index.ts"],
       "@app/core/environments": ["src/app/core/environments/index.ts"],
       "@app/core/logger": ["src/app/core/logger/index.ts"],
@@ -47,6 +48,7 @@
       "@app/booking/page": ["src/app/booking/page/index.ts"],
       "@app/booking/service": ["src/app/booking/service/index.ts"],
       "@app/booking/state": ["src/app/booking/state/index.ts"],
+      "@app/booking/shared": ["src/app/booking/shared/index.ts"],
       "@app/maps/common": ["src/app/maps/common/index.ts"],
       "@app/maps/services": ["src/app/maps/services/index.ts"],
       "@app/maps/shared": ["src/app/maps/shared/index.ts"]
