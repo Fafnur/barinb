@@ -4,6 +4,7 @@
     [markerOptions]="markerOptions"
     [markers]="mapMarkers"
     (mapMarkerClicked)="onMapMarkerClicked($event)"
+    (mapInfoWindowClosed)="onMapInfoWindowClosed()"
   >
     <ng-content></ng-content>
   </app-google-map>

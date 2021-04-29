@@ -1,1 +1,3 @@
-<p>booking-box works!</p>
+<ng-container *ngIf="bookingVariant$ | async as bookingVariant">
+  <p>{{ bookingVariant.address }}: {{ bookingVariant.firstRoom.price }}</p>
+</ng-container>

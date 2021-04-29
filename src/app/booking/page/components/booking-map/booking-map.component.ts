@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { BookingVariant } from '@app/booking/common';
 import { BookingService } from '@app/booking/service';
 import { MapMarkerConfig } from '@app/maps/common';
 
@@ -28,7 +29,11 @@ export class BookingMapComponent implements OnInit {
     this.mapMarkers$ = this.bookingService.mapMarkers$;
   }
 
-  onMapMarkerClicked(event: MapMarkerConfig): void {
-    console.log(event);
+  onMapMarkerClicked(config: MapMarkerConfig): void {
+    this.bookingService.setBookingVariant(config as BookingVariant);
+  }
+
+  onMapInfoWindowClosed(): void {
+    this.bookingService.clearBookingVariant();
   }
 }

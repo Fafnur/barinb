@@ -2,24 +2,24 @@ import { createState } from '@app/core/store/utils';
 
 import * as BookingActions from './booking.actions';
 import { bookingInitialState, BookingState, reducer } from './booking.reducer';
-import { ROOM_STUB } from './booking.stub';
+import { BOOKING_VARIANT_STUB } from './booking.stub';
 
 describe('Booking Reducer', () => {
   const getState = (payload?: Partial<BookingState>): BookingState => createState(bookingInitialState, payload);
 
-  it('setRoom() should set room', () => {
+  it('setBookingVariant() should set bookingVariant', () => {
     const state = getState();
-    const action = BookingActions.setRoom({ payload: ROOM_STUB });
+    const action = BookingActions.setBookingVariant({ payload: BOOKING_VARIANT_STUB });
     const result = reducer(state, action);
 
-    expect(result.room).toEqual(ROOM_STUB);
+    expect(result.bookingVariant).toEqual(BOOKING_VARIANT_STUB);
   });
 
-  it('clearRoom() should clear room', () => {
-    const state = getState({ room: ROOM_STUB });
-    const action = BookingActions.clearRoom();
+  it('clearBookingVariant() should clear bookingVariant', () => {
+    const state = getState({ bookingVariant: BOOKING_VARIANT_STUB });
+    const action = BookingActions.clearBookingVariant();
     const result = reducer(state, action);
 
-    expect(result.room).toBeNull();
+    expect(result.bookingVariant).toBeNull();
   });
 });

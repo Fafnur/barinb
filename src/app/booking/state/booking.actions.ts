@@ -1,8 +1,8 @@
 import { createAction } from '@ngrx/store';
 
+import { BookingVariant } from '@app/booking/common';
 import { payload } from '@app/core/store/utils';
-import { Room } from '@app/rooms/common';
 
-export const setRoom = createAction('[Booking] Set Rooms', payload<Room>());
+export const setBookingVariant = createAction('[Booking] Set Booking Variant', payload<BookingVariant>());
 
-export const clearRoom = createAction('[Booking] Clear Rooms');
+export const clearBookingVariant = createAction('[Booking] Clear Booking Variant');

@@ -8,7 +8,7 @@ import { readFirst } from '@app/core/store/utils';
 import { BookingEffects } from './booking.effects';
 import { BookingFacade } from './booking.facade';
 import { BOOKING_FEATURE_KEY, reducer } from './booking.reducer';
-import { ROOM_STUB } from './booking.stub';
+import { BOOKING_VARIANT_STUB } from './booking.stub';
 
 describe('BookingFacade', () => {
   let facade: BookingFacade;
@@ -33,10 +33,10 @@ describe('BookingFacade', () => {
 
     it('setRoom() should set room', async (done) => {
       try {
-        facade.setRoom(ROOM_STUB);
+        facade.setBookingVariant(BOOKING_VARIANT_STUB);
 
-        const room = await readFirst(facade.room$);
-        expect(room).toEqual(ROOM_STUB);
+        const bookingVariant = await readFirst(facade.bookingVariant$);
+        expect(bookingVariant).toEqual(BOOKING_VARIANT_STUB);
 
         done();
       } catch (error) {

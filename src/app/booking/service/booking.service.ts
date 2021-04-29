@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
+import { BookingVariant } from '@app/booking/common';
+import { BookingFacade } from '@app/booking/state';
 import { Building } from '@app/buildings/common';
 import { BuildingService } from '@app/buildings/service';
 import { MapMarkerConfig } from '@app/maps/common';
@@ -36,5 +38,19 @@ export class BookingService {
     })
   );
 
-  constructor(private readonly buildingService: BuildingService, private readonly roomService: RoomService) {}
+  bookingVariant$: Observable<BookingVariant> = this.bookingFacade.bookingVariant$.pipe(filter<any>(Boolean));
+
+  constructor(
+    private readonly buildingService: BuildingService,
+    private readonly roomService: RoomService,
+    private readonly bookingFacade: BookingFacade
+  ) {}
+
+  setBookingVariant(bookingVariant: BookingVariant): void {
+    this.bookingFacade.setBookingVariant(bookingVariant);
+  }
+
+  clearBookingVariant(): void {
+    this.bookingFacade.clearBookingVariant();
+  }
 }

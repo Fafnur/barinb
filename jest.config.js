@@ -40,6 +40,7 @@ module.exports = {
     '@app/persons/storage': ['<rootDir>/src/app/persons/storage/index.ts'],
     '@app/persons/service': ['<rootDir>/src/app/persons/service/index.ts'],
     '@app/persons/state': ['<rootDir>/src/app/persons/state/index.ts'],
+    '@app/booking/common': ['<rootDir>/src/app/booking/common/index.ts'],
     '@app/booking/page': ['<rootDir>/src/app/booking/page/index.ts'],
     '@app/booking/service': ['<rootDir>/src/app/booking/service/index.ts'],
     '@app/booking/state': ['<rootDir>/src/app/booking/state/index.ts'],

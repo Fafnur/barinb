@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { BookingServiceModule } from '@app/booking/service';
+import { BookingStateModule } from '@app/booking/state';
 import { BuildingServiceModule } from '@app/buildings/service';
 import { BuildingStateModule } from '@app/buildings/state';
 import { PersonStateModule } from '@app/persons/state';
@@ -29,6 +30,7 @@ import { BookingMapModule } from './components/booking-map/booking-map.module';
     BookingCardModule,
     BookingBoxModule,
     BookingServiceModule,
+    BookingStateModule,
   ],
   declarations: [BookingPageComponent],
 })

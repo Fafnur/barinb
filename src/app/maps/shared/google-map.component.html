@@ -7,7 +7,7 @@
     [options]="markerOptions"
     (mapClick)="onMarkerClick(marker, mapMarker)"
   ></map-marker>
-  <map-info-window>
+  <map-info-window (closeclick)="onInfoWindowClosed()">
     <ng-content></ng-content>
   </map-info-window>
 </google-map>

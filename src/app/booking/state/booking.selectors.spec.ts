@@ -2,15 +2,15 @@ import { createStore } from '@app/core/store/utils';
 
 import { BOOKING_FEATURE_KEY, bookingInitialState, BookingPartialState, BookingState } from './booking.reducer';
 import * as BookingSelectors from './booking.selectors';
-import { ROOM_STUB } from './booking.stub';
+import { BOOKING_VARIANT_STUB } from './booking.stub';
 
 describe('Booking Selectors', () => {
   const getState = (payload: Partial<BookingState>): BookingPartialState => createStore(BOOKING_FEATURE_KEY, bookingInitialState, payload);
 
-  it('selectRoom() should return room', () => {
-    const state = getState({ room: ROOM_STUB });
-    const results = BookingSelectors.selectRoom(state);
+  it('selectBookingVariant() should return bookingVariant', () => {
+    const state = getState({ bookingVariant: BOOKING_VARIANT_STUB });
+    const results = BookingSelectors.selectBookingVariant(state);
 
-    expect(results).toEqual(ROOM_STUB);
+    expect(results).toEqual(BOOKING_VARIANT_STUB);
   });
 });

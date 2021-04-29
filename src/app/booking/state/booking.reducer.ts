@@ -1,13 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { Room } from '@app/rooms/common';
+import { BookingVariant } from '@app/booking/common';
 
 import * as BookingActions from './booking.actions';
 
-export const BOOKING_FEATURE_KEY = 'booking';
+export const BOOKING_FEATURE_KEY = 'bookings';
 
 export interface BookingState {
-  room: Room | null;
+  bookingVariant: BookingVariant | null;
 }
 
 export interface BookingPartialState {
@@ -15,17 +15,17 @@ export interface BookingPartialState {
 }
 
 export const bookingInitialState: BookingState = {
-  room: null,
+  bookingVariant: null,
 };
 
 export const reducer = createReducer(
   bookingInitialState,
-  on(BookingActions.setRoom, (state, { payload }) => ({
+  on(BookingActions.setBookingVariant, (state, { payload }) => ({
     ...state,
-    room: payload,
+    bookingVariant: payload,
   })),
-  on(BookingActions.clearRoom, (state) => ({
+  on(BookingActions.clearBookingVariant, (state) => ({
     ...state,
-    room: null,
+    bookingVariant: null,
   }))
 );
