@@ -23,6 +23,7 @@ export class BookingService {
         const firstRoom = getFirstRoomOnBuilding(building, rooms);
         markers.push({
           ...building,
+          firstRoom,
           label: {
             className: 'google-map-marker',
             text: firstRoom?.price.toString() ?? '',
