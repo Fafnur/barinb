@@ -6,7 +6,6 @@ describe('EnvironmentService', () => {
 
   const environmentsStub: Environments = {
     production: true,
-    gmapsApiKey: '1423',
   };
 
   beforeEach(() => {

@@ -1,10 +1,11 @@
+import { Environments } from '@app/core/environments';
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+export const environment: Environments = {
   production: false,
-  gmapsApiKey: 'AIzaSyDPJ5-bEjFnP1xEN8QC0Ks8uej7CFcBGAs',
 };
 
 /*
