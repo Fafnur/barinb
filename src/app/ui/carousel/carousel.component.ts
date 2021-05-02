@@ -25,10 +25,10 @@ export class CarouselComponent {
   }
 
   onPrev(): void {
-    this.active = this.active === 0 ? this.images.length - 1 : this.active - 1;
+    this.active = this.active === 0 ? this.images?.length - 1 : this.active - 1;
   }
 
   onNext(): void {
-    this.active = this.active === this.images.length - 1 ? 0 : this.active + 1;
+    this.active = this.active === this.images?.length - 1 ? 0 : this.active + 1;
   }
 }

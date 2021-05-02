@@ -18,4 +18,8 @@ export class BookingBoxComponent implements OnInit {
   ngOnInit(): void {
     this.bookingVariant$ = this.bookingService.bookingVariant$;
   }
+
+  onClick(bookingVariant: BookingVariant): void {
+    console.log(bookingVariant);
+  }
 }

@@ -1,0 +1,10 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+}
+
+.booking-image {
+  height: 5rem;
+  width: 100%;
+}

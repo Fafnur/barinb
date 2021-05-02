@@ -1,3 +1,5 @@
-<ng-container *ngIf="bookingVariant$ | async as bookingVariant">
+<div *ngIf="bookingVariant$ | async as bookingVariant" (click)="onClick(bookingVariant)">
+  <div class="booking-image" [ngStyle]="{ backgroundImage: 'url(' + (bookingVariant | bookingVariantFirstImage) + ')' }"></div>
+
   <p>{{ bookingVariant.address }}: {{ bookingVariant.firstRoom?.price }}</p>
-</ng-container>
+</div>
