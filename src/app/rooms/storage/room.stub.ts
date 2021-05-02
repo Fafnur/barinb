@@ -34,7 +34,7 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Towels,
       RoomAmenities.HairDryer,
     ],
-    photos: ['/assets/images/rooms/photo-1.jpg', '/assets/images/rooms/photo-2.jpg', '/assets/images/rooms/photo-3.jpg'],
+    photos: ['/assets/images/rooms/photo-3.jpg', '/assets/images/rooms/photo-1.jpg', '/assets/images/rooms/photo-22.jpg'],
   },
   {
     id: 3,

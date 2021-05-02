@@ -7,10 +7,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarouselComponent {
-  @Input() images!: string[];
+  @Input() set images(images: string[]) {
+    this.slides = images;
+    this.active = 0;
+  }
   @Output() selected = new EventEmitter<void>();
 
   active = 0;
+  slides!: string[];
 
   onClick(): void {
     this.selected.emit();
