@@ -12,6 +12,10 @@ const routes: Routes = [
         path: '',
         loadChildren: (): Promise<any> => import('@app/booking/page').then((modules) => modules.BookingPageModule),
       },
+      {
+        path: 'rooms',
+        loadChildren: (): Promise<any> => import('@app/rooms/page').then((modules) => modules.RoomPageModule),
+      },
     ],
   },
 ];
