@@ -1,8 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { BookingVariant } from '@app/booking/common';
 import { BookingService } from '@app/booking/service';
+import { NavigationPath } from '@app/core/navigation/common';
+import { NavigationService } from '@app/core/navigation/service';
 
 @Component({
   selector: 'app-booking-card',
@@ -13,9 +16,17 @@ import { BookingService } from '@app/booking/service';
 export class BookingCardComponent implements OnInit {
   bookingVariant$!: Observable<BookingVariant>;
 
-  constructor(private readonly bookingService: BookingService) {}
+  constructor(
+    private readonly bookingService: BookingService,
+    private readonly router: Router,
+    private readonly navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {
     this.bookingVariant$ = this.bookingService.bookingVariant$;
+  }
+
+  onSelected(bookingVariant: BookingVariant): void {
+    this.router.navigate(this.navigationService.getRoute(NavigationPath.RoomPage, { id: bookingVariant.firstRoom?.id ?? 1 }));
   }
 }

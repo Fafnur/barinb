@@ -1,4 +1,4 @@
-<ng-container *ngIf="bookingVariant$ | async as bookingVariant">
-  <app-carousel [images]="bookingVariant | bookingVariantImages"></app-carousel>
+<div *ngIf="bookingVariant$ | async as bookingVariant">
+  <app-carousel [images]="bookingVariant | bookingVariantImages" (selected)="onSelected(bookingVariant)"></app-carousel>
   <p>{{ bookingVariant.address }}</p>
-</ng-container>
+</div>
