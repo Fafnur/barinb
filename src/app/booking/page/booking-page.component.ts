@@ -36,4 +36,8 @@ export class BookingPageComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
+
+  onToggleView(): void {
+    this.isMapShow = !this.isMapShow;
+  }
 }

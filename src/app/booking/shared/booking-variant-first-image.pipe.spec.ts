@@ -1,8 +1,8 @@
-import { BookingVariantImagesPipe } from './booking-variant-images.pipe';
+import { BookingVariantFirstImagePipe } from './booking-variant-first-image.pipe';
 
-describe('BookingVariantImagesPipe', () => {
+describe('BookingVariantFirstImagePipe', () => {
   it('create an instance', () => {
-    const pipe = new BookingVariantImagesPipe();
+    const pipe = new BookingVariantFirstImagePipe();
     expect(pipe).toBeTruthy();
   });
 });

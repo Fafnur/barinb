@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 import { MockComponents } from 'ng-mocks';
 import { of } from 'rxjs';
 
@@ -18,7 +20,7 @@ describe('BookingPageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         BookingPageComponent,
-        MockComponents(BookingMapComponent, BookingListComponent, BookingCardComponent, BookingBoxComponent),
+        MockComponents(BookingMapComponent, BookingListComponent, BookingCardComponent, BookingBoxComponent, MatIcon, MatButton),
       ],
       providers: [
         {

@@ -43,6 +43,12 @@
 
 .booking-portlet-carousel {
   max-width: 100%;
+  width: 100%;
+  height: 10rem;
+
+  @include media-breakpoint-up(sm) {
+    height: 14rem;
+  }
 
   @include media-breakpoint-up(md) {
     width: 100%;

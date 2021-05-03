@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { BookingServiceModule } from '@app/booking/service';
 import { BookingStateModule } from '@app/booking/state';
@@ -31,6 +33,8 @@ import { BookingMapModule } from './components/booking-map/booking-map.module';
     BookingBoxModule,
     BookingServiceModule,
     BookingStateModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   declarations: [BookingPageComponent],
 })

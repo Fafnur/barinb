@@ -20,7 +20,7 @@ export class BookingPortletComponent {
   constructor(private readonly router: Router, private readonly navigationService: NavigationService) {}
 
   onSelected(): void {
-    if (this.bookingVariant.firstRoom?.id) {
+    if (this.bookingVariant?.firstRoom?.id) {
       this.router.navigate(this.navigationService.getRoute(NavigationPath.RoomPage, { id: this.bookingVariant.firstRoom?.id }));
     }
   }

@@ -1,5 +1,11 @@
 @import 'src/stylesheets/utils';
 
+:host {
+  position: relative;
+  height: 100%;
+  display: block;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -10,4 +16,19 @@
 
 .column {
   flex: 1 0 0;
+}
+
+.booking-actions {
+  position: absolute;
+  bottom: 1rem;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 20px;
+  z-index: 2;
+}
+
+.booking-action {
+  background-color: white;
+  box-shadow: 0 0 4px 0 rgba(34, 60, 80, 0.66);
 }
