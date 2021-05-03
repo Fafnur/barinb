@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { BuildingService } from '@app/buildings/service';
+import { BookingService } from '@app/booking/service';
 
 import { BookingListComponent } from './booking-list.component';
 
@@ -14,10 +14,10 @@ describe('BookingListComponent', () => {
       declarations: [BookingListComponent],
       providers: [
         {
-          provide: BuildingService,
+          provide: BookingService,
           useValue: {
-            buildings$: of([]),
-          } as Partial<BuildingService>,
+            bookingVariants$: of([]),
+          } as Partial<BookingService>,
         },
       ],
     }).compileComponents();

@@ -9,7 +9,7 @@ import { NavigationService } from '@app/core/navigation/service';
 export class NavPathPipe implements PipeTransform {
   constructor(private readonly navigationService: NavigationService) {}
 
-  transform(path: NavigationPath, params?: Record<string, string | number>): (string | number)[] {
+  transform(path: NavigationPath, params?: Record<string, string | number | undefined>): (string | number)[] {
     return this.navigationService.getRoute(path, params);
   }
 }

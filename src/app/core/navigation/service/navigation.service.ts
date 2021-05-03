@@ -6,14 +6,14 @@ import { NavigationPath } from '@app/core/navigation/common';
   providedIn: 'root',
 })
 export class NavigationService {
-  getRoute(navigationPath: NavigationPath, params: Record<string, string | number> = {}): (string | number)[] {
+  getRoute(navigationPath: NavigationPath, params: Record<string, string | number | undefined> = {}): (string | number)[] {
     const segments = navigationPath.split('/');
     const routeWithParams: (string | number)[] = ['/'];
     for (const segment of segments) {
       if (segment.length && segment.charAt(0) === ':') {
         const paramName = segment.slice(1);
         if (params[paramName]) {
-          routeWithParams.push(params[paramName]);
+          routeWithParams.push(params[paramName] ?? '');
         } else {
           routeWithParams.push(paramName);
         }

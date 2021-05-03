@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Building } from '@app/buildings/common';
-import { BuildingService } from '@app/buildings/service';
+import { BookingVariant } from '@app/booking/common';
+import { BookingService } from '@app/booking/service';
 
 @Component({
   selector: 'app-booking-list',
@@ -11,11 +11,11 @@ import { BuildingService } from '@app/buildings/service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookingListComponent implements OnInit {
-  building$!: Observable<Building[]>;
+  bookingVariants$!: Observable<BookingVariant[]>;
 
-  constructor(private readonly buildingService: BuildingService) {}
+  constructor(private readonly bookingService: BookingService) {}
 
   ngOnInit(): void {
-    this.building$ = this.buildingService.buildings$;
+    this.bookingVariants$ = this.bookingService.bookingVariants$;
   }
 }

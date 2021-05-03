@@ -18,32 +18,26 @@ export function getFirstRoomOnBuilding(building: Building, rooms: Room[]): Room 
 
 @Injectable()
 export class BookingService {
-  mapMarkers$: Observable<MapMarkerConfig[]> = combineLatest([this.buildingService.buildings$, this.roomService.rooms$]).pipe(
-    map(([buildings, rooms]) => {
-      const markers: MapMarkerConfig[] = [];
-      buildings.forEach((building) => {
-        const firstRoom = getFirstRoomOnBuilding(building, rooms);
-        const marker: MapMarkerConfig<BookingVariant> = {
-          data: {
-            ...building,
-            firstRoom,
-          },
-          lat: building.lat,
-          lng: building.lng,
-          label: {
-            className: 'google-map-marker',
-            text: firstRoom?.price.toString() ?? '',
-            fontWeight: 'bold',
-          },
-        };
-        markers.push(marker);
-      });
+  bookingVariant$: Observable<BookingVariant> = this.bookingFacade.bookingVariant$.pipe(filter<any>(Boolean));
 
-      return markers;
-    })
+  bookingVariants$: Observable<BookingVariant[]> = combineLatest([this.buildingService.buildings$, this.roomService.rooms$]).pipe(
+    map(([buildings, rooms]) => buildings.map((building) => ({ ...building, firstRoom: getFirstRoomOnBuilding(building, rooms) })))
   );
 
-  bookingVariant$: Observable<BookingVariant> = this.bookingFacade.bookingVariant$.pipe(filter<any>(Boolean));
+  mapMarkers$: Observable<MapMarkerConfig[]> = this.bookingVariants$.pipe(
+    map((bookingVariants) =>
+      bookingVariants.map((bookingVariant) => ({
+        data: bookingVariant,
+        lat: bookingVariant.lat,
+        lng: bookingVariant.lng,
+        label: {
+          className: 'google-map-marker',
+          text: bookingVariant.firstRoom?.price.toString() ?? '',
+          fontWeight: 'bold',
+        },
+      }))
+    )
+  );
 
   constructor(
     private readonly buildingService: BuildingService,

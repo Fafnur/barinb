@@ -13,6 +13,7 @@ import { GridBreakpointType, mediaBreakpointUp } from '@app/ui/theme/utils';
 })
 export class BookingPageComponent implements OnInit, OnDestroy {
   isDesktopScreen = false;
+  isMapShow = true;
 
   private readonly destroy$ = new Subject<void>();
 

@@ -12,5 +12,13 @@
 </ng-template>
 
 <ng-template #mobileTpl>
+  <ng-container *ngIf="isMapShow; then mapMobileTpl; else listMobileTpl"></ng-container>
+</ng-template>
+
+<ng-template #mapMobileTpl>
   <app-booking-map><app-booking-box></app-booking-box></app-booking-map>
+</ng-template>
+
+<ng-template #listMobileTpl>
+  <app-booking-list></app-booking-list>
 </ng-template>
