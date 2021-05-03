@@ -14,6 +14,6 @@ describe('NavigationService', () => {
   });
 
   it('should return getEnvironments', () => {
-    expect(service.getRoute(NavigationPath.Rooms)).toBe(['/', 'rooms']);
+    expect(service.getRoute(NavigationPath.Rooms)).toEqual(['/', 'rooms']);
   });
 });

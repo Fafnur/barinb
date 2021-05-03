@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockComponents } from 'ng-mocks';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
 import { RoomService } from '@app/rooms/service';
@@ -12,12 +12,13 @@ describe('BookingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RoomPageComponent, MockComponents()],
+      imports: [RouterTestingModule],
+      declarations: [RoomPageComponent],
       providers: [
         {
           provide: RoomService,
           useValue: {
-            rooms$: of([]),
+            room$: jest.fn(() => of()),
           } as Partial<RoomService>,
         },
       ],

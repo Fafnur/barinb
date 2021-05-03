@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MockModule } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { BookingService } from '@app/booking/service';
+import { BookingSharedModule } from '@app/booking/shared';
 
 import { BookingBoxComponent } from './booking-box.component';
 
@@ -11,6 +14,7 @@ describe('BookingBoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule, MockModule(BookingSharedModule)],
       declarations: [BookingBoxComponent],
       providers: [
         {
