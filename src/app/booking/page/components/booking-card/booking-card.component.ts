@@ -17,8 +17,8 @@ export class BookingCardComponent implements OnInit {
   bookingVariant$!: Observable<BookingVariant>;
 
   constructor(
-    private readonly bookingService: BookingService,
     private readonly router: Router,
+    private readonly bookingService: BookingService,
     private readonly navigationService: NavigationService
   ) {}
 
@@ -27,6 +27,8 @@ export class BookingCardComponent implements OnInit {
   }
 
   onSelected(bookingVariant: BookingVariant): void {
-    this.router.navigate(this.navigationService.getRoute(NavigationPath.RoomPage, { id: bookingVariant.firstRoom?.id ?? 1 }));
+    if (bookingVariant.firstRoom?.id) {
+      this.router.navigate(this.navigationService.getRoute(NavigationPath.RoomPage, { id: bookingVariant.firstRoom?.id }));
+    }
   }
 }
