@@ -38,6 +38,7 @@
       "@app/core/navigation/shared": ["src/app/core/navigation/shared/index.ts"],
       "@app/rooms/common": ["src/app/rooms/common/index.ts"],
       "@app/rooms/page": ["src/app/rooms/page/index.ts"],
+      "@app/rooms/manager": ["src/app/rooms/manager/index.ts"],
       "@app/rooms/storage": ["src/app/rooms/storage/index.ts"],
       "@app/rooms/service": ["src/app/rooms/service/index.ts"],
       "@app/rooms/state": ["src/app/rooms/state/index.ts"],

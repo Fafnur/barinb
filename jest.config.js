@@ -34,6 +34,8 @@ module.exports = {
     '@app/core/navigation/service': ['<rootDir>/src/app/core/navigation/service/index.ts'],
     '@app/core/navigation/shared': ['<rootDir>/src/app/core/navigation/shared/index.ts'],
     '@app/rooms/common': ['<rootDir>/src/app/rooms/common/index.ts'],
+    '@app/rooms/manager': ['<rootDir>/src/app/rooms/manager/index.ts'],
+    '@app/rooms/page': ['<rootDir>/src/app/rooms/page/index.ts'],
     '@app/rooms/storage': ['<rootDir>/src/app/rooms/storage/index.ts'],
     '@app/rooms/service': ['<rootDir>/src/app/rooms/service/index.ts'],
     '@app/rooms/state': ['<rootDir>/src/app/rooms/state/index.ts'],
