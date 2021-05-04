@@ -1,1 +1,6 @@
-<div *ngIf="room$ | async as room">page works: {{ room.id }}</div>
+<app-container *ngIf="roomExtended$ | async as room">
+  <div class="room-view-title">{{ room.buildingExtended.name }}</div>
+  <div class="">
+    <app-room-photos [photos]="room.photos"></app-room-photos>
+  </div>
+</app-container>

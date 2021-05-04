@@ -16,7 +16,14 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Hangers,
       RoomAmenities.Tv,
     ],
-    photos: ['/assets/images/rooms/photo-22.jpg', '/assets/images/rooms/photo-23.jpg', '/assets/images/rooms/photo-24.jpg'],
+    photos: [
+      '/assets/images/rooms/photo-22.jpg',
+      '/assets/images/rooms/photo-23.jpg',
+      '/assets/images/rooms/photo-24.jpg',
+      '/assets/images/rooms/photo-10.jpg',
+      '/assets/images/rooms/photo-11.jpg',
+      '/assets/images/rooms/photo-12.jpg',
+    ],
   },
   {
     id: 2,

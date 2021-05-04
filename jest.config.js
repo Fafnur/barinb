@@ -22,6 +22,7 @@ module.exports = {
     '@app/ui/icons': ['<rootDir>/src/app/ui/icons/index.ts'],
     '@app/ui/spinner': ['<rootDir>/src/app/ui/spinner/index.ts'],
     '@app/ui/carousel': ['<rootDir>/src/app/ui/carousel/index.ts'],
+    '@app/ui/container': ['<rootDir>/src/app/ui/container/index.ts'],
     '@app/core/common': ['<rootDir>/src/app/core/common/index.ts'],
     '@app/core/config': ['<rootDir>/src/app/core/config/index.ts'],
     '@app/core/environments': ['<rootDir>/src/app/core/environments/index.ts'],

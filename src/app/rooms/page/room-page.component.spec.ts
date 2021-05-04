@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
-import { RoomService } from '@app/rooms/service';
+import { RoomManager } from '@app/rooms/manager';
 
 import { RoomPageComponent } from './room-page.component';
 
@@ -16,10 +16,10 @@ describe('BookingPageComponent', () => {
       declarations: [RoomPageComponent],
       providers: [
         {
-          provide: RoomService,
+          provide: RoomManager,
           useValue: {
-            room$: jest.fn(() => of()),
-          } as Partial<RoomService>,
+            roomExtended$: jest.fn(() => of()),
+          } as Partial<RoomManager>,
         },
       ],
     }).compileComponents();
