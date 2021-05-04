@@ -1,5 +1,10 @@
 @import 'src/stylesheets/utils';
 
+:host {
+  display: block;
+  margin: 1rem 0;
+}
+
 .room-view-carousel {
   width: 100%;
   height: 10rem;
@@ -15,4 +20,33 @@
   @include media-breakpoint-up(xl) {
     height: 30rem;
   }
+}
+
+.room-view-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 2rem;
+  }
+}
+
+.room-view-details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 -0.25rem 1rem -0.25rem;
+}
+
+.room-view-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.85rem;
+  margin: 0 0.25rem;
 }

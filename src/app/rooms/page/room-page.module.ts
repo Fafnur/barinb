@@ -13,6 +13,7 @@ import { ContainerModule } from '@app/ui/container';
 import { RoomPhotosModule } from './components/room-photos/room-photos.module';
 import { RoomPageComponent } from './room-page.component';
 import { RoomPageRoutingModule } from './room-page-routing.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { RoomPageRoutingModule } from './room-page-routing.module';
     RoomManagerModule,
     ContainerModule,
     RoomPhotosModule,
+    MatIconModule,
   ],
   declarations: [RoomPageComponent],
 })

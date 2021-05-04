@@ -41,7 +41,14 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Towels,
       RoomAmenities.HairDryer,
     ],
-    photos: ['/assets/images/rooms/photo-3.jpg', '/assets/images/rooms/photo-1.jpg', '/assets/images/rooms/photo-22.jpg'],
+    photos: [
+      '/assets/images/rooms/photo-3.jpg',
+      '/assets/images/rooms/photo-1.jpg',
+      '/assets/images/rooms/photo-22.jpg',
+      '/assets/images/rooms/photo-13.jpg',
+      '/assets/images/rooms/photo-14.jpg',
+      '/assets/images/rooms/photo-15.jpg',
+    ],
   },
   {
     id: 3,
@@ -59,7 +66,14 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Towels,
       RoomAmenities.Kitchen,
     ],
-    photos: ['/assets/images/rooms/photo-4.jpg', '/assets/images/rooms/photo-5.jpg', '/assets/images/rooms/photo-6.jpg'],
+    photos: [
+      '/assets/images/rooms/photo-4.jpg',
+      '/assets/images/rooms/photo-5.jpg',
+      '/assets/images/rooms/photo-6.jpg',
+      '/assets/images/rooms/photo-16.jpg',
+      '/assets/images/rooms/photo-17.jpg',
+      '/assets/images/rooms/photo-18.jpg',
+    ],
   },
   {
     id: 4,

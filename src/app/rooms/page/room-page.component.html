@@ -1,6 +1,9 @@
-<app-container *ngIf="roomExtended$ | async as room">
-  <div class="room-view-title">{{ room.buildingExtended.name }}</div>
-  <div class="">
-    <app-room-photos [photos]="room.photos"></app-room-photos>
+<app-container *ngIf="roomExtended$ | async as room" class="room-view">
+  <h1 class="room-view-title">{{ room.buildingExtended.name }}</h1>
+  <div class="room-view-details">
+    <div class="room-view-detail"><mat-icon color="warn">star</mat-icon> 4.99</div>
+    <div class="room-view-detail"><mat-icon color="warn">emoji_events</mat-icon> Суперхозяин</div>
+    <div class="room-view-detail">{{ room.buildingExtended.address }}</div>
   </div>
+  <app-room-photos [photos]="room.photos"></app-room-photos>
 </app-container>
