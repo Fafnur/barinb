@@ -9,12 +9,12 @@ import { GridBreakpointType, mediaBreakpointUp } from '@app/ui/theme/utils';
 import { RoomPhotosDialogComponent } from '../room-photos-dialog/room-photos-dialog.component';
 
 @Component({
-  selector: 'app-room-photos',
-  templateUrl: './room-photos.component.html',
-  styleUrls: ['./room-photos.component.scss'],
+  selector: 'app-room-photo',
+  templateUrl: './room-photo.component.html',
+  styleUrls: ['./room-photo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoomPhotosComponent implements OnInit, OnDestroy {
+export class RoomPhotoComponent implements OnInit, OnDestroy {
   @Input() photos!: string[];
 
   isDesktopScreen = false;

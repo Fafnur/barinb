@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RoomPhotosModule } from './room-photos.module';
+import { RoomPropsModule } from './room-props.module';
 
 describe('RoomPhotosModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RoomPhotosModule],
+      imports: [RoomPropsModule],
     }).compileComponents();
   });
 
   it('should create', () => {
-    expect(RoomPhotosModule).toBeTruthy();
+    expect(RoomPropsModule).toBeTruthy();
   });
 });

@@ -1,6 +1,6 @@
-<ng-container *ngIf="room">
-  <h3 class="room-view-person">Квартира целиком, хозяин: {{ room.buildingExtended.personExtended.firstName }}</h3>
-  <div class="room-view-props">
-    <div class="room-view-prop">{{ room.guests }}</div>
-  </div>
-</ng-container>
+<div class="room-view-props" *ngIf="room">
+  <div class="room-view-prop">{{ room.guests | numeralToWord: NumeralType.Guest }}</div>
+  <div class="room-view-prop">{{ room.bedrooms | numeralToWord: NumeralType.Bedroom }}</div>
+  <div class="room-view-prop">{{ room.beds | numeralToWord: NumeralType.Bed }}</div>
+  <div class="room-view-prop">{{ room.bathrooms | numeralToWord: NumeralType.Bathroom }}</div>
+</div>

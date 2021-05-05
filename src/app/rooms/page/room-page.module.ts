@@ -14,15 +14,15 @@ import { ContainerModule } from '@app/ui/container';
 
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { RoomHeaderComponent } from './components/room-header/room-header.component';
-import { RoomPhotosModule } from './components/room-photos/room-photos.module';
-import { RoomPropsComponent } from './components/room-props/room-props.component';
+import { RoomPersonComponent } from './components/room-person/room-person.component';
+import { RoomPhotoModule } from './components/room-photo/room-photo.module';
+import { RoomPropsModule } from './components/room-props/room-props.module';
 import { RoomPageComponent } from './room-page.component';
 import { RoomPageRoutingModule } from './room-page-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RoomPhotosModule,
     RoomPageRoutingModule,
     RoomServiceModule,
     RoomStateModule,
@@ -34,7 +34,9 @@ import { RoomPageRoutingModule } from './room-page-routing.module';
     ContainerModule,
     MatIconModule,
     MatButtonModule,
+    RoomPropsModule,
+    RoomPhotoModule,
   ],
-  declarations: [RoomPageComponent, RoomDetailsComponent, RoomHeaderComponent, RoomPropsComponent],
+  declarations: [RoomPageComponent, RoomDetailsComponent, RoomHeaderComponent, RoomPersonComponent],
 })
 export class RoomPageModule {}

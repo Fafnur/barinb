@@ -8,11 +8,11 @@ import { RoomSharedModule } from '@app/rooms/shared';
 import { CarouselModule } from '@app/ui/carousel';
 
 import { RoomPhotosDialogModule } from '../room-photos-dialog/room-photos-dialog.module';
-import { RoomPhotosComponent } from './room-photos.component';
+import { RoomPhotoComponent } from './room-photo.component';
 
 @NgModule({
   imports: [CommonModule, CarouselModule, MatButtonModule, MatIconModule, MatDialogModule, RoomPhotosDialogModule, RoomSharedModule],
-  declarations: [RoomPhotosComponent],
-  exports: [RoomPhotosComponent],
+  declarations: [RoomPhotoComponent],
+  exports: [RoomPhotoComponent],
 })
-export class RoomPhotosModule {}
+export class RoomPhotoModule {}

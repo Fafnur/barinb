@@ -3,8 +3,28 @@
 .room-view-person {
   font-weight: 500;
   font-size: 1.15rem;
+  margin-bottom: 0.5rem;
 
   @include media-breakpoint-up(md) {
     font-size: 1.25rem;
+  }
+}
+
+.room-view-props {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.room-view-prop {
+  display: block;
+  margin-right: 0.25rem;
+
+  &:before {
+    content: ' · ';
+  }
+
+  &:first-child:before {
+    content: '';
   }
 }
