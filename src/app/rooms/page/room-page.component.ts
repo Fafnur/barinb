@@ -24,8 +24,4 @@ export class RoomPageComponent implements OnInit {
   ngOnInit(): void {
     this.roomExtended$ = this.roomManager.roomExtended$(+this.activatedRoute.snapshot.params?.id);
   }
-
-  onBack(): void {
-    void this.navigationService.navigate(NavigationPath.Home);
-  }
 }

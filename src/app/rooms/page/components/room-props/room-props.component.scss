@@ -1,0 +1,10 @@
+@import 'src/stylesheets/utils';
+
+.room-view-person {
+  font-weight: 500;
+  font-size: 1.15rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.25rem;
+  }
+}

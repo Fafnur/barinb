@@ -1,0 +1,33 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-view-back {
+  font-size: 1.25rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 2rem;
+  }
+}
+
+.room-view-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 2rem;
+  }
+}

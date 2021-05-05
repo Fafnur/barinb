@@ -40,6 +40,7 @@ module.exports = {
     '@app/rooms/storage': ['<rootDir>/src/app/rooms/storage/index.ts'],
     '@app/rooms/service': ['<rootDir>/src/app/rooms/service/index.ts'],
     '@app/rooms/state': ['<rootDir>/src/app/rooms/state/index.ts'],
+    '@app/rooms/shared': ['<rootDir>/src/app/rooms/shared/index.ts'],
     '@app/buildings/common': ['<rootDir>/src/app/buildings/common/index.ts'],
     '@app/buildings/storage': ['<rootDir>/src/app/buildings/storage/index.ts'],
     '@app/buildings/service': ['<rootDir>/src/app/buildings/service/index.ts'],

@@ -4,15 +4,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
+import { RoomSharedModule } from '@app/rooms/shared';
 import { CarouselModule } from '@app/ui/carousel';
 
 import { RoomPhotosDialogModule } from '../room-photos-dialog/room-photos-dialog.module';
 import { RoomPhotosComponent } from './room-photos.component';
-import { RoomPreviewImagesPipe } from './room-preview-images.pipe';
 
 @NgModule({
-  imports: [CommonModule, CarouselModule, MatButtonModule, MatIconModule, MatDialogModule, RoomPhotosDialogModule],
-  declarations: [RoomPhotosComponent, RoomPreviewImagesPipe],
+  imports: [CommonModule, CarouselModule, MatButtonModule, MatIconModule, MatDialogModule, RoomPhotosDialogModule, RoomSharedModule],
+  declarations: [RoomPhotosComponent],
   exports: [RoomPhotosComponent],
 })
 export class RoomPhotosModule {}

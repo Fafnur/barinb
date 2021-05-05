@@ -1,0 +1,17 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 -0.25rem 1rem -0.25rem;
+}
+
+.room-view-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.85rem;
+  margin: 0 0.25rem;
+}

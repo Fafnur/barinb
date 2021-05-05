@@ -43,6 +43,7 @@
       "@app/rooms/storage": ["src/app/rooms/storage/index.ts"],
       "@app/rooms/service": ["src/app/rooms/service/index.ts"],
       "@app/rooms/state": ["src/app/rooms/state/index.ts"],
+      "@app/rooms/shared": ["src/app/rooms/shared/index.ts"],
       "@app/buildings/common": ["src/app/buildings/common/index.ts"],
       "@app/buildings/storage": ["src/app/buildings/storage/index.ts"],
       "@app/buildings/service": ["src/app/buildings/service/index.ts"],

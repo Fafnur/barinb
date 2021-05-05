@@ -12,13 +12,17 @@ import { RoomServiceModule } from '@app/rooms/service';
 import { RoomStateModule } from '@app/rooms/state';
 import { ContainerModule } from '@app/ui/container';
 
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
+import { RoomHeaderComponent } from './components/room-header/room-header.component';
 import { RoomPhotosModule } from './components/room-photos/room-photos.module';
+import { RoomPropsComponent } from './components/room-props/room-props.component';
 import { RoomPageComponent } from './room-page.component';
 import { RoomPageRoutingModule } from './room-page-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    RoomPhotosModule,
     RoomPageRoutingModule,
     RoomServiceModule,
     RoomStateModule,
@@ -28,10 +32,9 @@ import { RoomPageRoutingModule } from './room-page-routing.module';
     PersonStateModule,
     RoomManagerModule,
     ContainerModule,
-    RoomPhotosModule,
     MatIconModule,
     MatButtonModule,
   ],
-  declarations: [RoomPageComponent],
+  declarations: [RoomPageComponent, RoomDetailsComponent, RoomHeaderComponent, RoomPropsComponent],
 })
 export class RoomPageModule {}
