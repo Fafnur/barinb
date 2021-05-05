@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { BookingVariant } from '@app/booking/common';
 import { NavigationPath } from '@app/core/navigation/common';
@@ -17,11 +16,11 @@ export class BookingPortletComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   NavigationPath = NavigationPath;
 
-  constructor(private readonly router: Router, private readonly navigationService: NavigationService) {}
+  constructor(private readonly navigationService: NavigationService) {}
 
   onSelected(): void {
     if (this.bookingVariant?.firstRoom?.id) {
-      this.router.navigate(this.navigationService.getRoute(NavigationPath.RoomPage, { id: this.bookingVariant.firstRoom?.id }));
+      void this.navigationService.navigate(NavigationPath.RoomPage, { id: this.bookingVariant.firstRoom?.id });
     }
   }
 }

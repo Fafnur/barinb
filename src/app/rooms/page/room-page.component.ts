@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { Room } from '@app/rooms/common';
+import { NavigationPath } from '@app/core/navigation/common';
+import { NavigationService } from '@app/core/navigation/service';
 import { RoomExtended, RoomManager } from '@app/rooms/manager';
 
 @Component({
@@ -14,9 +15,17 @@ import { RoomExtended, RoomManager } from '@app/rooms/manager';
 export class RoomPageComponent implements OnInit {
   roomExtended$!: Observable<RoomExtended>;
 
-  constructor(private readonly activatedRoute: ActivatedRoute, private readonly roomManager: RoomManager) {}
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly roomManager: RoomManager,
+    private readonly navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {
     this.roomExtended$ = this.roomManager.roomExtended$(+this.activatedRoute.snapshot.params?.id);
+  }
+
+  onBack(): void {
+    void this.navigationService.navigate(NavigationPath.Home);
   }
 }

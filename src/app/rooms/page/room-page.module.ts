@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { BuildingServiceModule } from '@app/buildings/service';
 import { BuildingStateModule } from '@app/buildings/state';
@@ -13,7 +15,6 @@ import { ContainerModule } from '@app/ui/container';
 import { RoomPhotosModule } from './components/room-photos/room-photos.module';
 import { RoomPageComponent } from './room-page.component';
 import { RoomPageRoutingModule } from './room-page-routing.module';
-import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     ContainerModule,
     RoomPhotosModule,
     MatIconModule,
+    MatButtonModule,
   ],
   declarations: [RoomPageComponent],
 })
