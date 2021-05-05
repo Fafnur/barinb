@@ -59,7 +59,10 @@
       "@app/booking/shared": ["src/app/booking/shared/index.ts"],
       "@app/maps/common": ["src/app/maps/common/index.ts"],
       "@app/maps/services": ["src/app/maps/services/index.ts"],
-      "@app/maps/shared": ["src/app/maps/shared/index.ts"]
+      "@app/maps/shared": ["src/app/maps/shared/index.ts"],
+      "@app/numerals/common": ["src/app/numerals/common/index.ts"],
+      "@app/numerals/shared": ["src/app/numerals/shared/index.ts"],
+      "@app/numerals/utils": ["src/app/numerals/utils/index.ts"]
     }
   },
   "angularCompilerOptions": {

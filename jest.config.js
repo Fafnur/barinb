@@ -57,5 +57,8 @@ module.exports = {
     '@app/maps/common': ['<rootDir>/src/app/maps/common/index.ts'],
     '@app/maps/services': ['<rootDir>/src/app/maps/services/index.ts'],
     '@app/maps/shared': ['<rootDir>/src/app/maps/shared/index.ts'],
+    '@app/numerals/common': ['<rootDir>/src/app/numerals/common/index.ts'],
+    '@app/numerals/shared': ['<rootDir>src/app/numerals/shared/index.ts'],
+    '@app/numerals/utils': ['<rootDir>src/app/numerals/utils/index.ts'],
   },
 };
