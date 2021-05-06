@@ -1,4 +1,4 @@
-<div class="room-view-group">
+<div class="room-view-group" *ngIf="room">
   <div>
     <h3 class="room-view-person">Квартира целиком, хозяин: {{ room.buildingExtended.personExtended.firstName }}</h3>
     <ng-content></ng-content>

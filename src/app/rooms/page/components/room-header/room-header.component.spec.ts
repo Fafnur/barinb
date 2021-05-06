@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponents } from 'ng-mocks';
 
 import { RoomHeaderComponent } from './room-header.component';
@@ -11,6 +12,7 @@ describe('RoomHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [RoomHeaderComponent, MockComponents(MatIcon, MatButton)],
     }).compileComponents();
   });

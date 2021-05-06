@@ -18,6 +18,7 @@ export const BOOKING_VARIANT_STUB: BookingVariant = {
     bedrooms: 1,
     bathrooms: 1,
     price: 2500,
+    description: 'Небольшая квартира в центре города',
     amenities: [
       RoomAmenities.AirConditioning,
       RoomAmenities.Elevator,

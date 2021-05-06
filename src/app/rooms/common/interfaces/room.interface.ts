@@ -40,6 +40,7 @@ export interface Room {
   bathrooms: number;
   beds: number;
   price: number;
+  description: string;
 
   photos: string[];
   amenities: RoomAmenities[];

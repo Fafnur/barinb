@@ -8,6 +8,9 @@ export const ROOM_STUB: Room = {
   bedrooms: 1,
   bathrooms: 1,
   price: 2500,
+  description:
+    'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный ' +
+    'парк, жд вокзал, метро, площадь Ленина.',
   amenities: [
     RoomAmenities.AirConditioning,
     RoomAmenities.Elevator,

@@ -1,5 +1,6 @@
 import { Room, RoomAmenities } from '@app/rooms/common';
 
+/* eslint-disable max-len */
 export const ROOMS_STUB: Room[] = [
   {
     id: 1,
@@ -16,6 +17,8 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Hangers,
       RoomAmenities.Tv,
     ],
+    description:
+      'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный парк, жд вокзал, метро, площадь Ленина.',
     photos: [
       '/assets/images/rooms/photo-22.jpg',
       '/assets/images/rooms/photo-23.jpg',
@@ -33,6 +36,8 @@ export const ROOMS_STUB: Room[] = [
     bedrooms: 1,
     bathrooms: 1,
     price: 2750,
+    description:
+      'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный парк, жд вокзал, метро, площадь Ленина.',
     amenities: [
       RoomAmenities.AirConditioning,
       RoomAmenities.Elevator,
@@ -58,6 +63,8 @@ export const ROOMS_STUB: Room[] = [
     bedrooms: 2,
     bathrooms: 1,
     price: 5400,
+    description:
+      'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный парк, жд вокзал, метро, площадь Ленина.',
     amenities: [
       RoomAmenities.AirConditioning,
       RoomAmenities.Elevator,
@@ -83,6 +90,8 @@ export const ROOMS_STUB: Room[] = [
     bedrooms: 1,
     bathrooms: 1,
     price: 1800,
+    description:
+      'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный парк, жд вокзал, метро, площадь Ленина.',
     amenities: [
       RoomAmenities.AirConditioning,
       RoomAmenities.Elevator,
@@ -101,6 +110,8 @@ export const ROOMS_STUB: Room[] = [
     bedrooms: 2,
     bathrooms: 1,
     price: 3800,
+    description:
+      'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный парк, жд вокзал, метро, площадь Ленина.',
     amenities: [
       RoomAmenities.AirConditioning,
       RoomAmenities.Elevator,
@@ -119,6 +130,8 @@ export const ROOMS_STUB: Room[] = [
     bedrooms: 2,
     bathrooms: 2,
     price: 6800,
+    description:
+      'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный парк, жд вокзал, метро, площадь Ленина.',
     amenities: [
       RoomAmenities.AirConditioning,
       RoomAmenities.Elevator,
@@ -137,6 +150,8 @@ export const ROOMS_STUB: Room[] = [
     bedrooms: 1,
     bathrooms: 1,
     price: 2200,
+    description:
+      'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный парк, жд вокзал, метро, площадь Ленина.',
     amenities: [
       RoomAmenities.AirConditioning,
       RoomAmenities.Elevator,
@@ -155,6 +170,8 @@ export const ROOMS_STUB: Room[] = [
     bedrooms: 3,
     bathrooms: 2,
     price: 6800,
+    description:
+      'Уютная квартира в самом центре города. В шаговой доступности НИИТО, стадион Спартак, центральный парк, жд вокзал, метро, площадь Ленина.',
     amenities: [
       RoomAmenities.AirConditioning,
       RoomAmenities.Elevator,
@@ -166,3 +183,4 @@ export const ROOMS_STUB: Room[] = [
     photos: ['/assets/images/rooms/photo-19.jpg', '/assets/images/rooms/photo-20.jpg', '/assets/images/rooms/photo-21.jpg'],
   },
 ];
+/* eslint-enable max-len */
