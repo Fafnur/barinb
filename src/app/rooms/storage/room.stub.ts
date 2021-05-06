@@ -31,8 +31,8 @@ export const ROOMS_STUB: Room[] = [
   {
     id: 2,
     building: 2,
-    guests: 2,
-    beds: 1,
+    guests: 3,
+    beds: 2,
     bedrooms: 1,
     bathrooms: 1,
     price: 2750,
