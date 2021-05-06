@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+import { BookingServiceModule } from '@app/booking/service';
+import { BookingStateModule } from '@app/booking/state';
 import { BuildingServiceModule } from '@app/buildings/service';
 import { BuildingStateModule } from '@app/buildings/state';
 import { PersonServiceModule } from '@app/persons/service';
@@ -33,6 +35,8 @@ import { RoomPageRoutingModule } from './room-page-routing.module';
     BuildingStateModule,
     PersonServiceModule,
     PersonStateModule,
+    BookingServiceModule,
+    BookingStateModule,
     RoomManagerModule,
     ContainerModule,
     MatIconModule,

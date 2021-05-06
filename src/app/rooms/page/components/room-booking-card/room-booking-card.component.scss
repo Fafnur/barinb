@@ -2,8 +2,24 @@
 
 :host {
   display: block;
-  margin: 1rem;
+  margin: 1rem 0 1rem 1rem;
   border: 1px solid mat-color($mat-gray, 300);
   border-radius: 1rem;
   padding: 1rem;
+}
+
+.room-booking-action {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+}
+
+.room-booking-price {
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+
+  @include media-breakpoint-up(md) {
+    font-size: 1.35rem;
+  }
 }

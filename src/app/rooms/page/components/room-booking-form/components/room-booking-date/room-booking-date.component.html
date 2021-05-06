@@ -1,0 +1,16 @@
+<mat-form-field class="ui-field" appearance="fill" *ngIf="control">
+  <mat-label>Прибытие - Выезд</mat-label>
+  <mat-date-range-input
+    [formGroup]="control"
+    [rangePicker]="tripDate"
+    [comparisonStart]="control.value.start"
+    [comparisonEnd]="control.value.end"
+    [min]="minDate"
+    [max]="maxDate"
+  >
+    <input matStartDate placeholder="Start date" [formControlName]="BookingField.PeriodStart" />
+    <input matEndDate placeholder="End date" [formControlName]="BookingField.PeriodEnd" />
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="tripDate"></mat-datepicker-toggle>
+  <mat-date-range-picker [touchUi]="!isDesktopScreen" #tripDate></mat-date-range-picker>
+</mat-form-field>

@@ -1,0 +1,3 @@
+<app-room-booking-date [control]="form | extractFormGroup: BookingField.Period"></app-room-booking-date>
+<app-room-booking-guest [control]="form | extractFormControl: BookingField.Guests" [room]="room"></app-room-booking-guest>
+<ng-content></ng-content>
