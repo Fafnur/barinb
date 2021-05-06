@@ -1,9 +1,8 @@
 <ng-container *ngIf="room">
   <div class="room-booking-card">
     <div class="room-booking-price">{{ room.price }} ₽ / ночь</div>
-    <app-room-booking-form [room]="room"></app-room-booking-form>
-    <div class="room-booking-actions">
-      <button class="room-booking-action" type="button" mat-raised-button color="primary">Забронировать</button>
-    </div>
+    <app-room-booking-form [room]="room">
+      <app-room-booking-price [room]="room"></app-room-booking-price>
+    </app-room-booking-form>
   </div>
 </ng-container>

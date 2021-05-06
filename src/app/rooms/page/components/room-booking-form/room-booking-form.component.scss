@@ -1,0 +1,12 @@
+@import 'src/stylesheets/utils';
+
+.room-booking-action {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.75rem 1rem;
+}
+
+.room-booking-error {
+  margin: 1rem 0;
+  color: mat-color($mat-red, 500);
+}

@@ -23,7 +23,10 @@ export class RoomBookingFormComponent implements OnInit, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   BookingField = BookingField;
 
+  showError = false;
+
   private readonly destroy$ = new Subject<void>();
+  private edited = false;
 
   constructor(private readonly changeDetectorRef: ChangeDetectorRef, private readonly bookingService: BookingService) {}
 
@@ -34,6 +37,8 @@ export class RoomBookingFormComponent implements OnInit, OnDestroy {
       .pipe(
         filter(() => this.form.valid),
         tap(() => {
+          this.edited = true;
+          this.showError = false;
           this.bookingService.setBookingDetails(this.form.value);
           this.changeDetectorRef.markForCheck();
         }),
@@ -44,7 +49,7 @@ export class RoomBookingFormComponent implements OnInit, OnDestroy {
     this.bookingService.bookingDetails$
       .pipe(
         tap((bookingDetails) => {
-          if (bookingDetails) {
+          if (!this.edited) {
             const details = { ...bookingDetails };
 
             if (bookingDetails[BookingField.Guests] > this.room.guests) {
@@ -63,5 +68,13 @@ export class RoomBookingFormComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  onBooking(): void {
+    if (this.form.valid) {
+    } else {
+      this.showError = true;
+    }
+    this.changeDetectorRef.markForCheck();
   }
 }

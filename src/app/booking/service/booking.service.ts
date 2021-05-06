@@ -24,7 +24,7 @@ export class BookingService {
     map(([buildings, rooms]) => buildings.map((building) => ({ ...building, firstRoom: getFirstRoomOnBuilding(building, rooms) })))
   );
 
-  bookingDetails$: Observable<BookingDetails | null> = this.bookingFacade.bookingDetails$;
+  bookingDetails$: Observable<BookingDetails> = this.bookingFacade.bookingDetails$.pipe(filter<any>(Boolean));
 
   mapMarkers$: Observable<MapMarkerConfig[]> = this.bookingVariants$.pipe(
     map((bookingVariants) =>
