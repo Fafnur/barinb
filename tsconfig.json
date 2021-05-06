@@ -62,7 +62,8 @@
       "@app/maps/shared": ["src/app/maps/shared/index.ts"],
       "@app/numerals/common": ["src/app/numerals/common/index.ts"],
       "@app/numerals/shared": ["src/app/numerals/shared/index.ts"],
-      "@app/numerals/utils": ["src/app/numerals/utils/index.ts"]
+      "@app/numerals/utils": ["src/app/numerals/utils/index.ts"],
+      "@app/forms/shared": ["src/app/forms/shared/index.ts"]
     }
   },
   "angularCompilerOptions": {
