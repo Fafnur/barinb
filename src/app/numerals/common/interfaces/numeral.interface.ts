@@ -3,6 +3,7 @@ export enum NumeralType {
   Bedroom = 'bedroom',
   Bathroom = 'bathroom',
   Bed = 'bed',
+  Currency = 'currency',
 }
 
 export const NUMERAL_TYPES_FORMS: Record<NumeralType, [string, string, string]> = {
@@ -10,4 +11,5 @@ export const NUMERAL_TYPES_FORMS: Record<NumeralType, [string, string, string]> 
   [NumeralType.Bedroom]: ['спальня', 'спальни', 'спален'],
   [NumeralType.Bathroom]: ['ванная', 'ванные', 'ванных'],
   [NumeralType.Bed]: ['кровать', 'кровати', 'кроватей'],
+  [NumeralType.Currency]: ['рубль', 'рубля', 'рублей'],
 };
