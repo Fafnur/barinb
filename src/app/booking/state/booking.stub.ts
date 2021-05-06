@@ -1,4 +1,4 @@
-import { BookingVariant } from '@app/booking/common';
+import { BookingDetails, BookingField, BookingVariant } from '@app/booking/common';
 import { RoomAmenities } from '@app/rooms/common';
 
 export const BOOKING_VARIANT_STUB: BookingVariant = {
@@ -28,4 +28,12 @@ export const BOOKING_VARIANT_STUB: BookingVariant = {
     ],
     photos: [],
   },
+};
+
+export const BOOKING_DETAILS_STUB: BookingDetails = {
+  [BookingField.Period]: {
+    [BookingField.PeriodStart]: '2021-01-01',
+    [BookingField.PeriodEnd]: '2021-01-02',
+  },
+  [BookingField.Guests]: 1,
 };

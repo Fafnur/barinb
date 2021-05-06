@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { BookingVariant } from '@app/booking/common';
+import { BookingDetails, BookingVariant } from '@app/booking/common';
 import { BookingFacade } from '@app/booking/state';
 import { Building } from '@app/buildings/common';
 import { BuildingService } from '@app/buildings/service';
@@ -23,6 +23,8 @@ export class BookingService {
   bookingVariants$: Observable<BookingVariant[]> = combineLatest([this.buildingService.buildings$, this.roomService.rooms$]).pipe(
     map(([buildings, rooms]) => buildings.map((building) => ({ ...building, firstRoom: getFirstRoomOnBuilding(building, rooms) })))
   );
+
+  bookingDetails$: Observable<BookingDetails | null> = this.bookingFacade.bookingDetails$;
 
   mapMarkers$: Observable<MapMarkerConfig[]> = this.bookingVariants$.pipe(
     map((bookingVariants) =>
@@ -49,7 +51,15 @@ export class BookingService {
     this.bookingFacade.setBookingVariant(bookingVariant);
   }
 
+  setBookingDetails(bookingDetails: BookingDetails): void {
+    this.bookingFacade.setBookingDetails(bookingDetails);
+  }
+
   clearBookingVariant(): void {
     this.bookingFacade.clearBookingVariant();
+  }
+
+  clearBookingDetails(): void {
+    this.bookingFacade.clearBookingDetails();
   }
 }
