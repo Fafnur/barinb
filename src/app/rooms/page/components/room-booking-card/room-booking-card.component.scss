@@ -1,0 +1,9 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+  margin: 1rem;
+  border: 1px solid mat-color($mat-gray, 300);
+  border-radius: 1rem;
+  padding: 1rem;
+}

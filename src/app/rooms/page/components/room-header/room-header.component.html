@@ -1,6 +1,6 @@
-<div class="room-view-header" *ngIf="room">
+<ng-container *ngIf="room">
   <h1 class="room-view-title">{{ room.buildingExtended.name }}</h1>
   <button class="room-view-back" type="button" mat-icon-button (click)="onBack()">
     <mat-icon>close</mat-icon>
   </button>
-</div>
+</ng-container>
