@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockPipes } from 'ng-mocks';
+
+import { NumeralToWordPipe } from '@app/numerals/shared';
 
 import { RoomPropsComponent } from './room-props.component';
 
@@ -8,9 +11,8 @@ describe('RoomPropsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoomPropsComponent ]
-    })
-    .compileComponents();
+      declarations: [RoomPropsComponent, MockPipes(NumeralToWordPipe)],
+    }).compileComponents();
   });
 
   beforeEach(() => {

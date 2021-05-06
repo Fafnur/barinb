@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatIcon } from '@angular/material/icon';
+import { MockComponents } from 'ng-mocks';
 
 import { RoomDetailsComponent } from './room-details.component';
 
@@ -8,7 +10,7 @@ describe('RoomDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RoomDetailsComponent],
+      declarations: [RoomDetailsComponent, MockComponents(MatIcon)],
     }).compileComponents();
   });
 

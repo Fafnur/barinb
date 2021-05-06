@@ -43,3 +43,13 @@
     height: 30rem;
   }
 }
+
+.room-view-separator {
+  height: 1px;
+  background-color: mat-color($mat-gray, 400);
+  margin: 1rem 0;
+
+  @include media-breakpoint-up(md) {
+    margin: 2rem 0;
+  }
+}

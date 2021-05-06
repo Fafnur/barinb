@@ -8,7 +8,12 @@ import { of } from 'rxjs';
 import { RoomManager } from '@app/rooms/manager';
 import { ContainerComponent } from '@app/ui/container';
 
-import { RoomPhotosComponent } from './components/room-photos/room-photos.component';
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
+import { RoomFeaturesComponent } from './components/room-features/room-features.component';
+import { RoomHeaderComponent } from './components/room-header/room-header.component';
+import { RoomPersonComponent } from './components/room-person/room-person.component';
+import { RoomPhotoComponent } from './components/room-photo/room-photo.component';
+import { RoomPropsComponent } from './components/room-props/room-props.component';
 import { RoomPageComponent } from './room-page.component';
 
 describe('BookingPageComponent', () => {
@@ -18,7 +23,20 @@ describe('BookingPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [RoomPageComponent, MockComponents(RoomPhotosComponent, MatIcon, MatButton, ContainerComponent)],
+      declarations: [
+        RoomPageComponent,
+        MockComponents(
+          MatIcon,
+          MatButton,
+          ContainerComponent,
+          RoomPhotoComponent,
+          RoomHeaderComponent,
+          RoomDetailsComponent,
+          RoomPersonComponent,
+          RoomFeaturesComponent,
+          RoomPropsComponent
+        ),
+      ],
       providers: [
         {
           provide: RoomManager,

@@ -1,0 +1,30 @@
+@import 'src/stylesheets/utils';
+
+.room-feature {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.room-feature-content {
+  margin-left: 1rem;
+}
+
+.room-feature-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}

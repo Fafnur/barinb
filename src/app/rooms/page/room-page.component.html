@@ -1,4 +1,4 @@
-<app-container *ngIf="roomExtended$ | async as room" class="room-view">
+<app-container class="room-view" *ngIf="roomExtended$ | async as room">
   <app-room-header [room]="room"></app-room-header>
   <app-room-details [room]="room"></app-room-details>
   <app-room-photo [photos]="room.photos"></app-room-photo>
@@ -7,6 +7,9 @@
       <app-room-person [room]="room">
         <app-room-props [room]="room"></app-room-props>
       </app-room-person>
+      <div class="room-view-separator"></div>
+      <app-room-features [room]="room"></app-room-features>
+      <div class="room-view-separator"></div>
     </div>
     <div class="column-md-4"></div>
   </div>

@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MockComponents } from 'ng-mocks';
 
 import { RoomHeaderComponent } from './room-header.component';
 
@@ -8,9 +11,8 @@ describe('RoomHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoomHeaderComponent ]
-    })
-    .compileComponents();
+      declarations: [RoomHeaderComponent, MockComponents(MatIcon, MatButton)],
+    }).compileComponents();
   });
 
   beforeEach(() => {
