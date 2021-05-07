@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { NumeralType } from '@app/numerals/common';
 import { RoomExtended } from '@app/rooms/manager';
 
 @Component({
@@ -11,7 +10,4 @@ import { RoomExtended } from '@app/rooms/manager';
 })
 export class RoomBookingCardComponent {
   @Input() room!: RoomExtended;
-
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  NumeralType = NumeralType;
 }

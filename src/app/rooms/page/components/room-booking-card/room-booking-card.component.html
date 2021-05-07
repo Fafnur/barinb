@@ -1,6 +1,6 @@
 <ng-container *ngIf="room">
   <div class="room-booking-card">
-    <div class="room-booking-price">{{ room.price }} ₽ / ночь</div>
+    <div class="room-booking-price">{{ room.price | number: '1.0-0' }} ₽ / ночь</div>
     <app-room-booking-form [room]="room">
       <app-room-booking-price [room]="room"></app-room-booking-price>
     </app-room-booking-form>

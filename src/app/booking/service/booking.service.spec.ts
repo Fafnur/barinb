@@ -29,6 +29,7 @@ describe('BookingService', () => {
         {
           provide: BookingFacade,
           useValue: {
+            bookingDetails$: of(),
             bookingVariant$: of(),
             setBookingVariant: jest.fn(),
             clearBookingVariant: jest.fn(),

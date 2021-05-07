@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
 
 import { RoomBookingDateComponent } from './room-booking-date.component';
 
@@ -8,9 +12,9 @@ describe('RoomBookingDateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoomBookingDateComponent ]
-    })
-    .compileComponents();
+      imports: [MatInputModule, MatNativeDateModule, MatDatepickerModule, ReactiveFormsModule],
+      declarations: [RoomBookingDateComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

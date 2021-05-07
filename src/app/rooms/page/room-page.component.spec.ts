@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { RoomManager } from '@app/rooms/manager';
 import { ContainerComponent } from '@app/ui/container';
 
+import { RoomBookingCardComponent } from './components/room-booking-card/room-booking-card.component';
 import { RoomDescriptionComponent } from './components/room-description/room-description.component';
 import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { RoomFeaturesComponent } from './components/room-features/room-features.component';
@@ -36,7 +37,8 @@ describe('BookingPageComponent', () => {
           RoomPersonComponent,
           RoomFeaturesComponent,
           RoomPropsComponent,
-          RoomDescriptionComponent
+          RoomDescriptionComponent,
+          RoomBookingCardComponent
         ),
       ],
       providers: [

@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockComponents } from 'ng-mocks';
 
+import { RoomBookingFormComponent } from './components/room-booking-form/room-booking-form.component';
+import { RoomBookingPriceComponent } from './components/room-booking-price/room-booking-price.component';
 import { RoomBookingCardComponent } from './room-booking-card.component';
 
 describe('RoomBookingCardComponent', () => {
@@ -8,9 +11,8 @@ describe('RoomBookingCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoomBookingCardComponent ]
-    })
-    .compileComponents();
+      declarations: [RoomBookingCardComponent, MockComponents(RoomBookingPriceComponent, RoomBookingFormComponent)],
+    }).compileComponents();
   });
 
   beforeEach(() => {

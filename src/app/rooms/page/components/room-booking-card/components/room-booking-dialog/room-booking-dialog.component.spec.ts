@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { RoomBookingDialogComponent } from './room-booking-dialog.component';
 
@@ -8,9 +9,9 @@ describe('RoomBookingDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RoomBookingDialogComponent ]
-    })
-    .compileComponents();
+      imports: [MatDialogModule],
+      declarations: [RoomBookingDialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
