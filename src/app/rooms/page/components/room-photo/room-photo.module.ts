@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RoomSharedModule } from '@app/rooms/shared';
 import { CarouselModule } from '@app/ui/carousel';
 
-import { RoomPhotosDialogModule } from '../room-photos-dialog/room-photos-dialog.module';
+import { RoomPhotosDialogModule } from './components/room-photos-dialog/room-photos-dialog.module';
 import { RoomPhotoComponent } from './room-photo.component';
 
 @NgModule({

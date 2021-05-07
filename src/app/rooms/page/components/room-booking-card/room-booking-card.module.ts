@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NumeralSharedModule } from '@app/numerals/shared';
 
-import { RoomBookingFormModule } from '../room-booking-form/room-booking-form.module';
-import { RoomBookingPriceModule } from '../room-booking-price/room-booking-price.module';
+import { RoomBookingFormModule } from './components/room-booking-form/room-booking-form.module';
+import { RoomBookingPriceModule } from './components/room-booking-price/room-booking-price.module';
 import { RoomBookingCardComponent } from './room-booking-card.component';
 
 @NgModule({

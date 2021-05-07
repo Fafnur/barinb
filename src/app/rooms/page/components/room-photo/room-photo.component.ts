@@ -6,7 +6,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 
 import { GridBreakpointType, mediaBreakpointUp } from '@app/ui/theme/utils';
 
-import { RoomPhotosDialogComponent } from '../room-photos-dialog/room-photos-dialog.component';
+import { RoomPhotosDialogComponent } from './components/room-photos-dialog/room-photos-dialog.component';
 
 @Component({
   selector: 'app-room-photo',

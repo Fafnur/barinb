@@ -8,8 +8,8 @@
     [min]="minDate"
     [max]="maxDate"
   >
-    <input matStartDate placeholder="Start date" [formControlName]="BookingField.PeriodStart" />
-    <input matEndDate placeholder="End date" [formControlName]="BookingField.PeriodEnd" />
+    <input matStartDate placeholder="Прибытие" [formControlName]="BookingField.PeriodStart" />
+    <input matEndDate placeholder="Выезд" [formControlName]="BookingField.PeriodEnd" />
   </mat-date-range-input>
   <mat-datepicker-toggle matSuffix [for]="tripDate"></mat-datepicker-toggle>
   <mat-date-range-picker [touchUi]="!isDesktopScreen" #tripDate></mat-date-range-picker>
