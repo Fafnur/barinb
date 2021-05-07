@@ -1,0 +1,23 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.room-service {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &_style {
+    padding-top: 1rem;
+    border-top: 1px solid mat-color($mat-gray, 300);
+  }
+}

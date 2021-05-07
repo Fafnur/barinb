@@ -1,1 +1,23 @@
-<ng-container *ngIf="bookingDetails$ | async as bookingDetails"> asdsad </ng-container>
+<ng-container *ngIf="room">
+  <ng-container *ngIf="bookingDetails$ | async as bookingDetails">
+    <div class="room-service">
+      <div class="room-service-name">{{ room.price | number: '1.0-0' }} ₽ x {{ bookingPrice.days | numeralToWord: NumeralType.Night }}</div>
+      <div class="room-service-amount">{{ bookingPrice.rent | number: '1.0-0' }} ₽</div>
+    </div>
+
+    <div class="room-service">
+      <div class="room-service-name">Плата за уборку</div>
+      <div class="room-service-amount">{{ bookingPrice.cleaning | number: '1.0-0' }} ₽</div>
+    </div>
+
+    <div class="room-service">
+      <div class="room-service-name">Сбор за услуги Barinb</div>
+      <div class="room-service-amount">{{ bookingPrice.fee | number: '1.0-0' }} ₽</div>
+    </div>
+
+    <div class="room-service room-service_style">
+      <div class="room-service-name">Итого</div>
+      <div class="room-service-amount">{{ bookingPrice.total | number: '1.0-0' }} ₽</div>
+    </div>
+  </ng-container>
+</ng-container>

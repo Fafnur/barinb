@@ -19,3 +19,11 @@ export interface BookingDetails {
   };
   [BookingField.Guests]: number;
 }
+
+export interface BookingPrice {
+  days: number;
+  rent: number;
+  cleaning: number;
+  fee: number;
+  total: number;
+}

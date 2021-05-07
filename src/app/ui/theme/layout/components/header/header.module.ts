@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 
-import { HelpDialogModule } from '../help-dialog/help-dialog.module';
+import { HelpDialogModule } from './components/help-dialog/help-dialog.module';
 import { HeaderComponent } from './header.component';
 
 @NgModule({

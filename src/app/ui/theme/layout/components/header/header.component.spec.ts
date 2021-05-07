@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponents } from 'ng-mocks';
 
-import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
+import { HelpDialogComponent } from './components/help-dialog/help-dialog.component';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
