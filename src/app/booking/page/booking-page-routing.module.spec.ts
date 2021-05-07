@@ -9,10 +9,10 @@ describe('BookingPageRoutingModule', () => {
     await TestBed.configureTestingModule({
       imports: [BookingPageRoutingModule],
       declarations: [
-        // TODO: Fix component BookingPageComponent is not part of any NgModule or the module has not been imported into your module.
-        BookingPageComponent
+        // TODO: Fix jest imports
+        BookingPageComponent,
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   });
 

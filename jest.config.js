@@ -36,6 +36,7 @@ module.exports = {
     '@app/core/navigation/shared': ['<rootDir>/src/app/core/navigation/shared/index.ts'],
     '@app/rooms/common': ['<rootDir>/src/app/rooms/common/index.ts'],
     '@app/rooms/manager': ['<rootDir>/src/app/rooms/manager/index.ts'],
+    '@app/rooms/admin-page': ['<rootDir>/src/app/rooms/admin-page/index.ts'],
     '@app/rooms/page': ['<rootDir>/src/app/rooms/page/index.ts'],
     '@app/rooms/storage': ['<rootDir>/src/app/rooms/storage/index.ts'],
     '@app/rooms/service': ['<rootDir>/src/app/rooms/service/index.ts'],
@@ -61,5 +62,7 @@ module.exports = {
     '@app/numerals/shared': ['<rootDir>/src/app/numerals/shared/index.ts'],
     '@app/numerals/utils': ['<rootDir>/src/app/numerals/utils/index.ts'],
     '@app/forms/shared': ['<rootDir>/src/app/forms/shared/index.ts'],
+    '@app/admin/layout': ['<rootDir>/src/app/admin/layout/index.ts'],
+    '@app/admin/page': ['<rootDir>/src/app/admin/page/index.ts'],
   },
 };

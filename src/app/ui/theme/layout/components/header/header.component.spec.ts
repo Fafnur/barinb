@@ -4,7 +4,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockComponents } from 'ng-mocks';
+import { MockComponents, MockPipes } from 'ng-mocks';
+
+import { NavPathPipe } from '@app/core/navigation/shared';
 
 import { HelpDialogComponent } from './components/help-dialog/help-dialog.component';
 import { HeaderComponent } from './header.component';
@@ -16,7 +18,7 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MatIconModule, MatToolbarModule, MatButtonModule, MatDialogModule, RouterTestingModule],
-      declarations: [HeaderComponent, MockComponents(HelpDialogComponent)],
+      declarations: [HeaderComponent, MockComponents(HelpDialogComponent), MockPipes(NavPathPipe)],
     }).compileComponents();
   });
 

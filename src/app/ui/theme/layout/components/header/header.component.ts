@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { NavigationPath } from '@app/core/navigation/common';
+
 import { HelpDialogComponent } from './components/help-dialog/help-dialog.component';
 
 @Component({
@@ -10,6 +12,9 @@ import { HelpDialogComponent } from './components/help-dialog/help-dialog.compon
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  NavigationPath = NavigationPath;
+
   constructor(private readonly matDialog: MatDialog) {}
 
   onOpenDialog(): void {

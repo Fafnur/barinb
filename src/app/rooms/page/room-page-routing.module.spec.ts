@@ -9,7 +9,7 @@ describe('RoomPageRoutingModule', () => {
     await TestBed.configureTestingModule({
       imports: [RoomPageRoutingModule],
       declarations: [
-        // TODO: Fix component BookingPageComponent is not part of any NgModule or the module has not been imported into your module.
+        // TODO: Fix jest imports
         RoomPageComponent,
       ],
       schemas: [NO_ERRORS_SCHEMA],

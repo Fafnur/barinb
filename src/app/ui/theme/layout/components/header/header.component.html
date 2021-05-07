@@ -3,6 +3,9 @@
     <span class="header-brand">Barinb</span>
   </a>
   <span class="header-spacer"></span>
+  <a mat-icon-button aria-label="Admin" [routerLink]="NavigationPath.Admin | navPath">
+    <mat-icon>settings</mat-icon>
+  </a>
   <button mat-icon-button aria-label="Help" (click)="onOpenDialog()">
     <mat-icon>help_outline</mat-icon>
   </button>

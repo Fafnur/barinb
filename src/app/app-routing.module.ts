@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { NavigationPath } from '@app/core/navigation/common';
 import { LayoutComponent, LayoutModule } from '@app/ui/theme/layout';
 
 const routes: Routes = [
@@ -13,8 +14,12 @@ const routes: Routes = [
         loadChildren: (): Promise<any> => import('@app/booking/page').then((modules) => modules.BookingPageModule),
       },
       {
-        path: 'rooms',
+        path: NavigationPath.Rooms,
         loadChildren: (): Promise<any> => import('@app/rooms/page').then((modules) => modules.RoomPageModule),
+      },
+      {
+        path: NavigationPath.Admin,
+        loadChildren: (): Promise<any> => import('@app/admin/page').then((modules) => modules.AdminPageModule),
       },
     ],
   },
