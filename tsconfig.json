@@ -26,6 +26,7 @@
       "@app/ui/spinner": ["src/app/ui/spinner/index.ts"],
       "@app/ui/carousel": ["src/app/ui/carousel/index.ts"],
       "@app/ui/container": ["src/app/ui/container/index.ts"],
+      "@app/ui/columns": ["src/app/ui/columns/index.ts"],
       "@app/core/common": ["src/app/core/common/index.ts"],
       "@app/core/config": ["src/app/core/config/index.ts"],
       "@app/core/environments": ["src/app/core/environments/index.ts"],

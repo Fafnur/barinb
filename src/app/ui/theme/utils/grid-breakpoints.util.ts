@@ -11,6 +11,31 @@ export enum GridBreakpointType {
   Xh = '1600px',
 }
 
+export enum GridBreakpointName {
+  Xs = 'xs',
+  Nm = 'nm',
+  Mkm = 'mkm',
+  Mm = 'mm',
+  Sm = 'sm',
+  Md = 'md',
+  Lg = 'lg',
+  Xl = 'xl',
+  Hg = 'hg',
+  Xh = 'xh',
+}
+
+export const GRID_BREAKPOINTS_NAMES = [
+  GridBreakpointName.Xs,
+  GridBreakpointName.Nm,
+  GridBreakpointName.Mkm,
+  GridBreakpointName.Sm,
+  GridBreakpointName.Md,
+  GridBreakpointName.Lg,
+  GridBreakpointName.Xl,
+  GridBreakpointName.Hg,
+  GridBreakpointName.Xh,
+];
+
 export enum GridBreakpointsUp {
   Xs = '(min-width: 0)',
   Nm = '(min-width: 320px)',

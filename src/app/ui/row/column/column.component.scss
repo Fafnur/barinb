@@ -1,0 +1,24 @@
+@import 'src/stylesheets/utils';
+
+@mixin make-columns($columnName: 'column', $gutter: 1rem, $columnsCount: 12) {
+  @each $breakpoint, $width in $grid-breakpoints {
+    @media (min-width: $width) {
+      &.#{$columnName}-#{$breakpoint} {
+        flex: 1 0 0;
+      }
+
+      @for $column from 1 through $columnsCount {
+        &.#{$columnName}-#{$breakpoint}-#{$column} {
+          flex: 0 0 auto;
+          width: percentage($column / $columnsCount);
+          padding-right: $gutter;
+          padding-left: $gutter;
+        }
+      }
+    }
+  }
+}
+
+:host {
+  @include make-columns();
+}

@@ -23,6 +23,7 @@ module.exports = {
     '@app/ui/spinner': ['<rootDir>/src/app/ui/spinner/index.ts'],
     '@app/ui/carousel': ['<rootDir>/src/app/ui/carousel/index.ts'],
     '@app/ui/container': ['<rootDir>/src/app/ui/container/index.ts'],
+    '@app/ui/columns': ['<rootDir>/src/app/ui/columns/index.ts'],
     '@app/core/common': ['<rootDir>/src/app/core/common/index.ts'],
     '@app/core/config': ['<rootDir>/src/app/core/config/index.ts'],
     '@app/core/environments': ['<rootDir>/src/app/core/environments/index.ts'],
