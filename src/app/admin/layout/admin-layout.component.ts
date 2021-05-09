@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
-import { GridBreakpointType, mediaBreakpointUp } from '@app/ui/theme/utils';
+import { GridBreakpointName, GridBreakpointType, mediaBreakpointUp } from '@app/ui/theme/utils';
 
 @Component({
   selector: 'app-admin-layout',
@@ -13,6 +13,9 @@ import { GridBreakpointType, mediaBreakpointUp } from '@app/ui/theme/utils';
 })
 export class AdminLayoutComponent implements OnInit, OnDestroy {
   isDesktopScreen = false;
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  GridBreakpointName = GridBreakpointName;
 
   private readonly destroy$ = new Subject<void>();
 

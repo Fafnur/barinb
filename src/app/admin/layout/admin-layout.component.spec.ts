@@ -1,7 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MockComponents } from 'ng-mocks';
+
+import { ColumnComponent, RowComponent } from '@app/ui/row';
 
 import { AdminLayoutComponent } from './admin-layout.component';
+import { AdminDesktopMenuComponent } from './components/admin-desktop-menu/admin-desktop-menu.component';
+import { AdminMobileMenuComponent } from './components/admin-mobile-menu/admin-mobile-menu.component';
 
 describe('AdminLayoutComponent', () => {
   let component: AdminLayoutComponent;
@@ -10,7 +15,10 @@ describe('AdminLayoutComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AdminLayoutComponent],
+      declarations: [
+        AdminLayoutComponent,
+        MockComponents(RowComponent, ColumnComponent, AdminDesktopMenuComponent, AdminMobileMenuComponent),
+      ],
     }).compileComponents();
   });
 
