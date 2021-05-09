@@ -1,21 +1,5 @@
 @import 'src/stylesheets/utils';
 
-.row-md {
-  @include media-breakpoint-up(md) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.column-md {
-  @include media-breakpoint-up(md) {
-    flex: 1 0 0;
-  }
-}
-
 .room-photos-carousel {
   width: 100%;
   height: 10rem;

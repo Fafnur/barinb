@@ -10,6 +10,7 @@ import { BuildingStateModule } from '@app/buildings/state';
 import { PersonStateModule } from '@app/persons/state';
 import { RoomServiceModule } from '@app/rooms/service';
 import { RoomStateModule } from '@app/rooms/state';
+import { RowModule } from '@app/ui/row';
 
 import { BookingPageComponent } from './booking-page.component';
 import { BookingPageRoutingModule } from './booking-page-routing.module';
@@ -35,6 +36,7 @@ import { BookingMapModule } from './components/booking-map/booking-map.module';
     BookingStateModule,
     MatIconModule,
     MatButtonModule,
+    RowModule,
   ],
   declarations: [BookingPageComponent],
 })

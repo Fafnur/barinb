@@ -2,8 +2,8 @@
   <app-room-header [room]="room"></app-room-header>
   <app-room-details [room]="room"></app-room-details>
   <app-room-photo [photos]="room.photos"></app-room-photo>
-  <div class="row-lg">
-    <div class="column-lg-8">
+  <app-row mode="lg">
+    <app-column [modes]="{ lg: 8 }">
       <app-room-person [room]="room">
         <app-room-props [room]="room"></app-room-props>
       </app-room-person>
@@ -11,9 +11,9 @@
       <app-room-features [room]="room"></app-room-features>
       <div class="room-view-separator"></div>
       <app-room-description [room]="room"></app-room-description>
-    </div>
-    <div class="column-lg-4">
+    </app-column>
+    <app-column [modes]="{ lg: 4 }">
       <app-room-booking-card [room]="room"></app-room-booking-card>
-    </div>
-  </div>
+    </app-column>
+  </app-row>
 </app-container>

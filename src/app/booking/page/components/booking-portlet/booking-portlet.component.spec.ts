@@ -6,6 +6,7 @@ import { MockComponents, MockModule, MockPipes } from 'ng-mocks';
 import { BookingVariantImagesPipe } from '@app/booking/shared';
 import { NavigationSharedModule } from '@app/core/navigation/shared';
 import { CarouselComponent } from '@app/ui/carousel';
+import { ColumnComponent, RowComponent } from '@app/ui/row';
 
 import { BookingPortletComponent } from './booking-portlet.component';
 
@@ -16,7 +17,11 @@ describe('BookingPortletComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, MockModule(NavigationSharedModule)],
-      declarations: [BookingPortletComponent, MockComponents(CarouselComponent, MatButton), MockPipes(BookingVariantImagesPipe)],
+      declarations: [
+        BookingPortletComponent,
+        MockComponents(CarouselComponent, MatButton, RowComponent, ColumnComponent),
+        MockPipes(BookingVariantImagesPipe),
+      ],
     }).compileComponents();
   });
 

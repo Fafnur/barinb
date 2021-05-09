@@ -13,32 +13,8 @@
   }
 }
 
-.row {
-  @include media-breakpoint-up(md) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-  }
-}
-
 .column {
   width: 100%;
-}
-
-.column-lg-4 {
-  @include media-breakpoint-up(lg) {
-    flex: 0 0 auto;
-    width: 33.3333333333%;
-  }
-}
-
-.column-lg-8 {
-  @include media-breakpoint-up(lg) {
-    flex: 0 0 auto;
-    width: 66.666666666%;
-  }
 }
 
 .booking-portlet-carousel {

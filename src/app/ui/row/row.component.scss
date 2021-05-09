@@ -3,7 +3,7 @@
 :host {
   @each $breakpoint, $width in $grid-breakpoints {
     @include media-breakpoint-up($breakpoint) {
-      &.is-#{$breakpoint} {
+      &.row-#{$breakpoint} {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

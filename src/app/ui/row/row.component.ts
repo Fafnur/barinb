@@ -14,6 +14,6 @@ export class RowComponent implements OnInit {
   constructor(private readonly elementRef: ElementRef, private readonly renderer: Renderer2) {}
 
   ngOnInit(): void {
-    this.renderer.addClass(this.elementRef.nativeElement, `is-${this.mode}`);
+    this.renderer.addClass(this.elementRef.nativeElement, `row-${this.mode}`);
   }
 }

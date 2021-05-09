@@ -13,6 +13,7 @@ import { RoomManagerModule } from '@app/rooms/manager';
 import { RoomServiceModule } from '@app/rooms/service';
 import { RoomStateModule } from '@app/rooms/state';
 import { ContainerModule } from '@app/ui/container';
+import { RowModule } from '@app/ui/row';
 
 import { RoomBookingCardModule } from './components/room-booking-card/room-booking-card.module';
 import { RoomDescriptionModule } from './components/room-description/room-description.module';
@@ -49,6 +50,7 @@ import { RoomPageRoutingModule } from './room-page-routing.module';
     RoomFeaturesModule,
     RoomDescriptionModule,
     RoomBookingCardModule,
+    RowModule,
   ],
   declarations: [RoomPageComponent],
 })

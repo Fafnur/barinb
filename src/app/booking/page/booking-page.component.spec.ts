@@ -5,6 +5,7 @@ import { MockComponents } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { RoomService } from '@app/rooms/service';
+import { ColumnComponent, RowComponent } from '@app/ui/row';
 
 import { BookingPageComponent } from './booking-page.component';
 import { BookingBoxComponent } from './components/booking-box/booking-box.component';
@@ -20,7 +21,16 @@ describe('BookingPageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [
         BookingPageComponent,
-        MockComponents(BookingMapComponent, BookingListComponent, BookingCardComponent, BookingBoxComponent, MatIcon, MatButton),
+        MockComponents(
+          BookingMapComponent,
+          BookingListComponent,
+          BookingCardComponent,
+          BookingBoxComponent,
+          MatIcon,
+          MatButton,
+          RowComponent,
+          ColumnComponent
+        ),
       ],
       providers: [
         {
