@@ -63,6 +63,7 @@ module.exports = {
     '@app/maps/services': ['<rootDir>/src/app/maps/services/index.ts'],
     '@app/maps/shared': ['<rootDir>/src/app/maps/shared/index.ts'],
     '@app/admin/layout': ['<rootDir>/src/app/admin/layout/index.ts'],
+    '@app/admin/menu': ['<rootDir>/src/app/admin/menu/index.ts'],
     '@app/admin/page': ['<rootDir>/src/app/admin/page/index.ts'],
   },
 };

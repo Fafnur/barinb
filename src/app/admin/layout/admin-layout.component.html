@@ -1,2 +1,18 @@
-<p>admin-layout works!</p>
-<router-outlet></router-outlet>
+<ng-container *ngIf="isDesktopScreen; then desktopTpl; else mobileTpl"></ng-container>
+
+<ng-template #desktopTpl>
+  <div class="row-md">
+    <div class="column">
+      <app-admin-desktop-menu></app-admin-desktop-menu>
+    </div>
+    <div class="column">
+      <p>admin-layout works!</p>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #mobileTpl>
+  <app-admin-mobile-menu></app-admin-mobile-menu>
+  <router-outlet></router-outlet>
+</ng-template>

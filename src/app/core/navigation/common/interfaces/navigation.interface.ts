@@ -10,3 +10,9 @@ export enum NavigationPath {
   AdminPersonsPage = 'admin/persons',
   AdminPersonPage = 'admin/persons/:id',
 }
+
+export interface NavigationLink {
+  route: NavigationPath;
+  label: string;
+  params?: Record<string, any>;
+}
