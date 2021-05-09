@@ -8,7 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
-import { FormsSharedModule } from '@app/forms/shared';
+import { FormsSharedModule } from '@app/core/forms/shared';
 import { NumeralSharedModule } from '@app/numerals/shared';
 
 import { RoomBookingDialogModule } from '../room-booking-dialog/room-booking-dialog.module';

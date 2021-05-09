@@ -5,7 +5,7 @@ import { MockComponents, MockPipes } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { BookingService } from '@app/booking/service';
-import { ExtractFormControlPipe, ExtractFormGroupPipe } from '@app/forms/shared';
+import { ExtractFormControlPipe, ExtractFormGroupPipe } from '@app/core/forms/shared';
 
 import { RoomBookingDateComponent } from './components/room-booking-date/room-booking-date.component';
 import { RoomBookingGuestComponent } from './components/room-booking-guest/room-booking-guest.component';
