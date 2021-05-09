@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { NumeralType } from '@app/numerals/common';
+import { NumeralType } from '@app/core/numerals/common';
 import { RoomExtended } from '@app/rooms/manager';
 
 @Component({

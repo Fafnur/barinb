@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockPipes } from 'ng-mocks';
 
-import { NumeralToWordPipe } from '@app/numerals/shared';
+import { NumeralToWordPipe } from '@app/core/numerals/shared';
 
 import { RoomPropsComponent } from './room-props.component';
 

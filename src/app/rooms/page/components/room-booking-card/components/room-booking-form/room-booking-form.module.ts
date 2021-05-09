@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import { FormsSharedModule } from '@app/core/forms/shared';
-import { NumeralSharedModule } from '@app/numerals/shared';
+import { NumeralSharedModule } from '@app/core/numerals/shared';
 
 import { RoomBookingDialogModule } from '../room-booking-dialog/room-booking-dialog.module';
 import { RoomBookingDateComponent } from './components/room-booking-date/room-booking-date.component';

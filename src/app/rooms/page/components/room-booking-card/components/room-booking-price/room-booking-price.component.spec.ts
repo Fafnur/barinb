@@ -3,7 +3,7 @@ import { MockPipes } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { BookingService } from '@app/booking/service';
-import { NumeralToWordPipe } from '@app/numerals/shared';
+import { NumeralToWordPipe } from '@app/core/numerals/shared';
 
 import { RoomBookingPriceComponent } from './room-booking-price.component';
 import { RoomBookingPriceService } from './room-booking-price.service';

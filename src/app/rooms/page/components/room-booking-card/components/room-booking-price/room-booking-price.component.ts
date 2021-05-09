@@ -4,7 +4,7 @@ import { tap } from 'rxjs/operators';
 
 import { BookingDetails, BookingPrice } from '@app/booking/common';
 import { BookingService } from '@app/booking/service';
-import { NumeralType } from '@app/numerals/common';
+import { NumeralType } from '@app/core/numerals/common';
 import { RoomExtended } from '@app/rooms/manager';
 
 import { RoomBookingPriceService } from './room-booking-price.service';
