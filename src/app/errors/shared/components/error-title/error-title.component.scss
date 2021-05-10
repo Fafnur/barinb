@@ -1,0 +1,13 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  text-align: center;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 2rem;
+  }
+}

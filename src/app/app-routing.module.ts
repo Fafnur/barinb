@@ -23,6 +23,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '**',
+    loadChildren: (): Promise<any> => import('@app/errors/not-found/page').then((modules) => modules.NotFoundPageModule),
+  },
 ];
 
 @NgModule({

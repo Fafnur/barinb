@@ -1,0 +1,112 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+  margin: 1rem 0;
+  padding: 1rem 0;
+  background-color: $color-primary;
+  text-align: center;
+
+  & > .app-container {
+    position: relative;
+  }
+
+  @include media-breakpoint-up(md) {
+    margin: 2rem 0;
+    text-align: left;
+
+    & > .app-container {
+      width: 70rem;
+    }
+  }
+}
+
+.error-application-preview {
+  margin-top: -5rem;
+
+  @include media-breakpoint-up(md) {
+    margin-top: 0;
+    position: absolute;
+    top: -10rem;
+    right: 0;
+  }
+}
+
+.error-application-image {
+  width: 100%;
+  max-width: 20rem;
+
+  @include media-breakpoint-up(md) {
+    max-width: 30rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    max-width: 100%;
+  }
+}
+
+.error-application-title {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+
+  @include media-breakpoint-up(md) {
+    font-size: 2rem;
+    margin: 2rem 0;
+    max-width: 16rem;
+  }
+}
+
+.error-application-hint {
+  margin: 1rem 0;
+
+  @include media-breakpoint-up(md) {
+    margin: 2rem 0;
+    max-width: 16rem;
+  }
+  @include media-breakpoint-up(lg) {
+    max-width: 100%;
+  }
+}
+
+.error-application-qrcode {
+  display: none;
+
+  @include media-breakpoint-up(md) {
+    display: block;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 0.25rem;
+    max-width: 10rem;
+  }
+}
+
+.error-application-links {
+  margin: 2rem -0.5rem;
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.error-application-link {
+  margin: 0 0.5rem;
+  color: $color-active;
+
+  &.is-mobile {
+    display: block;
+  }
+  &.is-desktop {
+    display: none;
+  }
+
+  @include media-breakpoint-up(md) {
+    &.is-mobile {
+      display: none;
+    }
+    &.is-desktop {
+      display: block;
+    }
+  }
+}

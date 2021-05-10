@@ -1,0 +1,35 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 400;
+  margin: 1rem 0;
+  color: $color-accent;
+  line-height: 1;
+
+  &.is-primary {
+    color: $color-primary;
+  }
+  &.is-accent {
+    color: $color-accent;
+  }
+
+  &.is-active {
+    color: $color-active;
+  }
+
+  &.is-danger {
+    color: $color-danger;
+  }
+
+  @include media-breakpoint-up(sm) {
+    font-size: 8rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 10rem;
+    margin: 2rem 0;
+  }
+}

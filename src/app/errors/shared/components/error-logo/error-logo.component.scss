@@ -1,0 +1,19 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+
+  @include media-breakpoint-up(md) {
+    margin: 2rem 0;
+  }
+}
+
+.error-brand {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: black;
+}

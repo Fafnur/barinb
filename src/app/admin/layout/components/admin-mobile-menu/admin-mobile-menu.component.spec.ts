@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MockComponents } from 'ng-mocks';
 
 import { AdminMenuService } from '@app/admin/menu';
 
+import { AdminMenuLinkComponent } from '../admin-menu-link/admin-menu-link.component';
 import { AdminMobileMenuComponent } from './admin-mobile-menu.component';
 
 describe('AdminMobileMenuComponent', () => {
@@ -12,7 +14,7 @@ describe('AdminMobileMenuComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AdminMobileMenuComponent],
+      declarations: [AdminMobileMenuComponent, MockComponents(AdminMenuLinkComponent)],
       providers: [
         {
           provide: AdminMenuService,

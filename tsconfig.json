@@ -68,7 +68,9 @@
       "@app/maps/shared": ["src/app/maps/shared/index.ts"],
       "@app/admin/layout": ["src/app/admin/layout/index.ts"],
       "@app/admin/menu": ["src/app/admin/menu/index.ts"],
-      "@app/admin/page": ["src/app/admin/page/index.ts"]
+      "@app/admin/page": ["src/app/admin/page/index.ts"],
+      "@app/errors/shared": ["src/app/errors/shared/index.ts"],
+      "@app/errors/not-found/page": ["src/app/errors/not-found/page/index.ts"],
     }
   },
   "angularCompilerOptions": {

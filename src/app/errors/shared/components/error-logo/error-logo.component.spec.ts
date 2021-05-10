@@ -4,21 +4,21 @@ import { MockPipes } from 'ng-mocks';
 
 import { NavPathPipe } from '@app/core/navigation/shared';
 
-import { AdminMenuLinkComponent } from './admin-menu-link.component';
+import { ErrorLogoComponent } from './error-logo.component';
 
-describe('AdminMenuLinkComponent', () => {
-  let component: AdminMenuLinkComponent;
-  let fixture: ComponentFixture<AdminMenuLinkComponent>;
+describe('ErrorLogoComponent', () => {
+  let component: ErrorLogoComponent;
+  let fixture: ComponentFixture<ErrorLogoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AdminMenuLinkComponent, MockPipes(NavPathPipe)],
+      declarations: [ErrorLogoComponent, MockPipes(NavPathPipe)],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminMenuLinkComponent);
+    fixture = TestBed.createComponent(ErrorLogoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

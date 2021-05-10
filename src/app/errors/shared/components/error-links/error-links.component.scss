@@ -1,0 +1,20 @@
+@import 'src/stylesheets/utils';
+
+.error-links {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5rem;
+  @include media-breakpoint-up(md) {
+    margin-bottom: 8rem;
+  }
+}
+
+.error-link {
+  display: block;
+  margin: 0 0.5rem;
+  color: $color-active;
+}
