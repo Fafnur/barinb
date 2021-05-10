@@ -1,0 +1,11 @@
+@import 'src/stylesheets/utils';
+
+.admin-menu-link {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    color: mat-color($mat-gray, 200);
+  }
+}

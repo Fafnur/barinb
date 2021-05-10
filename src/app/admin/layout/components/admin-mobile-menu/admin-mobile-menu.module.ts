@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AdminMenuModule } from '@app/admin/menu';
-import { NavigationSharedModule } from '@app/core/navigation/shared';
 
+import { AdminMenuLinkModule } from '../admin-menu-link/admin-menu-link.module';
 import { AdminMobileMenuComponent } from './admin-mobile-menu.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, AdminMenuModule, NavigationSharedModule],
+  imports: [CommonModule, RouterModule, AdminMenuModule, AdminMenuLinkModule],
   declarations: [AdminMobileMenuComponent],
   exports: [AdminMobileMenuComponent],
 })

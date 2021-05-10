@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AdminMobileMenuModule } from './admin-mobile-menu.module';
 
-describe('AdminLayoutModule', () => {
+describe('AdminMobileMenuModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AdminMobileMenuModule],
