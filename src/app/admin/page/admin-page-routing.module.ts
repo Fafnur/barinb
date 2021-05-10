@@ -13,6 +13,14 @@ const routes: Routes = [
     path: NavigationPath.Rooms,
     loadChildren: (): Promise<any> => import('@app/rooms/admin-page').then((modules) => modules.RoomAdminPageModule),
   },
+  {
+    path: NavigationPath.Buildings,
+    loadChildren: (): Promise<any> => import('@app/buildings/admin-page').then((modules) => modules.BuildingAdminPageModule),
+  },
+  {
+    path: NavigationPath.Persons,
+    loadChildren: (): Promise<any> => import('@app/persons/admin-page').then((modules) => modules.PersonAdminPageModule),
+  },
 ];
 
 @NgModule({

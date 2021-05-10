@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatTabsModule } from '@angular/material/tabs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponents } from 'ng-mocks';
 
@@ -13,7 +14,7 @@ describe('AdminMobileMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, MatTabsModule],
       declarations: [AdminMobileMenuComponent, MockComponents(AdminMenuLinkComponent)],
       providers: [
         {

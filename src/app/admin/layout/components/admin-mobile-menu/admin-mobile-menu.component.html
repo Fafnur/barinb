@@ -1,1 +1,3 @@
-<app-admin-menu-link [link]="link" *ngFor="let link of links"></app-admin-menu-link>
+<nav mat-tab-nav-bar>
+  <a mat-tab-link [routerLink]="link.route | navPath" *ngFor="let link of links"> {{ link.label }} </a>
+</nav>

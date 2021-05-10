@@ -1,6 +1,8 @@
 export enum NavigationPath {
   Home = '',
   Rooms = 'rooms',
+  Buildings = 'buildings',
+  Persons = 'persons',
   RoomPage = 'rooms/:id',
   /**
    * NOTICE: Maybe it's need to remove

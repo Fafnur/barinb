@@ -2,21 +2,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponents } from 'ng-mocks';
 
-import { RoomAdminPageComponent } from './room-admin-page.component';
+import { BuildingAdminPageComponent } from './building-admin-page.component';
 
-describe('RoomAdminPageComponent', () => {
-  let component: RoomAdminPageComponent;
-  let fixture: ComponentFixture<RoomAdminPageComponent>;
+describe('BuildingAdminPageComponent', () => {
+  let component: BuildingAdminPageComponent;
+  let fixture: ComponentFixture<BuildingAdminPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [RoomAdminPageComponent, MockComponents()],
+      declarations: [BuildingAdminPageComponent, MockComponents()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoomAdminPageComponent);
+    fixture = TestBed.createComponent(BuildingAdminPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
