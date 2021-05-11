@@ -5,13 +5,9 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { BookingServiceModule } from '@app/booking/service';
 import { BookingStateModule } from '@app/booking/state';
-import { BuildingServiceModule } from '@app/buildings/service';
-import { BuildingStateModule } from '@app/buildings/state';
-import { PersonStateModule } from '@app/persons/state';
-import { RoomServiceModule } from '@app/rooms/service';
-import { RoomStateModule } from '@app/rooms/state';
 import { RowModule } from '@app/ui/row';
 
+import { AppCommonModule } from '../../app-common.module';
 import { BookingPageComponent } from './booking-page.component';
 import { BookingPageRoutingModule } from './booking-page-routing.module';
 import { BookingBoxModule } from './components/booking-box/booking-box.module';
@@ -23,11 +19,7 @@ import { BookingMapModule } from './components/booking-map/booking-map.module';
   imports: [
     CommonModule,
     BookingPageRoutingModule,
-    RoomServiceModule,
-    RoomStateModule,
-    BuildingServiceModule,
-    BuildingStateModule,
-    PersonStateModule,
+    AppCommonModule,
     BookingMapModule,
     BookingListModule,
     BookingCardModule,

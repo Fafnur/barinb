@@ -27,6 +27,8 @@ export const ROOMS_STUB: Room[] = [
       '/assets/images/rooms/photo-11.jpg',
       '/assets/images/rooms/photo-12.jpg',
     ],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
   {
     id: 2,
@@ -54,6 +56,8 @@ export const ROOMS_STUB: Room[] = [
       '/assets/images/rooms/photo-14.jpg',
       '/assets/images/rooms/photo-15.jpg',
     ],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
   {
     id: 3,
@@ -81,6 +85,8 @@ export const ROOMS_STUB: Room[] = [
       '/assets/images/rooms/photo-17.jpg',
       '/assets/images/rooms/photo-18.jpg',
     ],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
   {
     id: 4,
@@ -101,6 +107,8 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Kitchen,
     ],
     photos: ['/assets/images/rooms/photo-7.jpg', '/assets/images/rooms/photo-8.jpg', '/assets/images/rooms/photo-9.jpg'],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
   {
     id: 5,
@@ -121,6 +129,8 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Kitchen,
     ],
     photos: ['/assets/images/rooms/photo-10.jpg', '/assets/images/rooms/photo-11.jpg', '/assets/images/rooms/photo-12.jpg'],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
   {
     id: 6,
@@ -141,6 +151,8 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Kitchen,
     ],
     photos: ['/assets/images/rooms/photo-13.jpg', '/assets/images/rooms/photo-14.jpg', '/assets/images/rooms/photo-15.jpg'],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
   {
     id: 7,
@@ -161,6 +173,8 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Kitchen,
     ],
     photos: ['/assets/images/rooms/photo-16.jpg', '/assets/images/rooms/photo-17.jpg', '/assets/images/rooms/photo-18.jpg'],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
   {
     id: 8,
@@ -181,6 +195,8 @@ export const ROOMS_STUB: Room[] = [
       RoomAmenities.Kitchen,
     ],
     photos: ['/assets/images/rooms/photo-19.jpg', '/assets/images/rooms/photo-20.jpg', '/assets/images/rooms/photo-21.jpg'],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
 ];
 /* eslint-enable max-len */

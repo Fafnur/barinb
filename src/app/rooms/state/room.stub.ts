@@ -19,6 +19,8 @@ export const ROOM_STUB: Room = {
     RoomAmenities.Tv,
   ],
   photos: [],
+  created: '2021-05-11T01:14:42.988Z',
+  updated: '2021-05-11T01:14:44.000Z',
 };
 
 export const ROOMS_STUB: Room[] = [ROOM_STUB];

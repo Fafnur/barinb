@@ -12,11 +12,11 @@ export class AdminMenuService {
       },
       {
         route: NavigationPath.AdminBuildingsPage,
-        label: 'Дома',
+        label: 'Здания',
       },
       {
         route: NavigationPath.AdminPersonsPage,
-        label: 'Хозяева',
+        label: 'Собственники',
       },
     ];
   }

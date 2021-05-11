@@ -7,4 +7,7 @@ export interface Person {
   phone: string;
   buildings: number[];
   avatar?: string;
+
+  created: string;
+  updated: string;
 }

@@ -5,4 +5,7 @@ export interface Building extends google.maps.LatLngLiteral {
   person: number;
   city: string;
   address: string;
+
+  created: string;
+  updated: string;
 }

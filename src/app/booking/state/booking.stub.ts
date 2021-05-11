@@ -27,7 +27,11 @@ export const BOOKING_VARIANT_STUB: BookingVariant = {
       RoomAmenities.Tv,
     ],
     photos: [],
+    created: '2021-05-11T01:14:42.988Z',
+    updated: '2021-05-11T01:14:44.000Z',
   },
+  created: '2021-05-11T01:14:42.988Z',
+  updated: '2021-05-11T01:14:44.000Z',
 };
 
 export const BOOKING_DETAILS_STUB: BookingDetails = {

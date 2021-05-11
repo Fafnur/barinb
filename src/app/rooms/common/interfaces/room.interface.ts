@@ -44,4 +44,23 @@ export interface Room {
 
   photos: string[];
   amenities: RoomAmenities[];
+
+  created: string;
+  updated: string;
+}
+
+export enum RoomField {
+  ID = 'id',
+  Building = 'building',
+  Person = 'person',
+  Guests = 'guests',
+  Bedrooms = 'bedrooms',
+  Bathrooms = 'bathrooms',
+  Beds = 'beds',
+  Price = 'price',
+  Description = 'description',
+  Photos = 'photos',
+  Amenities = 'amenities',
+  Created = 'created',
+  Updated = 'updated',
 }

@@ -1,1 +1,72 @@
-<p>room admin page!</p>
+<table class="admin-table" mat-table matSort [dataSource]="dataSource">
+  <ng-container [matColumnDef]="RoomField.ID">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.id }}
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="RoomField.Photos">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Фото</th>
+    <td mat-cell *matCellDef="let element">
+      <app-carousel class="room-photos-carousel" [images]="element.photos"></app-carousel>
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="RoomField.Description">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Описание</th>
+    <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="RoomField.Price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Цена</th>
+    <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="RoomField.Created">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата создания</th>
+    <td mat-cell *matCellDef="let element">{{ element.created | date: 'longDate' }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="RoomField.Updated">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата обновления</th>
+    <td mat-cell *matCellDef="let element">{{ element.updated | date: 'longDate' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="view">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Просмотр</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="accent" type="button" (click)="onViewRoom(element)"><mat-icon>visibility</mat-icon></button>
+    </td>
+  </ng-container>
+  <ng-container [matColumnDef]="RoomField.Building">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Здание</th>
+    <td mat-cell *matCellDef="let element">
+      <a
+        mat-icon-button
+        color="accent"
+        [routerLink]="NavigationPath.AdminBuildingsPage | navPath"
+        [queryParams]="{ building: element.building }"
+        ><mat-icon>apartment</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="RoomField.Person">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Хозяин</th>
+    <td mat-cell *matCellDef="let element">
+      <a
+        mat-icon-button
+        color="accent"
+        [routerLink]="NavigationPath.AdminPersonsPage | navPath"
+        [queryParams]="{ person: element.buildingExtended.personExtended.id }"
+        ><mat-icon>person</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<!--<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>-->
