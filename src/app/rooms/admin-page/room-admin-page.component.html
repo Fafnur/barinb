@@ -1,4 +1,9 @@
-<table class="admin-table" mat-table matSort [dataSource]="dataSource">
+<div class="admin-page-actions">
+  <button class="admin-page-action" mat-raised-button (click)="onClearRooms()">Удалить данные</button>
+  <button class="admin-page-action" mat-raised-button color="primary" (click)="onAddRoom()">Добавить номер</button>
+</div>
+
+<table class="admin-table" mat-table matSort [dataSource]="dataSource" *ngIf="rooms?.length; else emptyTpl">
   <ng-container [matColumnDef]="RoomField.ID">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
     <td mat-cell *matCellDef="let element">
@@ -69,4 +74,6 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<!--<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>-->
+<ng-template #emptyTpl>
+  <p>Нет созданных номеров. Для того, чтобы добавить номер, нажмите - "Добавить номер".</p>
+</ng-template>

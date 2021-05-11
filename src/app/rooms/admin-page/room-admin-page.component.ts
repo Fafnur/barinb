@@ -4,14 +4,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { take, takeUntil, tap } from 'rxjs/operators';
 
 import { NavigationPath } from '@app/core/navigation/common';
 import { Room, RoomField } from '@app/rooms/common';
-import { RoomService } from '@app/rooms/service';
-
-import { AdminRoomViewDialogComponent } from './components/admin-room-view-dialog';
 import { RoomExtended, RoomManager } from '@app/rooms/manager';
+
+import { AdminRoomClearDialogComponent } from './components/admin-room-clear-dialog/admin-room-clear-dialog.component';
+import { AdminRoomViewDialogComponent } from './components/admin-room-view-dialog';
 
 @Component({
   selector: 'app-room-admin-page',
@@ -70,7 +70,6 @@ export class RoomAdminPageComponent implements OnInit, OnDestroy, AfterViewInit 
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
-    // this.dataSource.paginator = this.paginator;
   }
 
   ngOnDestroy(): void {
@@ -80,5 +79,25 @@ export class RoomAdminPageComponent implements OnInit, OnDestroy, AfterViewInit 
 
   onViewRoom(room: RoomExtended): void {
     this.matDialog.open(AdminRoomViewDialogComponent, { data: room });
+  }
+
+  onAddRoom(): void {}
+
+  onClearRooms(): void {
+    const dialogRef = this.matDialog.open(AdminRoomClearDialogComponent);
+    dialogRef
+      .afterClosed()
+      .pipe(
+        tap((result) => {
+          if (result) {
+            this.roomManager.clear();
+            this.dataSource.data = [];
+            this.changeDetectorRef.markForCheck();
+          }
+        }),
+        take(1),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 }

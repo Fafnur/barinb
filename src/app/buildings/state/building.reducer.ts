@@ -33,5 +33,13 @@ export const reducer = createReducer(
   on(BuildingActions.loadBuildingsFailure, (state, { payload }) => ({
     ...state,
     buildingsLoadError: payload,
+  })),
+  on(BuildingActions.clearBuildings, (state) => ({
+    ...state,
+    buildings: [],
+  })),
+  on(BuildingActions.clearBuildingsRoomsSuccess, (state, { payload }) => ({
+    ...state,
+    buildings: payload,
   }))
 );

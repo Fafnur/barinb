@@ -8,11 +8,11 @@ export class AdminMenuService {
     return [
       {
         route: NavigationPath.AdminRoomsPage,
-        label: 'Квартиры',
+        label: 'Номера',
       },
       {
         route: NavigationPath.AdminBuildingsPage,
-        label: 'Здания',
+        label: 'Отели',
       },
       {
         route: NavigationPath.AdminPersonsPage,

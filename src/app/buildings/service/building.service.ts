@@ -15,4 +15,12 @@ export class BuildingService {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly buildingFacade: BuildingFacade) {}
+
+  clear(): void {
+    this.buildingFacade.clear();
+  }
+
+  clearBuildingsRooms(): void {
+    this.buildingFacade.clearBuildingsRooms();
+  }
 }

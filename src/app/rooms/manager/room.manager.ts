@@ -66,4 +66,9 @@ export class RoomManager {
     private readonly buildingService: BuildingService,
     private readonly personService: PersonService
   ) {}
+
+  clear(): void {
+    this.buildingService.clearBuildingsRooms();
+    this.roomService.clear();
+  }
 }

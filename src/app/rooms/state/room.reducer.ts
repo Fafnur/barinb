@@ -33,5 +33,9 @@ export const reducer = createReducer(
   on(RoomActions.loadRoomsFailure, (state, { payload }) => ({
     ...state,
     roomsLoadError: payload,
+  })),
+  on(RoomActions.clearRooms, (state) => ({
+    ...state,
+    rooms: [],
   }))
 );

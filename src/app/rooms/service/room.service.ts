@@ -15,4 +15,8 @@ export class RoomService {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly roomFacade: RoomFacade) {}
+
+  clear(): void {
+    this.roomFacade.clear();
+  }
 }

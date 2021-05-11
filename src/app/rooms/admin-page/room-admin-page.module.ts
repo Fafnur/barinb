@@ -13,6 +13,7 @@ import { RoomManagerModule } from '@app/rooms/manager';
 import { CarouselModule } from '@app/ui/carousel';
 
 import { AppCommonModule } from '../../app-common.module';
+import { AdminRoomClearDialogModule } from './components/admin-room-clear-dialog/admin-room-clear-dialog.module';
 import { AdminRoomViewDialogModule } from './components/admin-room-view-dialog';
 import { RoomAdminPageComponent } from './room-admin-page.component';
 import { RoomAdminPageRoutingModule } from './room-admin-page-routing.module';
@@ -32,6 +33,7 @@ import { RoomAdminPageRoutingModule } from './room-admin-page-routing.module';
     MatIconModule,
     NavigationSharedModule,
     CarouselModule,
+    AdminRoomClearDialogModule,
     AdminRoomViewDialogModule,
   ],
   declarations: [RoomAdminPageComponent],

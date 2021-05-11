@@ -8,3 +8,5 @@ export const loadRooms = createAction('[Room] Load Rooms');
 export const loadRoomsSuccess = createAction('[Room] Load Rooms Success', payload<Room[]>());
 
 export const loadRoomsFailure = createAction('[Room] Load Rooms Failure', payload<Record<string, any>>());
+
+export const clearRooms = createAction('[Room] Clear Rooms');

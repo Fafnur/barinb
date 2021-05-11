@@ -21,6 +21,10 @@ export class RoomFacade {
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly store: Store<RoomState>) {}
 
+  clear(): void {
+    this.dispatch(RoomActions.clearRooms());
+  }
+
   load(): void {
     this.dispatch(RoomActions.loadRooms());
   }

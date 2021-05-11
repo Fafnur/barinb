@@ -22,6 +22,14 @@ export class BuildingFacade {
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly store: Store<BuildingState>) {}
 
+  clear(): void {
+    this.dispatch(BuildingActions.clearBuildings());
+  }
+
+  clearBuildingsRooms(): void {
+    this.dispatch(BuildingActions.clearBuildingsRooms());
+  }
+
   load(): void {
     this.dispatch(BuildingActions.loadBuildings());
   }
