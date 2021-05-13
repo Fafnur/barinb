@@ -1,8 +1,9 @@
+@use '~@angular/material' as mat;
 @import 'src/stylesheets/utils';
 
 :host {
   display: block;
-  border: 1px solid mat-color($mat-gray, 300);
+  border: 1px solid mat.get-color-from-palette(mat.$gray-palette, 300);
   border-radius: 0.25rem;
   padding: 1rem;
 
@@ -38,12 +39,12 @@
 .booking-portlet-content {
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 1rem;
+  margin: 0 0 0 0;
   height: 100%;
 }
 
 .booking-portlet-title {
-  margin: 0 0 1rem 0;
+  margin: 1rem 0;
   font-weight: 500;
   font-size: 1.1rem;
 

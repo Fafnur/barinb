@@ -64,3 +64,10 @@ export enum RoomField {
   Created = 'created',
   Updated = 'updated',
 }
+
+export enum RoomAction {
+  Actions = 'actions',
+  View = 'view',
+  Edit = 'edit',
+  Remove = 'remove',
+}

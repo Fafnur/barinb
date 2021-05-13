@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 $grid-breakpoints: (
   xs: 0,
   nm: 320px,
@@ -20,8 +21,8 @@ $container-max-widths: (
   hg: 1360px,
 );
 
-$color-default: mat-color($mat-gray, 900);
-$color-primary: mat-color($mat-indigo, 500);
-$color-active: mat-color($mat-indigo, 700);
-$color-accent: mat-color($mat-pink, A200);
-$color-danger: mat-color($mat-red, 500);
+$color-default: mat.get-color-from-palette(mat.$gray-palette, 900);
+$color-primary: mat.get-color-from-palette(mat.$indigo-palette, 500);
+$color-active: mat.get-color-from-palette(mat.$indigo-palette, 700);
+$color-accent: mat.get-color-from-palette(mat.$pink-palette, A200);
+$color-danger: mat.get-color-from-palette(mat.$red-palette, 500);

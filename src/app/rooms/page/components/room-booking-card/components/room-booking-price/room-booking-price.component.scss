@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import 'src/stylesheets/utils';
 
 :host {
@@ -18,6 +19,6 @@
 
   &_style {
     padding-top: 1rem;
-    border-top: 1px solid mat-color($mat-gray, 300);
+    border-top: 1px solid mat.get-color-from-palette(mat.$gray-palette, 300);
   }
 }

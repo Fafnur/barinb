@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import 'src/stylesheets/utils';
 
 :host {
@@ -24,7 +25,7 @@
 
 .room-view-separator {
   height: 1px;
-  background-color: mat-color($mat-gray, 400);
+  background-color: mat.get-color-from-palette(mat.$gray-palette, 400);
   margin: 1rem 0;
 
   @include media-breakpoint-up(md) {

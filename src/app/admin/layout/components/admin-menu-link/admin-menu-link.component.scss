@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import 'src/stylesheets/utils';
 
 .admin-menu-link {
@@ -7,6 +8,6 @@
   text-transform: uppercase;
 
   &:hover {
-    color: mat-color($mat-gray, 200);
+    color: mat.get-color-from-palette(mat.$gray-palette, 200);
   }
 }

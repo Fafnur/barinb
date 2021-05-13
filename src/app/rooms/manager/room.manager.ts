@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, Observable } from 'rxjs';
+import { combineLatest, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { Building } from '@app/buildings/common';
@@ -21,23 +21,25 @@ export interface RoomExtended extends Room {
 export class RoomManager {
   roomsExtended$: Observable<RoomExtended[]> = this.roomService.rooms$.pipe(
     switchMap((rooms) =>
-      combineLatest(
-        rooms.map((room) =>
-          this.buildingService.building$(room.building).pipe(
-            switchMap((building) =>
-              this.personService.person$(building.person).pipe(
-                map((person) => ({
-                  ...room,
-                  buildingExtended: {
-                    ...building,
-                    personExtended: person,
-                  },
-                }))
+      rooms.length
+        ? combineLatest(
+            rooms.map((room) =>
+              this.buildingService.building$(room.building).pipe(
+                switchMap((building) =>
+                  this.personService.person$(building.person).pipe(
+                    map((person) => ({
+                      ...room,
+                      buildingExtended: {
+                        ...building,
+                        personExtended: person,
+                      },
+                    }))
+                  )
+                )
               )
             )
           )
-        )
-      )
+        : of([])
     )
   );
 

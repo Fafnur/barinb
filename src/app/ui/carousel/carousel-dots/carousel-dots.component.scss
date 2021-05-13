@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import 'src/stylesheets/utils';
 
 :host {
@@ -16,7 +17,7 @@
   width: 0.85rem;
   height: 0.85rem;
   border-radius: 50%;
-  border: 1px solid mat-color($mat-gray, 400);
+  border: 1px solid mat.get-color-from-palette(mat.$gray-palette, 400);
   background-color: white;
   cursor: pointer;
 

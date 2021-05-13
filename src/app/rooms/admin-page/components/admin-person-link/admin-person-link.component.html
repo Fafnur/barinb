@@ -1,0 +1,9 @@
+<a
+  mat-icon-button
+  color="accent"
+  [routerLink]="path | navPath"
+  [queryParams]="{ person: room.buildingExtended.personExtended.id }"
+  *ngIf="room"
+>
+  <mat-icon>person</mat-icon>
+</a>

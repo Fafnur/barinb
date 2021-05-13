@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import 'src/stylesheets/utils';
 
 .room-booking-action {
@@ -8,5 +9,5 @@
 
 .room-booking-error {
   margin: 1rem 0;
-  color: mat-color($mat-red, 500);
+  color: mat.get-color-from-palette(mat.$red-palette, 500);
 }
