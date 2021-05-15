@@ -14,8 +14,7 @@ export class ConfigService {
 
   constructor() {
     this.config = {
-      googleMapKey: 'AIzaSyDPJ5-bEjFnP1xEN8QC0Ks8uej7CFcBGAs',
-      // googleMapKey: process.env.GOOGLE_MAPS_KEY ?? CONFIG_DEFAULT.googleMapKey,
+      googleMapKey: process.env.GOOGLE_MAPS_KEY ?? CONFIG_DEFAULT.googleMapKey,
     };
   }
 
