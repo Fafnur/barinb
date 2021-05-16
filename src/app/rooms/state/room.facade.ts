@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Actions, ofType } from '@ngrx/effects';
 import { Action, select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Entity } from '@app/core/common';
 import { NewRoom, RoomEntity } from '@app/rooms/common';
@@ -15,12 +17,17 @@ export class RoomFacade {
 
   roomsLoadError$ = this.store.pipe(select(RoomSelectors.selectRoomsLoadError));
 
+  roomAdded$ = this.actions.pipe(
+    ofType(RoomActions.addRoomSuccess),
+    map((action) => action.payload)
+  );
+
   room$ = (id: number): Observable<RoomEntity | null> => this.store.pipe(select(RoomSelectors.selectRoom({ id })));
 
   roomsByBuilding$ = (id: number): Observable<RoomEntity[] | null> => this.store.pipe(select(RoomSelectors.selectRoomsByBuilding({ id })));
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  constructor(private readonly store: Store<RoomState>) {}
+  constructor(private readonly actions: Actions, private readonly store: Store<RoomState>) {}
 
   clear(): void {
     this.dispatch(RoomActions.clearRooms());

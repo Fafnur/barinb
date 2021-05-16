@@ -10,6 +10,8 @@ import { RoomFacade } from '@app/rooms/state';
 export class RoomService {
   rooms$: Observable<Room[]> = this.roomFacade.rooms$.pipe(filter<any>((value) => value != null));
 
+  roomAdded$ = this.roomFacade.roomAdded$;
+
   room$ = (id: number): Observable<Room> => this.roomFacade.room$(id).pipe(filter<any>(Boolean));
 
   roomsByBuilding$ = (id: number): Observable<Room> => this.roomFacade.roomsByBuilding$(id).pipe(filter<any>(Boolean));
