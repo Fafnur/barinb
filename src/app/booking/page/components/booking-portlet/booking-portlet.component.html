@@ -1,12 +1,12 @@
 <app-row mode="lg" *ngIf="bookingVariant">
-  <app-column class="column" [modes]="{ lg: 4 }">
+  <app-column [modes]="{ lg: 5 }">
     <app-carousel
       class="booking-portlet-carousel"
       [images]="bookingVariant | bookingVariantImages"
       (selected)="onSelected()"
     ></app-carousel>
   </app-column>
-  <app-column class="column" [modes]="{ lg: 8 }">
+  <app-column [modes]="{ lg: 7 }">
     <div class="booking-portlet-content">
       <h4 class="booking-portlet-title">{{ bookingVariant.name }}</h4>
       <div class="booking-portlet-address"><strong>Адрес</strong>: {{ bookingVariant.address }}</div>
