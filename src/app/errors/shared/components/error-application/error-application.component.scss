@@ -48,6 +48,7 @@
 .error-application-title {
   font-size: 1.2rem;
   margin: 1rem 0;
+  color: white;
 
   @include media-breakpoint-up(md) {
     font-size: 2rem;
@@ -92,7 +93,7 @@
 
 .error-application-link {
   margin: 0 0.5rem;
-  color: $color-active;
+  color: white;
 
   &.is-mobile {
     display: block;
