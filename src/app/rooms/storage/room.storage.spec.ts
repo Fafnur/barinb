@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Room } from '@app/rooms/common';
+import { RoomEntity } from '@app/rooms/common';
 
 import { RoomStorage } from './room.storage';
-import { ROOMS_STUB } from './room.stub';
+import { ROOMS_DTO_STUB } from './room.stub';
 
 describe('RoomStorage', () => {
   let storage: RoomStorage;
@@ -19,9 +19,9 @@ describe('RoomStorage', () => {
     expect(storage).toBeTruthy();
   });
 
-  it('should return ROOMS_STUB', (done) => {
+  it('should return ROOMS_DTO_STUB', (done) => {
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(ROOMS_STUB.length);
+      expect(result.length).toBe(ROOMS_DTO_STUB.length);
       done();
     });
   });
@@ -36,10 +36,10 @@ describe('RoomStorage', () => {
   });
 
   it('should return update rooms', (done) => {
-    storage.post([...ROOMS_STUB, {} as Room]);
+    storage.post([...ROOMS_DTO_STUB, {}] as RoomEntity[]);
 
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(ROOMS_STUB.length + 1);
+      expect(result.length).toBe(ROOMS_DTO_STUB.length + 1);
       done();
     });
   });
@@ -49,7 +49,7 @@ describe('RoomStorage', () => {
     storage.reset();
 
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(ROOMS_STUB.length);
+      expect(result.length).toBe(ROOMS_DTO_STUB.length);
       done();
     });
   });

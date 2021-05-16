@@ -32,6 +32,60 @@ export enum RoomAmenities {
   PrivateEntrance = 'privateEntrance',
 }
 
+export const ROOM_AMENITIES: RoomAmenities[] = [
+  RoomAmenities.Shampoo,
+  RoomAmenities.HairDryer,
+  RoomAmenities.Iron,
+  RoomAmenities.Hangers,
+  RoomAmenities.Essentials,
+  RoomAmenities.Towels,
+  RoomAmenities.BedSheets,
+  RoomAmenities.Soap,
+  RoomAmenities.ToiletPaper,
+  RoomAmenities.Washer,
+  RoomAmenities.Tv,
+  RoomAmenities.Heating,
+  RoomAmenities.SecurityCameras,
+  RoomAmenities.SmokeAlarm,
+  RoomAmenities.Wifi,
+  RoomAmenities.DedicatedWorkspace,
+  RoomAmenities.Kitchen,
+  RoomAmenities.CookingBasics,
+  RoomAmenities.Elevator,
+  RoomAmenities.FreeParking,
+  RoomAmenities.LongTermStays,
+  RoomAmenities.AirConditioning,
+  RoomAmenities.CarbonMonoxideAlarm,
+  RoomAmenities.PrivateEntrance,
+];
+
+export const ROOM_AMENITIES_LABELS: Record<RoomAmenities, string> = {
+  [RoomAmenities.Shampoo]: 'Шампунь',
+  [RoomAmenities.HairDryer]: 'Фен',
+  [RoomAmenities.Iron]: 'Утюг',
+  [RoomAmenities.Hangers]: 'Вешалки',
+  [RoomAmenities.Essentials]: 'Предметы первой необходимости',
+  [RoomAmenities.Towels]: 'Полотенца',
+  [RoomAmenities.BedSheets]: 'Постельное белье',
+  [RoomAmenities.Soap]: 'Мыло',
+  [RoomAmenities.ToiletPaper]: 'Туалетная бумага',
+  [RoomAmenities.Washer]: 'Стиральная машина',
+  [RoomAmenities.Tv]: 'Телевизор',
+  [RoomAmenities.Heating]: 'Обогреватель',
+  [RoomAmenities.SecurityCameras]: 'Камеры видеонаблюдения',
+  [RoomAmenities.SmokeAlarm]: 'Дымовая сигнализация',
+  [RoomAmenities.Wifi]: 'Wifi',
+  [RoomAmenities.DedicatedWorkspace]: 'Рабочее место',
+  [RoomAmenities.Kitchen]: 'Кухня',
+  [RoomAmenities.CookingBasics]: 'Кухонные принадлежности',
+  [RoomAmenities.Elevator]: 'Лифт',
+  [RoomAmenities.FreeParking]: 'Бесплатная парковка',
+  [RoomAmenities.LongTermStays]: 'Долгострочная аренда',
+  [RoomAmenities.AirConditioning]: 'Кондиционер',
+  [RoomAmenities.CarbonMonoxideAlarm]: 'Сигнализация угарного газа',
+  [RoomAmenities.PrivateEntrance]: 'Отдельный вход',
+};
+
 export interface RoomDto {
   readonly id: number;
   readonly created: string;
@@ -81,6 +135,19 @@ export enum RoomField {
   Amenities = 'amenities',
   Created = 'created',
   Updated = 'updated',
+}
+
+export interface NewRoom {
+  [RoomField.Person]: number;
+  [RoomField.Building]: number;
+  [RoomField.Guests]: number;
+  [RoomField.Bedrooms]: number;
+  [RoomField.Beds]: number;
+  [RoomField.Bathrooms]: number;
+  [RoomField.Photos]: string[];
+  [RoomField.Amenities]: RoomAmenities[];
+  [RoomField.Description]: string;
+  [RoomField.Price]: number;
 }
 
 export enum RoomAction {

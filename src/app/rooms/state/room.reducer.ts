@@ -10,6 +10,9 @@ export const ROOM_FEATURE_KEY = 'rooms';
 export interface RoomState extends EntityState<RoomEntity> {
   roomsLoadError: Record<string, any> | null;
   roomsLoadRun: boolean;
+
+  roomCreateError: Record<string, any> | null;
+  roomCreateRun: boolean;
 }
 
 export interface RoomPartialState {
@@ -21,6 +24,8 @@ export const roomAdapter: EntityAdapter<RoomEntity> = createEntityAdapter<RoomEn
 export const roomInitialState: RoomState = roomAdapter.getInitialState({
   roomsLoadError: null,
   roomsLoadRun: false,
+  roomCreateError: null,
+  roomCreateRun: false,
 });
 
 export const reducer = createReducer(
@@ -69,5 +74,21 @@ export const reducer = createReducer(
       },
       state
     )
-  )
+  ),
+  on(RoomActions.addRoom, (state) => ({
+    ...state,
+    roomCreateError: null,
+    roomCreateRun: true,
+  })),
+  on(RoomActions.addRoomSuccess, (state, { payload }) =>
+    roomAdapter.addOne(payload, {
+      ...state,
+      roomCreateRun: false,
+    })
+  ),
+  on(RoomActions.addRoomFailure, (state, { payload }) => ({
+    ...state,
+    roomCreateError: payload,
+    roomCreateRun: false,
+  }))
 );

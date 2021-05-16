@@ -18,6 +18,10 @@ export const selectRoomsLoadError = createSelector(selectRoomState, (state) => s
 
 export const selectRoomsLoadRun = createSelector(selectRoomState, (state) => state.roomsLoadRun);
 
+export const selectRoomCreateError = createSelector(selectRoomState, (state) => state.roomCreateError);
+
+export const selectRoomCreateRun = createSelector(selectRoomState, (state) => state.roomCreateRun);
+
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,@typescript-eslint/explicit-function-return-type
 export const selectRoom = (props: Entity) =>
   createSelector(selectRoomsEntities, (dictionary: Dictionary<RoomEntity>) => dictionary[props.id] ?? null);

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { LocalStorage } from '@app/core/storage';
-import { Room } from '@app/rooms/common';
+import { RoomEntity } from '@app/rooms/common';
 
 import { ROOMS_DTO_STUB } from './room.stub';
 
@@ -17,8 +17,8 @@ export class RoomStorage {
     this.localStorage.setItem(ROOMS_STORAGE_KEY, []);
   }
 
-  get(): Observable<Room[]> {
-    return this.localStorage.getItem<Room[] | null>(ROOMS_STORAGE_KEY).pipe(
+  get(): Observable<RoomEntity[]> {
+    return this.localStorage.getItem<RoomEntity[] | null>(ROOMS_STORAGE_KEY).pipe(
       map(
         (rooms) =>
           rooms ??
@@ -31,7 +31,7 @@ export class RoomStorage {
     );
   }
 
-  post(rooms: Room[]): void {
+  post(rooms: RoomEntity[]): void {
     this.localStorage.setItem(
       ROOMS_STORAGE_KEY,
       rooms.map((room) => ({ ...room, roomRemoveRun: undefined, roomRemoveError: undefined }))

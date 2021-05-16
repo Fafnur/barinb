@@ -4,6 +4,7 @@ import { Action, select, Store } from '@ngrx/store';
 import { map, withLatestFrom } from 'rxjs/operators';
 
 import { fetch } from '@app/core/store/utils';
+import { createRoomFromNewRoom } from '@app/rooms/common';
 import { RoomStorage } from '@app/rooms/storage';
 
 import * as RoomActions from './room.actions';
@@ -34,6 +35,18 @@ export class RoomEffects implements OnInitEffects {
           return room ? RoomActions.removeRoomSuccess({ payload: action.payload }) : RoomActions.removeRoomCancel();
         },
         onError: (action, error) => RoomActions.removeRoomFailure({ payload: { ...error, id: action.payload.id } }),
+      })
+    )
+  );
+
+  addRoom$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.addRoom),
+      withLatestFrom(this.store.pipe(select(RoomSelectors.selectRooms))),
+      fetch({
+        id: () => 'add-room',
+        run: (action, rooms) => RoomActions.addRoomSuccess({ payload: createRoomFromNewRoom(rooms ?? [], action.payload) }),
+        onError: (action, payload) => RoomActions.addRoomFailure({ payload }),
       })
     )
   );
