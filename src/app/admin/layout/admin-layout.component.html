@@ -1,4 +1,6 @@
-<ng-container *ngIf="isDesktopScreen; then desktopTpl; else mobileTpl"></ng-container>
+<app-container mode="fluid" height="max-height">
+  <ng-container *ngIf="isDesktopScreen; then desktopTpl; else mobileTpl"></ng-container>
+</app-container>
 
 <ng-template #desktopTpl>
   <app-row mode="md">

@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { BookingServiceModule } from '@app/booking/service';
 import { BookingStateModule } from '@app/booking/state';
+import { ContainerModule } from '@app/ui/container';
 import { RowModule } from '@app/ui/row';
 
 import { AppCommonModule } from '../../app-common.module';
@@ -29,6 +30,7 @@ import { BookingMapModule } from './components/booking-map/booking-map.module';
     MatIconModule,
     MatButtonModule,
     RowModule,
+    ContainerModule,
   ],
   declarations: [BookingPageComponent],
 })

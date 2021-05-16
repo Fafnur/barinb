@@ -7,7 +7,8 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContainerComponent {
-  @Input() mode!: 'flex' | 'flex-row';
+  @Input() mode!: 'flex' | 'flex-row' | 'fluid';
+  @Input() height!: 'max-height';
 
   @HostBinding('class.is-flex') get isFlex(): boolean {
     return this.mode === 'flex';
@@ -15,5 +16,13 @@ export class ContainerComponent {
 
   @HostBinding('class.is-flex-row') get isFlexRow(): boolean {
     return this.mode === 'flex-row';
+  }
+
+  @HostBinding('class.is-fluid') get isFluid(): boolean {
+    return this.mode === 'fluid';
+  }
+
+  @HostBinding('class.is-max-height') get isMaxHeight(): boolean {
+    return this.height === 'max-height';
   }
 }
