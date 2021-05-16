@@ -1,0 +1,8 @@
+@import 'src/stylesheets/utils';
+
+.admin-building-address {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+}

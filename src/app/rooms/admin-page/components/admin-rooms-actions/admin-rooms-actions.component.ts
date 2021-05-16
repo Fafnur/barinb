@@ -6,6 +6,7 @@ import { take, takeUntil, tap } from 'rxjs/operators';
 import { RoomManager } from '@app/rooms/manager';
 
 import { AdminRoomClearDialogComponent } from '../admin-room-clear-dialog/admin-room-clear-dialog.component';
+import { AdminRoomCreateDialogComponent } from '../admin-room-create-dialog/admin-room-create-dialog.component';
 
 @Component({
   selector: 'app-admin-rooms-actions',
@@ -25,7 +26,9 @@ export class AdminRoomsActionsComponent implements OnDestroy {
     this.destroy$.complete();
   }
 
-  onAddRoom(): void {}
+  onAddRoom(): void {
+    this.matDialog.open(AdminRoomCreateDialogComponent);
+  }
 
   onClearRooms(): void {
     const dialogRef = this.matDialog.open(AdminRoomClearDialogComponent);

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-room-create-dialog',
@@ -6,8 +7,18 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-room-create-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminRoomCreateDialogComponent implements OnInit {
-  constructor() {}
+export class AdminRoomCreateDialogComponent {
+  form = new FormGroup({});
 
-  ngOnInit(): void {}
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+
+  onSubmit(): void {
+    this.form.markAllAsTouched();
+    if (this.form.valid) {
+      console.log(this.form.value);
+    } else {
+      console.log(this.form.value);
+    }
+    this.changeDetectorRef.markForCheck();
+  }
 }

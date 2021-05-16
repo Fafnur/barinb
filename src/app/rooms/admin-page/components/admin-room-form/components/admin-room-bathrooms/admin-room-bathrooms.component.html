@@ -1,1 +1,4 @@
-<p>admin-room-bathrooms works!</p>
+<mat-form-field appearance="fill" *ngIf="control">
+  <mat-label>Ванные</mat-label>
+  <input placeholder="Количество ванных комнат" type="number" name="room[bathrooms]" matInput [formControl]="control" step="1" />
+</mat-form-field>

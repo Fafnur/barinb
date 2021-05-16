@@ -1,1 +1,4 @@
-<p>admin-room-beds works!</p>
+<mat-form-field appearance="fill" *ngIf="control">
+  <mat-label>Спальные места</mat-label>
+  <input placeholder="Количество спальных мест" type="number" name="room[beds]" matInput [formControl]="control" step="1" />
+</mat-form-field>

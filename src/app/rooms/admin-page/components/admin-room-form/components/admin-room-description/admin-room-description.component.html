@@ -1,1 +1,4 @@
-<p>admin-room-description works!</p>
+<mat-form-field appearance="fill" *ngIf="control">
+  <mat-label>Описание</mat-label>
+  <textarea rows="3" placeholder="Описание" type="number" name="room[description]" matInput [formControl]="control"></textarea>
+</mat-form-field>

@@ -1,0 +1,7 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  ::ng-deep .mat-form-field {
+    width: 100%;
+  }
+}

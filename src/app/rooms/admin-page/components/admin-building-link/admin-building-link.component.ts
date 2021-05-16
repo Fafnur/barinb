@@ -12,5 +12,5 @@ import { Room } from '@app/rooms/common';
 export class AdminBuildingLinkComponent {
   @Input() room!: Room;
 
-  path = NavigationPath.AdminBuildingPage;
+  path = NavigationPath.AdminBuildingsPage;
 }

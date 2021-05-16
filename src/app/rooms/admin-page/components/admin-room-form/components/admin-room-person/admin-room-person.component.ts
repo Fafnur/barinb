@@ -4,19 +4,23 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { extractTouchedChanges } from '@app/core/forms/utils';
+import { Person } from '@app/persons/common';
+import { PersonService } from '@app/persons/service';
 
 @Component({
-  selector: 'app-admin-room-price',
-  templateUrl: './admin-room-price.component.html',
-  styleUrls: ['./admin-room-price.component.scss'],
+  selector: 'app-admin-room-person',
+  templateUrl: './admin-room-person.component.html',
+  styleUrls: ['./admin-room-person.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminRoomPriceComponent implements OnInit, OnDestroy {
+export class AdminRoomPersonComponent implements OnInit, OnDestroy {
   @Input() control!: FormControl | null;
+
+  persons!: Person[];
 
   private readonly destroy$ = new Subject<void>();
 
-  constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef, private readonly personService: PersonService) {}
 
   ngOnInit(): void {
     if (this.control) {
@@ -26,15 +30,21 @@ export class AdminRoomPriceComponent implements OnInit, OnDestroy {
           takeUntil(this.destroy$)
         )
         .subscribe();
+
+      this.personService.persons$
+        .pipe(
+          tap((persons) => {
+            this.persons = persons;
+            this.changeDetectorRef.markForCheck();
+          }),
+          takeUntil(this.destroy$)
+        )
+        .subscribe();
     }
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  onReset(): void {
-    this.control?.reset();
   }
 }

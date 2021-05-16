@@ -1,1 +1,35 @@
-<p>admin-room-form works!</p>
+<ng-container *ngIf="form">
+  <app-admin-room-person [control]="form | extractFormControl: RoomField.Person"></app-admin-room-person>
+  <app-admin-room-building [control]="form | extractFormControl: RoomField.Building"></app-admin-room-building>
+
+  <app-row mode="md">
+    <app-column [modes]="{ md: 6 }">
+      <app-admin-room-price [control]="form | extractFormControl: RoomField.Price"></app-admin-room-price>
+    </app-column>
+    <app-column [modes]="{ md: 6 }">
+      <app-admin-room-guests [control]="form | extractFormControl: RoomField.Guests"></app-admin-room-guests>
+    </app-column>
+  </app-row>
+
+  <app-row mode="md">
+    <app-column [modes]="{ md: 6 }">
+      <app-admin-room-bedrooms [control]="form | extractFormControl: RoomField.Bedrooms"></app-admin-room-bedrooms>
+    </app-column>
+    <app-column [modes]="{ md: 6 }">
+      <app-admin-room-beds [control]="form | extractFormControl: RoomField.Beds"></app-admin-room-beds>
+    </app-column>
+  </app-row>
+
+  <app-row mode="md">
+    <app-column [modes]="{ md: 6 }">
+      <app-admin-room-bathrooms [control]="form | extractFormControl: RoomField.Bathrooms"></app-admin-room-bathrooms>
+    </app-column>
+    <app-column [modes]="{ md: 6 }">
+      <app-admin-room-amenities [control]="form | extractFormControl: RoomField.Amenities"></app-admin-room-amenities>
+    </app-column>
+  </app-row>
+
+  <app-admin-room-photos [control]="form | extractFormControl: RoomField.Photos"></app-admin-room-photos>
+
+  <app-admin-room-description [control]="form | extractFormControl: RoomField.Description"></app-admin-room-description>
+</ng-container>

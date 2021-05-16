@@ -1,1 +1,17 @@
-<p>admin-room-photos works!</p>
+<mat-form-field *ngIf="control">
+  <mat-label>Фотографии</mat-label>
+  <mat-chip-list #chipList aria-label="Фотографии" [formControl]="control">
+    <mat-chip *ngFor="let photo of photos; let index = index" [selectable]="selectable" [removable]="removable" (removed)="remove(index)">
+      {{ photo }}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      placeholder="Новая фотография..."
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="addOnBlur"
+      (matChipInputTokenEnd)="add($event)"
+    />
+  </mat-chip-list>
+  <mat-hint>Добавляйте абсолютные пути к изображениям</mat-hint>
+</mat-form-field>

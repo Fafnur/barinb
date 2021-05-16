@@ -6,11 +6,11 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { PersonSharedModule } from '@app/persons/shared';
 
-import { AdminRoomBuildingComponent } from './admin-room-building.component';
+import { AdminRoomPersonComponent } from './admin-room-person.component';
 
 @NgModule({
   imports: [CommonModule, MatInputModule, MatSelectModule, ReactiveFormsModule, PersonSharedModule],
-  declarations: [AdminRoomBuildingComponent],
-  exports: [AdminRoomBuildingComponent],
+  declarations: [AdminRoomPersonComponent],
+  exports: [AdminRoomPersonComponent],
 })
-export class AdminRoomBuildingModule {}
+export class AdminRoomPersonModule {}

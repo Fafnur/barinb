@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+
+import { Room, RoomField } from '@app/rooms/common';
+
+import { createRoomForm } from './admin-room-form.config';
 
 @Component({
   selector: 'app-admin-room-form',
@@ -7,7 +12,22 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminRoomFormComponent implements OnInit {
+  @Input() room!: Room;
+  @Input() form!: FormGroup;
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  RoomField = RoomField;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.form) {
+      this.form = new FormGroup({});
+    }
+    createRoomForm(this.form);
+
+    if (this.room) {
+      this.form.patchValue(this.room);
+    }
+  }
 }

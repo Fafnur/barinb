@@ -1,1 +1,9 @@
-<p>admin-room-building works!</p>
+<mat-form-field appearance="fill" *ngIf="control">
+  <mat-label>Здание</mat-label>
+  <mat-select class="admin-building-options" [formControl]="control">
+    <mat-option class="admin-building-option" *ngFor="let building of buildings" [value]="building.id">
+      <div class="admin-building-address">{{ building.city }}, {{ building.address }}</div>
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="!person">Сначала нужно выбрать собственника здания</mat-error>
+</mat-form-field>

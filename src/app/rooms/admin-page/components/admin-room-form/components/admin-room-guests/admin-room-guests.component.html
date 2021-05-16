@@ -1,1 +1,4 @@
-<p>admin-room-guests works!</p>
+<mat-form-field appearance="fill" *ngIf="control">
+  <mat-label>Гости</mat-label>
+  <input placeholder="Количество гостей" type="number" matInput [formControl]="control" autocomplete="off" name="room[guests]" />
+</mat-form-field>
