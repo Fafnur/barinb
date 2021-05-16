@@ -20,7 +20,7 @@ describe('Room Reducer', () => {
     const action = RoomActions.loadRoomsSuccess({ payload: ROOMS_STUB });
     const result = reducer(state, action);
 
-    expect(result.rooms?.length).toBe(ROOMS_STUB.length);
+    expect(Object.keys(result.entities).length).toBe(ROOMS_STUB.length);
   });
 
   it('loadRoomsSuccess() should set roomsLoadError', () => {

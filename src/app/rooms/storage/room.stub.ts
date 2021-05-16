@@ -1,7 +1,7 @@
-import { Room, RoomAmenities } from '@app/rooms/common';
+import { RoomAmenities, RoomDto } from '@app/rooms/common';
 
 /* eslint-disable max-len */
-export const ROOMS_STUB: Room[] = [
+export const ROOMS_DTO_STUB: RoomDto[] = [
   {
     id: 1,
     building: 1,

@@ -1,6 +1,6 @@
-import { Room, RoomAmenities } from '@app/rooms/common';
+import { Room, RoomAmenities, RoomDto } from '@app/rooms/common';
 
-export const ROOM_STUB: Room = {
+export const ROOM_DTO_STUB: RoomDto = {
   id: 1,
   building: 1,
   guests: 2,
@@ -21,6 +21,12 @@ export const ROOM_STUB: Room = {
   photos: [],
   created: '2021-05-11T01:14:42.988Z',
   updated: '2021-05-11T01:14:44.000Z',
+};
+
+export const ROOM_STUB: Room = {
+  ...ROOM_DTO_STUB,
+  roomRemoveError: null,
+  roomRemoveRun: false,
 };
 
 export const ROOMS_STUB: Room[] = [ROOM_STUB];

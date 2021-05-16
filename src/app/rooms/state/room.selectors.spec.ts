@@ -1,4 +1,4 @@
-import { createStore } from '@app/core/store/utils';
+import { createEntityState, createStore } from '@app/core/store/utils';
 
 import { ROOM_FEATURE_KEY, roomInitialState, RoomPartialState, RoomState } from './room.reducer';
 import * as RoomSelectors from './room.selectors';
@@ -8,7 +8,7 @@ describe('Room Selectors', () => {
   const getState = (payload: Partial<RoomState>): RoomPartialState => createStore(ROOM_FEATURE_KEY, roomInitialState, payload);
 
   it('selectRooms() should return rooms', () => {
-    const state = getState({ rooms: ROOMS_STUB });
+    const state = getState({ ...createEntityState(ROOMS_STUB) });
     const results = RoomSelectors.selectRooms(state);
 
     expect(results?.length).toBe(ROOMS_STUB.length);
@@ -22,15 +22,15 @@ describe('Room Selectors', () => {
   });
 
   it('selectRoom() should return room by id', () => {
-    const state = getState({ rooms: ROOMS_STUB });
-    const result = RoomSelectors.selectRoom(state, { id: ROOM_STUB.id });
+    const state = getState({ ...createEntityState(ROOMS_STUB) });
+    const result = RoomSelectors.selectRoom(ROOM_STUB)(state);
 
     expect(result).toEqual(ROOM_STUB);
   });
 
   it('selectRoomsByBuilding() should return rooms by building id', () => {
-    const state = getState({ rooms: ROOMS_STUB });
-    const results = RoomSelectors.selectRoomsByBuilding(state, { id: ROOM_STUB.building });
+    const state = getState(createEntityState(ROOMS_STUB));
+    const results = RoomSelectors.selectRoomsByBuilding({ id: ROOM_STUB.building })(state);
 
     expect(results?.length).toBe(ROOMS_STUB.length);
   });

@@ -4,6 +4,7 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { Building } from '@app/buildings/common';
 import { BuildingService } from '@app/buildings/service';
+import { Entity } from '@app/core/common';
 import { Person } from '@app/persons/common';
 import { PersonService } from '@app/persons/service';
 import { Room } from '@app/rooms/common';
@@ -72,5 +73,10 @@ export class RoomManager {
   clear(): void {
     this.buildingService.clearBuildingsRooms();
     this.roomService.clear();
+  }
+
+  removeRoom(payload: Entity): void {
+    // this.buildingService.clearBuildingsRooms();
+    this.roomService.removeRoom(payload);
   }
 }

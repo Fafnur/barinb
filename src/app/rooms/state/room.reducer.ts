@@ -1,41 +1,73 @@
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
-import { Room } from '@app/rooms/common';
+import { RoomEntity } from '@app/rooms/common';
 
 import * as RoomActions from './room.actions';
 
 export const ROOM_FEATURE_KEY = 'rooms';
 
-export interface RoomState {
-  rooms: Room[] | null;
+export interface RoomState extends EntityState<RoomEntity> {
   roomsLoadError: Record<string, any> | null;
+  roomsLoadRun: boolean;
 }
 
 export interface RoomPartialState {
   readonly [ROOM_FEATURE_KEY]: RoomState;
 }
 
-export const roomInitialState: RoomState = {
-  rooms: null,
+export const roomAdapter: EntityAdapter<RoomEntity> = createEntityAdapter<RoomEntity>();
+
+export const roomInitialState: RoomState = roomAdapter.getInitialState({
   roomsLoadError: null,
-};
+  roomsLoadRun: false,
+});
 
 export const reducer = createReducer(
   roomInitialState,
   on(RoomActions.loadRooms, (state) => ({
     ...state,
     roomsLoadError: null,
+    roomsLoadRun: true,
   })),
-  on(RoomActions.loadRoomsSuccess, (state, { payload }) => ({
-    ...state,
-    rooms: payload,
-  })),
+  on(RoomActions.loadRoomsSuccess, (state, { payload }) =>
+    roomAdapter.setAll(payload, {
+      ...state,
+      roomsLoadRun: false,
+    })
+  ),
   on(RoomActions.loadRoomsFailure, (state, { payload }) => ({
     ...state,
     roomsLoadError: payload,
+    roomsLoadRun: false,
   })),
-  on(RoomActions.clearRooms, (state) => ({
-    ...state,
-    rooms: [],
-  }))
+  on(RoomActions.clearRooms, (state) =>
+    roomAdapter.removeAll({
+      ...state,
+    })
+  ),
+  on(RoomActions.removeRoom, (state, { payload }) =>
+    roomAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          roomRemoveRun: true,
+        },
+      },
+      state
+    )
+  ),
+  on(RoomActions.removeRoomSuccess, (state, { payload }) => roomAdapter.removeOne(payload.id, state)),
+  on(RoomActions.removeRoomFailure, (state, { payload }) =>
+    roomAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          roomRemoveError: payload,
+          roomRemoveRun: false,
+        },
+      },
+      state
+    )
+  )
 );
