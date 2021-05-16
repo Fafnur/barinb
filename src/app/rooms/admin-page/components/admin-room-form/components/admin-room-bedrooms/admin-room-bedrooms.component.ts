@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { extractTouchedChanges } from '@app/core/forms/utils';
+import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 
 @Component({
   selector: 'app-admin-room-bedrooms',
@@ -13,6 +14,8 @@ import { extractTouchedChanges } from '@app/core/forms/utils';
 })
 export class AdminRoomBedroomsComponent implements OnInit, OnDestroy {
   @Input() control!: FormControl | null;
+
+  readonly id = ROOMS_IDS[RoomField.Bedrooms];
 
   private readonly destroy$ = new Subject<void>();
 

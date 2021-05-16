@@ -7,7 +7,7 @@ import { Building } from '@app/buildings/common';
 import { BuildingService } from '@app/buildings/service';
 import { extractTouchedChanges } from '@app/core/forms/utils';
 import { Person } from '@app/persons/common';
-import { RoomField } from '@app/rooms/common';
+import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 
 @Component({
   selector: 'app-admin-room-building',
@@ -20,6 +20,8 @@ export class AdminRoomBuildingComponent implements OnInit, OnDestroy {
 
   buildings!: Building[];
   buildingsSubscription!: Subscription;
+
+  readonly id = ROOMS_IDS[RoomField.Building];
 
   private readonly destroy$ = new Subject<void>();
 

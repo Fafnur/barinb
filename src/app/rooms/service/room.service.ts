@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { Entity } from '@app/core/common';
-import { Room } from '@app/rooms/common';
+import { NewRoom, Room } from '@app/rooms/common';
 import { RoomFacade } from '@app/rooms/state';
 
 @Injectable()
@@ -19,6 +19,10 @@ export class RoomService {
 
   clear(): void {
     this.roomFacade.clear();
+  }
+
+  addRoom(payload: NewRoom): void {
+    this.roomFacade.addRoom(payload);
   }
 
   removeRoom(payload: Entity): void {

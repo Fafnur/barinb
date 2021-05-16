@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { extractTouchedChanges } from '@app/core/forms/utils';
+import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 
 @Component({
   selector: 'app-admin-room-photos',
@@ -21,9 +22,11 @@ export class AdminRoomPhotosComponent implements OnInit, OnDestroy {
   removable = true;
   addOnBlur = true;
 
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
-
   photos: string[] = [];
+
+  readonly id = ROOMS_IDS[RoomField.Photos];
+
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
   private readonly destroy$ = new Subject<void>();
 

@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { extractTouchedChanges } from '@app/core/forms/utils';
-import { ROOM_AMENITIES } from '@app/rooms/common';
+import { ROOM_AMENITIES, RoomField, ROOMS_IDS } from '@app/rooms/common';
 
 @Component({
   selector: 'app-admin-room-amenities',
@@ -15,7 +15,8 @@ import { ROOM_AMENITIES } from '@app/rooms/common';
 export class AdminRoomAmenitiesComponent implements OnInit, OnDestroy {
   @Input() control!: FormControl | null;
 
-  features = ROOM_AMENITIES;
+  readonly id = ROOMS_IDS[RoomField.Amenities];
+  readonly features = ROOM_AMENITIES;
 
   private readonly destroy$ = new Subject<void>();
 

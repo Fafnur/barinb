@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill" *ngIf="control">
   <mat-label>Цена за ночь</mat-label>
-  <input placeholder="Цена, в рублях" type="number" name="room[price]" matInput [formControl]="control" step="100" />
+  <input placeholder="Цена, в рублях" type="number" name="room[price]" matInput [formControl]="control" step="100" [id]="id" />
   <button mat-button *ngIf="control?.value" matSuffix mat-icon-button aria-label="Clear" (click)="onReset()">
     <mat-icon>close</mat-icon>
   </button>

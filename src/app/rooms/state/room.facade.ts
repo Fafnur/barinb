@@ -3,7 +3,7 @@ import { Action, select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Entity } from '@app/core/common';
-import { RoomEntity } from '@app/rooms/common';
+import { NewRoom, RoomEntity } from '@app/rooms/common';
 
 import * as RoomActions from './room.actions';
 import { RoomState } from './room.reducer';
@@ -32,6 +32,10 @@ export class RoomFacade {
 
   removeRoom(payload: Entity): void {
     this.dispatch(RoomActions.removeRoom({ payload }));
+  }
+
+  addRoom(payload: NewRoom): void {
+    this.dispatch(RoomActions.addRoom({ payload }));
   }
 
   private dispatch(action: Action): void {

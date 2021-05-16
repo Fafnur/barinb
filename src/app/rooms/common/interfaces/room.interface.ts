@@ -150,6 +150,22 @@ export interface NewRoom {
   [RoomField.Price]: number;
 }
 
+export const ROOMS_IDS: Record<RoomField, string> = {
+  [RoomField.ID]: 'RoomId',
+  [RoomField.Person]: 'RoomPerson',
+  [RoomField.Building]: 'RoomBuilding',
+  [RoomField.Guests]: 'RoomGuests',
+  [RoomField.Bedrooms]: 'RoomBedrooms',
+  [RoomField.Beds]: 'RoomBeds',
+  [RoomField.Bathrooms]: 'RoomBathrooms',
+  [RoomField.Photos]: 'RoomPhotos',
+  [RoomField.Amenities]: 'RoomAmenities',
+  [RoomField.Description]: 'RoomDescription',
+  [RoomField.Price]: 'RoomPrice',
+  [RoomField.Created]: 'RoomCreated',
+  [RoomField.Updated]: 'RoomUpdated',
+};
+
 export enum RoomAction {
   Actions = 'actions',
   View = 'view',
