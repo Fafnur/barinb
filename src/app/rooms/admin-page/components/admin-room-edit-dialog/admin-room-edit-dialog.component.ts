@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subject } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
+
+import { FormErrorsService } from '@app/core/forms/errors';
+import { RoomField, ROOMS_IDS } from '@app/rooms/common';
+import { RoomExtended } from '@app/rooms/manager';
+import { RoomService } from '@app/rooms/service';
 
 @Component({
   selector: 'app-admin-room-edit-dialog',
@@ -6,8 +16,44 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-room-edit-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminRoomEditDialogComponent implements OnInit {
-  constructor() {}
+export class AdminRoomEditDialogComponent implements OnInit, OnDestroy {
+  form = new FormGroup({});
 
-  ngOnInit(): void {}
+  private readonly destroy$ = new Subject<void>();
+
+  constructor(
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly roomService: RoomService,
+    private readonly formErrorsService: FormErrorsService,
+    private readonly matDialogRef: MatDialogRef<AdminRoomEditDialogComponent>,
+    private readonly matSnackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public readonly room: RoomExtended
+  ) {}
+
+  ngOnInit(): void {
+    this.roomService.roomChanged$
+      .pipe(
+        tap(() => {
+          this.matDialogRef.close(true);
+          this.matSnackBar.open('Номер успешно изменен!', '', { duration: 5000 });
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  onSubmit(): void {
+    this.form.markAllAsTouched();
+    if (this.form.valid) {
+      this.roomService.changeRoom({ ...this.form.value, [RoomField.ID]: this.room.id });
+    } else {
+      this.formErrorsService.scrollToFirstError(this.form, ROOMS_IDS);
+    }
+    this.changeDetectorRef.markForCheck();
+  }
 }

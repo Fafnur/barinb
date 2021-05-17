@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { Room, RoomField } from '@app/rooms/common';
+import { RoomField } from '@app/rooms/common';
+import { RoomExtended } from '@app/rooms/manager';
 
 import { createRoomForm } from './admin-room-form.config';
 
@@ -12,7 +13,7 @@ import { createRoomForm } from './admin-room-form.config';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminRoomFormComponent implements OnInit {
-  @Input() room!: Room;
+  @Input() room!: RoomExtended;
   @Input() form!: FormGroup;
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -27,7 +28,10 @@ export class AdminRoomFormComponent implements OnInit {
     createRoomForm(this.form);
 
     if (this.room) {
-      this.form.patchValue(this.room);
+      this.form.patchValue({
+        ...this.room,
+        [RoomField.Person]: this.room.buildingExtended.person,
+      });
     }
   }
 }

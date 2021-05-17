@@ -2,7 +2,7 @@ import { createAction } from '@ngrx/store';
 
 import { Entity } from '@app/core/common';
 import { payload } from '@app/core/store/utils';
-import { NewRoom, RoomEntity } from '@app/rooms/common';
+import { ChangedRoom, NewRoom, RoomEntity } from '@app/rooms/common';
 
 export const loadRooms = createAction('[Room] Load Rooms');
 
@@ -29,3 +29,11 @@ export const addRoomCancel = createAction('[Room] Remove Room Cancel');
 export const addRoomSuccess = createAction('[Room] Remove Room Success', payload<RoomEntity>());
 
 export const addRoomFailure = createAction('[Room] Remove Room Failure', payload<Record<string, any>>());
+
+export const changeRoom = createAction('[Room] Change Room', payload<ChangedRoom>());
+
+export const changeRoomCancel = createAction('[Room] Change Room Cancel');
+
+export const changeRoomSuccess = createAction('[Room] Change Room Success', payload<ChangedRoom>());
+
+export const changeRoomFailure = createAction('[Room] Change Room Failure', payload<Record<string, any>>());

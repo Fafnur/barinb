@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Entity } from '@app/core/common';
-import { NewRoom, RoomEntity } from '@app/rooms/common';
+import { ChangedRoom, NewRoom, RoomEntity } from '@app/rooms/common';
 
 import * as RoomActions from './room.actions';
 import { RoomState } from './room.reducer';
@@ -19,6 +19,11 @@ export class RoomFacade {
 
   roomAdded$ = this.actions.pipe(
     ofType(RoomActions.addRoomSuccess),
+    map((action) => action.payload)
+  );
+
+  roomChanged$ = this.actions.pipe(
+    ofType(RoomActions.changeRoomSuccess),
     map((action) => action.payload)
   );
 
@@ -43,6 +48,10 @@ export class RoomFacade {
 
   addRoom(payload: NewRoom): void {
     this.dispatch(RoomActions.addRoom({ payload }));
+  }
+
+  changeRoom(payload: ChangedRoom): void {
+    this.dispatch(RoomActions.changeRoom({ payload }));
   }
 
   private dispatch(action: Action): void {

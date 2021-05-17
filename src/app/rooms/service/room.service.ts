@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { Entity } from '@app/core/common';
-import { NewRoom, Room } from '@app/rooms/common';
+import { ChangedRoom, NewRoom, Room } from '@app/rooms/common';
 import { RoomFacade } from '@app/rooms/state';
 
 @Injectable()
@@ -11,6 +11,8 @@ export class RoomService {
   rooms$: Observable<Room[]> = this.roomFacade.rooms$.pipe(filter<any>((value) => value != null));
 
   roomAdded$ = this.roomFacade.roomAdded$;
+
+  roomChanged$ = this.roomFacade.roomChanged$;
 
   room$ = (id: number): Observable<Room> => this.roomFacade.room$(id).pipe(filter<any>(Boolean));
 
@@ -25,6 +27,10 @@ export class RoomService {
 
   addRoom(payload: NewRoom): void {
     this.roomFacade.addRoom(payload);
+  }
+
+  changeRoom(payload: ChangedRoom): void {
+    this.roomFacade.changeRoom(payload);
   }
 
   removeRoom(payload: Entity): void {

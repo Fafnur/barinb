@@ -1,3 +1,5 @@
+import { Entity } from '@app/core/common';
+
 export enum RoomAmenities {
   Shampoo = 'shampoo',
   HairDryer = 'hairDryer',
@@ -149,6 +151,8 @@ export interface NewRoom {
   [RoomField.Description]: string;
   [RoomField.Price]: number;
 }
+
+export type ChangedRoom = Partial<NewRoom> & Entity;
 
 export const ROOMS_IDS: Record<RoomField, string> = {
   [RoomField.ID]: 'RoomId',

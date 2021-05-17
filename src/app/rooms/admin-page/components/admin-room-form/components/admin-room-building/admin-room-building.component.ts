@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { take, takeUntil, tap } from 'rxjs/operators';
 
 import { Building } from '@app/buildings/common';
 import { BuildingService } from '@app/buildings/service';
@@ -56,6 +56,19 @@ export class AdminRoomBuildingComponent implements OnInit, OnDestroy {
           takeUntil(this.destroy$)
         )
         .subscribe();
+
+      if (this.control.value) {
+        this.buildingService
+          .building$(this.control.value)
+          .pipe(
+            tap((building) => {
+              this.subscribe(building.person);
+            }),
+            take(1),
+            takeUntil(this.destroy$)
+          )
+          .subscribe();
+      }
     }
   }
 
