@@ -1,45 +1,150 @@
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
-import { Building } from '@app/buildings/common';
+import { BuildingEntity } from '@app/buildings/common';
 
 import * as BuildingActions from './building.actions';
 
 export const BUILDING_FEATURE_KEY = 'buildings';
 
-export interface BuildingState {
-  buildings: Building[] | null;
+export interface BuildingState extends EntityState<BuildingEntity> {
   buildingsLoadError: Record<string, any> | null;
+  buildingsLoadRun: boolean;
+
+  buildingCreateError: Record<string, any> | null;
+  buildingCreateRun: boolean;
+
+  buildingsRoomsClearError: Record<string, any> | null;
+  buildingsRoomsClearRun: boolean;
 }
 
-export interface RoomPartialState {
+export interface BuildingPartialState {
   readonly [BUILDING_FEATURE_KEY]: BuildingState;
 }
 
-export const buildingInitialState: BuildingState = {
-  buildings: null,
+export const buildingAdapter: EntityAdapter<BuildingEntity> = createEntityAdapter<BuildingEntity>();
+
+export const buildingInitialState: BuildingState = buildingAdapter.getInitialState({
   buildingsLoadError: null,
-};
+  buildingsLoadRun: false,
+  buildingCreateError: null,
+  buildingCreateRun: false,
+  buildingsRoomsClearError: null,
+  buildingsRoomsClearRun: false,
+});
 
 export const reducer = createReducer(
   buildingInitialState,
   on(BuildingActions.loadBuildings, (state) => ({
     ...state,
     buildingsLoadError: null,
+    buildingsLoadRun: true,
   })),
-  on(BuildingActions.loadBuildingsSuccess, (state, { payload }) => ({
-    ...state,
-    buildings: payload,
-  })),
+  on(BuildingActions.loadBuildingsSuccess, (state, { payload }) =>
+    buildingAdapter.setAll(payload, {
+      ...state,
+      buildingsLoadRun: false,
+    })
+  ),
   on(BuildingActions.loadBuildingsFailure, (state, { payload }) => ({
     ...state,
     buildingsLoadError: payload,
+    buildingsLoadRun: false,
   })),
-  on(BuildingActions.clearBuildings, (state) => ({
+  on(BuildingActions.clearBuildings, (state) =>
+    buildingAdapter.removeAll({
+      ...state,
+    })
+  ),
+  on(BuildingActions.removeBuilding, (state, { payload }) =>
+    buildingAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          buildingRemoveRun: true,
+        },
+      },
+      state
+    )
+  ),
+  on(BuildingActions.removeBuildingSuccess, (state, { payload }) => buildingAdapter.removeOne(payload.id, state)),
+  on(BuildingActions.removeBuildingFailure, (state, { payload }) =>
+    buildingAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          buildingRemoveError: payload,
+          buildingRemoveRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(BuildingActions.addBuilding, (state) => ({
     ...state,
-    buildings: [],
+    buildingCreateError: null,
+    buildingCreateRun: true,
   })),
-  on(BuildingActions.clearBuildingsRoomsSuccess, (state, { payload }) => ({
+  on(BuildingActions.addBuildingSuccess, (state, { payload }) =>
+    buildingAdapter.addOne(payload, {
+      ...state,
+      buildingCreateRun: false,
+    })
+  ),
+  on(BuildingActions.addBuildingFailure, (state, { payload }) => ({
     ...state,
-    buildings: payload,
+    buildingCreateError: payload,
+    buildingCreateRun: false,
+  })),
+  on(BuildingActions.changeBuilding, (state, { payload }) =>
+    buildingAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          buildingChangeRun: true,
+        },
+      },
+      state
+    )
+  ),
+  on(BuildingActions.changeBuildingSuccess, (state, { payload }) =>
+    buildingAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          ...payload,
+          buildingChangeRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(BuildingActions.changeBuildingFailure, (state, { payload }) =>
+    buildingAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          buildingChangeError: payload,
+          buildingChangeRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(BuildingActions.clearBuildingsRooms, (state) => ({
+    ...state,
+    buildingsRoomsClearError: null,
+    buildingsRoomsClearRun: true,
+  })),
+  on(BuildingActions.clearBuildingsRoomsSuccess, (state, { payload }) =>
+    buildingAdapter.setAll(payload, {
+      ...state,
+      buildingsRoomsClearRun: false,
+    })
+  ),
+  on(BuildingActions.clearBuildingsRoomsFailure, (state, { payload }) => ({
+    ...state,
+    buildingsRoomsClearError: payload,
+    buildingsRoomsClearRun: false,
   }))
 );

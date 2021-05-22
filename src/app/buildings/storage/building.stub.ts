@@ -1,6 +1,6 @@
-import { Building } from '@app/buildings/common';
+import { BuildingDto } from '@app/buildings/common';
 
-export const BUILDINGS_STUB: Building[] = [
+export const BUILDINGS_DTO_STUB: BuildingDto[] = [
   {
     id: 1,
     person: 1,
