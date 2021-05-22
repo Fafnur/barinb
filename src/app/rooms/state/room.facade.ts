@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Entity } from '@app/core/common';
-import { ChangedRoom, NewRoom, RoomEntity } from '@app/rooms/common';
+import { ChangedRoom, NewRoom, Room } from '@app/rooms/common';
 
 import * as RoomActions from './room.actions';
 import { RoomState } from './room.reducer';
@@ -13,11 +13,13 @@ import * as RoomSelectors from './room.selectors';
 
 @Injectable()
 export class RoomFacade {
-  rooms$ = this.store.pipe(select(RoomSelectors.selectRooms));
+  rooms$: Observable<Room[]> = this.store.pipe(select(RoomSelectors.selectRooms));
 
   roomsLoadError$ = this.store.pipe(select(RoomSelectors.selectRoomsLoadError));
 
-  roomAdded$ = this.actions.pipe(
+  roomsLoadRun$ = this.store.pipe(select(RoomSelectors.selectRoomsLoadRun));
+
+  roomAdded$: Observable<Room> = this.actions.pipe(
     ofType(RoomActions.addRoomSuccess),
     map((action) => action.payload)
   );
@@ -27,9 +29,9 @@ export class RoomFacade {
     map((action) => action.payload)
   );
 
-  room$ = (id: number): Observable<RoomEntity | null> => this.store.pipe(select(RoomSelectors.selectRoom({ id })));
+  room$ = (id: number): Observable<Room | null> => this.store.pipe(select(RoomSelectors.selectRoom({ id })));
 
-  roomsByBuilding$ = (id: number): Observable<RoomEntity[] | null> => this.store.pipe(select(RoomSelectors.selectRoomsByBuilding({ id })));
+  roomsByBuilding$ = (id: number): Observable<Room[] | null> => this.store.pipe(select(RoomSelectors.selectRoomsByBuilding({ id })));
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly actions: Actions, private readonly store: Store<RoomState>) {}

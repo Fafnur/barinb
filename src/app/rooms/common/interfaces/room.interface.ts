@@ -119,9 +119,13 @@ export interface RoomEntity {
 
   roomRemoveRun: boolean;
   roomRemoveError: Record<string, any> | null;
+
+  roomChangeRun: boolean;
+  roomChangeError: Record<string, any> | null;
 }
 
-export type Room = RoomEntity;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Room extends RoomEntity {}
 
 export enum RoomField {
   ID = 'id',

@@ -27,6 +27,8 @@ export const ROOM_STUB: Room = {
   ...ROOM_DTO_STUB,
   roomRemoveError: null,
   roomRemoveRun: false,
+  roomChangeError: null,
+  roomChangeRun: false,
 };
 
 export const ROOMS_STUB: Room[] = [ROOM_STUB];

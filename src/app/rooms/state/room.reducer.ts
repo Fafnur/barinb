@@ -13,9 +13,6 @@ export interface RoomState extends EntityState<RoomEntity> {
 
   roomCreateError: Record<string, any> | null;
   roomCreateRun: boolean;
-
-  roomChangeError: Record<string, any> | null;
-  roomChangeRun: boolean;
 }
 
 export interface RoomPartialState {
@@ -29,8 +26,6 @@ export const roomInitialState: RoomState = roomAdapter.getInitialState({
   roomsLoadRun: false,
   roomCreateError: null,
   roomCreateRun: false,
-  roomChangeError: null,
-  roomChangeRun: false,
 });
 
 export const reducer = createReducer(
@@ -96,23 +91,39 @@ export const reducer = createReducer(
     roomCreateError: payload,
     roomCreateRun: false,
   })),
-  on(RoomActions.changeRoom, (state) => ({
-    ...state,
-    roomChangeError: null,
-    roomChangeRun: true,
-  })),
-  on(RoomActions.changeRoomSuccess, (state, { payload }) =>
+  on(RoomActions.changeRoom, (state, { payload }) =>
     roomAdapter.updateOne(
       {
         id: payload.id,
-        changes: payload,
+        changes: {
+          roomChangeRun: true,
+        },
       },
       state
     )
   ),
-  on(RoomActions.changeRoomFailure, (state, { payload }) => ({
-    ...state,
-    roomChangeError: payload,
-    roomChangeRun: false,
-  }))
+  on(RoomActions.changeRoomSuccess, (state, { payload }) =>
+    roomAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          ...payload,
+          roomChangeRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(RoomActions.changeRoomFailure, (state, { payload }) =>
+    roomAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          roomChangeError: payload,
+          roomChangeRun: false,
+        },
+      },
+      state
+    )
+  )
 );

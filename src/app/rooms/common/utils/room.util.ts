@@ -12,9 +12,12 @@ export function createRoomFromNewRoom(rooms: RoomEntity[], newRoom: NewRoom): Ro
   return {
     ...newRoom,
     id: lastId + 1,
-    roomRemoveRun: false,
-    roomRemoveError: null,
     created,
     updated: created,
+
+    roomRemoveRun: false,
+    roomRemoveError: null,
+    roomChangeError: null,
+    roomChangeRun: false,
   };
 }
