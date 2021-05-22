@@ -1,21 +1,31 @@
-import { TestBed } from '@angular/core/testing';
-
 import { PlatformService } from './platform.service';
 
+export const PLATFORM_BROWSER_ID = 'browser';
+export const PLATFORM_SERVER_ID = 'server';
+export const PLATFORM_WORKER_APP_ID = 'browserWorkerApp';
+export const PLATFORM_WORKER_UI_ID = 'browserWorkerUi';
+
+/**
+ * @see https://github.com/angular/angular/blob/master/packages/common/src/platform_id.ts
+ */
 describe('PlatformService', () => {
-  let service: PlatformService;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      providers: [PlatformService],
-    }).compileComponents();
+  it('should be browser', () => {
+    const service = new PlatformService(PLATFORM_BROWSER_ID);
+    expect(service.isBrowser).toBeTruthy();
   });
 
-  beforeEach(() => {
-    service = TestBed.inject(PlatformService);
+  it('should be server', () => {
+    const service = new PlatformService(PLATFORM_SERVER_ID);
+    expect(service.isServer).toBeTruthy();
   });
 
-  it('should create', () => {
-    expect(service).toBeTruthy();
+  it('should be server', () => {
+    const service = new PlatformService(PLATFORM_WORKER_APP_ID);
+    expect(service.isWorkerApp).toBeTruthy();
+  });
+
+  it('should be server', () => {
+    const service = new PlatformService(PLATFORM_WORKER_UI_ID);
+    expect(service.isWorkerUi).toBeTruthy();
   });
 });
