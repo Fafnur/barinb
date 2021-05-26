@@ -8,7 +8,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 import { FormErrorsService } from '@app/core/forms/errors';
 import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 import { RoomExtended } from '@app/rooms/manager';
-import { RoomService } from '@app/rooms/service';
+import { RoomFacade } from '@app/rooms/state';
 
 @Component({
   selector: 'app-admin-room-edit-dialog',
@@ -23,7 +23,7 @@ export class AdminRoomEditDialogComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
-    private readonly roomService: RoomService,
+    private readonly roomFacade: RoomFacade,
     private readonly formErrorsService: FormErrorsService,
     private readonly matDialogRef: MatDialogRef<AdminRoomEditDialogComponent>,
     private readonly matSnackBar: MatSnackBar,
@@ -31,7 +31,7 @@ export class AdminRoomEditDialogComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.roomService.roomChanged$
+    this.roomFacade.roomChanged$
       .pipe(
         tap(() => {
           this.matDialogRef.close(true);
@@ -50,7 +50,7 @@ export class AdminRoomEditDialogComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.roomService.changeRoom({ ...this.form.value, [RoomField.ID]: this.room.id });
+      this.roomFacade.changeRoom({ ...this.form.value, [RoomField.ID]: this.room.id });
     } else {
       this.formErrorsService.scrollToFirstError(this.form, ROOMS_IDS);
     }
