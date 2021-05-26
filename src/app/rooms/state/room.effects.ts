@@ -23,6 +23,22 @@ export class RoomEffects implements OnInitEffects {
     )
   );
 
+  addRoom$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.addRoom),
+      withLatestFrom(this.store.pipe(select(RoomSelectors.selectRooms))),
+      fetch({
+        id: () => 'add-room',
+        run: (action, rooms) => RoomActions.addRoomSuccess({ payload: createRoomFromNewRoom(rooms ?? [], action.payload) }),
+        onError: (action, payload) => {
+          console.log(payload);
+
+          return RoomActions.addRoomFailure({ payload });
+        },
+      })
+    )
+  );
+
   removeRoom$ = createEffect(() =>
     this.actions$.pipe(
       ofType(RoomActions.removeRoom),
@@ -35,18 +51,6 @@ export class RoomEffects implements OnInitEffects {
           return room ? RoomActions.removeRoomSuccess({ payload: action.payload }) : RoomActions.removeRoomCancel();
         },
         onError: (action, error) => RoomActions.removeRoomFailure({ payload: { ...error, id: action.payload.id } }),
-      })
-    )
-  );
-
-  addRoom$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(RoomActions.addRoom),
-      withLatestFrom(this.store.pipe(select(RoomSelectors.selectRooms))),
-      fetch({
-        id: () => 'add-room',
-        run: (action, rooms) => RoomActions.addRoomSuccess({ payload: createRoomFromNewRoom(rooms ?? [], action.payload) }),
-        onError: (action, payload) => RoomActions.addRoomFailure({ payload }),
       })
     )
   );

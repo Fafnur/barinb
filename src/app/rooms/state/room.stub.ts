@@ -1,4 +1,5 @@
-import { Room, RoomAmenities, RoomDto } from '@app/rooms/common';
+import { Entity } from '@app/core/common';
+import { ChangedRoom, NewRoom, Room, RoomAmenities, RoomDto, RoomField } from '@app/rooms/common';
 
 export const ROOM_DTO_STUB: RoomDto = {
   id: 1,
@@ -34,3 +35,34 @@ export const ROOM_STUB: Room = {
 export const ROOMS_STUB: Room[] = [ROOM_STUB];
 
 export const ROOM_LOAD_ERROR = { code: 0, message: 'Failure load rooms' };
+
+export const ENTITY_STUB: Entity = {
+  id: ROOM_STUB.id,
+};
+
+export const NEW_ROOM_STUB: NewRoom = {
+  [RoomField.Person]: 1,
+  [RoomField.Building]: 1,
+  [RoomField.Guests]: 1,
+  [RoomField.Bedrooms]: 1,
+  [RoomField.Beds]: 1,
+  [RoomField.Bathrooms]: 1,
+  [RoomField.Photos]: ['/photo.jpg'],
+  [RoomField.Amenities]: [RoomAmenities.Hangers],
+  [RoomField.Description]: 'Room description',
+  [RoomField.Price]: 1020,
+};
+
+export const CHANGED_ROOM_STUB: ChangedRoom = {
+  [RoomField.ID]: 1,
+  [RoomField.Person]: 1,
+  [RoomField.Building]: 1,
+  [RoomField.Guests]: 1,
+  [RoomField.Bedrooms]: 1,
+  [RoomField.Beds]: 1,
+  [RoomField.Bathrooms]: 1,
+  [RoomField.Photos]: ['/photo.jpg'],
+  [RoomField.Amenities]: [RoomAmenities.Hangers],
+  [RoomField.Description]: 'Room description',
+  [RoomField.Price]: 2000,
+};

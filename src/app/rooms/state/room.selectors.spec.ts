@@ -4,7 +4,7 @@ import { ROOM_FEATURE_KEY, roomInitialState, RoomPartialState, RoomState } from 
 import * as RoomSelectors from './room.selectors';
 import { ROOM_LOAD_ERROR, ROOM_STUB, ROOMS_STUB } from './room.stub';
 
-describe('Room Selectors', () => {
+describe('RoomSelectors', () => {
   const getState = (payload: Partial<RoomState>): RoomPartialState => createStore(ROOM_FEATURE_KEY, roomInitialState, payload);
 
   it('selectRooms() should return rooms', () => {
@@ -19,6 +19,27 @@ describe('Room Selectors', () => {
     const results = RoomSelectors.selectRoomsLoadError(state);
 
     expect(results).toEqual(ROOM_LOAD_ERROR);
+  });
+
+  it('selectRoomsLoadRun() should return roomsLoadRun', () => {
+    const state = getState({ roomsLoadRun: true });
+    const results = RoomSelectors.selectRoomsLoadRun(state);
+
+    expect(results).toBeTruthy();
+  });
+
+  it('selectRoomCreateError() should return roomCreateError', () => {
+    const state = getState({ roomCreateError: ROOM_LOAD_ERROR });
+    const results = RoomSelectors.selectRoomCreateError(state);
+
+    expect(results).toEqual(ROOM_LOAD_ERROR);
+  });
+
+  it('selectRoomCreateRun() should return roomCreateRun', () => {
+    const state = getState({ roomCreateRun: true });
+    const results = RoomSelectors.selectRoomCreateRun(state);
+
+    expect(results).toBeTruthy();
   });
 
   it('selectRoom() should return room by id', () => {

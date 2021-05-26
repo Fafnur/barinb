@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { Building } from '@app/buildings/common';
 
 import { BuildingStorage } from './building.storage';
-import { BUILDINGS_STUB } from './building.stub';
+import { BUILDINGS_DTO_STUB } from './building.stub';
 
 describe('BuildingStorage', () => {
   let storage: BuildingStorage;
@@ -21,7 +21,7 @@ describe('BuildingStorage', () => {
 
   it('should return BUILDINGS_STUB', (done) => {
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(BUILDINGS_STUB.length);
+      expect(result.length).toBe(BUILDINGS_DTO_STUB.length);
       done();
     });
   });
@@ -36,10 +36,10 @@ describe('BuildingStorage', () => {
   });
 
   it('should return update buildings', (done) => {
-    storage.post([...BUILDINGS_STUB, {} as Building]);
+    storage.post([{} as Building, {} as Building]);
 
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(BUILDINGS_STUB.length + 1);
+      expect(result.length).toBe(2);
       done();
     });
   });
@@ -49,7 +49,7 @@ describe('BuildingStorage', () => {
     storage.reset();
 
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(BUILDINGS_STUB.length);
+      expect(result.length).toBe(BUILDINGS_DTO_STUB.length);
       done();
     });
   });
