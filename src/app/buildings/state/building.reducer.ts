@@ -131,6 +131,41 @@ export const reducer = createReducer(
       state
     )
   ),
+  on(BuildingActions.removeBuildingRoom, (state, { payload }) =>
+    buildingAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          buildingRoomRemoveRun: true,
+        },
+      },
+      state
+    )
+  ),
+  on(BuildingActions.removeBuildingRoomSuccess, (state, { payload }) =>
+    buildingAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          rooms: payload.rooms,
+          buildingRoomRemoveRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(BuildingActions.removeBuildingRoomFailure, (state, { payload }) =>
+    buildingAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          buildingRoomRemoveError: payload,
+          buildingRoomRemoveRun: false,
+        },
+      },
+      state
+    )
+  ),
   on(BuildingActions.clearBuildingsRooms, (state) => ({
     ...state,
     buildingsRoomsClearError: null,

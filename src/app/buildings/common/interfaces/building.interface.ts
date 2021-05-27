@@ -29,6 +29,8 @@ export interface BuildingEntity {
   buildingRemoveError: Record<string, any> | null;
   buildingChangeRun: boolean;
   buildingChangeError: Record<string, any> | null;
+  buildingRoomRemoveRun: boolean;
+  buildingRoomRemoveError: Record<string, any> | null;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -73,3 +75,13 @@ export const BUILDINGS_IDS: Record<BuildingField, string> = {
   [BuildingField.Lat]: 'Building',
   [BuildingField.Lng]: 'Building',
 };
+
+export interface RemoveBuildingRoom {
+  id: number;
+  room: number;
+}
+
+export interface RemovedBuildingRoom {
+  id: number;
+  rooms: number[];
+}

@@ -2,20 +2,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Building, BuildingDto, BuildingEntity } from '@app/buildings/common';
+import { BuildingDto, BuildingEntity } from '@app/buildings/common';
 import { LocalStorage } from '@app/core/storage';
 
 import { BUILDINGS_DTO_STUB } from './building.stub';
 
 const BUILDING_STORAGE_KEY = 'buildings';
 
-export function castBuilding(building: BuildingDto): Building {
+export function castBuilding(building: BuildingDto): BuildingEntity {
   return {
     ...building,
     buildingRemoveRun: false,
     buildingRemoveError: null,
     buildingChangeRun: false,
     buildingChangeError: null,
+    buildingRoomRemoveRun: false,
+    buildingRoomRemoveError: null,
   };
 }
 

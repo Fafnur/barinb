@@ -19,5 +19,7 @@ export function createBuildingFromNewBuilding(buildings: BuildingEntity[], newBu
     buildingRemoveError: null,
     buildingChangeError: null,
     buildingChangeRun: false,
+    buildingRoomRemoveRun: false,
+    buildingRoomRemoveError: null,
   };
 }

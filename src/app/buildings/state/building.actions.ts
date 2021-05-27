@@ -1,6 +1,6 @@
 import { createAction } from '@ngrx/store';
 
-import { Building, BuildingEntity, ChangedBuilding, NewBuilding } from '@app/buildings/common';
+import { Building, BuildingEntity, ChangedBuilding, NewBuilding, RemoveBuildingRoom, RemovedBuildingRoom } from '@app/buildings/common';
 import { Entity } from '@app/core/common';
 import { payload } from '@app/core/store/utils';
 
@@ -27,6 +27,14 @@ export const removeBuildingCancel = createAction('[Building] Remove Building Can
 export const removeBuildingSuccess = createAction('[Building] Remove Building Success', payload<Entity>());
 
 export const removeBuildingFailure = createAction('[Building] Remove Building Failure', payload<Record<string, any> & Entity>());
+
+export const removeBuildingRoom = createAction('[Building] Remove Building Room', payload<RemoveBuildingRoom>());
+
+export const removeBuildingRoomCancel = createAction('[Building] Remove Building Room Cancel');
+
+export const removeBuildingRoomSuccess = createAction('[Building] Remove Building Room Success', payload<RemovedBuildingRoom>());
+
+export const removeBuildingRoomFailure = createAction('[Building] Remove Building Room Failure', payload<Record<string, any> & Entity>());
 
 export const addBuilding = createAction('[Building] Remove Building', payload<NewBuilding>());
 

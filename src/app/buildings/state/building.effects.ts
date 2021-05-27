@@ -41,16 +41,16 @@ export class BuildingEffects implements OnInitEffects {
     )
   );
 
-  removeRoom$ = createEffect(() =>
+  removeBuilding$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BuildingActions.removeBuilding),
       withLatestFrom(this.store.pipe(select(BuildingSelectors.selectBuildingsEntities))),
       fetch({
-        id: (action) => `remove-room-${action.payload.id}`,
-        run: (action, roomsEntities) => {
-          const room = roomsEntities ? roomsEntities[action.payload.id] : null;
+        id: (action) => `remove-buiding-${action.payload.id}`,
+        run: (action, buildingsEntities) => {
+          const building = buildingsEntities ? buildingsEntities[action.payload.id] : null;
 
-          return room ? BuildingActions.removeBuildingSuccess({ payload: action.payload }) : BuildingActions.removeBuildingCancel();
+          return building ? BuildingActions.removeBuildingSuccess({ payload: action.payload }) : BuildingActions.removeBuildingCancel();
         },
         onError: (action, error) => BuildingActions.removeBuildingFailure({ payload: { ...error, id: action.payload.id } }),
       })
@@ -77,6 +77,23 @@ export class BuildingEffects implements OnInitEffects {
         id: () => 'change-building',
         run: (action) => BuildingActions.changeBuildingSuccess({ payload: action.payload }),
         onError: (action, payload) => BuildingActions.changeBuildingFailure({ payload }),
+      })
+    )
+  );
+
+  removeBuildingRoom$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BuildingActions.removeBuildingRoom),
+      withLatestFrom(this.store.pipe(select(BuildingSelectors.selectBuildingsEntities))),
+      fetch({
+        id: () => 'change-building',
+        run: (action, buildingsEntities) => {
+          const building = buildingsEntities ? buildingsEntities[action.payload.id] : null;
+          const rooms = building?.rooms.filter((room) => room !== action.payload.room) ?? [];
+
+          return BuildingActions.removeBuildingRoomSuccess({ payload: { id: action.payload.id, rooms } });
+        },
+        onError: (action, payload) => BuildingActions.removeBuildingRoomFailure({ payload: { ...payload, id: action.payload } }),
       })
     )
   );

@@ -16,6 +16,8 @@ export const BUILDING_STUB: Building = {
   buildingChangeError: null,
   buildingRemoveRun: false,
   buildingRemoveError: null,
+  buildingRoomRemoveRun: false,
+  buildingRoomRemoveError: null,
 };
 
 export const BUILDINGS_STUB: Building[] = [BUILDING_STUB];

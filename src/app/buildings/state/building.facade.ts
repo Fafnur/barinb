@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Building, ChangedBuilding, NewBuilding } from '@app/buildings/common';
+import { Building, ChangedBuilding, NewBuilding, RemoveBuildingRoom } from '@app/buildings/common';
 import { Entity } from '@app/core/common';
 
 import * as BuildingActions from './building.actions';
@@ -39,6 +39,10 @@ export class BuildingFacade {
 
   removeBuilding(payload: Entity): void {
     this.dispatch(BuildingActions.removeBuilding({ payload }));
+  }
+
+  removeBuildingRoom(payload: RemoveBuildingRoom): void {
+    this.dispatch(BuildingActions.removeBuildingRoom({ payload }));
   }
 
   addBuilding(payload: NewBuilding): void {

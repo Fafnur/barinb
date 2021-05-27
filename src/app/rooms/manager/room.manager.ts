@@ -4,7 +4,6 @@ import { filter, map, switchMap } from 'rxjs/operators';
 
 import { Building } from '@app/buildings/common';
 import { BuildingFacade } from '@app/buildings/state';
-import { Entity } from '@app/core/common';
 import { Person } from '@app/persons/common';
 import { PersonService } from '@app/persons/service';
 import { Room } from '@app/rooms/common';
@@ -79,8 +78,8 @@ export class RoomManager {
     this.roomFacade.clear();
   }
 
-  removeRoom(payload: Entity): void {
-    // this.buildingService.clearBuildingsRooms();
+  removeRoom(payload: Room): void {
+    this.buildingFacade.removeBuildingRoom({ id: payload.building, room: payload.id });
     this.roomFacade.removeRoom(payload);
   }
 }
