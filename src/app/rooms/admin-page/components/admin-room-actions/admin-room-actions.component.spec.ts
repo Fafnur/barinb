@@ -1,4 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+
+import { RoomManager } from '@app/rooms/manager';
 
 import { AdminRoomActionsComponent } from './admin-room-actions.component';
 
@@ -8,9 +14,17 @@ describe('AdminRoomActionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminRoomActionsComponent ]
-    })
-    .compileComponents();
+      imports: [MatButtonToggleModule, MatButtonModule, MatIconModule, MatDialogModule],
+      declarations: [AdminRoomActionsComponent],
+      providers: [
+        {
+          provide: RoomManager,
+          useValue: {
+            removeRoom: jest.fn(),
+          } as Partial<RoomManager>,
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

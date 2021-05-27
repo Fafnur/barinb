@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import { AdminRoomClearDialogComponent } from './admin-room-clear-dialog.component';
 
@@ -8,9 +10,17 @@ describe('AdminRoomClearDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminRoomClearDialogComponent ]
-    })
-    .compileComponents();
+      imports: [MatButtonModule, MatDialogModule],
+      declarations: [AdminRoomClearDialogComponent],
+      providers: [
+        {
+          provide: MatDialogRef,
+          useValue: {
+            close: jest.fn(),
+          } as Partial<MatDialogRef<any>>,
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

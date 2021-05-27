@@ -7,6 +7,6 @@ import { ROOM_AMENITIES_LABELS, RoomAmenities } from '@app/rooms/common';
 })
 export class RoomAmenitiesLabelPipe implements PipeTransform {
   transform(roomAmenities: RoomAmenities): string {
-    return ROOM_AMENITIES_LABELS[roomAmenities];
+    return ROOM_AMENITIES_LABELS[roomAmenities] ?? roomAmenities;
   }
 }

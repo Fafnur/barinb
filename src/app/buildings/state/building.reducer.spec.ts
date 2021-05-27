@@ -5,7 +5,7 @@ import * as BuildingActions from './building.actions';
 import { buildingInitialState, BuildingState, reducer } from './building.reducer';
 import { BUILDING_STUB, BUILDINGS_LOAD_ERROR, BUILDINGS_STUB, ENTITY_STUB, NEW_BUILDING_STUB } from './building.stub';
 
-describe('Building Reducer', () => {
+describe('BuildingReducer', () => {
   const getState = (payload?: Partial<BuildingState>): BuildingState => createState(buildingInitialState, payload);
 
   it('loadBuildings() should clear buildingsLoadError', () => {
@@ -49,21 +49,14 @@ describe('Building Reducer', () => {
     expect(entity.buildingRemoveRun).toBeTruthy();
   });
 
-  it('removeBuildingSuccess() should clear buildingsLoadError', () => {
-    const state = getState({ ...createEntityState(BUILDINGS_STUB) });
-    const action = BuildingActions.removeBuildingSuccess({ payload: ENTITY_STUB });
-    const result = reducer(state, action);
-
-    expect(result.entities[ENTITY_STUB.id]).toBeUndefined();
-  });
-
   it('removeBuildingFailure() should set buildingRemoveError', () => {
-    const state = getState();
-    const action = BuildingActions.removeBuildingFailure({ payload: { ...BUILDINGS_LOAD_ERROR, ...ENTITY_STUB } });
+    const state = getState({ ...createEntityState(BUILDINGS_STUB) });
+    const payload = { ...BUILDINGS_LOAD_ERROR, ...ENTITY_STUB };
+    const action = BuildingActions.removeBuildingFailure({ payload });
     const result = reducer(state, action);
     const entity = result.entities[ENTITY_STUB.id] as BuildingEntity;
 
-    expect(entity.buildingRemoveError).toEqual(BUILDINGS_LOAD_ERROR);
+    expect(entity.buildingRemoveError).toEqual(payload);
   });
 
   it('addBuilding() should set buildingCreateRun true', () => {
@@ -96,24 +89,26 @@ describe('Building Reducer', () => {
     const result = reducer(state, action);
     const entity = result.entities[ENTITY_STUB.id] as BuildingEntity;
 
-    expect(entity.buildingRemoveRun).toBeTruthy();
+    expect(entity.buildingChangeRun).toBeTruthy();
   });
 
   it('changeBuildingSuccess() should clear buildingsLoadError', () => {
     const state = getState({ ...createEntityState(BUILDINGS_STUB) });
     const action = BuildingActions.changeBuildingSuccess({ payload: ENTITY_STUB });
     const result = reducer(state, action);
+    const entity = result.entities[ENTITY_STUB.id] as BuildingEntity;
 
-    expect(result.entities[ENTITY_STUB.id]).toBeUndefined();
+    expect(entity.buildingChangeRun).toBeFalsy();
   });
 
   it('changeBuildingFailure() should set buildingRemoveError', () => {
-    const state = getState();
-    const action = BuildingActions.changeBuildingFailure({ payload: { ...BUILDINGS_LOAD_ERROR, ...ENTITY_STUB } });
+    const state = getState({ ...createEntityState(BUILDINGS_STUB) });
+    const payload = { ...BUILDINGS_LOAD_ERROR, ...ENTITY_STUB };
+    const action = BuildingActions.changeBuildingFailure({ payload });
     const result = reducer(state, action);
     const entity = result.entities[ENTITY_STUB.id] as BuildingEntity;
 
-    expect(entity.buildingRemoveError).toEqual(BUILDINGS_LOAD_ERROR);
+    expect(entity.buildingChangeError).toEqual(payload);
   });
 
   it('should return the previous state', () => {

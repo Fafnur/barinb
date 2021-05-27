@@ -1,4 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MockModule } from 'ng-mocks';
+import { of } from 'rxjs';
+
+import { BuildingService } from '@app/buildings/service';
+import { PersonSharedModule } from '@app/persons/shared';
 
 import { AdminRoomBuildingComponent } from './admin-room-building.component';
 
@@ -8,9 +16,18 @@ describe('AdminRoomBuildingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminRoomBuildingComponent ]
-    })
-    .compileComponents();
+      imports: [MatInputModule, MatSelectModule, ReactiveFormsModule, MockModule(PersonSharedModule)],
+      declarations: [AdminRoomBuildingComponent],
+      providers: [
+        {
+          provide: BuildingService,
+          useValue: {
+            building$: jest.fn(() => of()),
+            buildingsByPerson$: jest.fn(() => of()),
+          } as Partial<BuildingService>,
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

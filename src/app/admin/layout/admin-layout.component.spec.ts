@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponents } from 'ng-mocks';
 
+import { ContainerComponent } from '@app/ui/container';
 import { ColumnComponent, RowComponent } from '@app/ui/row';
 
 import { AdminLayoutComponent } from './admin-layout.component';
@@ -17,7 +18,7 @@ describe('AdminLayoutComponent', () => {
       imports: [RouterTestingModule],
       declarations: [
         AdminLayoutComponent,
-        MockComponents(RowComponent, ColumnComponent, AdminDesktopMenuComponent, AdminMobileMenuComponent),
+        MockComponents(RowComponent, ColumnComponent, AdminDesktopMenuComponent, AdminMobileMenuComponent, ContainerComponent),
       ],
     }).compileComponents();
   });

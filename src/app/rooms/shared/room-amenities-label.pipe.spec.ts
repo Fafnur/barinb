@@ -1,8 +1,24 @@
-import { RoomPreviewImagesPipe } from './room-preview-images.pipe';
+import { ROOM_AMENITIES_LABELS, RoomAmenities } from '@app/rooms/common';
 
-describe('RoomPreviewImagesPipe', () => {
+import { RoomAmenitiesLabelPipe } from './room-amenities-label.pipe';
+
+describe('RoomAmenitiesLabelPipe', () => {
+  let pipe: RoomAmenitiesLabelPipe;
+
+  beforeEach(() => {
+    pipe = new RoomAmenitiesLabelPipe();
+  });
+
   it('create an instance', () => {
-    const pipe = new RoomPreviewImagesPipe();
     expect(pipe).toBeTruthy();
+  });
+
+  it('should return label', () => {
+    expect(pipe.transform(RoomAmenities.Hangers)).toBe(ROOM_AMENITIES_LABELS[RoomAmenities.Hangers]);
+  });
+
+  it('should return unknown property', () => {
+    const value = 'adam' as any;
+    expect(pipe.transform(value)).toBe(value);
   });
 });

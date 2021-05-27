@@ -1,4 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MockModule } from 'ng-mocks';
+
+import { RoomSharedModule } from '@app/rooms/shared';
 
 import { AdminRoomAmenitiesComponent } from './admin-room-amenities.component';
 
@@ -8,9 +16,9 @@ describe('AdminRoomAmenitiesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminRoomAmenitiesComponent ]
-    })
-    .compileComponents();
+      imports: [MatInputModule, MatSelectModule, MatIconModule, MatButtonModule, ReactiveFormsModule, MockModule(RoomSharedModule)],
+      declarations: [AdminRoomAmenitiesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

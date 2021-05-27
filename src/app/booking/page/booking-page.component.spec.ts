@@ -5,6 +5,7 @@ import { MockComponents } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { RoomService } from '@app/rooms/service';
+import { ContainerComponent } from '@app/ui/container';
 import { ColumnComponent, RowComponent } from '@app/ui/row';
 
 import { BookingPageComponent } from './booking-page.component';
@@ -29,7 +30,8 @@ describe('BookingPageComponent', () => {
           MatIcon,
           MatButton,
           RowComponent,
-          ColumnComponent
+          ColumnComponent,
+          ContainerComponent
         ),
       ],
       providers: [

@@ -19,8 +19,6 @@ export class AdminRoomFormComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   RoomField = RoomField;
 
-  constructor() {}
-
   ngOnInit(): void {
     if (!this.form) {
       this.form = new FormGroup({});

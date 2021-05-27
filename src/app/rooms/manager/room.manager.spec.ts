@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { BuildingService } from '@app/buildings/service';
+import { BuildingFacade } from '@app/buildings/state';
 import { PersonService } from '@app/persons/service';
-import { RoomService } from '@app/rooms/service';
+import { RoomFacade } from '@app/rooms/state';
 
 import { RoomManager } from './room.manager';
 
@@ -15,16 +15,21 @@ describe('RoomManager', () => {
       providers: [
         RoomManager,
         {
-          provide: RoomService,
+          provide: RoomFacade,
           useValue: {
+            rooms$: of(),
             room$: jest.fn(() => of()),
-          } as Partial<RoomService>,
+            clear: jest.fn(),
+            removeRoom: jest.fn(),
+          } as Partial<RoomFacade>,
         },
         {
-          provide: BuildingService,
+          provide: BuildingFacade,
           useValue: {
             building$: jest.fn(() => of()),
-          } as Partial<BuildingService>,
+            clearBuildingsRooms: jest.fn(),
+            removeBuildingRoom: jest.fn(),
+          } as Partial<BuildingFacade>,
         },
         {
           provide: PersonService,

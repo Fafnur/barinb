@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockComponents } from 'ng-mocks';
+import { MockComponents, MockPipes } from 'ng-mocks';
 
 import { AdminMenuService } from '@app/admin/menu';
+import { NavPathPipe } from '@app/core/navigation/shared';
 
 import { AdminMenuLinkComponent } from '../admin-menu-link/admin-menu-link.component';
 import { AdminMobileMenuComponent } from './admin-mobile-menu.component';
@@ -15,7 +16,7 @@ describe('AdminMobileMenuComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule, MatTabsModule],
-      declarations: [AdminMobileMenuComponent, MockComponents(AdminMenuLinkComponent)],
+      declarations: [AdminMobileMenuComponent, MockComponents(AdminMenuLinkComponent), MockPipes(NavPathPipe)],
       providers: [
         {
           provide: AdminMenuService,

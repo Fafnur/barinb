@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 import { AdminRoomGuestsComponent } from './admin-room-guests.component';
 
@@ -8,9 +12,9 @@ describe('AdminRoomGuestsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminRoomGuestsComponent ]
-    })
-    .compileComponents();
+      imports: [MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule],
+      declarations: [AdminRoomGuestsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
