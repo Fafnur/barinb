@@ -1,0 +1,18 @@
+@use '~@angular/material' as mat;
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid mat.get-color-from-palette(mat.$gray-palette, 300);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-direction: row;
+  }
+}

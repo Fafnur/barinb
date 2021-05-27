@@ -30,11 +30,7 @@ export class RoomEffects implements OnInitEffects {
       fetch({
         id: () => 'add-room',
         run: (action, rooms) => RoomActions.addRoomSuccess({ payload: createRoomFromNewRoom(rooms ?? [], action.payload) }),
-        onError: (action, payload) => {
-          console.log(payload);
-
-          return RoomActions.addRoomFailure({ payload });
-        },
+        onError: (action, payload) => RoomActions.addRoomFailure({ payload }),
       })
     )
   );

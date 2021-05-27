@@ -1,0 +1,10 @@
+@import 'src/stylesheets/utils';
+
+:host {
+  display: block;
+
+  @include media-breakpoint-up(md) {
+    flex: 0 0 auto;
+    width: 75%;
+  }
+}

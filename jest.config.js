@@ -72,6 +72,7 @@ module.exports = {
     '@app/admin/layout': ['<rootDir>/src/app/admin/layout/index.ts'],
     '@app/admin/menu': ['<rootDir>/src/app/admin/menu/index.ts'],
     '@app/admin/page': ['<rootDir>/src/app/admin/page/index.ts'],
+    '@app/admin/view/shared': ['<rootDir>/src/app/admin/view/shared/index.ts'],
     '@app/errors/shared': ['<rootDir>/src/app/errors/shared/index.ts'],
     '@app/errors/not-found/page': ['<rootDir>/src/app/errors/not-found/page/index.ts'],
   },

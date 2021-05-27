@@ -10,5 +10,5 @@ import { RoomExtended } from '@app/rooms/manager';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminRoomViewDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public room: RoomExtended) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public readonly room: RoomExtended) {}
 }
