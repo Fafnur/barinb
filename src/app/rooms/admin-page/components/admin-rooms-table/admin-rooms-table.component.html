@@ -16,26 +16,26 @@
 
     <ng-container [matColumnDef]="RoomField.Description">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Описание</th>
-      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      <td mat-cell *matCellDef="let room">{{ room.description }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Price">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Цена</th>
-      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+      <td mat-cell *matCellDef="let room">{{ room.price }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Created">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата создания</th>
-      <td mat-cell *matCellDef="let element">{{ element.created | date: 'longDate' }}</td>
+      <td mat-cell *matCellDef="let room">{{ room.created | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Updated">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата обновления</th>
-      <td mat-cell *matCellDef="let element">{{ element.updated | date: 'longDate' }}</td>
+      <td mat-cell *matCellDef="let room">{{ room.updated | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="'actions'">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Просмотр</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Действия</th>
       <td mat-cell *matCellDef="let room">
         <app-admin-room-actions [room]="room"></app-admin-room-actions>
       </td>

@@ -1,2 +1,4 @@
 <app-admin-rooms-actions></app-admin-rooms-actions>
-<app-admin-rooms-table [data]="rooms$ | async"></app-admin-rooms-table>
+
+<app-admin-rooms-table [data]="rooms" *ngIf="isDesktopScreen"></app-admin-rooms-table>
+<app-admin-rooms-list [data]="rooms" *ngIf="!isDesktopScreen"></app-admin-rooms-list>

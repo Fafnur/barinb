@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { RoomManager } from '@app/rooms/manager';
 
 import { AdminRoomsActionsComponent } from './components/admin-rooms-actions/admin-rooms-actions.component';
+import { AdminRoomsListComponent } from './components/admin-rooms-list/admin-rooms-list.component';
 import { AdminRoomsTableComponent } from './components/admin-rooms-table/admin-rooms-table.component';
 import { RoomAdminPageComponent } from './room-admin-page.component';
 
@@ -16,7 +17,7 @@ describe('RoomAdminPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [RoomAdminPageComponent, MockComponents(AdminRoomsActionsComponent, AdminRoomsTableComponent)],
+      declarations: [RoomAdminPageComponent, MockComponents(AdminRoomsActionsComponent, AdminRoomsTableComponent, AdminRoomsListComponent)],
       providers: [
         {
           provide: RoomManager,

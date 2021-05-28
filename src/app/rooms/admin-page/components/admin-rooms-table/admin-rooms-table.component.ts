@@ -24,10 +24,10 @@ export class AdminRoomsTableComponent {
     this.changeDetectorRef.markForCheck();
   }
 
-  rooms!: RoomExtended[] | null;
-
   // eslint-disable-next-line @typescript-eslint/naming-convention
   RoomField = RoomField;
+
+  rooms!: RoomExtended[] | null;
 
   dataSource!: MatTableDataSource<RoomExtended>;
   displayedColumns: string[] = [
