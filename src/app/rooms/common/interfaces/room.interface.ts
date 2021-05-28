@@ -173,10 +173,3 @@ export const ROOMS_IDS: Record<RoomField, string> = {
   [RoomField.Created]: 'RoomCreated',
   [RoomField.Updated]: 'RoomUpdated',
 };
-
-export enum RoomAction {
-  Actions = 'actions',
-  View = 'view',
-  Edit = 'edit',
-  Remove = 'remove',
-}

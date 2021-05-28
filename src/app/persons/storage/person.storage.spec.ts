@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Person } from '@app/persons/common';
+import { PersonEntity } from '@app/persons/common';
 
 import { PersonStorage } from './person.storage';
-import { PERSONS_STUB } from './person.stub';
+import { PERSONS_DTO_STUB } from './person.stub';
 
 describe('PersonStorage', () => {
   let storage: PersonStorage;
@@ -21,7 +21,7 @@ describe('PersonStorage', () => {
 
   it('should return PERSONS_STUB', (done) => {
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(PERSONS_STUB.length);
+      expect(result.length).toBe(PERSONS_DTO_STUB.length);
       done();
     });
   });
@@ -36,10 +36,10 @@ describe('PersonStorage', () => {
   });
 
   it('should return update persons', (done) => {
-    storage.post([...PERSONS_STUB, {} as Person]);
+    storage.post([{}, {}] as PersonEntity[]);
 
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(PERSONS_STUB.length + 1);
+      expect(result.length).toBe(2);
       done();
     });
   });
@@ -49,7 +49,7 @@ describe('PersonStorage', () => {
     storage.reset();
 
     storage.get().subscribe((result) => {
-      expect(result.length).toBe(PERSONS_STUB.length);
+      expect(result.length).toBe(PERSONS_DTO_STUB.length);
       done();
     });
   });

@@ -1,6 +1,6 @@
-import { Person } from '@app/persons/common';
+import { PersonDto } from '@app/persons/common';
 
-export const PERSONS_STUB: Person[] = [
+export const PERSONS_DTO_STUB: PersonDto[] = [
   {
     id: 1,
     lastName: 'Иванов',

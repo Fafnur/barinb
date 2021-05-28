@@ -1,37 +1,129 @@
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 
-import { Person } from '@app/persons/common';
+import { PersonEntity } from '@app/persons/common';
 
 import * as PersonActions from './person.actions';
 
 export const PERSON_FEATURE_KEY = 'persons';
 
-export interface PersonState {
-  persons: Person[] | null;
+export interface PersonState extends EntityState<PersonEntity> {
   personsLoadError: Record<string, any> | null;
+  personsLoadRun: boolean;
+
+  personCreateError: Record<string, any> | null;
+  personCreateRun: boolean;
 }
 
 export interface PersonPartialState {
   readonly [PERSON_FEATURE_KEY]: PersonState;
 }
 
-export const personInitialState: PersonState = {
-  persons: null,
+export const personAdapter: EntityAdapter<PersonEntity> = createEntityAdapter<PersonEntity>();
+
+export const personInitialState: PersonState = personAdapter.getInitialState({
   personsLoadError: null,
-};
+  personsLoadRun: false,
+  personCreateError: null,
+  personCreateRun: false,
+});
 
 export const reducer = createReducer(
   personInitialState,
   on(PersonActions.loadPersons, (state) => ({
     ...state,
     personsLoadError: null,
+    personsLoadRun: true,
   })),
-  on(PersonActions.loadPersonsSuccess, (state, { payload }) => ({
-    ...state,
-    persons: payload,
-  })),
+  on(PersonActions.loadPersonsSuccess, (state, { payload }) =>
+    personAdapter.setAll(payload, {
+      ...state,
+      personsLoadRun: false,
+    })
+  ),
   on(PersonActions.loadPersonsFailure, (state, { payload }) => ({
     ...state,
     personsLoadError: payload,
-  }))
+    personsLoadRun: false,
+  })),
+  on(PersonActions.clearPersons, (state) =>
+    personAdapter.removeAll({
+      ...state,
+    })
+  ),
+  on(PersonActions.removePerson, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          personRemoveRun: true,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.removePersonSuccess, (state, { payload }) => personAdapter.removeOne(payload.id, state)),
+  on(PersonActions.removePersonFailure, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          personRemoveError: payload,
+          personRemoveRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.addPerson, (state) => ({
+    ...state,
+    personCreateError: null,
+    personCreateRun: true,
+  })),
+  on(PersonActions.addPersonSuccess, (state, { payload }) =>
+    personAdapter.addOne(payload, {
+      ...state,
+      personCreateRun: false,
+    })
+  ),
+  on(PersonActions.addPersonFailure, (state, { payload }) => ({
+    ...state,
+    personCreateError: payload,
+    personCreateRun: false,
+  })),
+  on(PersonActions.changePerson, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          personChangeRun: true,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.changePersonSuccess, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          ...payload,
+          personChangeRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.changePersonFailure, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          personChangeError: payload,
+          personChangeRun: false,
+        },
+      },
+      state
+    )
+  )
 );

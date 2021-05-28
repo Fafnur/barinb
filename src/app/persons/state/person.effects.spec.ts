@@ -9,7 +9,7 @@ import { PersonStorage } from '@app/persons/storage';
 import * as PersonActions from './person.actions';
 import { PersonEffects } from './person.effects';
 import { PERSON_FEATURE_KEY, personInitialState } from './person.reducer';
-import { PERSONS_LOAD_ERROR, PERSONS_STUB } from './person.stub';
+import { PERSON_LOAD_ERROR, PERSONS_STUB } from './person.stub';
 
 describe('PersonEffects', () => {
   let actions$: Observable<any>;
@@ -55,10 +55,10 @@ describe('PersonEffects', () => {
 
     it('should return load person failure', () => {
       const action = PersonActions.loadPersons();
-      const completion = PersonActions.loadPersonsFailure({ payload: PERSONS_LOAD_ERROR });
+      const completion = PersonActions.loadPersonsFailure({ payload: PERSON_LOAD_ERROR });
 
       actions$ = hot('-a-|', { a: action });
-      const response = cold('-#|', {}, PERSONS_LOAD_ERROR);
+      const response = cold('-#|', {}, PERSON_LOAD_ERROR);
       const expected = cold('--a|', { a: completion });
       storage.get = jest.fn(() => response);
 
