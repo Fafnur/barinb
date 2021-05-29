@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { BuildingFacade } from '@app/buildings/state';
-import { PersonService } from '@app/persons/service';
+import { PersonFacade } from '@app/persons/state';
 import { RoomFacade } from '@app/rooms/state';
 
 import { RoomManager } from './room.manager';
@@ -32,10 +32,10 @@ describe('RoomManager', () => {
           } as Partial<BuildingFacade>,
         },
         {
-          provide: PersonService,
+          provide: PersonFacade,
           useValue: {
             person$: jest.fn(() => of()),
-          } as Partial<PersonService>,
+          } as Partial<PersonFacade>,
         },
       ],
     }).compileComponents();

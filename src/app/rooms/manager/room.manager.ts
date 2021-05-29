@@ -5,7 +5,7 @@ import { filter, map, switchMap } from 'rxjs/operators';
 import { Building } from '@app/buildings/common';
 import { BuildingFacade } from '@app/buildings/state';
 import { Person } from '@app/persons/common';
-import { PersonService } from '@app/persons/service';
+import { PersonFacade } from '@app/persons/state';
 import { Room } from '@app/rooms/common';
 import { RoomFacade } from '@app/rooms/state';
 
@@ -28,7 +28,8 @@ export class RoomManager {
               this.buildingFacade.building$(room.building).pipe(
                 filter<any>(Boolean),
                 switchMap((building: Building) =>
-                  this.personService.person$(building.person).pipe(
+                  this.personFacade.person$(building.person).pipe(
+                    filter<any>(Boolean),
                     map((person) => ({
                       ...room,
                       buildingExtended: {
@@ -52,8 +53,9 @@ export class RoomManager {
         this.buildingFacade.building$(room.building).pipe(
           filter<any>(Boolean),
           switchMap((building: Building) =>
-            this.personService.person$(building.person).pipe(
-              map((person) => ({
+            this.personFacade.person$(building.person).pipe(
+              filter<any>(Boolean),
+              map((person: Person) => ({
                 ...room,
                 buildingExtended: {
                   ...building,
@@ -70,7 +72,7 @@ export class RoomManager {
   constructor(
     private readonly roomFacade: RoomFacade,
     private readonly buildingFacade: BuildingFacade,
-    private readonly personService: PersonService
+    private readonly personFacade: PersonFacade
   ) {}
 
   clear(): void {
