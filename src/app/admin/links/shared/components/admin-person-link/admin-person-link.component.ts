@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { NavigationPath } from '@app/core/navigation/common';
-import { RoomExtended } from '@app/rooms/manager';
+import { Person } from '@app/persons/common';
 
 @Component({
   selector: 'app-admin-person-link',
@@ -10,7 +10,7 @@ import { RoomExtended } from '@app/rooms/manager';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminPersonLinkComponent {
-  @Input() room!: RoomExtended;
+  @Input() person!: Person;
 
   path = NavigationPath.AdminPersonsPage;
 }

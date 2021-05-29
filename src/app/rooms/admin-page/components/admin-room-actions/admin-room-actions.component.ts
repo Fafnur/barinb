@@ -27,15 +27,15 @@ export class AdminRoomActionsComponent implements OnDestroy {
     this.destroy$.complete();
   }
 
-  onViewRoom(): void {
+  onView(): void {
     this.matDialog.open(AdminRoomViewDialogComponent, { data: this.room });
   }
 
-  onEditRoom(): void {
+  onEdit(): void {
     this.matDialog.open(AdminRoomEditDialogComponent, { data: this.room });
   }
 
-  onRemoveRoom(): void {
+  onRemove(): void {
     const dialogRef = this.matDialog.open(AdminRoomRemoveDialogComponent, { data: this.room });
     dialogRef
       .afterClosed()

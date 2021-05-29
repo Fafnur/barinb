@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -14,7 +13,7 @@ describe('AdminRoomActionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatButtonToggleModule, MatButtonModule, MatIconModule, MatDialogModule],
+      imports: [MatButtonModule, MatIconModule, MatDialogModule],
       declarations: [AdminRoomActionsComponent],
       providers: [
         {

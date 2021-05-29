@@ -1,57 +1,57 @@
 <ng-container *ngIf="rooms?.length; else emptyTpl">
-  <table class="admin-table" mat-table matSort [dataSource]="dataSource">
+  <table class="admin-table" mat-table [dataSource]="dataSource">
     <ng-container [matColumnDef]="RoomField.ID">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <th mat-header-cell *matHeaderCellDef>ID</th>
       <td mat-cell *matCellDef="let element">
         {{ element.id }}
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Photos">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Фото</th>
+      <th mat-header-cell *matHeaderCellDef>Фото</th>
       <td mat-cell *matCellDef="let room">
         <app-carousel class="room-photos-carousel" [images]="room.photos"></app-carousel>
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Description">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Описание</th>
+      <th mat-header-cell *matHeaderCellDef>Описание</th>
       <td mat-cell *matCellDef="let room">{{ room.description }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Price">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Цена</th>
+      <th mat-header-cell *matHeaderCellDef>Цена</th>
       <td mat-cell *matCellDef="let room">{{ room.price }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Created">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата создания</th>
+      <th mat-header-cell *matHeaderCellDef>Дата создания</th>
       <td mat-cell *matCellDef="let room">{{ room.created | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Updated">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата обновления</th>
+      <th mat-header-cell *matHeaderCellDef>Дата обновления</th>
       <td mat-cell *matCellDef="let room">{{ room.updated | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="'actions'">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Действия</th>
+      <th mat-header-cell *matHeaderCellDef>Действия</th>
       <td mat-cell *matCellDef="let room">
         <app-admin-room-actions [room]="room"></app-admin-room-actions>
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Building">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Здание</th>
+      <th mat-header-cell *matHeaderCellDef>Здание</th>
       <td mat-cell *matCellDef="let room">
-        <app-admin-building-link [room]="room"></app-admin-building-link>
+        <app-admin-building-link [building]="room.buildingExtended"></app-admin-building-link>
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Person">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Хозяин</th>
+      <th mat-header-cell *matHeaderCellDef>Хозяин</th>
       <td mat-cell *matCellDef="let room">
-        <app-admin-person-link [room]="room"></app-admin-person-link>
+        <app-admin-person-link [person]="room.buildingExtended.person"></app-admin-person-link>
       </td>
     </ng-container>
 

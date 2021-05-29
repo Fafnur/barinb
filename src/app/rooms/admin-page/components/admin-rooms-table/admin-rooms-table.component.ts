@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { RoomField } from '@app/rooms/common';
@@ -12,8 +11,6 @@ import { RoomExtended } from '@app/rooms/manager';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminRoomsTableComponent {
-  @ViewChild(MatSort, { static: true }) sort!: MatSort;
-
   @Input() set data(rooms: RoomExtended[] | null) {
     this.rooms = rooms;
     if (!this.dataSource) {

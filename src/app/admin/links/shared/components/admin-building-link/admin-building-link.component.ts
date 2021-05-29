@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
+import { Building } from '@app/buildings/common';
 import { NavigationPath } from '@app/core/navigation/common';
-import { Room } from '@app/rooms/common';
 
 @Component({
   selector: 'app-admin-building-link',
@@ -10,7 +10,7 @@ import { Room } from '@app/rooms/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminBuildingLinkComponent {
-  @Input() room!: Room;
+  @Input() building!: Building;
 
   path = NavigationPath.AdminBuildingsPage;
 }
