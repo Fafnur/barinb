@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Actions, ofType } from '@ngrx/effects';
 import { Action, select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Building, ChangedBuilding, NewBuilding, RemoveBuildingRoom } from '@app/buildings/common';
 import { Entity } from '@app/core/common';
@@ -17,12 +19,22 @@ export class BuildingFacade {
 
   buildingsLoadRun$ = this.store.pipe(select(BuildingSelectors.selectBuildingsLoadRun));
 
+  buildingAdded$: Observable<Building> = this.actions.pipe(
+    ofType(BuildingActions.addBuildingSuccess),
+    map((action) => action.payload)
+  );
+
+  buildingChanged$: Observable<ChangedBuilding> = this.actions.pipe(
+    ofType(BuildingActions.changeBuildingSuccess),
+    map((action) => action.payload)
+  );
+
   building$ = (id: number): Observable<Building | null> => this.store.pipe(select(BuildingSelectors.selectBuilding({ id })));
 
   buildingsByPerson$ = (id: number): Observable<Building[]> => this.store.pipe(select(BuildingSelectors.selectBuildingsByPerson({ id })));
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  constructor(private readonly store: Store<BuildingState>) {}
+  constructor(private readonly actions: Actions, private readonly store: Store<BuildingState>) {}
 
   clear(): void {
     this.dispatch(BuildingActions.clearBuildings());

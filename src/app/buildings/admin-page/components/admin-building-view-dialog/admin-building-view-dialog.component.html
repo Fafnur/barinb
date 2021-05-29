@@ -1,0 +1,50 @@
+<mat-dialog-content *ngIf="building">
+  <app-admin-room-group>
+    <app-admin-room-label>Собственник</app-admin-room-label>
+    <app-admin-room-value>{{ building.personExtended | personFullName }}</app-admin-room-value>
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Город</app-admin-room-label>
+    <app-admin-room-value>{{ building.city }}</app-admin-room-value>
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Адрес</app-admin-room-label>
+    <app-admin-room-value>{{ building.address }}</app-admin-room-value>
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Цена</app-admin-room-label>
+    <!--    <app-admin-room-value>{{ building.price | number: '1.0-0' }}</app-admin-room-value>-->
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Гостей</app-admin-room-label>
+    <!--    <app-admin-room-value>{{ building.guests }}</app-admin-room-value>-->
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Количество спален</app-admin-room-label>
+    <!--    <app-admin-room-value>{{ building.bedrooms }}</app-admin-room-value>-->
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Количество кроватей</app-admin-room-label>
+    <!--    <app-admin-room-value>{{ building.beds }}</app-admin-room-value>-->
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Количество ванных</app-admin-room-label>
+    <!--    <app-admin-room-value>{{ building.bathrooms }}</app-admin-room-value>-->
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Описание</app-admin-room-label>
+    <!--    <app-admin-room-value [innerHTML]="building.description"></app-admin-room-value>-->
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Особенности</app-admin-room-label>
+    <app-admin-room-value>
+      <!--      <ul *ngIf="building.amenities.length">-->
+      <!--        <li *ngFor="let amenity of building.amenities">{{ amenity | roomAmenitiesLabel }}</li>-->
+      <!--      </ul>-->
+      <!--      <p *ngIf="!building.amenities.length">Нет ни одной особенности</p>-->
+    </app-admin-room-value>
+  </app-admin-room-group>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Закрыть</button>
+</mat-dialog-actions>

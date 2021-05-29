@@ -1,4 +1,4 @@
-import { BuildingEntity, NewBuilding } from '../interfaces/building.interface';
+import { BuildingEntity, BuildingField, NewBuilding } from '../interfaces/building.interface';
 
 export function createBuildingFromNewBuilding(buildings: BuildingEntity[], newBuilding: NewBuilding): BuildingEntity {
   let lastId = 1;
@@ -14,6 +14,7 @@ export function createBuildingFromNewBuilding(buildings: BuildingEntity[], newBu
     id: lastId + 1,
     created,
     updated: created,
+    rooms: newBuilding[BuildingField.Rooms] ?? [],
 
     buildingRemoveRun: false,
     buildingRemoveError: null,

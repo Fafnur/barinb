@@ -70,10 +70,10 @@ export const BUILDINGS_IDS: Record<BuildingField, string> = {
   [BuildingField.Person]: 'BuildingPerson',
   [BuildingField.City]: 'BuildingCity',
   [BuildingField.Address]: 'BuildingAddress',
-  [BuildingField.Created]: 'Building',
-  [BuildingField.Updated]: 'Building',
-  [BuildingField.Lat]: 'Building',
-  [BuildingField.Lng]: 'Building',
+  [BuildingField.Created]: 'BuildingCreated',
+  [BuildingField.Updated]: 'BuildingUpdated',
+  [BuildingField.Lat]: 'BuildingLat',
+  [BuildingField.Lng]: 'BuildingLng',
 };
 
 export interface RemoveBuildingRoom {

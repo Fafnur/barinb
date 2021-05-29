@@ -28,14 +28,14 @@ export const removeBuildingSuccess = createAction('[Building] Remove Building Su
 
 export const removeBuildingFailure = createAction('[Building] Remove Building Failure', payload<Record<string, any> & Entity>());
 
-export const removeBuildings = createAction('[Room] Remove Buildings', payload<number[]>());
+export const removeBuildings = createAction('[Building] Remove Buildings', payload<number[]>());
 
-export const removeBuildingsCancel = createAction('[Room] Remove Buildings Cancel');
+export const removeBuildingsCancel = createAction('[Building] Remove Buildings Cancel');
 
-export const removeBuildingsSuccess = createAction('[Room] Remove Buildings Success', payload<number[]>());
+export const removeBuildingsSuccess = createAction('[Building] Remove Buildings Success', payload<number[]>());
 
 export const removeBuildingsFailure = createAction(
-  '[Room] Remove Buildings Failure',
+  '[Building] Remove Buildings Failure',
   payload<Record<string, any> & { buildings: number[] }>()
 );
 
@@ -47,13 +47,13 @@ export const removeBuildingRoomSuccess = createAction('[Building] Remove Buildin
 
 export const removeBuildingRoomFailure = createAction('[Building] Remove Building Room Failure', payload<Record<string, any> & Entity>());
 
-export const addBuilding = createAction('[Building] Remove Building', payload<NewBuilding>());
+export const addBuilding = createAction('[Building] Add Building', payload<NewBuilding>());
 
-export const addBuildingCancel = createAction('[Building] Remove Building Cancel');
+export const addBuildingCancel = createAction('[Building] Add Building Cancel');
 
-export const addBuildingSuccess = createAction('[Building] Remove Building Success', payload<BuildingEntity>());
+export const addBuildingSuccess = createAction('[Building] Add Building Success', payload<BuildingEntity>());
 
-export const addBuildingFailure = createAction('[Building] Remove Building Failure', payload<Record<string, any>>());
+export const addBuildingFailure = createAction('[Building] Add Building Failure', payload<Record<string, any>>());
 
 export const changeBuilding = createAction('[Building] Change Building', payload<ChangedBuilding>());
 

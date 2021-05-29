@@ -7,6 +7,9 @@ import { ColumnComponent, RowComponent } from '@app/ui/row';
 
 import { BuildingAdminPageComponent } from './building-admin-page.component';
 import { BuildingAdminPageRoutingModule } from './building-admin-page-routing.module';
+import { AdminBuildingsActionsComponent } from './components/admin-buildings-actions/admin-buildings-actions.component';
+import { AdminBuildingsListComponent } from './components/admin-buildings-list/admin-buildings-list.component';
+import { AdminBuildingsTableComponent } from './components/admin-buildings-table/admin-buildings-table.component';
 
 describe('BuildingAdminPageRoutingModule', () => {
   beforeEach(async () => {
@@ -16,7 +19,16 @@ describe('BuildingAdminPageRoutingModule', () => {
         // TODO: Fix jest imports.
         BuildingAdminPageComponent,
         AdminLayoutComponent,
-        MockComponents(RowComponent, ColumnComponent, AdminDesktopMenuComponent, AdminMobileMenuComponent, ContainerComponent),
+        MockComponents(
+          RowComponent,
+          ColumnComponent,
+          AdminDesktopMenuComponent,
+          AdminMobileMenuComponent,
+          ContainerComponent,
+          AdminBuildingsActionsComponent,
+          AdminBuildingsTableComponent,
+          AdminBuildingsListComponent
+        ),
       ],
     }).compileComponents();
   });

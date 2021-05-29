@@ -1,0 +1,24 @@
+@import 'src/stylesheets/utils';
+
+.admin-table {
+  width: 100%;
+}
+
+.room-photos-carousel {
+  width: 10rem;
+
+  @include media-breakpoint-up(lg) {
+    width: 11rem;
+    height: 7rem;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 14rem;
+    height: 9rem;
+  }
+
+  @include media-breakpoint-up(hg) {
+    width: 18rem;
+    height: 12rem;
+  }
+}

@@ -1,0 +1,33 @@
+@import 'src/stylesheets/utils';
+
+.admin-person-option {
+  height: 3rem !important;
+
+  ::ng-deep .mat-option-text {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+  }
+}
+
+.admin-person-avatar {
+  width: 3rem !important;
+  height: 3rem;
+  margin-right: 1rem;
+  display: flex;
+}
+
+.admin-person-source {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.admin-person-name {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+}
