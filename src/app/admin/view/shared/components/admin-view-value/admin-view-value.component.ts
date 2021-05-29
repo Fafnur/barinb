@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin-room-value',
-  templateUrl: './admin-room-value.component.html',
-  styleUrls: ['./admin-room-value.component.scss'],
+  templateUrl: './admin-view-value.component.html',
+  styleUrls: ['./admin-view-value.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminRoomValueComponent {}
+export class AdminViewValueComponent {}

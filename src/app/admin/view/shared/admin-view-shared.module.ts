@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 
-import { AdminRoomGroupComponent } from './components/admin-room-group/admin-room-group.component';
-import { AdminRoomGroupModule } from './components/admin-room-group/admin-room-group.module';
-import { AdminRoomLabelComponent } from './components/admin-room-label/admin-room-label.component';
-import { AdminRoomLabelModule } from './components/admin-room-label/admin-room-label.module';
-import { AdminRoomValueComponent } from './components/admin-room-value/admin-room-value.component';
-import { AdminRoomValueModule } from './components/admin-room-value/admin-room-value.module';
+import { AdminViewGroupComponent } from './components/admin-view-group/admin-view-group.component';
+import { AdminViewGroupModule } from './components/admin-view-group/admin-view-group.module';
+import { AdminViewLabelComponent } from './components/admin-view-label/admin-view-label.component';
+import { AdminViewLabelModule } from './components/admin-view-label/admin-view-label.module';
+import { AdminViewValueComponent } from './components/admin-view-value/admin-view-value.component';
+import { AdminViewValueModule } from './components/admin-view-value/admin-view-value.module';
 
 @NgModule({
-  imports: [AdminRoomGroupModule, AdminRoomValueModule, AdminRoomLabelModule],
-  exports: [AdminRoomGroupComponent, AdminRoomLabelComponent, AdminRoomValueComponent],
+  imports: [AdminViewGroupModule, AdminViewValueModule, AdminViewLabelModule],
+  exports: [AdminViewGroupComponent, AdminViewLabelComponent, AdminViewValueComponent],
 })
 export class AdminViewSharedModule {}

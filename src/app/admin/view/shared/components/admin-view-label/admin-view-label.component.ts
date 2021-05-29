@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin-room-label',
-  templateUrl: './admin-room-label.component.html',
-  styleUrls: ['./admin-room-label.component.scss'],
+  templateUrl: './admin-view-label.component.html',
+  styleUrls: ['./admin-view-label.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminRoomLabelComponent {}
+export class AdminViewLabelComponent {}

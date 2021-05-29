@@ -5,10 +5,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MockModule } from 'ng-mocks';
 
+import { AdminBuildingLinkModule, AdminPersonLinkModule } from '@app/admin/links/shared';
 import { CarouselModule } from '@app/ui/carousel';
 
-import { AdminBuildingLinkModule } from '../admin-building-link/admin-building-link.module';
-import { AdminPersonLinkModule } from '../admin-person-link/admin-person-link.module';
 import { AdminRoomActionsModule } from '../admin-room-actions/admin-room-actions.module';
 import { AdminRoomsTableComponent } from './admin-rooms-table.component';
 

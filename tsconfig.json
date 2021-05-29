@@ -76,6 +76,7 @@
       "@app/admin/menu": ["src/app/admin/menu/index.ts"],
       "@app/admin/page": ["src/app/admin/page/index.ts"],
       "@app/admin/view/shared": ["src/app/admin/view/shared/index.ts"],
+      "@app/admin/links/shared": ["src/app/admin/links/shared/index.ts"],
       "@app/errors/shared": ["src/app/errors/shared/index.ts"],
       "@app/errors/not-found/page": ["src/app/errors/not-found/page/index.ts"],
     }

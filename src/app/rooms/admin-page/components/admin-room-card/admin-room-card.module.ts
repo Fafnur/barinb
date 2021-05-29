@@ -5,12 +5,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 
+import { AdminBuildingLinkModule, AdminPersonLinkModule } from '@app/admin/links/shared';
 import { NavigationSharedModule } from '@app/core/navigation/shared';
 import { PersonSharedModule } from '@app/persons/shared';
 import { CarouselModule } from '@app/ui/carousel';
 
-import { AdminBuildingLinkModule } from '../admin-building-link/admin-building-link.module';
-import { AdminPersonLinkModule } from '../admin-person-link/admin-person-link.module';
 import { AdminRoomActionsModule } from '../admin-room-actions/admin-room-actions.module';
 import { AdminRoomCardComponent } from './admin-room-card.component';
 

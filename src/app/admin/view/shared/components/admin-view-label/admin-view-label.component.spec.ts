@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminRoomLabelComponent } from './admin-room-label.component';
+import { AdminViewLabelComponent } from './admin-view-label.component';
 
-describe('AdminRoomLabelComponent', () => {
-  let component: AdminRoomLabelComponent;
-  let fixture: ComponentFixture<AdminRoomLabelComponent>;
+describe('AdminViewLabelComponent', () => {
+  let component: AdminViewLabelComponent;
+  let fixture: ComponentFixture<AdminViewLabelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AdminRoomLabelComponent],
+      declarations: [AdminViewLabelComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminRoomLabelComponent);
+    fixture = TestBed.createComponent(AdminViewLabelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminRoomGroupComponent } from './admin-room-group.component';
+import { AdminViewValueComponent } from './admin-view-value.component';
 
-describe('AdminRoomGroupComponent', () => {
-  let component: AdminRoomGroupComponent;
-  let fixture: ComponentFixture<AdminRoomGroupComponent>;
+describe('AdminViewValueComponent', () => {
+  let component: AdminViewValueComponent;
+  let fixture: ComponentFixture<AdminViewValueComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AdminRoomGroupComponent],
+      declarations: [AdminViewValueComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminRoomGroupComponent);
+    fixture = TestBed.createComponent(AdminViewValueComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

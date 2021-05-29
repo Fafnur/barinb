@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AdminRoomValueModule } from './admin-room-value.module';
+import { AdminViewLabelModule } from './admin-view-label.module';
 
-describe('AdminRoomLabelModule', () => {
+describe('AdminViewLabelModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminRoomValueModule],
+      imports: [AdminViewLabelModule],
     }).compileComponents();
   });
 
   it('should create', () => {
-    expect(AdminRoomValueModule).toBeTruthy();
+    expect(AdminViewLabelModule).toBeTruthy();
   });
 });

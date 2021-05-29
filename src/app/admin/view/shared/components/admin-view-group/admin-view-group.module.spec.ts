@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AdminRoomGroupModule } from './admin-room-group.module';
+import { AdminViewGroupModule } from './admin-view-group.module';
 
-describe('AdminRoomGroupModule', () => {
+describe('AdminViewGroupModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminRoomGroupModule],
+      imports: [AdminViewGroupModule],
     }).compileComponents();
   });
 
   it('should create', () => {
-    expect(AdminRoomGroupModule).toBeTruthy();
+    expect(AdminViewGroupModule).toBeTruthy();
   });
 });
