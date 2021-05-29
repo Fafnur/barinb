@@ -9,12 +9,12 @@ import { PersonFacade } from '@app/persons/state';
 import { Room } from '@app/rooms/common';
 import { RoomFacade } from '@app/rooms/state';
 
-export interface BuildingExtended extends Building {
+export interface RoomBuildingExtended extends Building {
   personExtended: Person;
 }
 
 export interface RoomExtended extends Room {
-  buildingExtended: BuildingExtended;
+  buildingExtended: RoomBuildingExtended;
 }
 
 @Injectable()

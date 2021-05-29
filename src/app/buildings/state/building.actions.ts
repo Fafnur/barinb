@@ -14,11 +14,11 @@ export const clearBuildings = createAction('[Building] Clear Buildings');
 
 export const clearBuildingsRooms = createAction('[Building] Clear Buildings Rooms');
 
-export const clearBuildingsRoomsCancel = createAction('[Building] Clear Buildings Cancel');
+export const clearBuildingsRoomsCancel = createAction('[Building] Clear Buildings Rooms Cancel');
 
-export const clearBuildingsRoomsSuccess = createAction('[Building] Clear Buildings Success', payload<Building[]>());
+export const clearBuildingsRoomsSuccess = createAction('[Building] Clear Buildings Rooms Success', payload<BuildingEntity[]>());
 
-export const clearBuildingsRoomsFailure = createAction('[Building] Clear Buildings Failure', payload<Record<string, any>>());
+export const clearBuildingsRoomsFailure = createAction('[Building] Clear Buildings Rooms Failure', payload<Record<string, any>>());
 
 export const removeBuilding = createAction('[Building] Remove Building', payload<Entity>());
 
@@ -27,6 +27,17 @@ export const removeBuildingCancel = createAction('[Building] Remove Building Can
 export const removeBuildingSuccess = createAction('[Building] Remove Building Success', payload<Entity>());
 
 export const removeBuildingFailure = createAction('[Building] Remove Building Failure', payload<Record<string, any> & Entity>());
+
+export const removeBuildings = createAction('[Room] Remove Buildings', payload<number[]>());
+
+export const removeBuildingsCancel = createAction('[Room] Remove Buildings Cancel');
+
+export const removeBuildingsSuccess = createAction('[Room] Remove Buildings Success', payload<number[]>());
+
+export const removeBuildingsFailure = createAction(
+  '[Room] Remove Buildings Failure',
+  payload<Record<string, any> & { buildings: number[] }>()
+);
 
 export const removeBuildingRoom = createAction('[Building] Remove Building Room', payload<RemoveBuildingRoom>());
 

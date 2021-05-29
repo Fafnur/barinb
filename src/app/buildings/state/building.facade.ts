@@ -19,8 +19,7 @@ export class BuildingFacade {
 
   building$ = (id: number): Observable<Building | null> => this.store.pipe(select(BuildingSelectors.selectBuilding({ id })));
 
-  buildingsByPerson$ = (id: number): Observable<Building[] | null> =>
-    this.store.pipe(select(BuildingSelectors.selectBuildingsByPerson({ id })));
+  buildingsByPerson$ = (id: number): Observable<Building[]> => this.store.pipe(select(BuildingSelectors.selectBuildingsByPerson({ id })));
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(private readonly store: Store<BuildingState>) {}
@@ -39,6 +38,10 @@ export class BuildingFacade {
 
   removeBuilding(payload: Entity): void {
     this.dispatch(BuildingActions.removeBuilding({ payload }));
+  }
+
+  removeBuildings(payload: number[]): void {
+    this.dispatch(BuildingActions.removeBuildings({ payload }));
   }
 
   removeBuildingRoom(payload: RemoveBuildingRoom): void {

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Entity } from '@app/core/common';
-import { ChangedPerson, NewPerson, Person } from '@app/persons/common';
+import { ChangedPerson, NewPerson, Person, RemovePersonBuilding } from '@app/persons/common';
 
 import * as PersonActions from './person.actions';
 import { PersonState } from './person.reducer';
@@ -38,12 +38,20 @@ export class PersonFacade {
     this.dispatch(PersonActions.clearPersons());
   }
 
+  clearPersonsBuildings(): void {
+    this.dispatch(PersonActions.clearPersonsBuildings());
+  }
+
   load(): void {
     this.dispatch(PersonActions.loadPersons());
   }
 
   removePerson(payload: Entity): void {
     this.dispatch(PersonActions.removePerson({ payload }));
+  }
+
+  removePersonBuilding(payload: RemovePersonBuilding): void {
+    this.dispatch(PersonActions.removePersonBuilding({ payload }));
   }
 
   addPerson(payload: NewPerson): void {

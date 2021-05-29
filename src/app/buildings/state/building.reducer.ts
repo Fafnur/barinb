@@ -16,6 +16,9 @@ export interface BuildingState extends EntityState<BuildingEntity> {
 
   buildingsRoomsClearError: Record<string, any> | null;
   buildingsRoomsClearRun: boolean;
+
+  buildingsRemoveError: (Record<string, any> & { buildings: number[] }) | null;
+  buildingsRemoveRun: boolean;
 }
 
 export interface BuildingPartialState {
@@ -31,6 +34,8 @@ export const buildingInitialState: BuildingState = buildingAdapter.getInitialSta
   buildingCreateRun: false,
   buildingsRoomsClearError: null,
   buildingsRoomsClearRun: false,
+  buildingsRemoveError: null,
+  buildingsRemoveRun: false,
 });
 
 export const reducer = createReducer(
@@ -181,5 +186,21 @@ export const reducer = createReducer(
     ...state,
     buildingsRoomsClearError: payload,
     buildingsRoomsClearRun: false,
+  })),
+  on(BuildingActions.removeBuildings, (state) => ({
+    ...state,
+    buildingsRemoveError: null,
+    buildingsRemoveRun: true,
+  })),
+  on(BuildingActions.removeBuildingsSuccess, (state, { payload }) =>
+    buildingAdapter.removeMany(payload, {
+      ...state,
+      buildingsRemoveRun: false,
+    })
+  ),
+  on(BuildingActions.removeBuildingsFailure, (state, { payload }) => ({
+    ...state,
+    buildingsRemoveError: payload,
+    buildingsRemoveRun: false,
   }))
 );

@@ -16,6 +16,8 @@ export function castPersonEntity(personDto: PersonDto): PersonEntity {
     personRemoveError: null,
     personChangeRun: false,
     personChangeError: null,
+    personBuildingRemoveRun: false,
+    personBuildingRemoveError: null,
   };
 }
 

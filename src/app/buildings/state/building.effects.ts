@@ -29,13 +29,11 @@ export class BuildingEffects implements OnInitEffects {
       ofType(BuildingActions.clearBuildingsRooms),
       withLatestFrom(this.store.pipe(select(BuildingSelectors.selectBuildings))),
       fetch({
-        id: () => 'load-buildings',
+        id: () => 'clear-buildings-rooms',
         run: (action, buildings) =>
-          buildings
-            ? BuildingActions.clearBuildingsRoomsSuccess({
-                payload: buildings?.map((building) => ({ ...building, rooms: [] })) ?? null,
-              })
-            : BuildingActions.clearBuildingsRoomsCancel(),
+          BuildingActions.clearBuildingsRoomsSuccess({
+            payload: buildings?.map((building) => ({ ...building, rooms: [] })) ?? [],
+          }),
         onError: (action, payload) => BuildingActions.clearBuildingsRoomsFailure({ payload }),
       })
     )
@@ -46,7 +44,7 @@ export class BuildingEffects implements OnInitEffects {
       ofType(BuildingActions.removeBuilding),
       withLatestFrom(this.store.pipe(select(BuildingSelectors.selectBuildingsEntities))),
       fetch({
-        id: (action) => `remove-buiding-${action.payload.id}`,
+        id: (action) => `remove-building-${action.payload.id}`,
         run: (action, buildingsEntities) => {
           const building = buildingsEntities ? buildingsEntities[action.payload.id] : null;
 
@@ -74,7 +72,7 @@ export class BuildingEffects implements OnInitEffects {
     this.actions$.pipe(
       ofType(BuildingActions.changeBuilding),
       fetch({
-        id: () => 'change-building',
+        id: (action) => `change-building-${action.payload.id}`,
         run: (action) => BuildingActions.changeBuildingSuccess({ payload: action.payload }),
         onError: (action, payload) => BuildingActions.changeBuildingFailure({ payload }),
       })
@@ -86,7 +84,7 @@ export class BuildingEffects implements OnInitEffects {
       ofType(BuildingActions.removeBuildingRoom),
       withLatestFrom(this.store.pipe(select(BuildingSelectors.selectBuildingsEntities))),
       fetch({
-        id: () => 'change-building',
+        id: (action) => `remove-building-room-${action.payload.id}-${action.payload.room}`,
         run: (action, buildingsEntities) => {
           const building = buildingsEntities ? buildingsEntities[action.payload.id] : null;
           const rooms = building?.rooms.filter((room) => room !== action.payload.room) ?? [];
@@ -94,6 +92,17 @@ export class BuildingEffects implements OnInitEffects {
           return BuildingActions.removeBuildingRoomSuccess({ payload: { id: action.payload.id, rooms } });
         },
         onError: (action, payload) => BuildingActions.removeBuildingRoomFailure({ payload: { ...payload, id: action.payload } }),
+      })
+    )
+  );
+
+  removeBuildings$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BuildingActions.removeBuildings),
+      fetch({
+        id: () => 'remove-buildings',
+        run: (action) => BuildingActions.removeBuildingsSuccess({ payload: action.payload }),
+        onError: (action, payload) => BuildingActions.removeBuildingsFailure({ payload: { ...payload, buildings: action.payload } }),
       })
     )
   );

@@ -32,6 +32,9 @@ export interface PersonEntity {
 
   personChangeRun: boolean;
   personChangeError: Record<string, any> | null;
+
+  personBuildingRemoveRun: boolean;
+  personBuildingRemoveError: Record<string, any> | null;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -71,3 +74,13 @@ export const PERSONS_IDS: Record<PersonField, string> = {
   [PersonField.Created]: 'PersonCreated',
   [PersonField.Updated]: 'PersonUpdated',
 };
+
+export interface RemovePersonBuilding {
+  id: number;
+  building: number;
+}
+
+export interface RemovedPersonBuilding {
+  id: number;
+  buildings: number[];
+}

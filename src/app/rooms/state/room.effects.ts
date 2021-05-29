@@ -62,6 +62,17 @@ export class RoomEffects implements OnInitEffects {
     )
   );
 
+  removeRooms$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(RoomActions.removeRooms),
+      fetch({
+        id: () => 'remove-rooms',
+        run: (action) => RoomActions.removeRoomsSuccess({ payload: action.payload }),
+        onError: (action, payload) => RoomActions.removeRoomsFailure({ payload: { ...payload, rooms: action.payload } }),
+      })
+    )
+  );
+
   constructor(private readonly actions$: Actions, private readonly store: Store, private readonly roomStorage: RoomStorage) {}
 
   ngrxOnInitEffects(): Action {

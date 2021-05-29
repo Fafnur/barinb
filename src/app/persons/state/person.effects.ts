@@ -55,9 +55,41 @@ export class PersonEffects implements OnInitEffects {
     this.actions$.pipe(
       ofType(PersonActions.changePerson),
       fetch({
-        id: () => 'change-person',
+        id: (action) => `change-person-${action.payload.id}`,
         run: (action) => PersonActions.changePersonSuccess({ payload: action.payload }),
         onError: (action, payload) => PersonActions.changePersonFailure({ payload }),
+      })
+    )
+  );
+
+  removePersonBuilding$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PersonActions.removePersonBuilding),
+      withLatestFrom(this.store.pipe(select(PersonSelectors.selectPersonsEntities))),
+      fetch({
+        id: (action) => `remove-person-building-${action.payload.id}-${action.payload.building}`,
+        run: (action, personsEntities) => {
+          const person = personsEntities ? personsEntities[action.payload.id] : null;
+          const buildings = person?.buildings.filter((building) => building !== action.payload.building) ?? [];
+
+          return PersonActions.removePersonBuildingSuccess({ payload: { id: action.payload.id, buildings } });
+        },
+        onError: (action, payload) => PersonActions.removePersonBuildingFailure({ payload: { ...payload, id: action.payload } }),
+      })
+    )
+  );
+
+  clearPersonsBuildings$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PersonActions.clearPersonsBuildings),
+      withLatestFrom(this.store.pipe(select(PersonSelectors.selectPersons))),
+      fetch({
+        id: () => 'clear-persons-buildings',
+        run: (action, persons) =>
+          PersonActions.clearPersonsBuildingsSuccess({
+            payload: persons?.map((person) => ({ ...person, buildings: [] })) ?? [],
+          }),
+        onError: (action, payload) => PersonActions.clearPersonsBuildingsFailure({ payload }),
       })
     )
   );

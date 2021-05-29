@@ -10,9 +10,10 @@ export const PERSON_FEATURE_KEY = 'persons';
 export interface PersonState extends EntityState<PersonEntity> {
   personsLoadError: Record<string, any> | null;
   personsLoadRun: boolean;
-
   personCreateError: Record<string, any> | null;
   personCreateRun: boolean;
+  personBuildingsClearError: Record<string, any> | null;
+  personBuildingsClearRun: boolean;
 }
 
 export interface PersonPartialState {
@@ -26,6 +27,8 @@ export const personInitialState: PersonState = personAdapter.getInitialState({
   personsLoadRun: false,
   personCreateError: null,
   personCreateRun: false,
+  personBuildingsClearError: null,
+  personBuildingsClearRun: false,
 });
 
 export const reducer = createReducer(
@@ -125,5 +128,56 @@ export const reducer = createReducer(
       },
       state
     )
-  )
+  ),
+  on(PersonActions.removePersonBuilding, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          personBuildingRemoveRun: true,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.removePersonBuildingSuccess, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          buildings: payload.buildings,
+          personBuildingRemoveRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.removePersonBuildingFailure, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          personBuildingRemoveError: payload,
+          personBuildingRemoveRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.clearPersonsBuildings, (state) => ({
+    ...state,
+    personBuildingsClearError: null,
+    personBuildingsClearRun: true,
+  })),
+  on(PersonActions.clearPersonsBuildingsSuccess, (state, { payload }) =>
+    personAdapter.setAll(payload, {
+      ...state,
+      personBuildingsClearRun: false,
+    })
+  ),
+  on(PersonActions.clearPersonsBuildingsFailure, (state, { payload }) => ({
+    ...state,
+    personBuildingsClearError: payload,
+    personBuildingsClearRun: false,
+  }))
 );

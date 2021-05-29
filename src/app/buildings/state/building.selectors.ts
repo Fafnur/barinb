@@ -28,6 +28,7 @@ export const selectBuilding = (props: Entity) =>
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,@typescript-eslint/explicit-function-return-type
 export const selectBuildingsByPerson = (props: Entity) =>
-  createSelector(selectBuildings, (buildingEntities: BuildingEntity[]) =>
-    buildingEntities ? buildingEntities.filter((room) => room.person === props.id) : null
+  createSelector(
+    selectBuildings,
+    (buildingEntities: BuildingEntity[]) => buildingEntities?.filter((room) => room.person === props.id) ?? []
   );

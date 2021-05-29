@@ -55,6 +55,7 @@ module.exports = {
     '@app/buildings/storage': ['<rootDir>/src/app/buildings/storage/index.ts'],
     '@app/buildings/service': ['<rootDir>/src/app/buildings/service/index.ts'],
     '@app/buildings/state': ['<rootDir>/src/app/buildings/state/index.ts'],
+    '@app/buildings/manager': ['<rootDir>/src/app/buildings/manager/index.ts'],
     '@app/persons/admin-page': ['<rootDir>/src/app/persons/admin-page/index.ts'],
     '@app/persons/common': ['<rootDir>/src/app/persons/common/index.ts'],
     '@app/persons/storage': ['<rootDir>/src/app/persons/storage/index.ts'],
