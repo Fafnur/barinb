@@ -27,14 +27,16 @@ export class PersonManager {
     map((data) =>
       data[0].map((person) => ({
         ...person,
-        buildingsExtended: person.buildings.map((buildingId) => {
-          const building = data[1].find((item) => item.id === buildingId) as Building;
+        buildingsExtended: person.buildings
+          .filter((buildingId) => data[1].find((item) => buildingId === item.id))
+          .map((buildingId) => {
+            const building = data[1].find((item) => item.id === buildingId) as Building;
 
-          return {
-            ...building,
-            roomsExtended: building.rooms.map((roomId) => data[2].find((item) => item.id === roomId) as Room) ?? [],
-          };
-        }),
+            return {
+              ...building,
+              roomsExtended: building.rooms.map((roomId) => data[2].find((item) => item.id === roomId) as Room),
+            };
+          }),
       }))
     )
   );

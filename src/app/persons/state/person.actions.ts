@@ -38,13 +38,13 @@ export const removePersonBuildingSuccess = createAction('[Person] Remove Buildin
 
 export const removePersonBuildingFailure = createAction('[Person] Remove Building Room Failure', payload<Record<string, any> & Entity>());
 
-export const addPerson = createAction('[Person] Remove Person', payload<NewPerson>());
+export const addPerson = createAction('[Person] Add Person', payload<NewPerson>());
 
-export const addPersonCancel = createAction('[Person] Remove Person Cancel');
+export const addPersonCancel = createAction('[Person] Add Person Cancel');
 
-export const addPersonSuccess = createAction('[Person] Remove Person Success', payload<PersonEntity>());
+export const addPersonSuccess = createAction('[Person] Add Person Success', payload<PersonEntity>());
 
-export const addPersonFailure = createAction('[Person] Remove Person Failure', payload<Record<string, any>>());
+export const addPersonFailure = createAction('[Person] Add Person Failure', payload<Record<string, any>>());
 
 export const addPersonBuilding = createAction('[Person] Add Person Building', payload<ChangePersonBuilding>());
 

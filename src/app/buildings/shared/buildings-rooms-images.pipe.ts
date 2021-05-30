@@ -7,12 +7,14 @@ import { Room } from '@app/rooms/common';
 })
 export class BuildingsRoomsImagesPipe implements PipeTransform {
   transform(buildings: { roomsExtended: Room[] }[]): string[] {
-    return buildings.reduce(
-      (accumulator, building) => [
-        ...accumulator,
-        ...building.roomsExtended.reduce((accumulatorRooms, room) => [...accumulatorRooms, ...room.photos], [] as string[]),
-      ],
-      [] as string[]
+    return (
+      buildings?.reduce(
+        (accumulator, building) => [
+          ...accumulator,
+          ...building.roomsExtended.reduce((accumulatorRooms, room) => [...accumulatorRooms, ...room.photos], [] as string[]),
+        ],
+        [] as string[]
+      ) ?? []
     );
   }
 }
