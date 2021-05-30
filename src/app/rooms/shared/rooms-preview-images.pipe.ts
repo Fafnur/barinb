@@ -7,11 +7,6 @@ import { Room } from '@app/rooms/common';
 })
 export class RoomsPreviewImagesPipe implements PipeTransform {
   transform(rooms: Room[]): string[] {
-    const images: string[] = [];
-    rooms.forEach((room) => {
-      images.push(...room.photos);
-    });
-
-    return images;
+    return rooms.reduce((accumulator, room) => [...accumulator, ...room.photos], [] as string[]);
   }
 }

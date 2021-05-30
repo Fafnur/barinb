@@ -30,13 +30,13 @@ export const removeRoomsSuccess = createAction('[Room] Remove Rooms Success', pa
 
 export const removeRoomsFailure = createAction('[Room] Remove Rooms Failure', payload<Record<string, any> & { rooms: number[] }>());
 
-export const addRoom = createAction('[Room] Remove Room', payload<NewRoom>());
+export const addRoom = createAction('[Room] Add Room', payload<NewRoom>());
 
-export const addRoomCancel = createAction('[Room] Remove Room Cancel');
+export const addRoomCancel = createAction('[Room] Add Room Cancel');
 
-export const addRoomSuccess = createAction('[Room] Remove Room Success', payload<RoomEntity>());
+export const addRoomSuccess = createAction('[Room] Add Room Success', payload<RoomEntity>());
 
-export const addRoomFailure = createAction('[Room] Remove Room Failure', payload<Record<string, any>>());
+export const addRoomFailure = createAction('[Room] Add Room Failure', payload<Record<string, any>>());
 
 export const changeRoom = createAction('[Room] Change Room', payload<ChangedRoom>());
 

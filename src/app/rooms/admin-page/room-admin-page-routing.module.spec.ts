@@ -1,34 +1,35 @@
 import { TestBed } from '@angular/core/testing';
-import { MockComponents } from 'ng-mocks';
+import { MockModule } from 'ng-mocks';
 
-import { AdminDesktopMenuComponent, AdminLayoutComponent, AdminMobileMenuComponent } from '@app/admin/layout';
-import { ContainerComponent } from '@app/ui/container';
-import { ColumnComponent, RowComponent } from '@app/ui/row';
+import { AdminLayoutComponent } from '@app/admin/layout';
+import { ContainerModule } from '@app/ui/container';
+import { RowModule } from '@app/ui/row';
 
-import { AdminRoomsActionsComponent } from './components/admin-rooms-actions/admin-rooms-actions.component';
-import { AdminRoomsListComponent } from './components/admin-rooms-list/admin-rooms-list.component';
-import { AdminRoomsTableComponent } from './components/admin-rooms-table/admin-rooms-table.component';
+import { AdminDesktopMenuModule } from '../../admin/layout/components/admin-desktop-menu/admin-desktop-menu.module';
+import { AdminMobileMenuModule } from '../../admin/layout/components/admin-mobile-menu/admin-mobile-menu.module';
+import { AdminRoomsActionsModule } from './components/admin-rooms-actions/admin-rooms-actions.module';
+import { AdminRoomsListModule } from './components/admin-rooms-list/admin-rooms-list.module';
+import { AdminRoomsTableModule } from './components/admin-rooms-table/admin-rooms-table.module';
 import { RoomAdminPageComponent } from './room-admin-page.component';
 import { RoomAdminPageRoutingModule } from './room-admin-page-routing.module';
 
 describe('RoomAdminPageRoutingModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RoomAdminPageRoutingModule],
+      imports: [
+        RoomAdminPageRoutingModule,
+        MockModule(RowModule),
+        MockModule(ContainerModule),
+        MockModule(AdminDesktopMenuModule),
+        MockModule(AdminMobileMenuModule),
+        MockModule(AdminRoomsTableModule),
+        MockModule(AdminRoomsActionsModule),
+        MockModule(AdminRoomsListModule),
+      ],
       declarations: [
         // TODO: Fix jest imports.
         RoomAdminPageComponent,
         AdminLayoutComponent,
-        MockComponents(
-          RowComponent,
-          ColumnComponent,
-          ContainerComponent,
-          AdminDesktopMenuComponent,
-          AdminMobileMenuComponent,
-          AdminRoomsTableComponent,
-          AdminRoomsActionsComponent,
-          AdminRoomsListComponent
-        ),
       ],
     }).compileComponents();
   });

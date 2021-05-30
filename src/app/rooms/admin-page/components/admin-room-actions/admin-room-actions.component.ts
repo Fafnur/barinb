@@ -28,7 +28,7 @@ export class AdminRoomActionsComponent implements OnDestroy {
   }
 
   onView(): void {
-    this.matDialog.open(AdminRoomViewDialogComponent, { data: this.room });
+    this.matDialog.open(AdminRoomViewDialogComponent, { data: this.room, width: '100%' });
   }
 
   onEdit(): void {

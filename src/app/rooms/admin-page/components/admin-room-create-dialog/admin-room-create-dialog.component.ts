@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
+import { BuildingFacade } from '@app/buildings/state';
 import { FormErrorsService } from '@app/core/forms/errors';
 import { ROOMS_IDS } from '@app/rooms/common';
 import { RoomFacade } from '@app/rooms/state';
@@ -23,6 +24,7 @@ export class AdminRoomCreateDialogComponent implements OnInit, OnDestroy {
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly roomFacade: RoomFacade,
+    private readonly buildingFacade: BuildingFacade,
     private readonly formErrorsService: FormErrorsService,
     private readonly matDialogRef: MatDialogRef<AdminRoomCreateDialogComponent>,
     private readonly matSnackBar: MatSnackBar
@@ -31,7 +33,8 @@ export class AdminRoomCreateDialogComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.roomFacade.roomAdded$
       .pipe(
-        tap(() => {
+        tap((room) => {
+          this.buildingFacade.addBuildingRoom({ id: room.building, room: room.id });
           this.matDialogRef.close(true);
           this.matSnackBar.open('Номер успешно создан!', '', { duration: 5000 });
         }),

@@ -6,6 +6,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MockComponents } from 'ng-mocks';
 import { of } from 'rxjs';
 
+import { BuildingFacade } from '@app/buildings/state';
 import { FormErrorsService } from '@app/core/forms/errors';
 import { RoomFacade } from '@app/rooms/state';
 
@@ -26,6 +27,12 @@ describe('AdminRoomCreateDialogComponent', () => {
           useValue: {
             roomAdded$: of(),
           } as Partial<RoomFacade>,
+        },
+        {
+          provide: BuildingFacade,
+          useValue: {
+            addBuildingRoom: jest.fn(),
+          } as Partial<BuildingFacade>,
         },
         {
           provide: FormErrorsService,

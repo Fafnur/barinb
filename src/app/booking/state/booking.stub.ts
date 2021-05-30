@@ -42,6 +42,8 @@ export const BOOKING_VARIANT_STUB: BookingVariant = {
   buildingRemoveRun: false,
   buildingRoomRemoveRun: false,
   buildingRoomRemoveError: null,
+  buildingRoomAddError: null,
+  buildingRoomAddRun: false,
 };
 
 export const BOOKING_DETAILS_STUB: BookingDetails = {
