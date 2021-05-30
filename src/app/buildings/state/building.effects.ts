@@ -5,6 +5,7 @@ import { map, withLatestFrom } from 'rxjs/operators';
 
 import { createBuildingFromNewBuilding } from '@app/buildings/common';
 import { BuildingStorage } from '@app/buildings/storage';
+import { EnvironmentService } from '@app/core/environments';
 import { fetch } from '@app/core/store/utils';
 
 import * as BuildingActions from './building.actions';
@@ -124,10 +125,34 @@ export class BuildingEffects implements OnInitEffects {
     )
   );
 
+  localStorageSync$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        BuildingActions.clearBuildings,
+        BuildingActions.addBuildingSuccess,
+        BuildingActions.removeBuildingRoomSuccess,
+        BuildingActions.removeBuildingSuccess,
+        BuildingActions.removeBuildingsSuccess,
+        BuildingActions.changeBuildingSuccess,
+        BuildingActions.clearBuildingsRoomsSuccess
+      ),
+      withLatestFrom(this.store.pipe(select(BuildingSelectors.selectBuildings))),
+      fetch({
+        id: (action) => `local-storage-sync-buildings-${action.type}`,
+        run: (action, buildings) => {
+          if (this.environmentService.getEnvironments().localStorageSync) {
+            this.buildingStorage.post(buildings ?? []);
+          }
+        },
+      })
+    )
+  );
+
   constructor(
     private readonly actions$: Actions,
     private readonly store: Store<BuildingState>,
-    private readonly buildingStorage: BuildingStorage
+    private readonly buildingStorage: BuildingStorage,
+    private readonly environmentService: EnvironmentService
   ) {}
 
   ngrxOnInitEffects(): Action {

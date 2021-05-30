@@ -6,6 +6,7 @@ describe('EnvironmentService', () => {
 
   const environmentsStub: Environments = {
     production: true,
+    localStorageSync: true,
   };
 
   beforeEach(() => {

@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action, select, Store } from '@ngrx/store';
 import { map, withLatestFrom } from 'rxjs/operators';
 
+import { EnvironmentService } from '@app/core/environments';
 import { fetch } from '@app/core/store/utils';
 import { createRoomFromNewRoom } from '@app/rooms/common';
 import { RoomStorage } from '@app/rooms/storage';
@@ -73,7 +74,33 @@ export class RoomEffects implements OnInitEffects {
     )
   );
 
-  constructor(private readonly actions$: Actions, private readonly store: Store, private readonly roomStorage: RoomStorage) {}
+  localStorageSync$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        RoomActions.addRoomSuccess,
+        RoomActions.removeRoomSuccess,
+        RoomActions.removeRoomsSuccess,
+        RoomActions.changeRoomSuccess,
+        RoomActions.clearRooms
+      ),
+      withLatestFrom(this.store.pipe(select(RoomSelectors.selectRooms))),
+      fetch({
+        id: (action) => `local-storage-sync-rooms-${action.type}`,
+        run: (action, rooms) => {
+          if (this.environmentService.getEnvironments().localStorageSync) {
+            this.roomStorage.post(rooms ?? []);
+          }
+        },
+      })
+    )
+  );
+
+  constructor(
+    private readonly actions$: Actions,
+    private readonly store: Store,
+    private readonly roomStorage: RoomStorage,
+    private readonly environmentService: EnvironmentService
+  ) {}
 
   ngrxOnInitEffects(): Action {
     return RoomActions.loadRooms();

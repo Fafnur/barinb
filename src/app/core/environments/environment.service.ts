@@ -4,6 +4,7 @@ import { ENVIRONMENTS, Environments } from './environment.interface';
 
 const ENVIRONMENTS_DEFAULT: Environments = {
   production: false,
+  localStorageSync: false,
 };
 
 @Injectable({

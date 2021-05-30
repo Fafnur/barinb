@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action, select, Store } from '@ngrx/store';
 import { map, withLatestFrom } from 'rxjs/operators';
 
+import { EnvironmentService } from '@app/core/environments';
 import { fetch } from '@app/core/store/utils';
 import { createPersonFromNewPerson } from '@app/persons/common';
 import { PersonStorage } from '@app/persons/storage';
@@ -113,7 +114,34 @@ export class PersonEffects implements OnInitEffects {
     )
   );
 
-  constructor(private readonly actions$: Actions, private readonly store: Store, private readonly personStorage: PersonStorage) {}
+  localStorageSync$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        PersonActions.clearPersons,
+        PersonActions.addPersonSuccess,
+        PersonActions.removePersonBuildingSuccess,
+        PersonActions.removePersonSuccess,
+        PersonActions.changePersonSuccess,
+        PersonActions.clearPersonsBuildingsSuccess
+      ),
+      withLatestFrom(this.store.pipe(select(PersonSelectors.selectPersons))),
+      fetch({
+        id: (action) => `local-storage-sync-persons-${action.type}`,
+        run: (action, persons) => {
+          if (this.environmentService.getEnvironments().localStorageSync) {
+            this.personStorage.post(persons ?? []);
+          }
+        },
+      })
+    )
+  );
+
+  constructor(
+    private readonly actions$: Actions,
+    private readonly store: Store,
+    private readonly personStorage: PersonStorage,
+    private readonly environmentService: EnvironmentService
+  ) {}
 
   ngrxOnInitEffects(): Action {
     return PersonActions.loadPersons();
