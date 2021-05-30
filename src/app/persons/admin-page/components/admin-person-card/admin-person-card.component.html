@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <a
+      mat-card-avatar
+      class="room-card-avatar"
+      [routerLink]="NavigationPath.AdminPersonsPage | navPath"
+      [queryParams]="{ person: person.id }"
+      [ngStyle]="{ backgroundImage: 'url(' + person.avatar + ')' }"
+    >
+    </a>
+    <mat-card-title>{{ person | personFullName }}</mat-card-title>
+    <mat-card-subtitle>{{ person.phone }}</mat-card-subtitle>
+  </mat-card-header>
+  <div mat-card-image>
+    <app-carousel class="room-card-carousel" [images]="person.buildingsExtended | buildingsRoomsImages"></app-carousel>
+  </div>
+  <mat-card-content>
+    <div class="room-card-props">
+      <div class="room-card-prop">отелей {{ person.buildings.length }}</div>
+      <div class="room-card-prop">номеров {{ person.buildingsExtended | buildingsRoomsCount }}</div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <app-admin-person-actions [person]="person"></app-admin-person-actions>
+  </mat-card-actions>
+</mat-card>

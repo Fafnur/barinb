@@ -1,7 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockComponents } from 'ng-mocks';
+import { MockComponents, MockModule } from 'ng-mocks';
+import { of } from 'rxjs';
 
+import { PersonManager } from '@app/persons/manager';
+
+import { AdminPersonsActionsModule } from './components/admin-persons-actions/admin-persons-actions.module';
+import { AdminPersonsListModule } from './components/admin-persons-list/admin-persons-list.module';
+import { AdminPersonsTableModule } from './components/admin-persons-table/admin-persons-table.module';
 import { PersonAdminPageComponent } from './person-admin-page.component';
 
 describe('PersonAdminPageComponent', () => {
@@ -10,8 +16,21 @@ describe('PersonAdminPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule,
+        MockModule(AdminPersonsActionsModule),
+        MockModule(AdminPersonsTableModule),
+        MockModule(AdminPersonsListModule),
+      ],
       declarations: [PersonAdminPageComponent, MockComponents()],
+      providers: [
+        {
+          provide: PersonManager,
+          useValue: {
+            personsExtended$: of(),
+          } as Partial<PersonManager>,
+        },
+      ],
     }).compileComponents();
   });
 

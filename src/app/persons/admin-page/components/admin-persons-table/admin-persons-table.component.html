@@ -1,0 +1,52 @@
+<ng-container *ngIf="persons?.length; else emptyTpl">
+  <table class="admin-table" mat-table [dataSource]="dataSource">
+    <ng-container [matColumnDef]="PersonField.ID">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let person">{{ person.id }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="PersonField.LastName">
+      <th mat-header-cell *matHeaderCellDef>Фамилия</th>
+      <td mat-cell *matCellDef="let person">{{ person.lastName }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="PersonField.FirstName">
+      <th mat-header-cell *matHeaderCellDef>Имя</th>
+      <td mat-cell *matCellDef="let person">{{ person.firstName }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="PersonField.MiddleName">
+      <th mat-header-cell *matHeaderCellDef>Отчество</th>
+      <td mat-cell *matCellDef="let person">{{ person.middleName || '-' }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="PersonField.Phone">
+      <th mat-header-cell *matHeaderCellDef>Телефон</th>
+      <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="PersonField.Created">
+      <th mat-header-cell *matHeaderCellDef>Дата создания</th>
+      <td mat-cell *matCellDef="let person">{{ person.created | date: 'longDate' }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="PersonField.Updated">
+      <th mat-header-cell *matHeaderCellDef>Дата обновления</th>
+      <td mat-cell *matCellDef="let person">{{ person.updated | date: 'longDate' }}</td>
+    </ng-container>
+
+    <ng-container [matColumnDef]="'actions'">
+      <th mat-header-cell *matHeaderCellDef>Действия</th>
+      <td mat-cell *matCellDef="let person">
+        <app-admin-person-actions [person]="person"></app-admin-person-actions>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</ng-container>
+
+<ng-template #emptyTpl>
+  <p>Нет созданных собственников. Для того, чтобы добавить здание, нажмите - "Добавить собственника".</p>
+</ng-template>

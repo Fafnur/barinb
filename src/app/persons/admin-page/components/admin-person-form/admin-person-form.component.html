@@ -1,0 +1,7 @@
+<ng-container *ngIf="form">
+  <app-admin-person-lastname [control]="form | extractFormControl: PersonField.LastName"></app-admin-person-lastname>
+  <app-admin-person-firstname [control]="form | extractFormControl: PersonField.FirstName"></app-admin-person-firstname>
+  <app-admin-person-middlename [control]="form | extractFormControl: PersonField.MiddleName"></app-admin-person-middlename>
+  <app-admin-person-phone [control]="form | extractFormControl: PersonField.Phone"></app-admin-person-phone>
+  <app-admin-person-avatar [control]="form | extractFormControl: PersonField.Avatar"></app-admin-person-avatar>
+</ng-container>

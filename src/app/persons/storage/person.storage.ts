@@ -18,6 +18,8 @@ export function castPersonEntity(personDto: PersonDto): PersonEntity {
     personChangeError: null,
     personBuildingRemoveRun: false,
     personBuildingRemoveError: null,
+    personBuildingAddRun: false,
+    personBuildingAddError: null,
   };
 }
 

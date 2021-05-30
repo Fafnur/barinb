@@ -179,5 +179,40 @@ export const reducer = createReducer(
     ...state,
     personBuildingsClearError: payload,
     personBuildingsClearRun: false,
-  }))
+  })),
+  on(PersonActions.addPersonBuilding, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          personBuildingAddRun: true,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.addPersonBuildingSuccess, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          ...payload,
+          personBuildingAddRun: false,
+        },
+      },
+      state
+    )
+  ),
+  on(PersonActions.addPersonBuildingFailure, (state, { payload }) =>
+    personAdapter.updateOne(
+      {
+        id: payload.id,
+        changes: {
+          personBuildingAddError: payload,
+          personBuildingAddRun: false,
+        },
+      },
+      state
+    )
+  )
 );

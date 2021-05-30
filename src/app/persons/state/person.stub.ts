@@ -16,9 +16,10 @@ export const PERSON_STUB: Person = {
   personChangeError: null,
   personRemoveRun: false,
   personRemoveError: null,
-
   personBuildingRemoveRun: false,
   personBuildingRemoveError: null,
+  personBuildingAddError: null,
+  personBuildingAddRun: false,
 };
 
 export const PERSONS_STUB: Person[] = [PERSON_STUB];

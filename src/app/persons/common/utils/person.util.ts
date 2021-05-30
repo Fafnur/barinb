@@ -21,5 +21,7 @@ export function createPersonFromNewPerson(rooms: PersonEntity[], newRoom: NewPer
     personChangeRun: false,
     personBuildingRemoveError: null,
     personBuildingRemoveRun: false,
+    personBuildingAddError: null,
+    personBuildingAddRun: false,
   };
 }

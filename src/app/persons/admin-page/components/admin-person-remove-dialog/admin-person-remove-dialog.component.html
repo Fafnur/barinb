@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Внимание</h2>
+<div mat-dialog-content>
+  <p>Вы действительно хотите удалить собственника № {{ person.id }}?</p>
+</div>
+<div mat-dialog-actions align="center">
+  <button type="button" color="primary" mat-raised-button (click)="onCancel()">Нет</button>
+  <button type="button" color="warn" mat-raised-button (click)="onSuccess()">Да</button>
+</div>

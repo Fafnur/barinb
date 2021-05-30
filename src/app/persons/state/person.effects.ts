@@ -79,6 +79,25 @@ export class PersonEffects implements OnInitEffects {
     )
   );
 
+  addPersonBuilding$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PersonActions.addPersonBuilding),
+      withLatestFrom(this.store.pipe(select(PersonSelectors.selectPersonsEntities))),
+      fetch({
+        id: (action) => `remove-person-building-${action.payload.id}-${action.payload.building}`,
+        run: (action, personsEntities) => {
+          const person = personsEntities ? personsEntities[action.payload.id] : null;
+          const buildings = person?.buildings ?? [];
+
+          return PersonActions.addPersonBuildingSuccess({
+            payload: { id: action.payload.id, buildings: [...buildings, action.payload.building] },
+          });
+        },
+        onError: (action, payload) => PersonActions.addPersonBuildingFailure({ payload: { ...payload, id: action.payload } }),
+      })
+    )
+  );
+
   clearPersonsBuildings$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PersonActions.clearPersonsBuildings),

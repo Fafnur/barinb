@@ -1,0 +1,32 @@
+<mat-dialog-content *ngIf="person">
+  <app-admin-room-group>
+    <app-admin-room-label>ФИО</app-admin-room-label>
+    <app-admin-room-value>{{ person | personFullName }}</app-admin-room-value>
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Телефон</app-admin-room-label>
+    <app-admin-room-value>{{ person.phone }}</app-admin-room-value>
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Аватар</app-admin-room-label>
+    <app-admin-room-value>
+      <img [src]="person.avatar" width="100px" alt="" />
+    </app-admin-room-value>
+  </app-admin-room-group>
+  <app-admin-room-group>
+    <app-admin-room-label>Отели</app-admin-room-label>
+    <app-admin-room-value>
+      <nav *ngIf="person.buildingsExtended.length">
+        <ng-container *ngFor="let building of person.buildingsExtended">
+          <app-admin-building-link [building]="building"></app-admin-building-link>
+          {{ building.name }}
+        </ng-container>
+      </nav>
+
+      <p *ngIf="!person.buildingsExtended.length">Нет отелей</p>
+    </app-admin-room-value>
+  </app-admin-room-group>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Закрыть</button>
+</mat-dialog-actions>

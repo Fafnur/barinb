@@ -1,22 +1,35 @@
 import { TestBed } from '@angular/core/testing';
-import { MockComponents } from 'ng-mocks';
+import { MockModule } from 'ng-mocks';
 
-import { AdminDesktopMenuComponent, AdminLayoutComponent, AdminMobileMenuComponent } from '@app/admin/layout';
-import { ContainerComponent } from '@app/ui/container';
-import { ColumnComponent, RowComponent } from '@app/ui/row';
+import { AdminLayoutComponent } from '@app/admin/layout';
+import { ContainerModule } from '@app/ui/container';
+import { RowModule } from '@app/ui/row';
 
+import { AdminDesktopMenuModule } from '../../admin/layout/components/admin-desktop-menu/admin-desktop-menu.module';
+import { AdminMobileMenuModule } from '../../admin/layout/components/admin-mobile-menu/admin-mobile-menu.module';
+import { AdminPersonsActionsModule } from './components/admin-persons-actions/admin-persons-actions.module';
+import { AdminPersonsListModule } from './components/admin-persons-list/admin-persons-list.module';
+import { AdminPersonsTableModule } from './components/admin-persons-table/admin-persons-table.module';
 import { PersonAdminPageComponent } from './person-admin-page.component';
 import { PersonAdminPageRoutingModule } from './person-admin-page-routing.module';
 
 describe('PersonAdminPageRoutingModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PersonAdminPageRoutingModule],
+      imports: [
+        PersonAdminPageRoutingModule,
+        MockModule(AdminPersonsActionsModule),
+        MockModule(AdminPersonsTableModule),
+        MockModule(AdminPersonsListModule),
+        MockModule(RowModule),
+        MockModule(AdminDesktopMenuModule),
+        MockModule(AdminMobileMenuModule),
+        MockModule(ContainerModule),
+      ],
       declarations: [
         // TODO: Fix jest imports.
         PersonAdminPageComponent,
         AdminLayoutComponent,
-        MockComponents(RowComponent, ColumnComponent, AdminDesktopMenuComponent, AdminMobileMenuComponent, ContainerComponent),
       ],
     }).compileComponents();
   });

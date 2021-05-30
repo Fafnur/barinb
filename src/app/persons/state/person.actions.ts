@@ -2,7 +2,7 @@ import { createAction } from '@ngrx/store';
 
 import { Entity } from '@app/core/common';
 import { payload } from '@app/core/store/utils';
-import { ChangedPerson, NewPerson, PersonEntity, RemovedPersonBuilding, RemovePersonBuilding } from '@app/persons/common';
+import { ChangedPerson, ChangedPersonBuilding, ChangePersonBuilding, NewPerson, PersonEntity } from '@app/persons/common';
 
 export const loadPersons = createAction('[Person] Load Persons');
 
@@ -30,11 +30,11 @@ export const removePersonSuccess = createAction('[Person] Remove Person Success'
 
 export const removePersonFailure = createAction('[Person] Remove Person Failure', payload<Record<string, any> & Entity>());
 
-export const removePersonBuilding = createAction('[Person] Remove Person Building', payload<RemovePersonBuilding>());
+export const removePersonBuilding = createAction('[Person] Remove Person Building', payload<ChangePersonBuilding>());
 
 export const removePersonBuildingCancel = createAction('[Person] Remove Building Room Cancel');
 
-export const removePersonBuildingSuccess = createAction('[Person] Remove Building Room Success', payload<RemovedPersonBuilding>());
+export const removePersonBuildingSuccess = createAction('[Person] Remove Building Room Success', payload<ChangedPersonBuilding>());
 
 export const removePersonBuildingFailure = createAction('[Person] Remove Building Room Failure', payload<Record<string, any> & Entity>());
 
@@ -45,6 +45,14 @@ export const addPersonCancel = createAction('[Person] Remove Person Cancel');
 export const addPersonSuccess = createAction('[Person] Remove Person Success', payload<PersonEntity>());
 
 export const addPersonFailure = createAction('[Person] Remove Person Failure', payload<Record<string, any>>());
+
+export const addPersonBuilding = createAction('[Person] Add Person Building', payload<ChangePersonBuilding>());
+
+export const addPersonBuildingCancel = createAction('[Person] Add Person Building Cancel');
+
+export const addPersonBuildingSuccess = createAction('[Person] Add Person Building Success', payload<ChangedPersonBuilding>());
+
+export const addPersonBuildingFailure = createAction('[Person] Add Person Building Failure', payload<Record<string, any>>());
 
 export const changePerson = createAction('[Person] Change Person', payload<ChangedPerson>());
 

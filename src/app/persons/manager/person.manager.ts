@@ -20,17 +20,21 @@ export interface PersonExtended extends Person {
 @Injectable()
 export class PersonManager {
   personsExtended$: Observable<PersonExtended[]> = combineLatest([
-    this.personFacade.persons$,
-    this.buildingFacade.buildings$,
-    this.roomFacade.rooms$,
+    this.personFacade.persons$.pipe(filter<Person[]>(Boolean)),
+    this.buildingFacade.buildings$.pipe(filter<Building[]>(Boolean)),
+    this.roomFacade.rooms$.pipe(filter<Room[]>(Boolean)),
   ]).pipe(
     map((data) =>
       data[0].map((person) => ({
         ...person,
-        buildingsExtended: person.buildings.map((building) => ({
-          ...data[1][building],
-          roomsExtended: data[1][building].rooms.map((room) => data[2][room]),
-        })),
+        buildingsExtended: person.buildings.map((buildingId) => {
+          const building = data[1].find((item) => item.id === buildingId) as Building;
+
+          return {
+            ...building,
+            roomsExtended: building.rooms.map((roomId) => data[2].find((item) => item.id === roomId) as Room) ?? [],
+          };
+        }),
       }))
     )
   );
@@ -78,11 +82,9 @@ export class PersonManager {
   }
 
   removePerson(payload: PersonExtended): void {
-    const ids: number[] = [];
-    payload.buildingsExtended.forEach((building) => {
-      ids.push(...building.rooms);
-    });
-    this.roomFacade.removeRooms(ids);
+    this.roomFacade.removeRooms(
+      payload.buildingsExtended.reduce((accumulator, building) => [...accumulator, ...building.rooms], [] as number[])
+    );
     this.buildingFacade.removeBuildings(payload.buildings);
     this.personFacade.removePerson({ id: payload.id });
   }
