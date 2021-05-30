@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 
 import { BuildingFacade } from '@app/buildings/state';
 import { FormErrorsService } from '@app/core/forms/errors';
+import { PersonFacade } from '@app/persons/state';
 
 import { AdminBuildingFormComponent } from '../admin-building-form/admin-building-form.component';
 import { AdminBuildingCreateDialogComponent } from './admin-building-create-dialog.component';
@@ -26,6 +27,12 @@ describe('AdminBuildingCreateDialogComponent', () => {
           useValue: {
             buildingAdded$: of(),
           } as Partial<BuildingFacade>,
+        },
+        {
+          provide: PersonFacade,
+          useValue: {
+            addPersonBuilding: jest.fn(),
+          } as Partial<PersonFacade>,
         },
         {
           provide: FormErrorsService,

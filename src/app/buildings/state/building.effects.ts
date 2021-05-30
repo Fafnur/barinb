@@ -79,6 +79,23 @@ export class BuildingEffects implements OnInitEffects {
     )
   );
 
+  addBuildingRoom$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BuildingActions.addBuildingRoom),
+      withLatestFrom(this.store.pipe(select(BuildingSelectors.selectBuildingsEntities))),
+      fetch({
+        id: (action) => `add-building-room-${action.payload.id}`,
+        run: (action, buildingsEntities) => {
+          const building = buildingsEntities ? buildingsEntities[action.payload.id] : null;
+          const rooms = building?.rooms ?? [];
+
+          return BuildingActions.addBuildingRoomSuccess({ payload: { id: action.payload.id, rooms: [...rooms, action.payload.room] } });
+        },
+        onError: (action, payload) => BuildingActions.addBuildingRoomFailure({ payload }),
+      })
+    )
+  );
+
   removeBuildingRoom$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BuildingActions.removeBuildingRoom),

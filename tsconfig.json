@@ -59,6 +59,7 @@
       "@app/buildings/service": ["src/app/buildings/service/index.ts"],
       "@app/buildings/state": ["src/app/buildings/state/index.ts"],
       "@app/buildings/manager": ["src/app/buildings/manager/index.ts"],
+      "@app/buildings/shared": ["src/app/buildings/shared/index.ts"],
       "@app/persons/admin-page": ["src/app/persons/admin-page/index.ts"],
       "@app/persons/common": ["src/app/persons/common/index.ts"],
       "@app/persons/storage": ["src/app/persons/storage/index.ts"],

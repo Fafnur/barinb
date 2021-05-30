@@ -8,6 +8,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 import { BUILDINGS_IDS } from '@app/buildings/common';
 import { BuildingFacade } from '@app/buildings/state';
 import { FormErrorsService } from '@app/core/forms/errors';
+import { PersonFacade } from '@app/persons/state';
 
 @Component({
   selector: 'app-admin-building-create-dialog',
@@ -23,6 +24,7 @@ export class AdminBuildingCreateDialogComponent implements OnInit, OnDestroy {
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly buildingFacade: BuildingFacade,
+    private readonly personFacade: PersonFacade,
     private readonly formErrorsService: FormErrorsService,
     private readonly matDialogRef: MatDialogRef<AdminBuildingCreateDialogComponent>,
     private readonly matSnackBar: MatSnackBar
@@ -31,7 +33,8 @@ export class AdminBuildingCreateDialogComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.buildingFacade.buildingAdded$
       .pipe(
-        tap(() => {
+        tap((building) => {
+          this.personFacade.addPersonBuilding({ id: building.person, building: building.id });
           this.matDialogRef.close(true);
           this.matSnackBar.open('Отель успешно создан!', '', { duration: 5000 });
         }),

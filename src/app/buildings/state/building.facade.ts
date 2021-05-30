@@ -4,7 +4,7 @@ import { Action, select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Building, ChangedBuilding, NewBuilding, RemoveBuildingRoom } from '@app/buildings/common';
+import { Building, ChangeBuildingRoom, ChangedBuilding, NewBuilding } from '@app/buildings/common';
 import { Entity } from '@app/core/common';
 
 import * as BuildingActions from './building.actions';
@@ -48,6 +48,10 @@ export class BuildingFacade {
     this.dispatch(BuildingActions.loadBuildings());
   }
 
+  addBuilding(payload: NewBuilding): void {
+    this.dispatch(BuildingActions.addBuilding({ payload }));
+  }
+
   removeBuilding(payload: Entity): void {
     this.dispatch(BuildingActions.removeBuilding({ payload }));
   }
@@ -56,12 +60,12 @@ export class BuildingFacade {
     this.dispatch(BuildingActions.removeBuildings({ payload }));
   }
 
-  removeBuildingRoom(payload: RemoveBuildingRoom): void {
-    this.dispatch(BuildingActions.removeBuildingRoom({ payload }));
+  addBuildingRoom(payload: ChangeBuildingRoom): void {
+    this.dispatch(BuildingActions.addBuildingRoom({ payload }));
   }
 
-  addBuilding(payload: NewBuilding): void {
-    this.dispatch(BuildingActions.addBuilding({ payload }));
+  removeBuildingRoom(payload: ChangeBuildingRoom): void {
+    this.dispatch(BuildingActions.removeBuildingRoom({ payload }));
   }
 
   changeBuilding(payload: ChangedBuilding): void {

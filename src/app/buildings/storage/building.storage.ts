@@ -18,6 +18,8 @@ export function castBuilding(building: BuildingDto): BuildingEntity {
     buildingChangeError: null,
     buildingRoomRemoveRun: false,
     buildingRoomRemoveError: null,
+    buildingRoomAddRun: false,
+    buildingRoomAddError: null,
   };
 }
 

@@ -28,7 +28,7 @@ export class AdminBuildingActionsComponent implements OnDestroy {
   }
 
   onView(): void {
-    this.matDialog.open(AdminBuildingViewDialogComponent, { data: this.building });
+    this.matDialog.open(AdminBuildingViewDialogComponent, { data: this.building, width: '100%' });
   }
 
   onEdit(): void {
