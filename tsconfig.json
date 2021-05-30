@@ -65,6 +65,7 @@
       "@app/persons/service": ["src/app/persons/service/index.ts"],
       "@app/persons/state": ["src/app/persons/state/index.ts"],
       "@app/persons/shared": ["src/app/persons/shared/index.ts"],
+      "@app/persons/manager": ["src/app/persons/manager/index.ts"],
       "@app/booking/common": ["src/app/booking/common/index.ts"],
       "@app/booking/page": ["src/app/booking/page/index.ts"],
       "@app/booking/service": ["src/app/booking/service/index.ts"],

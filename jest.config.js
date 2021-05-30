@@ -62,6 +62,7 @@ module.exports = {
     '@app/persons/service': ['<rootDir>/src/app/persons/service/index.ts'],
     '@app/persons/state': ['<rootDir>/src/app/persons/state/index.ts'],
     '@app/persons/shared': ['<rootDir>/src/app/persons/shared/index.ts'],
+    '@app/persons/manager': ['<rootDir>/src/app/persons/manager/index.ts'],
     '@app/booking/common': ['<rootDir>/src/app/booking/common/index.ts'],
     '@app/booking/page': ['<rootDir>/src/app/booking/page/index.ts'],
     '@app/booking/service': ['<rootDir>/src/app/booking/service/index.ts'],
