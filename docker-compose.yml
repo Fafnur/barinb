@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  barinb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      GOOGLE_MAPS_KEY: AIzaSyDPJ5-bEjFnP1xEN8QC0Ks8uej7CFcBGAs
+    restart: always
+    ports:
+      - 4000:80
+    volumes:
+      - ./src:/var/www/html
+

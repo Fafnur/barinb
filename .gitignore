@@ -50,3 +50,4 @@ temp.ts
 temp.json
 yarn.lock
 .env
+docker-compose.override.yml
