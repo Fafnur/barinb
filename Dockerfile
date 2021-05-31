@@ -1,8 +1,8 @@
 ### STAGE 1: Build ###
-FROM node:14.17-alpine AS build
+FROM node:16-alpine AS build
 WORKDIR /usr/src/app
 COPY package.json ./
-RUN yarn install
+RUN yarn install --ignore-engines
 COPY . .
 ENV GOOGLE_MAPS_KEY ''
 RUN yarn run ng build --configuration production
