@@ -16,7 +16,7 @@
 <ng-template #mobileTpl>
   <ng-container *ngIf="isMapShow; then mapMobileTpl; else listMobileTpl"></ng-container>
   <div class="booking-actions">
-    <button class="booking-action" mat-icon-button type="button" (click)="onToggleView()">
+    <button class="booking-action" data-automation-id="booking-view-toggle" mat-icon-button type="button" (click)="onToggleView()">
       <mat-icon *ngIf="isMapShow">view_list</mat-icon>
       <mat-icon *ngIf="!isMapShow">map</mat-icon>
     </button>

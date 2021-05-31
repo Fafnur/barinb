@@ -10,11 +10,11 @@ export class PageObject<T> {
   }
 
   protected getByAutomationId(automationId: string): DebugElement {
-    return this.fixture.debugElement.query(By.css(`[automation-id="${automationId}"]`));
+    return this.fixture.debugElement.query(By.css(`[data-automation-id="${automationId}"]`));
   }
 
   protected getAllByAutomationId(automationId: string): DebugElement[] {
-    return this.fixture.debugElement.queryAll(By.css(`[automation-id="${automationId}"]`));
+    return this.fixture.debugElement.queryAll(By.css(`[data-automation-id="${automationId}"]`));
   }
 
   protected text(element: DebugElement | string): string | null {
@@ -31,7 +31,7 @@ export class PageObject<T> {
     element: DebugElement | string,
     eventName: string,
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    eventObj: any
+    eventObj: any = null
   ): void {
     const el = element instanceof DebugElement ? element : this.getByAutomationId(element);
 
