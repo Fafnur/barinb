@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MockModule } from 'ng-mocks';
 
 import { FormsSharedModule } from '@app/core/forms/shared';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { AdminBuildingFormComponent } from './admin-building-form.component';
 import { AdminBuildingAddressModule } from './components/admin-building-address/admin-building-address.module';
@@ -24,7 +24,7 @@ describe('AdminBuildingFormComponent', () => {
       imports: [
         MatButtonModule,
         FormsSharedModule,
-        RowModule,
+        GridModule,
         ReactiveFormsModule,
         MockModule(AdminBuildingCityModule),
         MockModule(AdminBuildingAddressModule),

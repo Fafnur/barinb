@@ -3,7 +3,7 @@ import { MockComponents } from 'ng-mocks';
 
 import { AdminDesktopMenuComponent, AdminLayoutComponent, AdminMobileMenuComponent } from '@app/admin/layout';
 import { ContainerComponent } from '@app/ui/container';
-import { ColumnComponent, RowComponent } from '@app/ui/row';
+import { ColumnComponent, RowComponent } from '@app/ui/grid';
 
 import { BuildingAdminPageComponent } from './building-admin-page.component';
 import { BuildingAdminPageRoutingModule } from './building-admin-page-routing.module';

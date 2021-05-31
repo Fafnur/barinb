@@ -7,7 +7,7 @@ import { BookingServiceModule } from '@app/booking/service';
 import { BookingStateModule } from '@app/booking/state';
 import { RoomManagerModule } from '@app/rooms/manager';
 import { ContainerModule } from '@app/ui/container';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { AppCommonModule } from '../../app-common.module';
 import { RoomBookingCardModule } from './components/room-booking-card/room-booking-card.module';
@@ -40,7 +40,7 @@ import { RoomPageRoutingModule } from './room-page-routing.module';
     RoomFeaturesModule,
     RoomDescriptionModule,
     RoomBookingCardModule,
-    RowModule,
+    GridModule,
   ],
   declarations: [RoomPageComponent],
 })

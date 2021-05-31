@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponents } from 'ng-mocks';
 
 import { ContainerComponent } from '@app/ui/container';
-import { ColumnComponent, RowComponent } from '@app/ui/row';
+import { ColumnComponent, RowComponent } from '@app/ui/grid';
 
 import { AdminLayoutComponent } from './admin-layout.component';
 import { AdminDesktopMenuComponent } from './components/admin-desktop-menu/admin-desktop-menu.component';

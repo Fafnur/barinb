@@ -6,12 +6,12 @@ import { RouterModule } from '@angular/router';
 import { BookingSharedModule } from '@app/booking/shared';
 import { NavigationSharedModule } from '@app/core/navigation/shared';
 import { CarouselModule } from '@app/ui/carousel';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { BookingPortletComponent } from './booking-portlet.component';
 
 @NgModule({
-  imports: [CommonModule, CarouselModule, BookingSharedModule, MatButtonModule, RouterModule, NavigationSharedModule, RowModule],
+  imports: [CommonModule, CarouselModule, BookingSharedModule, MatButtonModule, RouterModule, NavigationSharedModule, GridModule],
   declarations: [BookingPortletComponent],
   exports: [BookingPortletComponent],
 })

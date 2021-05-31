@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
 import { FormsSharedModule } from '@app/core/forms/shared';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { AdminPersonFormComponent } from './admin-person-form.component';
 import { AdminPersonAvatarModule } from './components/admin-person-avatar/admin-person-avatar.module';
@@ -24,7 +24,7 @@ import { AdminPersonPhoneModule } from './components/admin-person-phone/admin-pe
     AdminPersonAvatarModule,
     AdminPersonBuildingsModule,
     FormsSharedModule,
-    RowModule,
+    GridModule,
   ],
   declarations: [AdminPersonFormComponent],
   exports: [AdminPersonFormComponent],

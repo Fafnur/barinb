@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MockComponents } from 'ng-mocks';
 
 import { FormsSharedModule } from '@app/core/forms/shared';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { AdminRoomFormComponent } from './admin-room-form.component';
 import { AdminRoomAmenitiesComponent } from './components/admin-room-amenities/admin-room-amenities.component';
@@ -24,7 +24,7 @@ describe('AdminRoomFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatButtonModule, FormsSharedModule, RowModule, ReactiveFormsModule],
+      imports: [MatButtonModule, FormsSharedModule, GridModule, ReactiveFormsModule],
       declarations: [
         AdminRoomFormComponent,
         MockComponents(

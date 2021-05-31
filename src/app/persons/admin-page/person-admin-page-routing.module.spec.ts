@@ -3,7 +3,7 @@ import { MockModule } from 'ng-mocks';
 
 import { AdminLayoutComponent } from '@app/admin/layout';
 import { ContainerModule } from '@app/ui/container';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { AdminDesktopMenuModule } from '../../admin/layout/components/admin-desktop-menu/admin-desktop-menu.module';
 import { AdminMobileMenuModule } from '../../admin/layout/components/admin-mobile-menu/admin-mobile-menu.module';
@@ -21,7 +21,7 @@ describe('PersonAdminPageRoutingModule', () => {
         MockModule(AdminPersonsActionsModule),
         MockModule(AdminPersonsTableModule),
         MockModule(AdminPersonsListModule),
-        MockModule(RowModule),
+        MockModule(GridModule),
         MockModule(AdminDesktopMenuModule),
         MockModule(AdminMobileMenuModule),
         MockModule(ContainerModule),

@@ -6,7 +6,7 @@ import { MockComponents, MockModule, MockPipes } from 'ng-mocks';
 import { BookingVariantImagesPipe } from '@app/booking/shared';
 import { NavigationSharedModule } from '@app/core/navigation/shared';
 import { CarouselComponent } from '@app/ui/carousel';
-import { ColumnComponent, RowComponent } from '@app/ui/row';
+import { ColumnComponent, RowComponent } from '@app/ui/grid';
 
 import { BookingPortletComponent } from './booking-portlet.component';
 

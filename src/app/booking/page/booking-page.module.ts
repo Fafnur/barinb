@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BookingServiceModule } from '@app/booking/service';
 import { BookingStateModule } from '@app/booking/state';
 import { ContainerModule } from '@app/ui/container';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { AppCommonModule } from '../../app-common.module';
 import { BookingPageComponent } from './booking-page.component';
@@ -29,7 +29,7 @@ import { BookingMapModule } from './components/booking-map/booking-map.module';
     BookingStateModule,
     MatIconModule,
     MatButtonModule,
-    RowModule,
+    GridModule,
     ContainerModule,
   ],
   declarations: [BookingPageComponent],

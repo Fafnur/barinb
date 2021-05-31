@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
 import { FormsSharedModule } from '@app/core/forms/shared';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { AdminBuildingFormComponent } from './admin-building-form.component';
 import { AdminBuildingAddressModule } from './components/admin-building-address/admin-building-address.module';
@@ -26,7 +26,7 @@ import { AdminBuildingRoomsModule } from './components/admin-building-rooms/admi
     AdminBuildingRoomsModule,
     AdminBuildingPersonModule,
     FormsSharedModule,
-    RowModule,
+    GridModule,
   ],
   declarations: [AdminBuildingFormComponent],
   exports: [AdminBuildingFormComponent],

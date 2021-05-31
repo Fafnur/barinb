@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MockModule } from 'ng-mocks';
 
 import { FormsSharedModule } from '@app/core/forms/shared';
-import { RowModule } from '@app/ui/row';
+import { GridModule } from '@app/ui/grid';
 
 import { AdminPersonFormComponent } from './admin-person-form.component';
 import { AdminPersonAvatarModule } from './components/admin-person-avatar/admin-person-avatar.module';
@@ -23,7 +23,7 @@ describe('AdminPersonFormComponent', () => {
       imports: [
         MatButtonModule,
         FormsSharedModule,
-        RowModule,
+        GridModule,
         ReactiveFormsModule,
         MockModule(AdminPersonLastnameModule),
         MockModule(AdminPersonMiddlenameModule),

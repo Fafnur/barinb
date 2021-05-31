@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { MockComponents } from 'ng-mocks';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MockComponents, MockModule } from 'ng-mocks';
 import { of } from 'rxjs';
 
 import { RoomService } from '@app/rooms/service';
 import { ContainerComponent } from '@app/ui/container';
-import { ColumnComponent, RowComponent } from '@app/ui/row';
+import { ColumnComponent, RowComponent } from '@app/ui/grid';
 
 import { BookingPageComponent } from './booking-page.component';
-import { BookingBoxComponent } from './components/booking-box/booking-box.component';
-import { BookingCardComponent } from './components/booking-card/booking-card.component';
-import { BookingListComponent } from './components/booking-list/booking-list.component';
-import { BookingMapComponent } from './components/booking-map/booking-map.component';
+import { BookingBoxModule } from './components/booking-box/booking-box.module';
+import { BookingCardModule } from './components/booking-card/booking-card.module';
+import { BookingListModule } from './components/booking-list/booking-list.module';
+import { BookingMapModule } from './components/booking-map/booking-map.module';
 
 describe('BookingPageComponent', () => {
   let component: BookingPageComponent;
@@ -20,20 +20,15 @@ describe('BookingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        BookingPageComponent,
-        MockComponents(
-          BookingMapComponent,
-          BookingListComponent,
-          BookingCardComponent,
-          BookingBoxComponent,
-          MatIcon,
-          MatButton,
-          RowComponent,
-          ColumnComponent,
-          ContainerComponent
-        ),
+      imports: [
+        MatButtonModule,
+        MatIconModule,
+        MockModule(BookingMapModule),
+        MockModule(BookingListModule),
+        MockModule(BookingCardModule),
+        MockModule(BookingBoxModule),
       ],
+      declarations: [BookingPageComponent, MockComponents(RowComponent, ColumnComponent, ContainerComponent)],
       providers: [
         {
           provide: RoomService,
