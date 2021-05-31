@@ -111,6 +111,7 @@ export const reducer = createReducer(
         id: payload.id,
         changes: {
           ...payload,
+          updated: new Date().toISOString(),
           personChangeRun: false,
         },
       },

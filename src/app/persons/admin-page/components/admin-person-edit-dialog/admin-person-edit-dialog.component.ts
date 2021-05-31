@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { FormErrorsService } from '@app/core/forms/errors';
-import { PERSONS_IDS } from '@app/persons/common';
+import { PersonField, PERSONS_IDS } from '@app/persons/common';
 import { PersonExtended } from '@app/persons/manager';
 import { PersonFacade } from '@app/persons/state';
 
@@ -27,7 +27,7 @@ export class AdminPersonEditDialogComponent implements OnInit, OnDestroy {
     private readonly formErrorsService: FormErrorsService,
     private readonly matDialogRef: MatDialogRef<AdminPersonEditDialogComponent>,
     private readonly matSnackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public readonly personExtended: PersonExtended
+    @Inject(MAT_DIALOG_DATA) public readonly person: PersonExtended
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class AdminPersonEditDialogComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.personFacade.changePerson(this.form.value);
+      this.personFacade.changePerson({ ...this.form.value, [PersonField.ID]: this.person.id });
     } else {
       this.formErrorsService.scrollToFirstError(this.form, PERSONS_IDS);
     }
