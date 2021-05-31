@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AdminPersonCardModule } from './admin-person-card.module';
 
-describe('AdminBuildingCardModule', () => {
+describe('AdminPersonCardModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AdminPersonCardModule],

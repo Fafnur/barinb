@@ -36,6 +36,7 @@ describe('PersonManager', () => {
         {
           provide: PersonFacade,
           useValue: {
+            persons$: of(),
             removePerson: jest.fn(),
             person$: jest.fn(() => of()),
           } as Partial<PersonFacade>,

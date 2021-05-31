@@ -10,7 +10,7 @@ import { PersonSharedModule } from '@app/persons/shared';
 
 import { AdminBuildingPersonComponent } from './admin-building-person.component';
 
-describe('AdminRoomPersonComponent', () => {
+describe('AdminBuildingPersonComponent', () => {
   let component: AdminBuildingPersonComponent;
   let fixture: ComponentFixture<AdminBuildingPersonComponent>;
 

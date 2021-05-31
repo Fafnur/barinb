@@ -10,7 +10,7 @@ import { AdminBuildingClearDialogModule } from '../admin-building-clear-dialog/a
 import { AdminBuildingCreateDialogModule } from '../admin-building-create-dialog/admin-building-create-dialog.module';
 import { AdminBuildingsActionsComponent } from './admin-buildings-actions.component';
 
-describe('AdminRoomsActionsComponent', () => {
+describe('AdminBuildingsActionsComponent', () => {
   let component: AdminBuildingsActionsComponent;
   let fixture: ComponentFixture<AdminBuildingsActionsComponent>;
 

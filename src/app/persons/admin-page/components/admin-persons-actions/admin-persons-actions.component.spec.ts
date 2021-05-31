@@ -4,7 +4,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MockModule } from 'ng-mocks';
 
-import { BuildingManager } from '@app/buildings/manager';
+import { PersonManager } from '@app/persons/manager';
 
 import { AdminPersonClearDialogModule } from '../admin-person-clear-dialog/admin-person-clear-dialog.module';
 import { AdminPersonCreateDialogModule } from '../admin-person-create-dialog/admin-person-create-dialog.module';
@@ -26,10 +26,10 @@ describe('AdminPersonsActionsComponent', () => {
       declarations: [AdminPersonsActionsComponent],
       providers: [
         {
-          provide: BuildingManager,
+          provide: PersonManager,
           useValue: {
             clear: jest.fn(),
-          } as Partial<BuildingManager>,
+          } as Partial<PersonManager>,
         },
       ],
     }).compileComponents();

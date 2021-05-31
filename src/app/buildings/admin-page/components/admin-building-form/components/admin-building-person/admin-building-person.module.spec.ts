@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { AdminBuildingPersonModule } from './admin-building-person.module';
 
-describe('AdminRoomGuestsModule', () => {
+describe('AdminBuildingPersonModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AdminBuildingPersonModule],

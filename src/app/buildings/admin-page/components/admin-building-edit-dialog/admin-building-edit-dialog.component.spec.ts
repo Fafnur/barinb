@@ -13,7 +13,7 @@ import { FormErrorsService } from '@app/core/forms/errors';
 import { AdminBuildingFormComponent } from '../admin-building-form/admin-building-form.component';
 import { AdminBuildingEditDialogComponent } from './admin-building-edit-dialog.component';
 
-describe('AdminRoomEditDialogComponent', () => {
+describe('AdminBuildingEditDialogComponent', () => {
   let component: AdminBuildingEditDialogComponent;
   let fixture: ComponentFixture<AdminBuildingEditDialogComponent>;
 

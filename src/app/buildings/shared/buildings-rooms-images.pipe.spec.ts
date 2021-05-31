@@ -1,6 +1,6 @@
 import { BuildingsRoomsImagesPipe } from './buildings-rooms-images.pipe';
 
-describe('RoomsPreviewImagesPipe', () => {
+describe('BuildingsRoomsImagesPipe', () => {
   let pipe: BuildingsRoomsImagesPipe;
 
   beforeEach(() => {
@@ -13,7 +13,10 @@ describe('RoomsPreviewImagesPipe', () => {
 
   it('should return images', () => {
     expect(pipe.transform([]).length).toBe(0);
-    expect(pipe.transform([{ photos: ['1'] }] as any).length).toBe(1);
-    expect(pipe.transform([{ photos: ['1'] }, { photos: ['2', '3'] }] as any).length).toBe(3);
+    expect(pipe.transform([{ roomsExtended: [{ photos: ['1'] }] as any }]).length).toBe(1);
+    expect(
+      pipe.transform([{ roomsExtended: [{ photos: ['1'] }] as any }, { roomsExtended: [{ photos: ['2', '3'] }, { photos: ['5'] }] as any }])
+        .length
+    ).toBe(4);
   });
 });

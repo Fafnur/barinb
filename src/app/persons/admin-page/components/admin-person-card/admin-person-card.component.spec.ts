@@ -14,7 +14,7 @@ import { CarouselModule } from '@app/ui/carousel';
 import { AdminPersonActionsModule } from '../admin-person-actions/admin-person-actions.module';
 import { AdminPersonCardComponent } from './admin-person-card.component';
 
-describe('AdminBuildingCardComponent', () => {
+describe('AdminPersonCardComponent', () => {
   let component: AdminPersonCardComponent;
   let fixture: ComponentFixture<AdminPersonCardComponent>;
 
@@ -40,7 +40,7 @@ describe('AdminBuildingCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminPersonCardComponent);
     component = fixture.componentInstance;
-    component.person = { personExtended: { avatar: '/li.png' }, rooms: [] } as any;
+    component.person = { personExtended: { avatar: '/li.png' }, buildings: [] } as any;
     fixture.detectChanges();
   });
 
