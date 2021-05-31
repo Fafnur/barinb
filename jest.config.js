@@ -42,6 +42,7 @@ module.exports = {
     '@app/core/numerals/shared': ['<rootDir>/src/app/core/numerals/shared/index.ts'],
     '@app/core/numerals/utils': ['<rootDir>/src/app/core/numerals/utils/index.ts'],
     '@app/core/platform': ['<rootDir>/src/app/core/platform/index.ts'],
+    '@app/core/testing': ['<rootDir>/src/app/core/testing/index.ts'],
     '@app/rooms/common': ['<rootDir>/src/app/rooms/common/index.ts'],
     '@app/rooms/manager': ['<rootDir>/src/app/rooms/manager/index.ts'],
     '@app/rooms/admin-page': ['<rootDir>/src/app/rooms/admin-page/index.ts'],

@@ -45,6 +45,7 @@
       "@app/core/numerals/shared": ["src/app/core/numerals/shared/index.ts"],
       "@app/core/numerals/utils": ["src/app/core/numerals/utils/index.ts"],
       "@app/core/platform": ["src/app/core/platform/index.ts"],
+      "@app/core/testing": ["src/app/core/testing/index.ts"],
       "@app/rooms/common": ["src/app/rooms/common/index.ts"],
       "@app/rooms/admin-page": ["src/app/rooms/admin-page/index.ts"],
       "@app/rooms/page": ["src/app/rooms/page/index.ts"],
