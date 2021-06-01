@@ -5,10 +5,10 @@
 <ng-template #desktopTpl>
   <app-row>
     <app-column>
-      <app-booking-list></app-booking-list>
+      <app-booking-list data-automation-id="booking-list-desktop"></app-booking-list>
     </app-column>
     <app-column>
-      <app-booking-map><app-booking-card></app-booking-card></app-booking-map>
+      <app-booking-map data-automation-id="booking-map-desktop"><app-booking-card></app-booking-card></app-booking-map>
     </app-column>
   </app-row>
 </ng-template>
@@ -24,9 +24,9 @@
 </ng-template>
 
 <ng-template #mapMobileTpl>
-  <app-booking-map><app-booking-box></app-booking-box></app-booking-map>
+  <app-booking-map data-automation-id="booking-map-mobile"><app-booking-box></app-booking-box></app-booking-map>
 </ng-template>
 
 <ng-template #listMobileTpl>
-  <app-booking-list></app-booking-list>
+  <app-booking-list data-automation-id="booking-list-mobile"></app-booking-list>
 </ng-template>

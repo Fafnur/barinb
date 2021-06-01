@@ -19,7 +19,7 @@ import { BookingListModule } from './components/booking-list/booking-list.module
 import { BookingMapModule } from './components/booking-map/booking-map.module';
 
 describe('BookingPageComponent', () => {
-  let pageObject: BookingPageComponentPo<BookingPageComponent>;
+  let pageObject: BookingPageComponentPo;
   let fixture: ComponentFixture<BookingPageComponent>;
   let breakpointObserverMock: BreakpointObserver;
   let breakpointObserverMatch$: BehaviorSubject<BreakpointState>;
@@ -61,6 +61,8 @@ describe('BookingPageComponent', () => {
 
   it('the toggle button text should be - view_list', () => {
     expect(pageObject.bookingViewToggleText).toBe('view_list');
+    expect(pageObject.isMapShow).toBeTruthy();
+    expect(pageObject.bookingMapMobile).toBeTruthy();
   });
 
   it('after clicking, the toggle button text should be - map', () => {
@@ -68,5 +70,20 @@ describe('BookingPageComponent', () => {
     fixture.detectChanges();
 
     expect(pageObject.bookingViewToggleText).toBe('map');
+    expect(pageObject.isMapShow).toBeFalsy();
+    expect(pageObject.bookingListMobile).toBeTruthy();
+  });
+
+  it('the desktop version should show map and list', () => {
+    breakpointObserverMatch$.next({
+      matches: true,
+      breakpoints: {},
+    });
+    fixture.detectChanges();
+
+    expect(pageObject.bookingListDesktop).toBeTruthy();
+    expect(pageObject.bookingMapDesktop).toBeTruthy();
+    expect(pageObject.bookingMapMobile).toBeNull();
+    expect(pageObject.bookingListMobile).toBeNull();
   });
 });
