@@ -1,4 +1,8 @@
 <div *ngIf="bookingVariant$ | async as bookingVariant">
-  <app-carousel [images]="bookingVariant | bookingVariantImages" (selected)="onSelected(bookingVariant)"></app-carousel>
-  <p>{{ bookingVariant.address }}</p>
+  <app-carousel
+    automation-id="booking-card-carousel"
+    [images]="bookingVariant | bookingVariantImages"
+    (selected)="onSelected(bookingVariant)"
+  ></app-carousel>
+  <p automation-id="booking-card-description">{{ bookingVariant.address }}</p>
 </div>

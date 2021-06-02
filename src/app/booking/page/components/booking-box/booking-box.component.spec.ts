@@ -70,7 +70,7 @@ describe('BookingBoxComponent', () => {
     expect(pageObject.bookingBoxDescription).toBe(`${BOOKING_VARIANT_STUB.address}: ${BOOKING_VARIANT_STUB.firstRoom?.price}`);
   });
 
-  it('should set description for component', () => {
+  it('should call method navigate', () => {
     bookingVariant$.next(BOOKING_VARIANT_STUB);
     fixture.detectChanges();
     pageObject.triggerBookingBox();

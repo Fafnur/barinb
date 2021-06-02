@@ -4,7 +4,7 @@ import { PageObject } from '@app/core/testing';
 
 import { BookingPageComponent } from './booking-page.component';
 
-export enum BookingPageAutomation {
+enum BookingPageAutomation {
   BookingViewToggle = 'booking-view-toggle',
   BookingMapMobile = 'booking-map-mobile',
   BookingListMobile = 'booking-list-mobile',
