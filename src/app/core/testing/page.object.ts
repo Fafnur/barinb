@@ -10,11 +10,11 @@ export class PageObject<T> {
   }
 
   protected getByAutomationId(automationId: string): DebugElement {
-    return this.fixture.debugElement.query(By.css(`[data-automation-id="${automationId}"]`));
+    return this.fixture.debugElement.query(By.css(`[automation-id="${automationId}"]`));
   }
 
   protected getAllByAutomationId(automationId: string): DebugElement[] {
-    return this.fixture.debugElement.queryAll(By.css(`[data-automation-id="${automationId}"]`));
+    return this.fixture.debugElement.queryAll(By.css(`[automation-id="${automationId}"]`));
   }
 
   protected text(element: DebugElement | string): string | null {

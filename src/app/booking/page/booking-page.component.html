@@ -5,10 +5,10 @@
 <ng-template #desktopTpl>
   <app-row>
     <app-column>
-      <app-booking-list data-automation-id="booking-list-desktop"></app-booking-list>
+      <app-booking-list automation-id="booking-list-desktop"></app-booking-list>
     </app-column>
     <app-column>
-      <app-booking-map data-automation-id="booking-map-desktop"><app-booking-card></app-booking-card></app-booking-map>
+      <app-booking-map automation-id="booking-map-desktop"><app-booking-card></app-booking-card></app-booking-map>
     </app-column>
   </app-row>
 </ng-template>
@@ -16,7 +16,7 @@
 <ng-template #mobileTpl>
   <ng-container *ngIf="isMapShow; then mapMobileTpl; else listMobileTpl"></ng-container>
   <div class="booking-actions">
-    <button class="booking-action" data-automation-id="booking-view-toggle" mat-icon-button type="button" (click)="onToggleView()">
+    <button class="booking-action" automation-id="booking-view-toggle" mat-icon-button type="button" (click)="onToggleView()">
       <mat-icon *ngIf="isMapShow">view_list</mat-icon>
       <mat-icon *ngIf="!isMapShow">map</mat-icon>
     </button>
@@ -24,9 +24,9 @@
 </ng-template>
 
 <ng-template #mapMobileTpl>
-  <app-booking-map data-automation-id="booking-map-mobile"><app-booking-box></app-booking-box></app-booking-map>
+  <app-booking-map automation-id="booking-map-mobile"><app-booking-box></app-booking-box></app-booking-map>
 </ng-template>
 
 <ng-template #listMobileTpl>
-  <app-booking-list data-automation-id="booking-list-mobile"></app-booking-list>
+  <app-booking-list automation-id="booking-list-mobile"></app-booking-list>
 </ng-template>
