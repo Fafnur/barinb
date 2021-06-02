@@ -16,6 +16,19 @@ export function getFirstRoomOnBuilding(building: Building, rooms: Room[]): Room 
   return firstRoomId ? rooms.find((room) => room.id === firstRoomId) ?? null : null;
 }
 
+export function castMapMarkerConfigs(bookingVariants: BookingVariant[]): MapMarkerConfig[] {
+  return bookingVariants.map((bookingVariant) => ({
+    data: bookingVariant,
+    lat: bookingVariant.lat,
+    lng: bookingVariant.lng,
+    label: {
+      className: 'google-map-marker',
+      text: bookingVariant.firstRoom?.price.toString() ?? '',
+      fontWeight: 'bold',
+    },
+  }));
+}
+
 @Injectable()
 export class BookingService {
   bookingVariant$: Observable<BookingVariant> = this.bookingFacade.bookingVariant$.pipe(filter<any>(Boolean));
@@ -26,20 +39,7 @@ export class BookingService {
 
   bookingDetails$: Observable<BookingDetails> = this.bookingFacade.bookingDetails$.pipe(filter<any>(Boolean));
 
-  mapMarkers$: Observable<MapMarkerConfig[]> = this.bookingVariants$.pipe(
-    map((bookingVariants) =>
-      bookingVariants.map((bookingVariant) => ({
-        data: bookingVariant,
-        lat: bookingVariant.lat,
-        lng: bookingVariant.lng,
-        label: {
-          className: 'google-map-marker',
-          text: bookingVariant.firstRoom?.price.toString() ?? '',
-          fontWeight: 'bold',
-        },
-      }))
-    )
-  );
+  mapMarkers$: Observable<MapMarkerConfig[]> = this.bookingVariants$.pipe(map(castMapMarkerConfigs));
 
   constructor(
     private readonly buildingService: BuildingService,

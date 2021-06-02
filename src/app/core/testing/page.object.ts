@@ -28,13 +28,17 @@ export class PageObject<T> {
   }
 
   protected triggerEventHandler(
-    element: DebugElement | string,
+    element: DebugElement | string | null,
     eventName: string,
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     eventObj: any = null
   ): void {
-    const el = element instanceof DebugElement ? element : this.getByAutomationId(element);
+    if (element !== null) {
+      const el = element instanceof DebugElement ? element : this.getByAutomationId(element);
 
-    el.triggerEventHandler(eventName, eventObj);
+      el.triggerEventHandler(eventName, eventObj);
+    } else {
+      console.warn('Element on triggerEventHandler is NULL');
+    }
   }
 }

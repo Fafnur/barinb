@@ -1,39 +1,77 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockComponents } from 'ng-mocks';
-import { of } from 'rxjs';
+import { MockModule } from 'ng-mocks';
+import { ReplaySubject } from 'rxjs';
+import { deepEqual, mock, verify, when } from 'ts-mockito';
 
-import { BookingService } from '@app/booking/service';
-import { GoogleMapComponent } from '@app/maps/shared';
+import { BookingService, castMapMarkerConfigs } from '@app/booking/service';
+import { BOOKING_VARIANT_STUB } from '@app/booking/state';
+import { providerOf } from '@app/core/testing';
+import { MapMarkerConfig } from '@app/maps/common';
+import { GoogleMapsSharedModule } from '@app/maps/shared';
 
 import { BookingMapComponent } from './booking-map.component';
+import { BookingMapComponentPo } from './booking-map.po';
 
 describe('BookingMapComponent', () => {
-  let component: BookingMapComponent;
+  let pageObject: BookingMapComponentPo;
   let fixture: ComponentFixture<BookingMapComponent>;
+  let bookingServiceMock: BookingService;
+  let mapMarkers$: ReplaySubject<MapMarkerConfig[]>;
+  const mapMarkers: MapMarkerConfig[] = castMapMarkerConfigs([BOOKING_VARIANT_STUB]);
+
+  beforeEach(() => {
+    bookingServiceMock = mock(BookingService);
+    mapMarkers$ = new ReplaySubject<MapMarkerConfig[]>(1);
+  });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BookingMapComponent, MockComponents(GoogleMapComponent)],
-      providers: [
-        {
-          provide: BookingService,
-          useValue: {
-            mapMarkers$: of([]),
-            setBookingVariant: jest.fn(),
-            clearBookingVariant: jest.fn(),
-          } as Partial<BookingService>,
-        },
-      ],
+      imports: [MockModule(GoogleMapsSharedModule)],
+      declarations: [BookingMapComponent],
+      providers: [providerOf(BookingService, bookingServiceMock)],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookingMapComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new BookingMapComponentPo(fixture);
+    when(bookingServiceMock.mapMarkers$).thenReturn(mapMarkers$);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should set google map markers', () => {
+    fixture.detectChanges();
+
+    mapMarkers$.next(mapMarkers);
+    fixture.detectChanges();
+
+    expect(pageObject.bookingMapGoogle).toBeTruthy();
+  });
+
+  it('should call method setBookingVariant()', () => {
+    fixture.detectChanges();
+
+    mapMarkers$.next(mapMarkers);
+    fixture.detectChanges();
+    pageObject.triggerBookingMapGoogleClicked(mapMarkers[0]);
+    fixture.detectChanges();
+
+    verify(bookingServiceMock.setBookingVariant(deepEqual(mapMarkers[0].data))).once();
+  });
+
+  it('should call method clearBookingVariant()', () => {
+    fixture.detectChanges();
+
+    mapMarkers$.next(mapMarkers);
+    fixture.detectChanges();
+    pageObject.triggerBookingMapGoogleInfoWindowClosed();
+    fixture.detectChanges();
+
+    verify(bookingServiceMock.clearBookingVariant()).once();
   });
 });
