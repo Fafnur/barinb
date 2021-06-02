@@ -27,6 +27,7 @@
       "@app/ui/carousel": ["src/app/ui/carousel/index.ts"],
       "@app/ui/container": ["src/app/ui/container/index.ts"],
       "@app/ui/grid": ["src/app/ui/grid/index.ts"],
+      "@app/ui/shared": ["src/app/ui/shared/index.ts"],
       "@app/core/common": ["src/app/core/common/index.ts"],
       "@app/core/config": ["src/app/core/config/index.ts"],
       "@app/core/environments": ["src/app/core/environments/index.ts"],

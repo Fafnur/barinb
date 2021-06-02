@@ -24,6 +24,7 @@ module.exports = {
     '@app/ui/carousel': ['<rootDir>/src/app/ui/carousel/index.ts'],
     '@app/ui/container': ['<rootDir>/src/app/ui/container/index.ts'],
     '@app/ui/grid': ['<rootDir>/src/app/ui/grid/index.ts'],
+    '@app/ui/shared': ['<rootDir>/src/app/ui/shared/index.ts'],
     '@app/core/common': ['<rootDir>/src/app/core/common/index.ts'],
     '@app/core/config': ['<rootDir>/src/app/core/config/index.ts'],
     '@app/core/environments': ['<rootDir>/src/app/core/environments/index.ts'],
