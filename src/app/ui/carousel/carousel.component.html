@@ -3,7 +3,7 @@
     [image]="image"
     [active]="active === index"
     *ngFor="let image of slides; let index = index"
-    (click)="onClick()"
+    (click)="onClick(index)"
   ></app-carousel-slide>
 
   <app-carousel-dots [counts]="slides.length" [active]="active" (selected)="onSelected($event)"></app-carousel-dots>
