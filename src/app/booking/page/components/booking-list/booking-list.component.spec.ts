@@ -1,37 +1,56 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockComponents } from 'ng-mocks';
-import { of } from 'rxjs';
+import { MockModule } from 'ng-mocks';
+import { ReplaySubject } from 'rxjs';
+import { mock, when } from 'ts-mockito';
 
+import { BookingVariant } from '@app/booking/common';
 import { BookingService } from '@app/booking/service';
+import { BOOKING_VARIANT_STUB } from '@app/booking/state';
+import { providerOf } from '@app/core/testing';
 
-import { BookingPortletComponent } from '../booking-portlet/booking-portlet.component';
+import { BookingPortletModule } from '../booking-portlet/booking-portlet.module';
 import { BookingListComponent } from './booking-list.component';
+import { BookingListComponentPo } from './booking-list.po';
 
 describe('BookingListComponent', () => {
-  let component: BookingListComponent;
+  let pageObject: BookingListComponentPo;
   let fixture: ComponentFixture<BookingListComponent>;
+  let bookingServiceMock: BookingService;
+  let bookingVariants$: ReplaySubject<BookingVariant[]>;
+
+  beforeEach(() => {
+    bookingServiceMock = mock(BookingService);
+    bookingVariants$ = new ReplaySubject<BookingVariant[]>(1);
+  });
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BookingListComponent, MockComponents(BookingPortletComponent)],
-      providers: [
-        {
-          provide: BookingService,
-          useValue: {
-            bookingVariants$: of([]),
-          } as Partial<BookingService>,
-        },
-      ],
+      imports: [MockModule(BookingPortletModule)],
+      declarations: [BookingListComponent],
+      providers: [providerOf(BookingService, bookingServiceMock)],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookingListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new BookingListComponentPo(fixture);
+    when(bookingServiceMock.bookingVariants$).thenReturn(bookingVariants$);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should set portlets', () => {
+    fixture.detectChanges();
+
+    expect(pageObject.bookingListPortlets.length).toBe(0);
+
+    bookingVariants$.next([BOOKING_VARIANT_STUB]);
+    fixture.detectChanges();
+
+    expect(pageObject.bookingListPortlets?.length).toBe(1);
   });
 });

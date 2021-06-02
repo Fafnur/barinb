@@ -1,3 +1,7 @@
 <div class="booking-list" *ngIf="bookingVariants$ | async as bookingVariants">
-  <app-booking-portlet [bookingVariant]="bookingVariant" *ngFor="let bookingVariant of bookingVariants"></app-booking-portlet>
+  <app-booking-portlet
+    automation-id="booking-list-portlet"
+    [bookingVariant]="bookingVariant"
+    *ngFor="let bookingVariant of bookingVariants"
+  ></app-booking-portlet>
 </div>
