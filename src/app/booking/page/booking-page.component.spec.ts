@@ -56,16 +56,25 @@ describe('BookingPageComponent', () => {
     fixture = TestBed.createComponent(BookingPageComponent);
     pageObject = new BookingPageComponentPo(fixture);
     when(breakpointObserverMock.observe(anything())).thenReturn(breakpointObserverMatch$);
+  });
+
+  it('should create', () => {
     fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
   it('the toggle button text should be - view_list', () => {
+    fixture.detectChanges();
+
     expect(pageObject.bookingViewToggleText).toBe('view_list');
     expect(pageObject.isMapShow).toBeTruthy();
     expect(pageObject.bookingMapMobile).toBeTruthy();
   });
 
   it('after clicking, the toggle button text should be - map', () => {
+    fixture.detectChanges();
+
     pageObject.triggerBookingViewToggle();
     fixture.detectChanges();
 
@@ -75,6 +84,8 @@ describe('BookingPageComponent', () => {
   });
 
   it('the desktop version should show map and list', () => {
+    fixture.detectChanges();
+
     breakpointObserverMatch$.next({
       matches: true,
       breakpoints: {},

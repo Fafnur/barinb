@@ -1,39 +1,82 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockModule } from 'ng-mocks';
-import { of } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
+import { anything, mock, verify, when } from 'ts-mockito';
 
+import { BookingVariant } from '@app/booking/common';
 import { BookingService } from '@app/booking/service';
 import { BookingSharedModule } from '@app/booking/shared';
+import { BOOKING_VARIANT_STUB } from '@app/booking/state';
+import { NavigationPath } from '@app/core/navigation/common';
+import { NavigationService } from '@app/core/navigation/service';
+import { providerOf } from '@app/core/testing';
+import { SharedModule } from '@app/ui/shared';
 
 import { BookingBoxComponent } from './booking-box.component';
+import { BookingBoxComponentPo } from './booking-box.po';
 
 describe('BookingBoxComponent', () => {
-  let component: BookingBoxComponent;
+  let pageObject: BookingBoxComponentPo;
   let fixture: ComponentFixture<BookingBoxComponent>;
+  let bookingServiceMock: BookingService;
+  let navigationServiceMock: NavigationService;
+  let bookingVariant$: ReplaySubject<BookingVariant>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MockModule(BookingSharedModule)],
-      declarations: [BookingBoxComponent],
-      providers: [
-        {
-          provide: BookingService,
-          useValue: {
-            bookingVariant$: of(),
-          } as Partial<BookingService>,
-        },
-      ],
-    }).compileComponents();
+  beforeEach(() => {
+    bookingServiceMock = mock(BookingService);
+    navigationServiceMock = mock(NavigationService);
+    bookingVariant$ = new ReplaySubject<BookingVariant>(1);
   });
+
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, BookingSharedModule, SharedModule],
+        declarations: [BookingBoxComponent],
+        providers: [providerOf(BookingService, bookingServiceMock), providerOf(NavigationService, navigationServiceMock)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookingBoxComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new BookingBoxComponentPo(fixture);
+    when(bookingServiceMock.bookingVariant$).thenReturn(bookingVariant$);
+    when(navigationServiceMock.navigate(anything(), anything(), anything())).thenReturn();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should set background image for component', () => {
+    fixture.detectChanges();
+    expect(pageObject.bookingBoxImageStyles).toBeNull();
+
+    bookingVariant$.next(BOOKING_VARIANT_STUB);
+    fixture.detectChanges();
+
+    expect(pageObject.bookingBoxImageStyles).toEqual({ backgroundImage: `url(${BOOKING_VARIANT_STUB.firstRoom?.photos[0]})` });
+  });
+
+  it('should set description for component', () => {
+    fixture.detectChanges();
+    expect(pageObject.bookingBoxDescription).toBeNull();
+
+    bookingVariant$.next(BOOKING_VARIANT_STUB);
+    fixture.detectChanges();
+
+    expect(pageObject.bookingBoxDescription).toBe(`${BOOKING_VARIANT_STUB.address}: ${BOOKING_VARIANT_STUB.firstRoom?.price}`);
+  });
+
+  it('should set description for component', () => {
+    bookingVariant$.next(BOOKING_VARIANT_STUB);
+    fixture.detectChanges();
+    pageObject.triggerBookingBox();
+    fixture.detectChanges();
+
+    verify(navigationServiceMock.navigate(NavigationPath.RoomPage, { id: BOOKING_VARIANT_STUB.firstRoom?.id })).once();
   });
 });

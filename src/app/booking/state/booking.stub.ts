@@ -26,7 +26,7 @@ export const BOOKING_VARIANT_STUB: BookingVariant = {
       RoomAmenities.Hangers,
       RoomAmenities.Tv,
     ],
-    photos: [],
+    photos: ['1.jpg'],
     created: '2021-05-11T01:14:42.988Z',
     updated: '2021-05-11T01:14:44.000Z',
     roomRemoveError: null,

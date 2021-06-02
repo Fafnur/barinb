@@ -1,5 +1,8 @@
-<div *ngIf="bookingVariant$ | async as bookingVariant" (click)="onClick(bookingVariant)">
-  <div class="booking-image" [ngStyle]="{ backgroundImage: 'url(' + (bookingVariant | bookingVariantFirstImage) + ')' }"></div>
-
-  <p>{{ bookingVariant.address }}: {{ bookingVariant.firstRoom?.price }}</p>
+<div automation-id="booking-box" *ngIf="bookingVariant$ | async as bookingVariant" (click)="onClick(bookingVariant)">
+  <div
+    class="booking-image"
+    automation-id="booking-box-image"
+    [ngStyle]="bookingVariant | bookingVariantFirstImage | backgroundImage"
+  ></div>
+  <p automation-id="booking-box-description">{{ bookingVariant.address }}: {{ bookingVariant.firstRoom?.price }}</p>
 </div>
