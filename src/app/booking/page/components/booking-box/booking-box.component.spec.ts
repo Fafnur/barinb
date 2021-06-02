@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { ReplaySubject } from 'rxjs';
-import { anything, mock, verify, when } from 'ts-mockito';
+import { anything, deepEqual, mock, verify, when } from 'ts-mockito';
 
 import { BookingVariant } from '@app/booking/common';
 import { BookingService } from '@app/booking/service';
@@ -31,7 +30,7 @@ describe('BookingBoxComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [RouterTestingModule, BookingSharedModule, SharedModule],
+        imports: [BookingSharedModule, SharedModule],
         declarations: [BookingBoxComponent],
         providers: [providerOf(BookingService, bookingServiceMock), providerOf(NavigationService, navigationServiceMock)],
       }).compileComponents();
@@ -77,6 +76,6 @@ describe('BookingBoxComponent', () => {
     pageObject.triggerBookingBox();
     fixture.detectChanges();
 
-    verify(navigationServiceMock.navigate(NavigationPath.RoomPage, { id: BOOKING_VARIANT_STUB.firstRoom?.id })).once();
+    verify(navigationServiceMock.navigate(NavigationPath.RoomPage, deepEqual({ id: BOOKING_VARIANT_STUB.firstRoom?.id }))).once();
   });
 });
