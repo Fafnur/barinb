@@ -1,6 +1,7 @@
 <app-row mode="lg" *ngIf="bookingVariant">
   <app-column [modes]="{ lg: 5 }">
     <app-carousel
+      automation-id="booking-portlet-carousel"
       class="booking-portlet-carousel"
       [images]="bookingVariant | bookingVariantImages"
       (selected)="onSelected()"
@@ -8,11 +9,20 @@
   </app-column>
   <app-column [modes]="{ lg: 7 }">
     <div class="booking-portlet-content">
-      <h4 class="booking-portlet-title">{{ bookingVariant.name }}</h4>
-      <div class="booking-portlet-address"><strong>Адрес</strong>: {{ bookingVariant.address }}</div>
-      <div class="booking-portlet-price"><strong>Цена за ночь</strong>: {{ bookingVariant.firstRoom?.price }} ₽</div>
+      <h4 class="booking-portlet-title" automation-id="booking-portlet-title">{{ bookingVariant.name }}</h4>
+      <div class="booking-portlet-address" automation-id="booking-portlet-address">
+        <strong>Адрес</strong>: {{ bookingVariant.address }}
+      </div>
+      <div class="booking-portlet-price" automation-id="booking-portlet-price">
+        <strong>Цена за ночь</strong>: {{ bookingVariant.firstRoom?.price }} ₽
+      </div>
       <div class="booking-portlet-actions">
-        <a mat-raised-button color="primary" [routerLink]="NavigationPath.RoomPage | navPath: { id: bookingVariant.firstRoom?.id }">
+        <a
+          mat-raised-button
+          color="primary"
+          automation-id="booking-portlet-action"
+          [routerLink]="NavigationPath.RoomPage | navPath: { id: bookingVariant.firstRoom?.id }"
+        >
           Подробнее
         </a>
       </div>

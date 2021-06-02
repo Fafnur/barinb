@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MockModule } from 'ng-mocks';
 import { ReplaySubject } from 'rxjs';
 import { deepEqual, mock, verify, when } from 'ts-mockito';
@@ -24,13 +24,15 @@ describe('BookingMapComponent', () => {
     mapMarkers$ = new ReplaySubject<MapMarkerConfig[]>(1);
   });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MockModule(GoogleMapsSharedModule)],
-      declarations: [BookingMapComponent],
-      providers: [providerOf(BookingService, bookingServiceMock)],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [MockModule(GoogleMapsSharedModule)],
+        declarations: [BookingMapComponent],
+        providers: [providerOf(BookingService, bookingServiceMock)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BookingMapComponent);
