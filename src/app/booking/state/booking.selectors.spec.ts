@@ -13,6 +13,7 @@ describe('Booking Selectors', () => {
 
     expect(results).toEqual(BOOKING_VARIANT_STUB);
   });
+
   it('selectBookingDetails() should return bookingDetails', () => {
     const state = getState({ bookingDetails: BOOKING_DETAILS_STUB });
     const results = BookingSelectors.selectBookingDetails(state);
