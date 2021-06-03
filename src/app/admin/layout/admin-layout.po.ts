@@ -4,18 +4,18 @@ import { PageObject } from '@app/core/testing';
 
 import { AdminLayoutComponent } from './admin-layout.component';
 
-enum BookingPageAutomation {
+enum AdminLayoutAutomation {
   AdminDesktopMenu = 'admin-desktop-menu',
   AdminMobileMenu = 'admin-mobile-menu',
 }
 
 export class AdminLayoutComponentPo extends PageObject<AdminLayoutComponent> {
   get adminDesktopMenu(): DebugElement | null {
-    return this.getByAutomationId(BookingPageAutomation.AdminDesktopMenu);
+    return this.getByAutomationId(AdminLayoutAutomation.AdminDesktopMenu);
   }
 
   get adminMobileMenu(): DebugElement | null {
-    return this.getByAutomationId(BookingPageAutomation.AdminMobileMenu);
+    return this.getByAutomationId(AdminLayoutAutomation.AdminMobileMenu);
   }
 
   get isDesktopScreen(): boolean {

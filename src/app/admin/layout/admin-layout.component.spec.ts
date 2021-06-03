@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { BreakpointState } from '@angular/cdk/layout/breakpoints-observer';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockModule } from 'ng-mocks';
 import { BehaviorSubject } from 'rxjs';
@@ -30,13 +30,15 @@ describe('AdminLayoutComponent', () => {
     });
   });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, ContainerModule, GridModule, MockModule(AdminDesktopMenuModule), MockModule(AdminMobileMenuModule)],
-      declarations: [AdminLayoutComponent],
-      providers: [providerOf(BreakpointObserver, breakpointObserverMock)],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, ContainerModule, GridModule, MockModule(AdminDesktopMenuModule), MockModule(AdminMobileMenuModule)],
+        declarations: [AdminLayoutComponent],
+        providers: [providerOf(BreakpointObserver, breakpointObserverMock)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminLayoutComponent);

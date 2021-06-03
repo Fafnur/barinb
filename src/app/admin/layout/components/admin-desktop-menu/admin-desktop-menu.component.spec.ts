@@ -1,38 +1,58 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockComponents } from 'ng-mocks';
+import { MockModule } from 'ng-mocks';
+import { mock, when } from 'ts-mockito';
 
-import { AdminMenuService } from '@app/admin/menu';
+import { ADMIN_MENU_LINKS, AdminMenuService } from '@app/admin/menu';
+import { providerOf } from '@app/core/testing';
 
-import { AdminMenuLinkComponent } from '../admin-menu-link/admin-menu-link.component';
+import { AdminMenuLinkModule } from '../admin-menu-link/admin-menu-link.module';
 import { AdminDesktopMenuComponent } from './admin-desktop-menu.component';
+import { AdminDesktopMenuComponentPo } from './admin-desktop-menu.po';
 
 describe('AdminDesktopMenuComponent', () => {
-  let component: AdminDesktopMenuComponent;
+  let pageObject: AdminDesktopMenuComponentPo;
   let fixture: ComponentFixture<AdminDesktopMenuComponent>;
+  let adminMenuServiceMock: AdminMenuService;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AdminDesktopMenuComponent, MockComponents(AdminMenuLinkComponent)],
-      providers: [
-        {
-          provide: AdminMenuService,
-          useValue: {
-            links: jest.fn(() => []),
-          } as Partial<AdminMenuService>,
-        },
-      ],
-    }).compileComponents();
+  beforeEach(() => {
+    adminMenuServiceMock = mock(AdminMenuService);
   });
+
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, MockModule(AdminMenuLinkModule)],
+        declarations: [AdminDesktopMenuComponent],
+        providers: [providerOf(AdminMenuService, adminMenuServiceMock)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminDesktopMenuComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new AdminDesktopMenuComponentPo(fixture);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should create admin menu links', () => {
+    when(adminMenuServiceMock.links()).thenReturn(ADMIN_MENU_LINKS);
+
+    fixture.detectChanges();
+
+    expect(pageObject.adminMenuLinks.length).toBe(ADMIN_MENU_LINKS.length);
+  });
+
+  it('should not create links', () => {
+    when(adminMenuServiceMock.links()).thenReturn([]);
+
+    fixture.detectChanges();
+
+    expect(pageObject.adminMenuLinks.length).toBe(0);
   });
 });
