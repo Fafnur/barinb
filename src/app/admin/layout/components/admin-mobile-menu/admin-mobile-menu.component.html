@@ -1,3 +1,5 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link [routerLink]="link.route | navPath" *ngFor="let link of links"> {{ link.label }} </a>
+  <a mat-tab-link automation-id="admin-mobile-menu-link" [routerLink]="link.route | navPath" *ngFor="let link of links">
+    {{ link.label }}
+  </a>
 </nav>
