@@ -1,38 +1,102 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MockModule } from 'ng-mocks';
+import { ReplaySubject } from 'rxjs';
+import { anything, deepEqual, mock, verify, when } from 'ts-mockito';
 
-import { BuildingManager } from '@app/buildings/manager';
+import { BUILDING_EXTENDED_STUB, BuildingExtended, BuildingManager } from '@app/buildings/manager';
+import { providerOf } from '@app/core/testing';
 
+import { AdminBuildingEditDialogComponent } from '../admin-building-edit-dialog/admin-building-edit-dialog.component';
+import { AdminBuildingEditDialogModule } from '../admin-building-edit-dialog/admin-building-edit-dialog.module';
+import { AdminBuildingRemoveDialogModule } from '../admin-building-remove-dialog/admin-building-remove-dialog.module';
+import { AdminBuildingViewDialogComponent } from '../admin-building-view-dialog/admin-building-view-dialog.component';
+import { AdminBuildingViewDialogModule } from '../admin-building-view-dialog/admin-building-view-dialog.module';
 import { AdminBuildingActionsComponent } from './admin-building-actions.component';
+import { AdminBuildingActionsComponentPo } from './admin-building-actions.po';
+
+@Component({
+  template: `<app-admin-building-actions automation-id="booking-portlet" [building]="building"></app-admin-building-actions>`,
+})
+class WrapperComponent {
+  building = BUILDING_EXTENDED_STUB;
+}
 
 describe('AdminBuildingActionsComponent', () => {
-  let component: AdminBuildingActionsComponent;
-  let fixture: ComponentFixture<AdminBuildingActionsComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MatButtonModule, MatIconModule, MatDialogModule],
-      declarations: [AdminBuildingActionsComponent],
-      providers: [
-        {
-          provide: BuildingManager,
-          useValue: {
-            removeRoom: jest.fn(),
-          } as Partial<BuildingManager>,
-        },
-      ],
-    }).compileComponents();
-  });
+  let pageObject: AdminBuildingActionsComponentPo<WrapperComponent>;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
+  let matDialogMock: MatDialog;
+  let buildingManagerMock: BuildingManager;
+  let buildingExtended$: ReplaySubject<BuildingExtended>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminBuildingActionsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    matDialogMock = mock(MatDialog);
+
+    buildingManagerMock = mock(BuildingManager);
+    buildingExtended$ = new ReplaySubject<BuildingExtended>(1);
+  });
+
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          MatButtonModule,
+          MatIconModule,
+          MockModule(AdminBuildingEditDialogModule),
+          MockModule(AdminBuildingRemoveDialogModule),
+          MockModule(AdminBuildingViewDialogModule),
+        ],
+        declarations: [AdminBuildingActionsComponent, WrapperComponent],
+        providers: [providerOf(BuildingManager, buildingManagerMock), providerOf(MatDialog, matDialogMock)],
+      }).compileComponents();
+    })
+  );
+
+  beforeEach(() => {
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new AdminBuildingActionsComponentPo(fixtureWrapper);
+    when(buildingManagerMock.buildingExtended$(anything())).thenReturn(buildingExtended$);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should show all actions', () => {
+    fixtureWrapper.detectChanges();
+
+    buildingExtended$.next(BUILDING_EXTENDED_STUB);
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.adminBuildingView).toBeTruthy();
+    expect(pageObject.adminBuildingEdit).toBeTruthy();
+    expect(pageObject.adminBuildingRemove).toBeTruthy();
+  });
+
+  it('should open dialog view', () => {
+    fixtureWrapper.detectChanges();
+
+    buildingExtended$.next(BUILDING_EXTENDED_STUB);
+    fixtureWrapper.detectChanges();
+
+    pageObject.triggerAdminBuildingViewClick();
+
+    verify(matDialogMock.open(AdminBuildingViewDialogComponent, deepEqual({ data: BUILDING_EXTENDED_STUB, width: '100%' }))).once();
+  });
+
+  it('should open dialog edit', () => {
+    fixtureWrapper.detectChanges();
+
+    buildingExtended$.next(BUILDING_EXTENDED_STUB);
+    fixtureWrapper.detectChanges();
+
+    pageObject.triggerAdminBuildingEditClick();
+
+    verify(matDialogMock.open(AdminBuildingEditDialogComponent, deepEqual({ data: BUILDING_EXTENDED_STUB }))).once();
   });
 });
