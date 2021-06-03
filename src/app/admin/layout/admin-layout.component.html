@@ -5,7 +5,7 @@
 <ng-template #desktopTpl>
   <app-row mode="md">
     <app-column class="admin-menu" [modes]="{ md: 4, lg: 3, xl: 2 }">
-      <app-admin-desktop-menu></app-admin-desktop-menu>
+      <app-admin-desktop-menu automation-id="admin-desktop-menu"></app-admin-desktop-menu>
     </app-column>
     <app-column [modes]="{ md: 8, lg: 9, xl: 10 }">
       <router-outlet></router-outlet>
@@ -14,6 +14,6 @@
 </ng-template>
 
 <ng-template #mobileTpl>
-  <app-admin-mobile-menu class="admin-menu"></app-admin-mobile-menu>
+  <app-admin-mobile-menu class="admin-menu" automation-id="admin-mobile-menu"></app-admin-mobile-menu>
   <router-outlet></router-outlet>
 </ng-template>
