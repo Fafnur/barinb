@@ -1,3 +1,10 @@
-<a mat-icon-button color="accent" [routerLink]="path | navPath" [queryParams]="{ building: building.id }" *ngIf="building">
+<a
+  mat-icon-button
+  color="accent"
+  automation-id="admin-building-link"
+  [routerLink]="path | navPath"
+  [queryParams]="{ building: building.id }"
+  *ngIf="building"
+>
   <mat-icon>apartment</mat-icon>
 </a>
