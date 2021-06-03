@@ -19,8 +19,4 @@ export class BuildingService {
   clear(): void {
     this.buildingFacade.clear();
   }
-
-  clearBuildingsRooms(): void {
-    this.buildingFacade.clearBuildingsRooms();
-  }
 }
