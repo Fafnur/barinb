@@ -1,7 +1,9 @@
-module.exports = function automationClearLoader(source: string): string {
-  const prop = 'automation-id="([^"]*)"';
-  if (source.match(prop)) {
-    source = source.replace(new RegExp(prop, 'g'), '');
+export default (source: string): string => {
+  if (source.indexOf('automation-id') >= 0) {
+    return source
+      .replace(/\["automation-id" ?,"([^"]*)"\],/g, '')
+      .replace(/, ?\["automation-id", ?"([^"]*)"\]/g, '')
+      .replace(/(\[")?automation-id(=|(",))\\?"([^"]*)"(\])?/g, '');
   }
 
   return source;

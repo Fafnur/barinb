@@ -37,7 +37,10 @@
           "configurations": {
             "production": {
               "customWebpackConfig": {
-                "path": "webpack-prod.config.ts"
+                "path": "webpack-prod.config.ts",
+                "mergeStrategies": {
+                  "module.rules": "prepend"
+                }
               },
               "fileReplacements": [
                 {

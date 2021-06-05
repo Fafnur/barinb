@@ -10,14 +10,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/,
-        use: ['automation-clear-loader'],
+        test: /\.js$/,
+        use: [{ loader: join(__dirname, 'automation-clear-loader.ts') }],
       },
     ],
-  },
-  resolveLoader: {
-    alias: {
-      'automation-clear-loader': join(__dirname, 'automation-clear-loader.ts'),
-    },
   },
 };
