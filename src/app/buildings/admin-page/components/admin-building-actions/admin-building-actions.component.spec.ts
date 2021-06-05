@@ -12,6 +12,7 @@ import { providerOf } from '@app/core/testing';
 
 import { AdminBuildingEditDialogComponent } from '../admin-building-edit-dialog/admin-building-edit-dialog.component';
 import { AdminBuildingEditDialogModule } from '../admin-building-edit-dialog/admin-building-edit-dialog.module';
+import { AdminBuildingRemoveDialogComponent } from '../admin-building-remove-dialog/admin-building-remove-dialog.component';
 import { AdminBuildingRemoveDialogModule } from '../admin-building-remove-dialog/admin-building-remove-dialog.module';
 import { AdminBuildingViewDialogComponent } from '../admin-building-view-dialog/admin-building-view-dialog.component';
 import { AdminBuildingViewDialogModule } from '../admin-building-view-dialog/admin-building-view-dialog.module';
@@ -31,12 +32,14 @@ describe('AdminBuildingActionsComponent', () => {
   let matDialogMock: MatDialog;
   let buildingManagerMock: BuildingManager;
   let buildingExtended$: ReplaySubject<BuildingExtended>;
+  let afterClosed$: ReplaySubject<boolean>;
 
   beforeEach(() => {
     matDialogMock = mock(MatDialog);
+    afterClosed$ = new ReplaySubject<boolean>(1);
 
-    buildingManagerMock = mock(BuildingManager);
     buildingExtended$ = new ReplaySubject<BuildingExtended>(1);
+    buildingManagerMock = mock(BuildingManager);
   });
 
   beforeEach(
@@ -59,6 +62,7 @@ describe('AdminBuildingActionsComponent', () => {
     fixtureWrapper = TestBed.createComponent(WrapperComponent);
     pageObject = new AdminBuildingActionsComponentPo(fixtureWrapper);
     when(buildingManagerMock.buildingExtended$(anything())).thenReturn(buildingExtended$);
+    when(matDialogMock.open(anything(), anything())).thenReturn({ afterClosed: () => afterClosed$ } as any);
   });
 
   it('should create', () => {
@@ -98,5 +102,18 @@ describe('AdminBuildingActionsComponent', () => {
     pageObject.triggerAdminBuildingEditClick();
 
     verify(matDialogMock.open(AdminBuildingEditDialogComponent, deepEqual({ data: BUILDING_EXTENDED_STUB }))).once();
+  });
+
+  it('should open dialog remove', () => {
+    fixtureWrapper.detectChanges();
+
+    buildingExtended$.next(BUILDING_EXTENDED_STUB);
+    fixtureWrapper.detectChanges();
+
+    pageObject.triggerAdminBuildingRemoveClick();
+    afterClosed$.next(true);
+
+    verify(matDialogMock.open(AdminBuildingRemoveDialogComponent, deepEqual({ data: BUILDING_EXTENDED_STUB }))).once();
+    verify(buildingManagerMock.removeBuilding(deepEqual(BUILDING_EXTENDED_STUB))).once();
   });
 });
