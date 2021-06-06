@@ -1,8 +1,26 @@
-<h2 mat-dialog-title>Внимание</h2>
-<div mat-dialog-content>
+<h2 mat-dialog-title automation-id="admin-building-clear-dialog-title">Внимание</h2>
+<div mat-dialog-content automation-id="admin-building-clear-dialog-content">
   <p>Вы действительно хотите удалить все отели?</p>
 </div>
 <div mat-dialog-actions align="center">
-  <button type="button" class="admin-dialog-action" color="primary" mat-raised-button (click)="onCancel()">Нет</button>
-  <button type="button" class="admin-dialog-action" color="warn" mat-raised-button (click)="onSuccess()">Да</button>
+  <button
+    type="button"
+    automation-id="admin-building-clear-dialog-cancel"
+    class="admin-dialog-action"
+    color="primary"
+    mat-raised-button
+    (click)="onCancel()"
+  >
+    Нет
+  </button>
+  <button
+    type="button"
+    automation-id="admin-building-clear-dialog-success"
+    class="admin-dialog-action"
+    color="warn"
+    mat-raised-button
+    (click)="onSuccess()"
+  >
+    Да
+  </button>
 </div>

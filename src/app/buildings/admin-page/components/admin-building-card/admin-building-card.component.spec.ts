@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,25 +30,27 @@ describe('AdminBuildingCardComponent', () => {
   let pageObject: AdminBuildingCardComponentPo<WrapperComponent>;
   let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        MatButtonModule,
-        MatIconModule,
-        MatCardModule,
-        SharedModule,
-        PersonSharedModule,
-        NavigationSharedModule,
-        RoomSharedModule,
-        MockModule(AdminBuildingActionsModule),
-        MockModule(AdminBuildingLinkModule),
-        MockModule(AdminPersonLinkModule),
-        MockModule(CarouselModule),
-      ],
-      declarations: [AdminBuildingCardComponent, WrapperComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          RouterTestingModule,
+          MatButtonModule,
+          MatIconModule,
+          MatCardModule,
+          SharedModule,
+          PersonSharedModule,
+          NavigationSharedModule,
+          RoomSharedModule,
+          MockModule(AdminBuildingActionsModule),
+          MockModule(AdminBuildingLinkModule),
+          MockModule(AdminPersonLinkModule),
+          MockModule(CarouselModule),
+        ],
+        declarations: [AdminBuildingCardComponent, WrapperComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixtureWrapper = TestBed.createComponent(WrapperComponent);
