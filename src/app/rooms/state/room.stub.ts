@@ -19,7 +19,7 @@ export const ROOM_DTO_STUB: RoomDto = {
     RoomAmenities.Hangers,
     RoomAmenities.Tv,
   ],
-  photos: [],
+  photos: ['/photo.jpg'],
   created: '2021-05-11T01:14:42.988Z',
   updated: '2021-05-11T01:14:44.000Z',
 };

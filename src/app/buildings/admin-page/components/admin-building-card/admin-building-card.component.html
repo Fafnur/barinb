@@ -1,26 +1,31 @@
-<mat-card>
+<mat-card *ngIf="building">
   <mat-card-header>
     <a
+      automation-id="admin-building-card-avatar"
       mat-card-avatar
-      class="room-card-avatar"
+      class="building-card-avatar"
       [routerLink]="NavigationPath.AdminPersonsPage | navPath"
       [queryParams]="{ person: building.personExtended.id }"
-      [ngStyle]="{ backgroundImage: 'url(' + building.personExtended.avatar + ')' }"
+      [ngStyle]="building.personExtended.avatar | backgroundImage"
     >
     </a>
-    <mat-card-title>{{ building.personExtended | personFullName }}</mat-card-title>
-    <mat-card-subtitle>{{ building.city }}, {{ building.address }}</mat-card-subtitle>
+    <mat-card-title automation-id="admin-building-card-title">{{ building.personExtended | personFullName }}</mat-card-title>
+    <mat-card-subtitle automation-id="admin-building-card-subtitle">{{ building.city }}, {{ building.address }}</mat-card-subtitle>
   </mat-card-header>
   <div mat-card-image>
-    <app-carousel class="room-card-carousel" [images]="building.roomsExtended | roomsPreviewImages"></app-carousel>
+    <app-carousel
+      automation-id="admin-building-card-carousel"
+      class="building-card-carousel"
+      [images]="building.roomsExtended | roomsPreviewImages"
+    ></app-carousel>
   </div>
   <mat-card-content>
-    <div class="room-card-props">
-      <div class="room-card-prop">номеров {{ building.rooms.length }}</div>
-      <div class="room-card-prop">{{ building.created | date: 'longDate' }}</div>
+    <div class="building-card-props">
+      <div automation-id="admin-building-card-rooms" class="building-card-prop">номеров {{ building.rooms.length }}</div>
+      <div automation-id="admin-building-card-date" class="building-card-prop">{{ building.created | date: 'longDate' }}</div>
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <app-admin-building-actions [building]="building"></app-admin-building-actions>
+    <app-admin-building-actions automation-id="admin-building-actions" [building]="building"></app-admin-building-actions>
   </mat-card-actions>
 </mat-card>

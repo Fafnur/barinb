@@ -10,7 +10,7 @@ export class PageObject<T> {
   }
 
   protected getByAutomationId(automationId: string): DebugElement {
-    return this.fixture.debugElement.query(By.css(`[automation-id="${automationId}"]`));
+    return this.fixture.debugElement.query(By.css(`[automation-id="${automationId}"]`)) ?? null;
   }
 
   protected getAllByAutomationId(automationId: string): DebugElement[] {

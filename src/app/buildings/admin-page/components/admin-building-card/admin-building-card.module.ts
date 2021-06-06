@@ -10,6 +10,7 @@ import { NavigationSharedModule } from '@app/core/navigation/shared';
 import { PersonSharedModule } from '@app/persons/shared';
 import { RoomSharedModule } from '@app/rooms/shared';
 import { CarouselModule } from '@app/ui/carousel';
+import { SharedModule } from '@app/ui/shared';
 
 import { AdminBuildingActionsModule } from '../admin-building-actions/admin-building-actions.module';
 import { AdminBuildingCardComponent } from './admin-building-card.component';
@@ -28,6 +29,7 @@ import { AdminBuildingCardComponent } from './admin-building-card.component';
     PersonSharedModule,
     NavigationSharedModule,
     RoomSharedModule,
+    SharedModule,
   ],
   declarations: [AdminBuildingCardComponent],
   exports: [AdminBuildingCardComponent],

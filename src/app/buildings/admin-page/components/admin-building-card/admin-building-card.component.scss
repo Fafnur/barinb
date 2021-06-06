@@ -17,12 +17,12 @@
   }
 }
 
-.room-card-avatar {
+.building-card-avatar {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
 
-.room-card-carousel {
+.building-card-carousel {
   width: 100%;
   height: 8rem;
 
@@ -35,13 +35,13 @@
   }
 }
 
-.room-card-props {
+.building-card-props {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 -0.25rem 1rem -0.25rem;
 }
 
-.room-card-prop {
+.building-card-prop {
   margin: 0 0.25rem;
 }
