@@ -19,7 +19,7 @@ export class AdminBuildingRemoveDialogComponent {
     this.dialogRef.close(false);
   }
 
-  onSuccess(): void {
+  onRemove(): void {
     this.dialogRef.close(true);
   }
 }

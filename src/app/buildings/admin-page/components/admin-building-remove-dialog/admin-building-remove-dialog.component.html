@@ -1,8 +1,26 @@
-<h2 mat-dialog-title>Внимание</h2>
+<h2 mat-dialog-title automation-id="admin-building-title">Внимание</h2>
 <div mat-dialog-content>
-  <p>Вы действительно хотите удалить номер № {{ building.id }}?</p>
+  <p automation-id="admin-building-content">Вы действительно хотите удалить номер № {{ building.id }}?</p>
 </div>
 <div mat-dialog-actions align="center">
-  <button type="button" class="admin-dialog-action" color="primary" mat-raised-button (click)="onCancel()">Нет</button>
-  <button type="button" class="admin-dialog-action" color="warn" mat-raised-button (click)="onSuccess()">Да</button>
+  <button
+    type="button"
+    automation-id="admin-building-cancel"
+    class="admin-dialog-action"
+    color="primary"
+    mat-raised-button
+    (click)="onCancel()"
+  >
+    Нет
+  </button>
+  <button
+    type="button"
+    automation-id="admin-building-remove"
+    class="admin-dialog-action"
+    color="warn"
+    mat-raised-button
+    (click)="onRemove()"
+  >
+    Да
+  </button>
 </div>
