@@ -50,6 +50,7 @@ export class AdminBuildingCreateDialogComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     this.form.markAllAsTouched();
+
     if (this.form.valid) {
       this.buildingFacade.addBuilding(this.form.value);
     } else {
