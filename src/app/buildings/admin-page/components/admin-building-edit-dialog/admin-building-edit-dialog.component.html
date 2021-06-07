@@ -1,7 +1,7 @@
 <mat-dialog-content *ngIf="form && buildingExtended">
-  <app-admin-building-form [form]="form" [building]="buildingExtended"></app-admin-building-form>
+  <app-admin-building-form automation-id="admin-building-form" [form]="form" [building]="buildingExtended"></app-admin-building-form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Отмена</button>
-  <button mat-raised-button color="primary" (click)="onSubmit()">Изменить</button>
+  <button automation-id="admin-building-cancel" mat-raised-button mat-dialog-close>Отмена</button>
+  <button automation-id="admin-building-change" mat-raised-button color="primary" (click)="onSubmit()">Изменить</button>
 </mat-dialog-actions>
