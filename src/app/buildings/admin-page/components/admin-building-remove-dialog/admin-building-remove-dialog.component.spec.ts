@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { mock, verify } from 'ts-mockito';
@@ -19,19 +19,21 @@ describe('AdminBuildingRemoveDialogComponent', () => {
     matDialogRefMock = mock(MatDialogRef);
   });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MatDialogModule, MatButtonModule],
-      declarations: [AdminBuildingRemoveDialogComponent],
-      providers: [
-        providerOf(MatDialogRef, matDialogRefMock),
-        {
-          provide: MAT_DIALOG_DATA,
-          useValue: BUILDING_EXTENDED_STUB,
-        },
-      ],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [MatDialogModule, MatButtonModule],
+        declarations: [AdminBuildingRemoveDialogComponent],
+        providers: [
+          providerOf(MatDialogRef, matDialogRefMock),
+          {
+            provide: MAT_DIALOG_DATA,
+            useValue: BUILDING_EXTENDED_STUB,
+          },
+        ],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminBuildingRemoveDialogComponent);

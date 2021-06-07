@@ -1,49 +1,49 @@
 <mat-dialog-content *ngIf="room">
-  <app-admin-room-group>
-    <app-admin-room-label>Собственник</app-admin-room-label>
-    <app-admin-room-value>{{ room.buildingExtended.personExtended | personFullName }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Город</app-admin-room-label>
-    <app-admin-room-value>{{ room.buildingExtended.city }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Адрес</app-admin-room-label>
-    <app-admin-room-value>{{ room.buildingExtended.address }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Цена</app-admin-room-label>
-    <app-admin-room-value>{{ room.price | number: '1.0-0' }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Гостей</app-admin-room-label>
-    <app-admin-room-value>{{ room.guests }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Количество спален</app-admin-room-label>
-    <app-admin-room-value>{{ room.bedrooms }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Количество кроватей</app-admin-room-label>
-    <app-admin-room-value>{{ room.beds }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Количество ванных</app-admin-room-label>
-    <app-admin-room-value>{{ room.bathrooms }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Описание</app-admin-room-label>
-    <app-admin-room-value [innerHTML]="room.description"></app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Особенности</app-admin-room-label>
-    <app-admin-room-value>
+  <app-admin-group>
+    <app-admin-label>Собственник</app-admin-label>
+    <app-admin-value>{{ room.buildingExtended.personExtended | personFullName }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Город</app-admin-label>
+    <app-admin-value>{{ room.buildingExtended.city }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Адрес</app-admin-label>
+    <app-admin-value>{{ room.buildingExtended.address }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Цена</app-admin-label>
+    <app-admin-value>{{ room.price | number: '1.0-0' }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Гостей</app-admin-label>
+    <app-admin-value>{{ room.guests }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Количество спален</app-admin-label>
+    <app-admin-value>{{ room.bedrooms }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Количество кроватей</app-admin-label>
+    <app-admin-value>{{ room.beds }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Количество ванных</app-admin-label>
+    <app-admin-value>{{ room.bathrooms }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Описание</app-admin-label>
+    <app-admin-value [innerHTML]="room.description"></app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Особенности</app-admin-label>
+    <app-admin-value>
       <ul *ngIf="room.amenities.length">
         <li *ngFor="let amenity of room.amenities">{{ amenity | roomAmenitiesLabel }}</li>
       </ul>
       <p *ngIf="!room.amenities.length">Нет ни одной особенности</p>
-    </app-admin-room-value>
-  </app-admin-room-group>
+    </app-admin-value>
+  </app-admin-group>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button mat-dialog-close>Закрыть</button>

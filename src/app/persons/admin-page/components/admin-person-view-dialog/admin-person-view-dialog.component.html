@@ -1,21 +1,21 @@
 <mat-dialog-content *ngIf="person">
-  <app-admin-room-group>
-    <app-admin-room-label>ФИО</app-admin-room-label>
-    <app-admin-room-value>{{ person | personFullName }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Телефон</app-admin-room-label>
-    <app-admin-room-value>{{ person.phone }}</app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Аватар</app-admin-room-label>
-    <app-admin-room-value>
+  <app-admin-group>
+    <app-admin-label>ФИО</app-admin-label>
+    <app-admin-value>{{ person | personFullName }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Телефон</app-admin-label>
+    <app-admin-value>{{ person.phone }}</app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Аватар</app-admin-label>
+    <app-admin-value>
       <img [src]="person.avatar" width="100px" alt="" />
-    </app-admin-room-value>
-  </app-admin-room-group>
-  <app-admin-room-group>
-    <app-admin-room-label>Отели</app-admin-room-label>
-    <app-admin-room-value>
+    </app-admin-value>
+  </app-admin-group>
+  <app-admin-group>
+    <app-admin-label>Отели</app-admin-label>
+    <app-admin-value>
       <nav *ngIf="person.buildingsExtended.length">
         <ng-container *ngFor="let building of person.buildingsExtended">
           <app-admin-building-link [building]="building"></app-admin-building-link>
@@ -24,8 +24,8 @@
       </nav>
 
       <p *ngIf="!person.buildingsExtended.length">Нет отелей</p>
-    </app-admin-room-value>
-  </app-admin-room-group>
+    </app-admin-value>
+  </app-admin-group>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-raised-button mat-dialog-close>Закрыть</button>
