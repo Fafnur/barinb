@@ -9,7 +9,7 @@ import { AdminBuildingsListComponent } from './admin-buildings-list.component';
 import { AdminBuildingsListComponentPo } from './admin-buildings-list.po';
 
 @Component({
-  template: `<app-admin-buildings-list automation-id="booking-portlet" [data]="data"></app-admin-buildings-list>`,
+  template: `<app-admin-buildings-list [data]="data"></app-admin-buildings-list>`,
 })
 class WrapperComponent {
   data = BUILDINGS_EXTENDED_STUB;

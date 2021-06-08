@@ -1,50 +1,52 @@
-<ng-container *ngIf="buildings?.length; else emptyTpl">
-  <table class="admin-table" mat-table [dataSource]="dataSource">
+<ng-container *ngIf="buildings?.length; then tableTpl; else emptyTpl"></ng-container>
+
+<ng-template #tableTpl>
+  <table automation-id="admin-buildings-table" class="admin-table" mat-table [dataSource]="dataSource">
     <ng-container [matColumnDef]="BuildingField.ID">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let building">{{ building.id }}</td>
+      <th automation-id="admin-building-id-label" mat-header-cell *matHeaderCellDef>ID</th>
+      <td automation-id="admin-building-id-value" mat-cell *matCellDef="let building">{{ building.id }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="BuildingField.Name">
-      <th mat-header-cell *matHeaderCellDef>Название</th>
-      <td mat-cell *matCellDef="let building">{{ building.name }}</td>
+      <th automation-id="admin-building-name-label" mat-header-cell *matHeaderCellDef>Название</th>
+      <td automation-id="admin-building-name-value" mat-cell *matCellDef="let building">{{ building.name }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="BuildingField.City">
-      <th mat-header-cell *matHeaderCellDef>Город</th>
-      <td mat-cell *matCellDef="let building">{{ building.city }}</td>
+      <th automation-id="admin-building-city-label" mat-header-cell *matHeaderCellDef>Город</th>
+      <td automation-id="admin-building-city-value" mat-cell *matCellDef="let building">{{ building.city }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="BuildingField.Address">
-      <th mat-header-cell *matHeaderCellDef>Адрес</th>
-      <td mat-cell *matCellDef="let building">{{ building.address }}</td>
+      <th automation-id="admin-building-address-label" mat-header-cell *matHeaderCellDef>Адрес</th>
+      <td automation-id="admin-building-address-value" mat-cell *matCellDef="let building">{{ building.address }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="BuildingField.Rooms">
-      <th mat-header-cell *matHeaderCellDef>Количество номеров</th>
-      <td mat-cell *matCellDef="let building">{{ building.rooms.length }}</td>
+      <th automation-id="admin-building-rooms-label" mat-header-cell *matHeaderCellDef>Количество номеров</th>
+      <td automation-id="admin-building-rooms-value" mat-cell *matCellDef="let building">{{ building.rooms.length }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="BuildingField.Created">
-      <th mat-header-cell *matHeaderCellDef>Дата создания</th>
-      <td mat-cell *matCellDef="let building">{{ building.created | date: 'longDate' }}</td>
+      <th automation-id="admin-building-created-label" mat-header-cell *matHeaderCellDef>Дата создания</th>
+      <td automation-id="admin-building-created-value" mat-cell *matCellDef="let building">{{ building.created | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="BuildingField.Updated">
-      <th mat-header-cell *matHeaderCellDef>Дата обновления</th>
-      <td mat-cell *matCellDef="let building">{{ building.updated | date: 'longDate' }}</td>
+      <th automation-id="admin-building-updated-label" mat-header-cell *matHeaderCellDef>Дата обновления</th>
+      <td automation-id="admin-building-updated-value" mat-cell *matCellDef="let building">{{ building.updated | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="'actions'">
-      <th mat-header-cell *matHeaderCellDef>Действия</th>
-      <td mat-cell *matCellDef="let building">
+      <th automation-id="admin-building-actions-label" mat-header-cell *matHeaderCellDef>Действия</th>
+      <td automation-id="admin-building-actions-value" mat-cell *matCellDef="let building">
         <app-admin-building-actions [building]="building"></app-admin-building-actions>
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="BuildingField.Person">
-      <th mat-header-cell *matHeaderCellDef>Хозяин</th>
-      <td mat-cell *matCellDef="let building">
+      <th automation-id="admin-building-person-label" mat-header-cell *matHeaderCellDef>Хозяин</th>
+      <td automation-id="admin-building-person-value" mat-cell *matCellDef="let building">
         <app-admin-person-link [person]="building.personExtended"></app-admin-person-link>
       </td>
     </ng-container>
@@ -52,8 +54,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-</ng-container>
+</ng-template>
 
 <ng-template #emptyTpl>
-  <p>Нет созданных отелей. Для того, чтобы добавить здание, нажмите - "Добавить отель".</p>
+  <p automation-id="admin-buildings-empty">Нет созданных отелей. Для того, чтобы добавить здание, нажмите - "Добавить отель".</p>
 </ng-template>

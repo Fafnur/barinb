@@ -5,7 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 
 import { AdminBuildingLinkModule, AdminPersonLinkModule } from '@app/admin/links/shared';
-import { CarouselModule } from '@app/ui/carousel';
 
 import { AdminBuildingActionsModule } from '../admin-building-actions/admin-building-actions.module';
 import { AdminBuildingsTableComponent } from './admin-buildings-table.component';
@@ -19,7 +18,6 @@ import { AdminBuildingsTableComponent } from './admin-buildings-table.component'
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    CarouselModule,
   ],
   declarations: [AdminBuildingsTableComponent],
   exports: [AdminBuildingsTableComponent],

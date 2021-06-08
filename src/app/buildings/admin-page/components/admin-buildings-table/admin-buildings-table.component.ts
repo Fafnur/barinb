@@ -18,6 +18,7 @@ export class AdminBuildingsTableComponent {
     }
 
     this.dataSource.data = this.buildings ?? [];
+
     this.changeDetectorRef.markForCheck();
   }
 
