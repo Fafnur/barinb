@@ -1,16 +1,34 @@
 <ng-container *ngIf="form">
-  <app-admin-building-person [control]="form | extractFormControl: BuildingField.Person"></app-admin-building-person>
+  <app-admin-building-person
+    automation-id="admin-building-person"
+    [control]="form | extractFormControl: BuildingField.Person"
+  ></app-admin-building-person>
 
-  <app-admin-building-name [control]="form | extractFormControl: BuildingField.Name"></app-admin-building-name>
-  <app-admin-building-city [control]="form | extractFormControl: BuildingField.City"></app-admin-building-city>
-  <app-admin-building-address [control]="form | extractFormControl: BuildingField.Address"></app-admin-building-address>
+  <app-admin-building-name
+    automation-id="admin-building-name"
+    [control]="form | extractFormControl: BuildingField.Name"
+  ></app-admin-building-name>
+  <app-admin-building-city
+    automation-id="admin-building-city"
+    [control]="form | extractFormControl: BuildingField.City"
+  ></app-admin-building-city>
+  <app-admin-building-address
+    automation-id="admin-building-address"
+    [control]="form | extractFormControl: BuildingField.Address"
+  ></app-admin-building-address>
 
   <app-row mode="md">
     <app-column [modes]="{ md: 6 }">
-      <app-admin-building-lat [control]="form | extractFormControl: BuildingField.Lat"></app-admin-building-lat>
+      <app-admin-building-lat
+        automation-id="admin-building-lat"
+        [control]="form | extractFormControl: BuildingField.Lat"
+      ></app-admin-building-lat>
     </app-column>
     <app-column [modes]="{ md: 6 }">
-      <app-admin-building-lng [control]="form | extractFormControl: BuildingField.Lng"></app-admin-building-lng>
+      <app-admin-building-lng
+        automation-id="admin-building-lng"
+        [control]="form | extractFormControl: BuildingField.Lng"
+      ></app-admin-building-lng>
     </app-column>
   </app-row>
 
