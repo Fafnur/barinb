@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,19 +30,21 @@ describe('AdminBuildingsActionsComponent', () => {
     buildingManagerMock = mock(BuildingManager);
   });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        MatDialogModule,
-        MatButtonModule,
-        MatIconModule,
-        MockModule(AdminBuildingClearDialogModule),
-        MockModule(AdminBuildingCreateDialogModule),
-      ],
-      declarations: [AdminBuildingsActionsComponent],
-      providers: [providerOf(MatDialog, matDialogMock), providerOf(BuildingManager, buildingManagerMock)],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          MatDialogModule,
+          MatButtonModule,
+          MatIconModule,
+          MockModule(AdminBuildingClearDialogModule),
+          MockModule(AdminBuildingCreateDialogModule),
+        ],
+        declarations: [AdminBuildingsActionsComponent],
+        providers: [providerOf(MatDialog, matDialogMock), providerOf(BuildingManager, buildingManagerMock)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminBuildingsActionsComponent);

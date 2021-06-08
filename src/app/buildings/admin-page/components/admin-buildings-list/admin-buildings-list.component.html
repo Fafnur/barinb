@@ -1,1 +1,7 @@
-<app-admin-building-card [building]="building" *ngFor="let building of buildings; trackBy: trackByFn"></app-admin-building-card>
+<ng-container *ngIf="buildings">
+  <app-admin-building-card
+    automation-id="admin-building-card"
+    [building]="building"
+    *ngFor="let building of buildings; trackBy: trackByFn"
+  ></app-admin-building-card>
+</ng-container>
