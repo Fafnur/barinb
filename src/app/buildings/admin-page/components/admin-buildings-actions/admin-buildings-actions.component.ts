@@ -29,8 +29,8 @@ export class AdminBuildingsActionsComponent implements OnDestroy {
   }
 
   onClear(): void {
-    const dialogRef = this.matDialog.open(AdminBuildingClearDialogComponent);
-    dialogRef
+    this.matDialog
+      .open(AdminBuildingClearDialogComponent)
       .afterClosed()
       .pipe(
         tap((result) => {
