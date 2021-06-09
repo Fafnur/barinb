@@ -7,5 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ErrorApplicationComponent {
-  onDownload(): void {}
+  onDownload(): void {
+    // TODO: Add link to application
+  }
 }

@@ -1,27 +1,44 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockComponents } from 'ng-mocks';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { MockModule } from 'ng-mocks';
 
-import { ContainerComponent } from '@app/ui/container';
+import { ContainerModule } from '@app/ui/container';
 
 import { ErrorApplicationComponent } from './error-application.component';
+import { ErrorApplicationComponentPo } from './error-application.po';
 
 describe('ErrorApplicationComponent', () => {
-  let component: ErrorApplicationComponent;
+  let pageObject: ErrorApplicationComponentPo;
   let fixture: ComponentFixture<ErrorApplicationComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ErrorApplicationComponent, MockComponents(ContainerComponent)],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [MockModule(ContainerModule)],
+        declarations: [ErrorApplicationComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ErrorApplicationComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new ErrorApplicationComponentPo(fixture);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should show application tpl', () => {
+    fixture.detectChanges();
+
+    expect(pageObject.errorApplicationImageSrc).toBe('/assets/images/errors/app.png');
+    expect(pageObject.errorApplicationTitleText).toBe('Скачайте приложение Barinb');
+    expect(pageObject.errorApplicationHintText).toBe('Быстрый доступ к лучшей недвижимости');
+    expect(pageObject.errorApplicationQrcodeSrc).toBe('/assets/images/errors/code.png');
+    expect(pageObject.errorApplicationAppleText).toBe('Подробнее в App Store');
+    expect(pageObject.errorApplicationGoogleText).toBe('Подробнее в Google Play');
+    expect(pageObject.errorApplicationDownloadText).toBe('Скачать');
   });
 });
