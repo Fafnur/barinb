@@ -1,46 +1,44 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockComponents } from 'ng-mocks';
+import { MockModule } from 'ng-mocks';
 
-import {
-  ErrorApplicationComponent,
-  ErrorHintComponent,
-  ErrorLinksComponent,
-  ErrorLogoComponent,
-  ErrorStatusComponent,
-  ErrorTitleComponent,
-} from '@app/errors/shared';
+import { ErrorsSharedModule } from '@app/errors/shared';
 
 import { NotFoundPageComponent } from './not-found-page.component';
+import { NotFoundPageComponentPo } from './not-found-page.po';
 
 describe('BookingPageComponent', () => {
-  let component: NotFoundPageComponent;
+  let pageObject: NotFoundPageComponentPo;
   let fixture: ComponentFixture<NotFoundPageComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [
-        NotFoundPageComponent,
-        MockComponents(
-          ErrorLogoComponent,
-          ErrorStatusComponent,
-          ErrorTitleComponent,
-          ErrorHintComponent,
-          ErrorLinksComponent,
-          ErrorApplicationComponent
-        ),
-      ],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, MockModule(ErrorsSharedModule)],
+        declarations: [NotFoundPageComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NotFoundPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new NotFoundPageComponentPo(fixture);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should show error page', () => {
+    fixture.detectChanges();
+
+    expect(pageObject.errorLogo).toBeTruthy();
+    expect(pageObject.errorStatusText).toBe('404');
+    expect(pageObject.errorTitleText).toBe('Такой страницы нет');
+    expect(pageObject.errorHintText).toBe('Возможно вы искали страницы');
+    expect(pageObject.errorLinks).toBeTruthy();
+    expect(pageObject.errorApplication).toBeTruthy();
   });
 });
