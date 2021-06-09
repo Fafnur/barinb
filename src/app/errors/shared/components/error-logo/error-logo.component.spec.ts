@@ -1,29 +1,38 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockPipes } from 'ng-mocks';
 
-import { NavPathPipe } from '@app/core/navigation/shared';
+import { NavigationSharedModule } from '@app/core/navigation/shared';
 
 import { ErrorLogoComponent } from './error-logo.component';
+import { ErrorLogoComponentPo } from './error-logo.po';
 
 describe('ErrorLogoComponent', () => {
-  let component: ErrorLogoComponent;
+  let pageObject: ErrorLogoComponentPo;
   let fixture: ComponentFixture<ErrorLogoComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [ErrorLogoComponent, MockPipes(NavPathPipe)],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, NavigationSharedModule],
+        declarations: [ErrorLogoComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ErrorLogoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new ErrorLogoComponentPo(fixture);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should show link', () => {
+    fixture.detectChanges();
+
+    expect(pageObject.errorBrandText).toBe('Barinb');
   });
 });

@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 
-import { ErrorHintComponent } from '@app/errors/shared';
+import { NavigationSharedModule } from '@app/core/navigation/shared';
+
+import { ErrorLinksComponent } from './error-links.component';
 
 @NgModule({
-  declarations: [ErrorHintComponent],
-  exports: [ErrorHintComponent],
+  imports: [NavigationSharedModule],
+  declarations: [ErrorLinksComponent],
+  exports: [ErrorLinksComponent],
 })
 export class ErrorLinksModule {}
