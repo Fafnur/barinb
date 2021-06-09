@@ -1,5 +1,6 @@
 import { PageObject } from '@app/core/testing';
-import { ErrorApplicationComponent } from '@app/errors/shared';
+
+import { ErrorApplicationComponent } from './error-application.component';
 
 enum ErrorApplicationAutomation {
   ErrorApplicationImage = 'error-application-image',

@@ -1,29 +1,40 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MockPipes } from 'ng-mocks';
 
-import { NavPathPipe } from '@app/core/navigation/shared';
+import { NavigationSharedModule } from '@app/core/navigation/shared';
 
 import { ErrorLinksComponent } from './error-links.component';
+import { ErrorLinksComponentPo } from './error-links.po';
 
 describe('ErrorLinksComponent', () => {
-  let component: ErrorLinksComponent;
+  let pageObject: ErrorLinksComponentPo;
   let fixture: ComponentFixture<ErrorLinksComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [ErrorLinksComponent, MockPipes(NavPathPipe)],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [RouterTestingModule, NavigationSharedModule],
+        declarations: [ErrorLinksComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ErrorLinksComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new ErrorLinksComponentPo(fixture);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should show links', () => {
+    fixture.detectChanges();
+
+    expect(pageObject.errorLinkRentText).toBe('Аренда жилья');
+    expect(pageObject.errorLinkAdminText).toBe('Администрирование');
+    expect(pageObject.errorLinkHomeText).toBe('Главная');
   });
 });
