@@ -9,13 +9,14 @@ import { ErrorLinksModule } from './components/error-links/error-links.module';
 import { ErrorLogoComponent } from './components/error-logo/error-logo.component';
 import { ErrorLogoModule } from './components/error-logo/error-logo.module';
 import { ErrorStatusComponent } from './components/error-status/error-status.component';
+import { ErrorStatusModule } from './components/error-status/error-status.module';
 import { ErrorTitleComponent } from './components/error-title/error-title.component';
 
-const components = [ErrorStatusComponent, ErrorTitleComponent];
+const components = [ErrorTitleComponent];
 
 @NgModule({
-  imports: [ErrorLinksModule, ErrorApplicationModule, ErrorHintModule, ErrorLinksModule, ErrorLogoModule],
+  imports: [ErrorLinksModule, ErrorApplicationModule, ErrorHintModule, ErrorLinksModule, ErrorLogoModule, ErrorStatusModule],
   declarations: [...components],
-  exports: [...components, ErrorLogoComponent, ErrorHintComponent, ErrorApplicationComponent, ErrorLinksComponent],
+  exports: [...components, ErrorStatusComponent, ErrorLogoComponent, ErrorHintComponent, ErrorApplicationComponent, ErrorLinksComponent],
 })
 export class ErrorsSharedModule {}
