@@ -1,2 +1,2 @@
-export * from './interfaces/person.interface';
-export * from './utils/person.util';
+export * from './person.interface';
+export * from './person.util';

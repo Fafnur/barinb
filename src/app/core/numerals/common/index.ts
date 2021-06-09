@@ -1,1 +1,1 @@
-export * from './interfaces/numeral.interface';
+export * from './numeral.interface';

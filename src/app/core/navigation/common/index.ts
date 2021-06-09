@@ -1,1 +1,1 @@
-export * from './interfaces/navigation.interface';
+export * from './navigation.interface';

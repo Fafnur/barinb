@@ -1,4 +1,4 @@
-import { NewPerson, PersonEntity } from '../interfaces/person.interface';
+import { NewPerson, PersonEntity } from './person.interface';
 
 export function createPersonFromNewPerson(rooms: PersonEntity[], newRoom: NewPerson): PersonEntity {
   let lastId = 1;

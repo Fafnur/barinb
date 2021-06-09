@@ -1,1 +1,1 @@
-export * from './intefaces/booking.interface';
+export * from './booking.interface';

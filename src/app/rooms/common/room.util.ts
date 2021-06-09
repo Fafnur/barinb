@@ -1,4 +1,4 @@
-import { NewRoom, RoomEntity } from '../interfaces/room.interface';
+import { NewRoom, RoomEntity } from './room.interface';
 
 export function createRoomFromNewRoom(rooms: RoomEntity[], newRoom: NewRoom): RoomEntity {
   let lastId = 1;

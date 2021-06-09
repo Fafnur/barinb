@@ -1,2 +1,2 @@
-export * from './interfaces/room.interface';
-export * from './utils/room.util';
+export * from './room.interface';
+export * from './room.util';

@@ -1,1 +1,1 @@
-export * from './interfaces/map.interface';
+export * from './map.interface';

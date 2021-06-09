@@ -1,2 +1,2 @@
-export * from './interfaces/building.interface';
-export * from './utils/building.util';
+export * from './building.interface';
+export * from './building.util';
