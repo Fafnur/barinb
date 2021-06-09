@@ -1,29 +1,50 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { BuildingField, BUILDINGS_IDS } from '@app/buildings/common';
 
 import { AdminBuildingCityComponent } from './admin-building-city.component';
+import { AdminBuildingCityComponentPo } from './admin-building-city.po';
+
+@Component({
+  template: `<app-admin-building-city [control]="control"></app-admin-building-city>`,
+})
+export class WrapperComponent {
+  control = new FormControl(null, []);
+}
 
 describe('AdminBuildingCityComponent', () => {
-  let component: AdminBuildingCityComponent;
-  let fixture: ComponentFixture<AdminBuildingCityComponent>;
+  let pageObject: AdminBuildingCityComponentPo;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule],
-      declarations: [AdminBuildingCityComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NoopAnimationsModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+        declarations: [AdminBuildingCityComponent, WrapperComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminBuildingCityComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new AdminBuildingCityComponentPo(fixtureWrapper);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should set label and control', () => {
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.adminBuildingCityLabelText).toBe('Город');
+    expect(pageObject.adminBuildingCityControlId).toBe(BUILDINGS_IDS[BuildingField.City]);
   });
 });

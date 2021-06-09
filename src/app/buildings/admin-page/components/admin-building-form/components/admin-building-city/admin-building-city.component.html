@@ -1,4 +1,12 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Город</mat-label>
-  <input placeholder="Город" type="text" name="building[city]" matInput [id]="id" [formControl]="control" />
+  <mat-label automation-id="admin-building-city-label">Город</mat-label>
+  <input
+    automation-id="admin-building-city-control"
+    placeholder="Город"
+    type="text"
+    name="building[city]"
+    matInput
+    [id]="id"
+    [formControl]="control"
+  />
 </mat-form-field>
