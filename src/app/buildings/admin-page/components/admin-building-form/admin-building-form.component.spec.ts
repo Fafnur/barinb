@@ -9,7 +9,7 @@ import { FormsSharedModule } from '@app/core/forms/shared';
 import { GridModule } from '@app/ui/grid';
 
 import { AdminBuildingFormComponent } from './admin-building-form.component';
-import { BuildingAdminFormComponentPo } from './building-admin-form.po';
+import { BuildingAdminFormComponentPo } from './admin-building-form.po';
 import { AdminBuildingAddressModule } from './components/admin-building-address/admin-building-address.module';
 import { AdminBuildingCityModule } from './components/admin-building-city/admin-building-city.module';
 import { AdminBuildingLatModule } from './components/admin-building-lat/admin-building-lat.module';

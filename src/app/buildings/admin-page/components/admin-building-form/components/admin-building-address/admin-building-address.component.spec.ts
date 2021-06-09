@@ -1,29 +1,48 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { BuildingField, BUILDINGS_IDS } from '@app/buildings/common';
 
 import { AdminBuildingAddressComponent } from './admin-building-address.component';
+import { AdminBuildingAddressComponentPo } from './admin-building-address.po';
+
+@Component({
+  template: `<app-admin-building-address [control]="control"></app-admin-building-address>`,
+})
+export class WrapperComponent {
+  control = new FormControl(null, []);
+}
 
 describe('AdminBuildingAddressComponent', () => {
-  let component: AdminBuildingAddressComponent;
-  let fixture: ComponentFixture<AdminBuildingAddressComponent>;
+  let pageObject: AdminBuildingAddressComponentPo;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule],
-      declarations: [AdminBuildingAddressComponent],
+      imports: [NoopAnimationsModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+      declarations: [AdminBuildingAddressComponent, WrapperComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminBuildingAddressComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new AdminBuildingAddressComponentPo(fixtureWrapper);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should set label and control', () => {
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.adminBuildingAddressLabelText).toBe('Адрес');
+    expect(pageObject.adminBuildingAddressControlId).toBe(BUILDINGS_IDS[BuildingField.Address]);
   });
 });
