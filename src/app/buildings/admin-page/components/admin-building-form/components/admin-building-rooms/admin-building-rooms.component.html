@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Комнаты</mat-label>
-  <mat-select [formControl]="control" [id]="id" multiple>
+  <mat-label automation-id="admin-building-rooms-label">Комнаты</mat-label>
+  <mat-select automation-id="admin-building-rooms-control" [formControl]="control" [id]="id" multiple>
     <mat-option *ngFor="let room of rooms" [value]="room.id"> {{ room.id }}/ {{ room.price }} </mat-option>
   </mat-select>
 </mat-form-field>
