@@ -32,7 +32,7 @@ export class BookingPortletComponentPo<T> extends PageObject<T> {
   }
 
   get bookingPortletActionHref(): string | null {
-    return this.getByAutomationId(BookingPortletAutomation.BookingPortletAction).properties['href'];
+    return this.getByAutomationId(BookingPortletAutomation.BookingPortletAction)?.properties['href'] ?? null;
   }
 
   triggerBookingPortletActionClick(): void {
