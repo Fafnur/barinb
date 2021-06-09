@@ -3,10 +3,10 @@ import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
+import { BuildingField, BUILDINGS_IDS } from '@app/buildings/common';
 import { extractTouchedChanges } from '@app/core/forms/utils';
 import { Person } from '@app/persons/common';
 import { PersonService } from '@app/persons/service';
-import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 
 @Component({
   selector: 'app-admin-building-person',
@@ -19,7 +19,7 @@ export class AdminBuildingPersonComponent implements OnInit, OnDestroy {
 
   persons!: Person[];
 
-  readonly id = ROOMS_IDS[RoomField.Person];
+  readonly id = BUILDINGS_IDS[BuildingField.Person];
 
   private readonly destroy$ = new Subject<void>();
 
