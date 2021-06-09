@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ErrorLogoModule } from './error-logo.module';
 
-describe('ErrorHintModule', () => {
+describe('ErrorLogoModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ErrorLogoModule],

@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ErrorLinksModule } from './error-links.module';
+import { ErrorTitleModule } from './error-title.module';
 
-describe('ErrorLinksModule', () => {
+describe('ErrorTitleModule', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ErrorLinksModule],
+      imports: [ErrorTitleModule],
     }).compileComponents();
   });
 
   it('should create', () => {
-    expect(ErrorLinksModule).toBeTruthy();
+    expect(ErrorTitleModule).toBeTruthy();
   });
 });
