@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -21,12 +21,14 @@ describe('AdminBuildingAddressComponent', () => {
   let pageObject: AdminBuildingAddressComponentPo;
   let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
-      declarations: [AdminBuildingAddressComponent, WrapperComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NoopAnimationsModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+        declarations: [AdminBuildingAddressComponent, WrapperComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixtureWrapper = TestBed.createComponent(WrapperComponent);
