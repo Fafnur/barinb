@@ -1,27 +1,47 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MockModule } from 'ng-mocks';
+
+import { PERSONS_EXTENDED_STUB } from '@app/persons/manager';
 
 import { AdminPersonCardModule } from '../admin-person-card/admin-person-card.module';
 import { AdminPersonsListComponent } from './admin-persons-list.component';
+import { AdminPersonsListComponentPo } from './admin-persons-list.po';
+
+@Component({
+  template: `<app-admin-persons-list [data]="data"></app-admin-persons-list>`,
+})
+class WrapperComponent {
+  data = PERSONS_EXTENDED_STUB;
+}
 
 describe('AdminPersonsListComponent', () => {
-  let component: AdminPersonsListComponent;
-  let fixture: ComponentFixture<AdminPersonsListComponent>;
+  let pageObject: AdminPersonsListComponentPo<WrapperComponent>;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MockModule(AdminPersonCardModule)],
-      declarations: [AdminPersonsListComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [MockModule(AdminPersonCardModule)],
+        declarations: [AdminPersonsListComponent, WrapperComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminPersonsListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new AdminPersonsListComponentPo(fixtureWrapper);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should create', () => {
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.adminPersonCards.length).toBe(PERSONS_EXTENDED_STUB.length);
   });
 });
