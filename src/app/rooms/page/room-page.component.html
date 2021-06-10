@@ -1,19 +1,19 @@
 <app-container class="room-view" *ngIf="roomExtended$ | async as room">
-  <app-room-header [room]="room"></app-room-header>
-  <app-room-details [room]="room"></app-room-details>
-  <app-room-photo [photos]="room.photos"></app-room-photo>
+  <app-room-header automation-id="room-header" [room]="room"></app-room-header>
+  <app-room-details automation-id="room-details" [room]="room"></app-room-details>
+  <app-room-photo automation-id="room-photo" [photos]="room.photos"></app-room-photo>
   <app-row mode="lg">
     <app-column [modes]="{ lg: 8 }">
-      <app-room-person [room]="room">
-        <app-room-props [room]="room"></app-room-props>
+      <app-room-person automation-id="room-person" [room]="room">
+        <app-room-props automation-id="room-props" [room]="room"></app-room-props>
       </app-room-person>
       <div class="room-view-separator"></div>
-      <app-room-features [room]="room"></app-room-features>
+      <app-room-features automation-id="room-features" [room]="room"></app-room-features>
       <div class="room-view-separator"></div>
-      <app-room-description [room]="room"></app-room-description>
+      <app-room-description automation-id="room-description" [room]="room"></app-room-description>
     </app-column>
     <app-column [modes]="{ lg: 4 }">
-      <app-room-booking-card [room]="room"></app-room-booking-card>
+      <app-room-booking-card automation-id="room-card" [room]="room"></app-room-booking-card>
     </app-column>
   </app-row>
 </app-container>
