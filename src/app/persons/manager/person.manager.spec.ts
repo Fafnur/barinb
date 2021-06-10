@@ -1,16 +1,17 @@
 import { TestBed } from '@angular/core/testing';
+import { hot } from 'jasmine-marbles';
 import { ReplaySubject } from 'rxjs';
-import { anything, mock, when } from 'ts-mockito';
+import { anything, deepEqual, mock, verify, when } from 'ts-mockito';
 
 import { Building } from '@app/buildings/common';
-import { BuildingFacade } from '@app/buildings/state';
+import { BUILDING_STUB, BuildingFacade, BUILDINGS_STUB } from '@app/buildings/state';
 import { providerOf } from '@app/core/testing';
 import { Person } from '@app/persons/common';
-import { PersonFacade } from '@app/persons/state';
+import { PERSON_STUB, PersonFacade, PERSONS_STUB } from '@app/persons/state';
 import { Room } from '@app/rooms/common';
-import { RoomFacade } from '@app/rooms/state';
+import { RoomFacade, ROOMS_STUB } from '@app/rooms/state';
 
-import { PersonManager } from './person.manager';
+import { PersonExtended, PersonManager } from './person.manager';
 
 describe('PersonManager', () => {
   let service: PersonManager;
@@ -24,6 +25,8 @@ describe('PersonManager', () => {
   let personFacadeMock: PersonFacade;
   let persons$: ReplaySubject<Person[]>;
   let person$: ReplaySubject<Person>;
+
+  const PERSON_EXTENDED_STUB: PersonExtended = { ...PERSON_STUB, buildingsExtended: [{ ...BUILDING_STUB, roomsExtended: ROOMS_STUB }] };
 
   beforeEach(() => {
     roomFacadeMock = mock(RoomFacade);
@@ -65,5 +68,45 @@ describe('PersonManager', () => {
 
   it('should create', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should set personsExtended$', () => {
+    buildings$.next(BUILDINGS_STUB);
+    rooms$.next(ROOMS_STUB);
+    persons$.next(PERSONS_STUB);
+
+    const expected$ = hot('a', {
+      a: [PERSON_EXTENDED_STUB],
+    });
+
+    expect(service.personsExtended$).toBeObservable(expected$);
+  });
+
+  it('should set personExtended$', () => {
+    person$.next(PERSON_STUB);
+    buildingsByPerson$.next(BUILDINGS_STUB);
+    roomsByBuilding$.next(ROOMS_STUB);
+
+    const expected$ = hot('a', {
+      a: PERSON_EXTENDED_STUB,
+    });
+
+    expect(service.personExtended$(anything())).toBeObservable(expected$);
+  });
+
+  it('should call methods for clear states', () => {
+    service.clear();
+
+    verify(personFacadeMock.clear()).once();
+    verify(roomFacadeMock.clear()).once();
+    verify(buildingFacadeMock.clear()).once();
+  });
+
+  it('should call methods for remove person', () => {
+    service.removePerson(PERSON_EXTENDED_STUB);
+
+    verify(personFacadeMock.removePerson(deepEqual({ id: PERSON_EXTENDED_STUB.id }))).once();
+    verify(roomFacadeMock.removeRooms(deepEqual(BUILDING_STUB.rooms))).once();
+    verify(buildingFacadeMock.removeBuildings(deepEqual(PERSON_EXTENDED_STUB.buildings))).once();
   });
 });
