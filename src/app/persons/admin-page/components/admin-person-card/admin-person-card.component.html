@@ -1,26 +1,31 @@
 <mat-card>
   <mat-card-header>
     <a
+      automation-id="admin-person-card-avatar"
       mat-card-avatar
       class="room-card-avatar"
       [routerLink]="NavigationPath.AdminPersonsPage | navPath"
       [queryParams]="{ person: person.id }"
-      [ngStyle]="{ backgroundImage: 'url(' + person.avatar + ')' }"
+      [ngStyle]="person.avatar | backgroundImage"
     >
     </a>
-    <mat-card-title>{{ person | personFullName }}</mat-card-title>
-    <mat-card-subtitle>{{ person.phone }}</mat-card-subtitle>
+    <mat-card-title automation-id="admin-person-card-title">{{ person | personFullName }}</mat-card-title>
+    <mat-card-subtitle automation-id="admin-person-card-subtitle">{{ person.phone }}</mat-card-subtitle>
   </mat-card-header>
   <div mat-card-image>
-    <app-carousel class="room-card-carousel" [images]="person.buildingsExtended | buildingsRoomsImages"></app-carousel>
+    <app-carousel
+      automation-id="admin-person-card-carousel"
+      class="room-card-carousel"
+      [images]="person.buildingsExtended | buildingsRoomsImages"
+    ></app-carousel>
   </div>
   <mat-card-content>
     <div class="room-card-props">
-      <div class="room-card-prop">отелей {{ person.buildings.length }}</div>
-      <div class="room-card-prop">номеров {{ person.buildingsExtended | buildingsRoomsCount }}</div>
+      <div class="room-card-prop" automation-id="admin-person-card-buildings">отелей {{ person.buildings.length }}</div>
+      <div class="room-card-prop" automation-id="admin-person-card-rooms">номеров {{ person.buildingsExtended | buildingsRoomsCount }}</div>
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <app-admin-person-actions [person]="person"></app-admin-person-actions>
+    <app-admin-person-actions automation-id="admin-person-actions" [person]="person"></app-admin-person-actions>
   </mat-card-actions>
 </mat-card>
