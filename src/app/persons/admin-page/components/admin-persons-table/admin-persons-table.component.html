@@ -1,44 +1,44 @@
 <ng-container *ngIf="persons?.length; else emptyTpl">
-  <table class="admin-table" mat-table [dataSource]="dataSource">
+  <table automation-id="admin-persons-table" class="admin-table" mat-table [dataSource]="dataSource">
     <ng-container [matColumnDef]="PersonField.ID">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let person">{{ person.id }}</td>
+      <th automation-id="admin-person-id-label" mat-header-cell *matHeaderCellDef>ID</th>
+      <td automation-id="admin-person-id-value" mat-cell *matCellDef="let person">{{ person.id }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="PersonField.LastName">
-      <th mat-header-cell *matHeaderCellDef>Фамилия</th>
-      <td mat-cell *matCellDef="let person">{{ person.lastName }}</td>
+      <th automation-id="admin-person-lastname-label" mat-header-cell *matHeaderCellDef>Фамилия</th>
+      <td automation-id="admin-person-lastname-value" mat-cell *matCellDef="let person">{{ person.lastName }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="PersonField.FirstName">
-      <th mat-header-cell *matHeaderCellDef>Имя</th>
-      <td mat-cell *matCellDef="let person">{{ person.firstName }}</td>
+      <th automation-id="admin-person-firstname-label" mat-header-cell *matHeaderCellDef>Имя</th>
+      <td automation-id="admin-person-firstname-value" mat-cell *matCellDef="let person">{{ person.firstName }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="PersonField.MiddleName">
-      <th mat-header-cell *matHeaderCellDef>Отчество</th>
-      <td mat-cell *matCellDef="let person">{{ person.middleName || '-' }}</td>
+      <th automation-id="admin-person-middlename-label" mat-header-cell *matHeaderCellDef>Отчество</th>
+      <td automation-id="admin-person-middlename-value" mat-cell *matCellDef="let person">{{ person.middleName || '-' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="PersonField.Phone">
-      <th mat-header-cell *matHeaderCellDef>Телефон</th>
-      <td mat-cell *matCellDef="let person">{{ person.phone }}</td>
+      <th automation-id="admin-person-phone-label" mat-header-cell *matHeaderCellDef>Телефон</th>
+      <td automation-id="admin-person-phone-value" mat-cell *matCellDef="let person">{{ person.phone }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="PersonField.Created">
-      <th mat-header-cell *matHeaderCellDef>Дата создания</th>
-      <td mat-cell *matCellDef="let person">{{ person.created | date: 'longDate' }}</td>
+      <th automation-id="admin-person-created-label" mat-header-cell *matHeaderCellDef>Дата создания</th>
+      <td automation-id="admin-person-created-value" mat-cell *matCellDef="let person">{{ person.created | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="PersonField.Updated">
-      <th mat-header-cell *matHeaderCellDef>Дата обновления</th>
-      <td mat-cell *matCellDef="let person">{{ person.updated | date: 'longDate' }}</td>
+      <th automation-id="admin-person-updated-label" mat-header-cell *matHeaderCellDef>Дата обновления</th>
+      <td automation-id="admin-person-updated-value" mat-cell *matCellDef="let person">{{ person.updated | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="'actions'">
-      <th mat-header-cell *matHeaderCellDef>Действия</th>
+      <th automation-id="admin-person-actions-label" mat-header-cell *matHeaderCellDef>Действия</th>
       <td mat-cell *matCellDef="let person">
-        <app-admin-person-actions [person]="person"></app-admin-person-actions>
+        <app-admin-person-actions automation-id="admin-person-actions-value" [person]="person"></app-admin-person-actions>
       </td>
     </ng-container>
 
@@ -48,5 +48,7 @@
 </ng-container>
 
 <ng-template #emptyTpl>
-  <p>Нет созданных собственников. Для того, чтобы добавить здание, нажмите - "Добавить собственника".</p>
+  <p automation-id="admin-persons-empty">
+    Нет созданных собственников. Для того, чтобы добавить здание, нажмите - "Добавить собственника".
+  </p>
 </ng-template>
