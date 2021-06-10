@@ -1,7 +1,7 @@
 <mat-dialog-content>
-  <app-admin-person-form [form]="form"></app-admin-person-form>
+  <app-admin-person-form automation-id="admin-person-form" [form]="form"></app-admin-person-form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Отмена</button>
-  <button mat-raised-button color="primary" (click)="onSubmit()">Добавить</button>
+  <button automation-id="admin-person-cancel" mat-raised-button mat-dialog-close>Отмена</button>
+  <button automation-id="admin-person-add" mat-raised-button color="primary" (click)="onSubmit()">Добавить</button>
 </mat-dialog-actions>

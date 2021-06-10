@@ -5,8 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
-import { BUILDINGS_IDS } from '@app/buildings/common';
 import { FormErrorsService } from '@app/core/forms/errors';
+import { PERSONS_IDS } from '@app/persons/common';
 import { PersonFacade } from '@app/persons/state';
 
 @Component({
@@ -50,7 +50,7 @@ export class AdminPersonCreateDialogComponent implements OnInit, OnDestroy {
     if (this.form.valid) {
       this.personFacade.addPerson(this.form.value);
     } else {
-      this.formErrorsService.scrollToFirstError(this.form, BUILDINGS_IDS);
+      this.formErrorsService.scrollToFirstError(this.form, PERSONS_IDS);
     }
     this.changeDetectorRef.markForCheck();
   }
