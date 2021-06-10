@@ -1,4 +1,12 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Фамилия</mat-label>
-  <input placeholder="Фамилия" type="text" name="person[lastName]" matInput [id]="id" [formControl]="control" />
+  <mat-label automation-id="admin-person-lastname-label">Фамилия</mat-label>
+  <input
+    automation-id="admin-person-lastname-control"
+    placeholder="Фамилия"
+    type="text"
+    name="person[lastName]"
+    matInput
+    [id]="id"
+    [formControl]="control"
+  />
 </mat-form-field>
