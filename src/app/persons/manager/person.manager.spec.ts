@@ -11,7 +11,8 @@ import { PERSON_STUB, PersonFacade, PERSONS_STUB } from '@app/persons/state';
 import { Room } from '@app/rooms/common';
 import { RoomFacade, ROOMS_STUB } from '@app/rooms/state';
 
-import { PersonExtended, PersonManager } from './person.manager';
+import { PersonManager } from './person.manager';
+import { PERSON_EXTENDED_STUB } from './person-manager.stub';
 
 describe('PersonManager', () => {
   let service: PersonManager;
@@ -25,8 +26,6 @@ describe('PersonManager', () => {
   let personFacadeMock: PersonFacade;
   let persons$: ReplaySubject<Person[]>;
   let person$: ReplaySubject<Person>;
-
-  const PERSON_EXTENDED_STUB: PersonExtended = { ...PERSON_STUB, buildingsExtended: [{ ...BUILDING_STUB, roomsExtended: ROOMS_STUB }] };
 
   beforeEach(() => {
     roomFacadeMock = mock(RoomFacade);
