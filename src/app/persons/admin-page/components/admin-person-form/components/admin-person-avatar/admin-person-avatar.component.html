@@ -1,4 +1,12 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Аватар</mat-label>
-  <input placeholder="Аватар" type="text" name="person[avatar]" matInput [formControl]="control" [id]="id" />
+  <mat-label automation-id="admin-person-avatar-label">Аватар</mat-label>
+  <input
+    automation-id="admin-person-avatar-control"
+    placeholder="Аватар"
+    type="text"
+    name="person[avatar]"
+    matInput
+    [formControl]="control"
+    [id]="id"
+  />
 </mat-form-field>
