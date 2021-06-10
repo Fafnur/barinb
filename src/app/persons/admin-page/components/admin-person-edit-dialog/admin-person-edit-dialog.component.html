@@ -1,7 +1,7 @@
 <mat-dialog-content *ngIf="form && person">
-  <app-admin-person-form [form]="form" [person]="person"></app-admin-person-form>
+  <app-admin-person-form automation-id="admin-person-form" [form]="form" [person]="person"></app-admin-person-form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Отмена</button>
-  <button mat-raised-button color="primary" (click)="onSubmit()">Изменить</button>
+  <button automation-id="admin-person-cancel" mat-raised-button mat-dialog-close>Отмена</button>
+  <button automation-id="admin-person-change" mat-raised-button color="primary" (click)="onSubmit()">Изменить</button>
 </mat-dialog-actions>
