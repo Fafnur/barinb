@@ -9,7 +9,7 @@ import { extractTouchedChanges } from '@app/core/forms/utils';
 import { PersonField, PERSONS_IDS } from '@app/persons/common';
 
 @Component({
-  selector: 'app-admin-building-rooms',
+  selector: 'app-admin-person-buildings',
   templateUrl: './admin-person-buildings.component.html',
   styleUrls: ['./admin-person-buildings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
