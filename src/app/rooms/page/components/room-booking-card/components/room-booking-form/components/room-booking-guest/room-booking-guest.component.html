@@ -1,6 +1,6 @@
 <mat-form-field class="ui-field" appearance="fill" *ngIf="control">
-  <mat-label>Гостей</mat-label>
-  <mat-select [formControl]="control">
+  <mat-label automation-id="room-booking-guests-label">Гостей</mat-label>
+  <mat-select automation-id="room-booking-guests-value" [formControl]="control">
     <mat-option *ngFor="let guest of guests" [value]="guest">
       {{ guest }}
     </mat-option>
