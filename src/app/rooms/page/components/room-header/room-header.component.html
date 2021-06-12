@@ -1,6 +1,6 @@
 <ng-container *ngIf="room">
-  <h1 class="room-view-title">{{ room.buildingExtended.name }}</h1>
-  <button class="room-view-back" type="button" mat-icon-button (click)="onBack()">
+  <h1 automation-id="room-header-title" class="room-view-title">{{ room.buildingExtended.name }}</h1>
+  <button automation-id="room-header-close" class="room-view-back" type="button" mat-icon-button (click)="onBack()">
     <mat-icon>close</mat-icon>
   </button>
 </ng-container>
