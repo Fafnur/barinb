@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -29,13 +29,15 @@ describe('RoomHeaderComponent', () => {
     navigationServiceMock = mock(NavigationService);
   });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MatIconModule, MatButtonModule],
-      declarations: [RoomHeaderComponent, WrapperComponent],
-      providers: [providerOf(NavigationService, navigationServiceMock)],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      void TestBed.configureTestingModule({
+        imports: [RouterTestingModule, MatIconModule, MatButtonModule],
+        declarations: [RoomHeaderComponent, WrapperComponent],
+        providers: [providerOf(NavigationService, navigationServiceMock)],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixtureWrapper = TestBed.createComponent(WrapperComponent);

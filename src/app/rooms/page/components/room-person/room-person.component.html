@@ -1,11 +1,13 @@
 <div class="room-view-group" *ngIf="room">
   <div>
-    <h3 class="room-view-person">Квартира целиком, хозяин: {{ room.buildingExtended.personExtended.firstName }}</h3>
+    <h3 automation-id="room-person-title" class="room-view-person">
+      Квартира целиком, хозяин: {{ room.buildingExtended.personExtended.firstName }}
+    </h3>
     <ng-content></ng-content>
   </div>
   <div>
     <div class="room-view-avatar">
-      <img class="room-view-image" [src]="room.buildingExtended.personExtended.avatar" alt="" />
+      <img automation-id="room-person-avatar" class="room-view-image" [src]="room.buildingExtended.personExtended.avatar" alt="" />
     </div>
   </div>
 </div>
