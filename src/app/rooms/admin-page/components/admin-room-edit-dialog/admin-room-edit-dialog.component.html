@@ -1,7 +1,7 @@
 <mat-dialog-content *ngIf="form && room">
-  <app-admin-room-form [form]="form" [room]="room"></app-admin-room-form>
+  <app-admin-room-form automation-id="admin-room-form" [form]="form" [room]="room"></app-admin-room-form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Отмена</button>
-  <button mat-raised-button color="primary" (click)="onSubmit()">Изменить</button>
+  <button automation-id="admin-room-cancel" mat-raised-button mat-dialog-close>Отмена</button>
+  <button automation-id="admin-room-change" mat-raised-button color="primary" (click)="onSubmit()">Изменить</button>
 </mat-dialog-actions>
