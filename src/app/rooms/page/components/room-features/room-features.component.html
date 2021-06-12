@@ -1,52 +1,56 @@
 <ng-container *ngIf="room">
   <div class="room-feature">
-    <div class="room-feature-aside">
+    <div automation-id="room-feature-title-icon" class="room-feature-aside">
       <mat-icon>home</mat-icon>
     </div>
     <div class="room-feature-content">
-      <div class="room-feature-title">Жилье целиком</div>
-      <div class="room-feature-description">Квартира полностью в вашем распоряжении.</div>
+      <div automation-id="room-feature-title-label" class="room-feature-title">Жилье целиком</div>
+      <div automation-id="room-feature-title-value" class="room-feature-description">Квартира полностью в вашем распоряжении.</div>
     </div>
   </div>
 
   <div class="room-feature">
-    <div class="room-feature-aside">
+    <div automation-id="room-feature-cleaning-icon" class="room-feature-aside">
       <mat-icon>cleaning_services</mat-icon>
     </div>
     <div class="room-feature-content">
-      <div class="room-feature-title">Расширенная уборка</div>
-      <div class="room-feature-description">Хозяин следует расширенному протоколу уборки.</div>
+      <div automation-id="room-feature-cleaning-label" class="room-feature-title">Расширенная уборка</div>
+      <div automation-id="room-feature-cleaning-value" class="room-feature-description">Хозяин следует расширенному протоколу уборки.</div>
     </div>
   </div>
 
   <div class="room-feature">
-    <div class="room-feature-aside">
+    <div automation-id="room-feature-person-icon" class="room-feature-aside">
       <mat-icon>emoji_events</mat-icon>
     </div>
     <div class="room-feature-content">
-      <div class="room-feature-title">{{ room.buildingExtended.personExtended.firstName }} — суперхозяин.</div>
-      <div class="room-feature-description">
+      <div automation-id="room-feature-person-label" class="room-feature-title">
+        {{ room.buildingExtended.personExtended.firstName }} — суперхозяин.
+      </div>
+      <div automation-id="room-feature-person-value" class="room-feature-description">
         Суперхозяева — опытные хозяева с отличными отзывами, которые делают всё для комфорта гостей.
       </div>
     </div>
   </div>
 
   <div class="room-feature">
-    <div class="room-feature-aside">
+    <div automation-id="room-feature-rules-icon" class="room-feature-aside">
       <mat-icon>list_alt</mat-icon>
     </div>
     <div class="room-feature-content">
-      <div class="room-feature-title">Правила дома</div>
-      <div class="room-feature-description">В жилье нельзя останавливаться с животными, проводить вечеринки или курить.</div>
+      <div automation-id="room-feature-rules-label" class="room-feature-title">Правила дома</div>
+      <div automation-id="room-feature-rules-value" class="room-feature-description">
+        В жилье нельзя останавливаться с животными, проводить вечеринки или курить.
+      </div>
     </div>
   </div>
 
   <div class="room-feature">
-    <div class="room-feature-aside">
+    <div automation-id="room-feature-cancel-icon" class="room-feature-aside">
       <mat-icon>date_range</mat-icon>
     </div>
     <div class="room-feature-content">
-      <div class="room-feature-title">Бесплатная отмена</div>
+      <div automation-id="room-feature-cancel-label" class="room-feature-title">Бесплатная отмена</div>
     </div>
   </div>
 </ng-container>

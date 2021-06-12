@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'backgroundImage',
 })
 export class BackgroundImagePipe implements PipeTransform {
-  transform(image: string | null): Record<string, any> | null {
-    return image ? { backgroundImage: `url(${image})` } : null;
+  transform(image: string | null | undefined): Record<string, any> | null {
+    return typeof image === 'string' ? { backgroundImage: `url(${image})` } : null;
   }
 }
