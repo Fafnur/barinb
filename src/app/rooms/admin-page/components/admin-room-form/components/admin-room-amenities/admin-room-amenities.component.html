@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Особенности</mat-label>
-  <mat-select class="admin-person-options" [formControl]="control" multiple [id]="id">
+  <mat-label automation-id="admin-room-amenities-label">Особенности</mat-label>
+  <mat-select automation-id="admin-room-amenities-control" class="admin-person-options" [formControl]="control" multiple [id]="id">
     <mat-option class="admin-person-option" *ngFor="let feature of features" [value]="feature">
       {{ feature | roomAmenitiesLabel }}
     </mat-option>

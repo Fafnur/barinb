@@ -1,33 +1,51 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MockModule } from 'ng-mocks';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 import { RoomSharedModule } from '@app/rooms/shared';
 
 import { AdminRoomAmenitiesComponent } from './admin-room-amenities.component';
+import { AdminRoomAmenitiesComponentPo } from './admin-room-amenities.po';
+
+@Component({
+  template: `<app-admin-room-amenities [control]="control"></app-admin-room-amenities>`,
+})
+export class WrapperComponent {
+  control = new FormControl(null, []);
+}
 
 describe('AdminRoomAmenitiesComponent', () => {
-  let component: AdminRoomAmenitiesComponent;
-  let fixture: ComponentFixture<AdminRoomAmenitiesComponent>;
+  let pageObject: AdminRoomAmenitiesComponentPo;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MatInputModule, MatSelectModule, MatIconModule, MatButtonModule, ReactiveFormsModule, MockModule(RoomSharedModule)],
-      declarations: [AdminRoomAmenitiesComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NoopAnimationsModule, MatInputModule, MatSelectModule, ReactiveFormsModule, RoomSharedModule],
+        declarations: [AdminRoomAmenitiesComponent, WrapperComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminRoomAmenitiesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new AdminRoomAmenitiesComponentPo(fixtureWrapper);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should set label and control', () => {
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.adminRoomAddressLabelText).toBe('Особенности');
+    expect(pageObject.adminRoomAddressControlId).toBe(ROOMS_IDS[RoomField.Amenities]);
   });
 });
