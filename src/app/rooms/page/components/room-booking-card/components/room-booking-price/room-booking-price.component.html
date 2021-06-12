@@ -1,23 +1,25 @@
 <ng-container *ngIf="room">
   <ng-container *ngIf="bookingDetails$ | async as bookingDetails">
     <div class="room-service">
-      <div class="room-service-name">{{ room.price | number: '1.0-0' }} ₽ x {{ bookingPrice.days | numeralToWord: NumeralType.Night }}</div>
-      <div class="room-service-amount">{{ bookingPrice.rent | number: '1.0-0' }} ₽</div>
+      <div class="room-service-name" automation-id="room-booking-price-label">
+        {{ room.price | number: '1.0-0' }} ₽ x {{ bookingPrice.days | numeralToWord: NumeralType.Night }}
+      </div>
+      <div class="room-service-amount" automation-id="room-booking-price-value">{{ bookingPrice.rent | number: '1.0-0' }} ₽</div>
     </div>
 
     <div class="room-service">
-      <div class="room-service-name">Плата за уборку</div>
-      <div class="room-service-amount">{{ bookingPrice.cleaning | number: '1.0-0' }} ₽</div>
+      <div class="room-service-name" automation-id="room-booking-cleaning-label">Плата за уборку</div>
+      <div class="room-service-amount" automation-id="room-booking-cleaning-value">{{ bookingPrice.cleaning | number: '1.0-0' }} ₽</div>
     </div>
 
     <div class="room-service">
-      <div class="room-service-name">Сбор за услуги Barinb</div>
-      <div class="room-service-amount">{{ bookingPrice.fee | number: '1.0-0' }} ₽</div>
+      <div class="room-service-name" automation-id="room-booking-fee-label">Сбор за услуги Barinb</div>
+      <div class="room-service-amount" automation-id="room-booking-fee-value">{{ bookingPrice.fee | number: '1.0-0' }} ₽</div>
     </div>
 
     <div class="room-service room-service_style">
-      <div class="room-service-name">Итого</div>
-      <div class="room-service-amount">{{ bookingPrice.total | number: '1.0-0' }} ₽</div>
+      <div class="room-service-name" automation-id="room-booking-total-label">Итого</div>
+      <div class="room-service-amount" automation-id="room-booking-total-value">{{ bookingPrice.total | number: '1.0-0' }} ₽</div>
     </div>
   </ng-container>
 </ng-container>
