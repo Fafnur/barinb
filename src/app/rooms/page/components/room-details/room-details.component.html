@@ -1,5 +1,5 @@
 <ng-container *ngIf="room">
-  <div class="room-view-detail"><mat-icon color="warn">star</mat-icon> 4.99</div>
-  <div class="room-view-detail"><mat-icon color="warn">emoji_events</mat-icon> Суперхозяин</div>
-  <div class="room-view-detail">{{ room.buildingExtended.address }}</div>
+  <div automation-id="room-details-star" class="room-view-detail"><mat-icon color="warn">star</mat-icon> 4.99</div>
+  <div automation-id="room-details-person" class="room-view-detail"><mat-icon color="warn">emoji_events</mat-icon> Суперхозяин</div>
+  <div automation-id="room-details-address" class="room-view-detail">{{ room.buildingExtended.address }}</div>
 </ng-container>
