@@ -1,13 +1,13 @@
 <ng-container *ngIf="isDesktopScreen; then desktopTpl; else mobileTpl"></ng-container>
 
 <ng-template #desktopTpl>
-  <div class="room-photos" *ngIf="photos?.length">
+  <div automation-id="room-photos" class="room-photos" *ngIf="photos?.length">
     <div class="room-photos-group">
-      <img class="room-photo-source" [src]="photos[0]" alt="" />
+      <img automation-id="room-photo-source" class="room-photo-source" [src]="photos[0]" alt="" />
     </div>
     <div class="room-photos-group">
       <div class="room-photos-group">
-        <div class="room-photo" *ngFor="let photo of photos | roomPreviewImages; let last = last">
+        <div automation-id="room-photo-box" class="room-photo" *ngFor="let photo of photos | roomPreviewImages; let last = last">
           <ng-container *ngTemplateOutlet="photoTpl; context: { photo: photo, last: last }"></ng-container>
         </div>
       </div>
@@ -16,13 +16,13 @@
 </ng-template>
 
 <ng-template #mobileTpl>
-  <app-carousel class="room-photos-carousel" [images]="photos"></app-carousel>
+  <app-carousel automation-id="room-photos-carousel" class="room-photos-carousel" [images]="photos"></app-carousel>
 </ng-template>
 
 <ng-template #photoTpl let-photo="photo" let-last="last">
-  <div class="room-photo-preview" [ngStyle]="{ backgroundImage: 'url(' + photo + ')' }"></div>
+  <div automation-id="room-photo-preview" class="room-photo-preview" [ngStyle]="photo | backgroundImage"></div>
   <div class="room-photo-action" *ngIf="last">
-    <button class="room-photo-all" mat-raised-button (click)="onShowAll()">
+    <button automation-id="room-photo-show" class="room-photo-all" mat-raised-button (click)="onShowAll()">
       <mat-icon>apps</mat-icon>
       Показать все
     </button>
