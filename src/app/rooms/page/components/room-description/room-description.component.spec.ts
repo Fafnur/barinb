@@ -1,25 +1,44 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+
+import { ROOM_EXTENDED_STUB } from '@app/rooms/manager';
 
 import { RoomDescriptionComponent } from './room-description.component';
+import { RoomDescriptionComponentPo } from './room-description.po';
+
+@Component({
+  template: `<app-room-description automation-id="room-description" [room]="room"></app-room-description>`,
+})
+export class WrapperComponent {
+  room = ROOM_EXTENDED_STUB;
+}
 
 describe('RoomDescriptionComponent', () => {
-  let component: RoomDescriptionComponent;
-  let fixture: ComponentFixture<RoomDescriptionComponent>;
+  let pageObject: RoomDescriptionComponentPo;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ RoomDescriptionComponent ]
+  beforeEach(
+    waitForAsync(() => {
+      void TestBed.configureTestingModule({
+        declarations: [RoomDescriptionComponent, WrapperComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  });
+  );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoomDescriptionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new RoomDescriptionComponentPo(fixtureWrapper);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should show description', () => {
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.roomDescriptionText).toBe(ROOM_EXTENDED_STUB.description);
   });
 });
