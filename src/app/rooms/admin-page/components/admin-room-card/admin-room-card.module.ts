@@ -9,6 +9,7 @@ import { AdminBuildingLinkModule, AdminPersonLinkModule } from '@app/admin/links
 import { NavigationSharedModule } from '@app/core/navigation/shared';
 import { PersonSharedModule } from '@app/persons/shared';
 import { CarouselModule } from '@app/ui/carousel';
+import { SharedModule } from '@app/ui/shared';
 
 import { AdminRoomActionsModule } from '../admin-room-actions/admin-room-actions.module';
 import { AdminRoomCardComponent } from './admin-room-card.component';
@@ -26,6 +27,7 @@ import { AdminRoomCardComponent } from './admin-room-card.component';
     CarouselModule,
     PersonSharedModule,
     NavigationSharedModule,
+    SharedModule,
   ],
   declarations: [AdminRoomCardComponent],
   exports: [AdminRoomCardComponent],

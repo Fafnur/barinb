@@ -1,29 +1,32 @@
 <mat-card>
   <mat-card-header>
     <a
+      automation-id="admin-room-card-avatar"
       mat-card-avatar
       class="room-card-avatar"
       [routerLink]="NavigationPath.AdminPersonsPage | navPath"
       [queryParams]="{ person: room.buildingExtended.personExtended.id }"
-      [ngStyle]="{ backgroundImage: 'url(' + room.buildingExtended.personExtended.avatar + ')' }"
+      [ngStyle]="room.buildingExtended.personExtended.avatar | backgroundImage"
     >
     </a>
-    <mat-card-title>{{ room.buildingExtended.personExtended | personFullName }}</mat-card-title>
-    <mat-card-subtitle>{{ room.buildingExtended.city }}, {{ room.buildingExtended.address }}</mat-card-subtitle>
+    <mat-card-title automation-id="admin-room-card-title">{{ room.buildingExtended.personExtended | personFullName }}</mat-card-title>
+    <mat-card-subtitle automation-id="admin-room-card-subtitle">
+      {{ room.buildingExtended.city }}, {{ room.buildingExtended.address }}
+    </mat-card-subtitle>
   </mat-card-header>
   <div mat-card-image>
-    <app-carousel class="room-card-carousel" [images]="room.photos"></app-carousel>
+    <app-carousel automation-id="admin-room-card-carousel" class="room-card-carousel" [images]="room.photos"></app-carousel>
   </div>
   <mat-card-content>
     <div class="room-card-props">
-      <div class="room-card-prop">{{ room.price }} ₽</div>
-      <div class="room-card-prop">{{ room.created | date: 'longDate' }}</div>
+      <div automation-id="admin-room-card-price" class="room-card-prop">{{ room.price }} ₽</div>
+      <div automation-id="admin-room-card-created" class="room-card-prop">{{ room.created | date: 'longDate' }}</div>
     </div>
-    <div>
+    <div automation-id="admin-room-card-description">
       {{ room.description }}
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <app-admin-room-actions [room]="room"></app-admin-room-actions>
+    <app-admin-room-actions automation-id="admin-room-actions" [room]="room"></app-admin-room-actions>
   </mat-card-actions>
 </mat-card>

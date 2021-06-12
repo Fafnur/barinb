@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { RoomExtended } from '@app/rooms/manager';
 import { NavigationPath } from '@app/core/navigation/common';
+import { RoomExtended } from '@app/rooms/manager';
 
 @Component({
   selector: 'app-admin-room-card',
