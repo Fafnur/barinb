@@ -1,6 +1,6 @@
 <div class="room-view-props" *ngIf="room">
-  <div class="room-view-prop">{{ room.guests | numeralToWord: NumeralType.Guest }}</div>
-  <div class="room-view-prop">{{ room.bedrooms | numeralToWord: NumeralType.Bedroom }}</div>
-  <div class="room-view-prop">{{ room.beds | numeralToWord: NumeralType.Bed }}</div>
-  <div class="room-view-prop">{{ room.bathrooms | numeralToWord: NumeralType.Bathroom }}</div>
+  <div automation-id="room-prop-guests" class="room-view-prop">{{ room.guests | numeralToWord: NumeralType.Guest }}</div>
+  <div automation-id="room-prop-bedrooms" class="room-view-prop">{{ room.bedrooms | numeralToWord: NumeralType.Bedroom }}</div>
+  <div automation-id="room-prop-beds" class="room-view-prop">{{ room.beds | numeralToWord: NumeralType.Bed }}</div>
+  <div automation-id="room-prop-bathrooms" class="room-view-prop">{{ room.bathrooms | numeralToWord: NumeralType.Bathroom }}</div>
 </div>
