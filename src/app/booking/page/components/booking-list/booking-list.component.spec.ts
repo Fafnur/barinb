@@ -55,4 +55,13 @@ describe('BookingListComponent', () => {
 
     expect(pageObject.bookingListPortlets?.length).toBe(1);
   });
+
+  it('should set portlets', () => {
+    fixture.detectChanges();
+
+    bookingVariants$.next([]);
+    fixture.detectChanges();
+
+    expect(pageObject.bookingListEmptyText).toBe('Нет доступных отелей и апартаментов.');
+  });
 });

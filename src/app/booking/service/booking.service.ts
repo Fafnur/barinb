@@ -17,16 +17,18 @@ export function getFirstRoomOnBuilding(building: Building, rooms: Room[]): Room 
 }
 
 export function castMapMarkerConfigs(bookingVariants: BookingVariant[]): MapMarkerConfig[] {
-  return bookingVariants.map((bookingVariant) => ({
-    data: bookingVariant,
-    lat: bookingVariant.lat,
-    lng: bookingVariant.lng,
-    label: {
-      className: 'google-map-marker',
-      text: bookingVariant.firstRoom?.price.toString() ?? '',
-      fontWeight: 'bold',
-    },
-  }));
+  return bookingVariants
+    .filter((bookingVariant) => bookingVariant.rooms.length)
+    .map((bookingVariant) => ({
+      data: bookingVariant,
+      lat: bookingVariant.lat,
+      lng: bookingVariant.lng,
+      label: {
+        className: 'google-map-marker',
+        text: bookingVariant.firstRoom?.price.toString() ?? '',
+        fontWeight: 'bold',
+      },
+    }));
 }
 
 @Injectable()
@@ -34,7 +36,11 @@ export class BookingService {
   bookingVariant$: Observable<BookingVariant> = this.bookingFacade.bookingVariant$.pipe(filter<any>(Boolean));
 
   bookingVariants$: Observable<BookingVariant[]> = combineLatest([this.buildingService.buildings$, this.roomService.rooms$]).pipe(
-    map(([buildings, rooms]) => buildings.map((building) => ({ ...building, firstRoom: getFirstRoomOnBuilding(building, rooms) })))
+    map(([buildings, rooms]) =>
+      buildings
+        .filter((building) => building.rooms.length)
+        .map((building) => ({ ...building, firstRoom: getFirstRoomOnBuilding(building, rooms) }))
+    )
   );
 
   bookingDetails$: Observable<BookingDetails> = this.bookingFacade.bookingDetails$.pipe(filter<any>(Boolean));
