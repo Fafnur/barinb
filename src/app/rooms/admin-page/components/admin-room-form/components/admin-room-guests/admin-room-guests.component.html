@@ -1,4 +1,13 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Гости</mat-label>
-  <input placeholder="Количество гостей" type="number" matInput [formControl]="control" [id]="id" autocomplete="off" name="room[guests]" />
+  <mat-label automation-id="admin-room-guests-label">Гости</mat-label>
+  <input
+    automation-id="admin-room-guests-control"
+    placeholder="Количество гостей"
+    type="number"
+    matInput
+    [formControl]="control"
+    [id]="id"
+    autocomplete="off"
+    name="room[guests]"
+  />
 </mat-form-field>

@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RoomField, ROOMS_IDS } from '@app/rooms/common';
-import { RoomSharedModule } from '@app/rooms/shared';
 
 import { AdminRoomDescriptionComponent } from './admin-room-description.component';
 import { AdminRoomDescriptionComponentPo } from './admin-room-description.po';
@@ -25,7 +23,7 @@ describe('AdminRoomDescriptionComponent', () => {
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        imports: [NoopAnimationsModule, MatInputModule, MatSelectModule, ReactiveFormsModule, RoomSharedModule],
+        imports: [NoopAnimationsModule, MatInputModule, ReactiveFormsModule],
         declarations: [AdminRoomDescriptionComponent, WrapperComponent],
       }).compileComponents();
     })

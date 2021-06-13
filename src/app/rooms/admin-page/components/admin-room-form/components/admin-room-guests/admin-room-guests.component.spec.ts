@@ -1,29 +1,49 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 
 import { AdminRoomGuestsComponent } from './admin-room-guests.component';
+import { AdminRoomGuestsComponentPo } from './admin-room-guests.po';
+
+@Component({
+  template: `<app-admin-room-guests [control]="control"></app-admin-room-guests>`,
+})
+export class WrapperComponent {
+  control = new FormControl(null, []);
+}
 
 describe('AdminRoomGuestsComponent', () => {
-  let component: AdminRoomGuestsComponent;
-  let fixture: ComponentFixture<AdminRoomGuestsComponent>;
+  let pageObject: AdminRoomGuestsComponentPo;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule],
-      declarations: [AdminRoomGuestsComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NoopAnimationsModule, MatInputModule, ReactiveFormsModule],
+        declarations: [AdminRoomGuestsComponent, WrapperComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminRoomGuestsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new AdminRoomGuestsComponentPo(fixtureWrapper);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should set label and control', () => {
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.adminRoomAddressLabelText).toBe('Гости');
+    expect(pageObject.adminRoomAddressControlId).toBe(ROOMS_IDS[RoomField.Guests]);
   });
 });
