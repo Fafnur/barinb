@@ -3,12 +3,12 @@ import { RouterModule } from '@angular/router';
 
 import { FooterModule } from './components/footer/footer.module';
 import { HeaderModule } from './components/header/header.module';
-import { LayoutComponent } from './components/layout/layout.component';
-import { MainComponent } from './components/main/main.component';
+import { MainModule } from './components/main/main.module';
+import { LayoutComponent } from './layout.component';
 
 @NgModule({
-  imports: [RouterModule, HeaderModule, FooterModule],
-  declarations: [LayoutComponent, MainComponent],
+  imports: [RouterModule, HeaderModule, MainModule, FooterModule],
+  declarations: [LayoutComponent],
   exports: [LayoutComponent],
 })
 export class LayoutModule {}
