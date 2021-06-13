@@ -30,7 +30,6 @@ export class AdminRoomsTableComponent {
   displayedColumns: string[] = [
     RoomField.ID,
     RoomField.Photos,
-    // RoomField.Description,
     RoomField.Price,
     RoomField.Created,
     RoomField.Updated,

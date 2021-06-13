@@ -1,56 +1,56 @@
 <ng-container *ngIf="rooms?.length; else emptyTpl">
-  <table class="admin-table" mat-table [dataSource]="dataSource">
+  <table automation-id="admin-rooms-table" class="admin-table" mat-table [dataSource]="dataSource">
     <ng-container [matColumnDef]="RoomField.ID">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element">
+      <th mat-header-cell automation-id="admin-room-id-label" *matHeaderCellDef>ID</th>
+      <td mat-cell automation-id="admin-room-id-value" *matCellDef="let element">
         {{ element.id }}
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Photos">
-      <th mat-header-cell *matHeaderCellDef>Фото</th>
-      <td mat-cell *matCellDef="let room">
+      <th mat-header-cell automation-id="admin-room-photos-label" *matHeaderCellDef>Фото</th>
+      <td mat-cell automation-id="admin-room-photos-value" *matCellDef="let room">
         <app-carousel class="room-photos-carousel" [images]="room.photos"></app-carousel>
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Description">
-      <th mat-header-cell *matHeaderCellDef>Описание</th>
-      <td mat-cell *matCellDef="let room">{{ room.description }}</td>
+      <th mat-header-cell automation-id="admin-room-description-label" *matHeaderCellDef>Описание</th>
+      <td mat-cell automation-id="admin-room-description-value" *matCellDef="let room">{{ room.description }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Price">
-      <th mat-header-cell *matHeaderCellDef>Цена</th>
-      <td mat-cell *matCellDef="let room">{{ room.price }}</td>
+      <th mat-header-cell automation-id="admin-room-price-label" *matHeaderCellDef>Цена</th>
+      <td mat-cell automation-id="admin-room-price-value" *matCellDef="let room">{{ room.price }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Created">
-      <th mat-header-cell *matHeaderCellDef>Дата создания</th>
-      <td mat-cell *matCellDef="let room">{{ room.created | date: 'longDate' }}</td>
+      <th mat-header-cell automation-id="admin-room-created-label" *matHeaderCellDef>Дата создания</th>
+      <td mat-cell automation-id="admin-room-created-value" *matCellDef="let room">{{ room.created | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Updated">
-      <th mat-header-cell *matHeaderCellDef>Дата обновления</th>
-      <td mat-cell *matCellDef="let room">{{ room.updated | date: 'longDate' }}</td>
+      <th mat-header-cell automation-id="admin-room-updated-label" *matHeaderCellDef>Дата обновления</th>
+      <td mat-cell automation-id="admin-room-updated-value" *matCellDef="let room">{{ room.updated | date: 'longDate' }}</td>
     </ng-container>
 
     <ng-container [matColumnDef]="'actions'">
-      <th mat-header-cell *matHeaderCellDef>Действия</th>
-      <td mat-cell *matCellDef="let room">
+      <th mat-header-cell automation-id="admin-room-actions-label" *matHeaderCellDef>Действия</th>
+      <td mat-cell automation-id="admin-room-actions-value" *matCellDef="let room">
         <app-admin-room-actions [room]="room"></app-admin-room-actions>
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Building">
-      <th mat-header-cell *matHeaderCellDef>Здание</th>
-      <td mat-cell *matCellDef="let room">
+      <th mat-header-cell automation-id="admin-room-building-label" *matHeaderCellDef>Здание</th>
+      <td mat-cell automation-id="admin-room-building-value" *matCellDef="let room">
         <app-admin-building-link [building]="room.buildingExtended"></app-admin-building-link>
       </td>
     </ng-container>
 
     <ng-container [matColumnDef]="RoomField.Person">
-      <th mat-header-cell *matHeaderCellDef>Хозяин</th>
-      <td mat-cell *matCellDef="let room">
+      <th mat-header-cell automation-id="admin-room-person-label" *matHeaderCellDef>Хозяин</th>
+      <td mat-cell automation-id="admin-room-person-value" *matCellDef="let room">
         <app-admin-person-link [person]="room.buildingExtended.person"></app-admin-person-link>
       </td>
     </ng-container>
@@ -61,5 +61,5 @@
 </ng-container>
 
 <ng-template #emptyTpl>
-  <p>Нет созданных номеров. Для того, чтобы добавить номер, нажмите - "Добавить номер".</p>
+  <p automation-id="admin-rooms-empty">Нет созданных номеров. Для того, чтобы добавить номер, нажмите - "Добавить номер".</p>
 </ng-template>
