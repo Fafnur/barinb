@@ -1,24 +1,44 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+
+import { GridBreakpointName } from '@app/ui/theme/utils';
 
 import { RowComponent } from './row.component';
+import { RowComponentPo } from './row.po';
+
+@Component({
+  template: `<app-row automation-id="row" [mode]="mode"></app-row>`,
+})
+export class WrapperComponent {
+  mode = GridBreakpointName.Xs;
+}
 
 describe('RowComponent', () => {
-  let component: RowComponent;
-  let fixture: ComponentFixture<RowComponent>;
+  let pageObject: RowComponentPo;
+  let fixture: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [RowComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      void TestBed.configureTestingModule({
+        declarations: [RowComponent, WrapperComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RowComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture = TestBed.createComponent(WrapperComponent);
+    pageObject = new RowComponentPo(fixture);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should set class row-xs', () => {
+    fixture.detectChanges();
+
+    expect(pageObject.hasRowClass(`row-${GridBreakpointName.Xs}`)).toBeTruthy();
   });
 });
