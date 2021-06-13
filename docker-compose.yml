@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      GOOGLE_MAPS_KEY: AIzaSyDPJ5-bEjFnP1xEN8QC0Ks8uej7CFcBGAs
-    restart: always
+      GOOGLE_MAPS_KEY: ''
+    restart: 'no'
     ports:
       - 4000:80
     volumes:
