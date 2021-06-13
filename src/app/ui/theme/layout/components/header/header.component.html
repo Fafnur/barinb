@@ -1,15 +1,15 @@
 <mat-toolbar color="primary">
-  <a class="header-logo" routerLink="/">
-    <span class="header-brand">Barinb</span>
+  <a automation-id="header-logo" class="header-logo" [routerLink]="NavigationPath.Home | navPath">
+    <span automation-id="header-brand" class="header-brand">Barinb</span>
   </a>
   <span class="header-spacer"></span>
-  <a mat-icon-button aria-label="Home" [routerLink]="NavigationPath.Home | navPath">
+  <a automation-id="header-link-home" mat-icon-button aria-label="Home" [routerLink]="NavigationPath.Home | navPath">
     <mat-icon>home</mat-icon>
   </a>
-  <a mat-icon-button aria-label="Admin" [routerLink]="NavigationPath.Admin | navPath">
+  <a automation-id="header-link-admin" mat-icon-button aria-label="Admin" [routerLink]="NavigationPath.Admin | navPath">
     <mat-icon>settings</mat-icon>
   </a>
-  <button mat-icon-button aria-label="Help" (click)="onOpenDialog()">
+  <button automation-id="header-link-help" mat-icon-button aria-label="Help" (click)="onOpenDialog()">
     <mat-icon>help_outline</mat-icon>
   </button>
 </mat-toolbar>

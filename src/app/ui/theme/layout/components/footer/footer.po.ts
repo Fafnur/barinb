@@ -11,7 +11,7 @@ enum FooterAutomation {
 }
 
 export class FooterComponentPo extends PageObject<FooterComponent> {
-  get frooterCopyrightText(): string | null {
+  get footerCopyrightText(): string | null {
     return this.text(FooterAutomation.FooterCopyright);
   }
 

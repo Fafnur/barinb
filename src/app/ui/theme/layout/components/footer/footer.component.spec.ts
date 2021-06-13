@@ -34,7 +34,7 @@ describe('FooterComponent', () => {
   it('should show footer', () => {
     fixture.detectChanges();
 
-    expect(pageObject.frooterCopyrightText).toBe('© 2021 Barinb. Все права защищены.');
+    expect(pageObject.footerCopyrightText).toBe('© 2021 Barinb. Все права защищены.');
     expect(pageObject.footerLinkFacebookHref).toBe('//facebook.com');
     expect(pageObject.footerLinkTwitterHref).toBe('//twitter.com');
     expect(pageObject.footerLinkYoutubeHref).toBe('//youtube.com');
