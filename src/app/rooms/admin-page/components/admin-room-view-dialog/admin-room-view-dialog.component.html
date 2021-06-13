@@ -1,50 +1,50 @@
 <mat-dialog-content *ngIf="room">
   <app-admin-group>
-    <app-admin-label>Собственник</app-admin-label>
-    <app-admin-value>{{ room.buildingExtended.personExtended | personFullName }}</app-admin-value>
+    <app-admin-label automation-id="admin-room-person-label">Собственник</app-admin-label>
+    <app-admin-value automation-id="admin-room-person-value">{{ room.buildingExtended.personExtended | personFullName }}</app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Город</app-admin-label>
-    <app-admin-value>{{ room.buildingExtended.city }}</app-admin-value>
+    <app-admin-label automation-id="admin-room-city-label">Город</app-admin-label>
+    <app-admin-value automation-id="admin-room-city-value">{{ room.buildingExtended.city }}</app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Адрес</app-admin-label>
-    <app-admin-value>{{ room.buildingExtended.address }}</app-admin-value>
+    <app-admin-label automation-id="admin-room-address-label">Адрес</app-admin-label>
+    <app-admin-value automation-id="admin-room-address-value">{{ room.buildingExtended.address }}</app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Цена</app-admin-label>
-    <app-admin-value>{{ room.price | number: '1.0-0' }}</app-admin-value>
+    <app-admin-label automation-id="admin-room-price-label">Цена</app-admin-label>
+    <app-admin-value automation-id="admin-room-price-value">{{ room.price | number: '1.0-0' }}</app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Гостей</app-admin-label>
-    <app-admin-value>{{ room.guests }}</app-admin-value>
+    <app-admin-label automation-id="admin-room-guests-label">Гостей</app-admin-label>
+    <app-admin-value automation-id="admin-room-guests-value">{{ room.guests }}</app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Количество спален</app-admin-label>
-    <app-admin-value>{{ room.bedrooms }}</app-admin-value>
+    <app-admin-label automation-id="admin-room-bedrooms-label">Количество спален</app-admin-label>
+    <app-admin-value automation-id="admin-room-bedrooms-value">{{ room.bedrooms }}</app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Количество кроватей</app-admin-label>
-    <app-admin-value>{{ room.beds }}</app-admin-value>
+    <app-admin-label automation-id="admin-room-beds-label">Количество кроватей</app-admin-label>
+    <app-admin-value automation-id="admin-room-beds-value">{{ room.beds }}</app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Количество ванных</app-admin-label>
-    <app-admin-value>{{ room.bathrooms }}</app-admin-value>
+    <app-admin-label automation-id="admin-room-bathrooms-label">Количество ванных</app-admin-label>
+    <app-admin-value automation-id="admin-room-bathrooms-value">{{ room.bathrooms }}</app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Описание</app-admin-label>
-    <app-admin-value [innerHTML]="room.description"></app-admin-value>
+    <app-admin-label automation-id="admin-room-description-label">Описание</app-admin-label>
+    <app-admin-value automation-id="admin-room-description-value" [innerHTML]="room.description"></app-admin-value>
   </app-admin-group>
   <app-admin-group>
-    <app-admin-label>Особенности</app-admin-label>
+    <app-admin-label automation-id="admin-room-amenities-label">Особенности</app-admin-label>
     <app-admin-value>
       <ul *ngIf="room.amenities.length">
-        <li *ngFor="let amenity of room.amenities">{{ amenity | roomAmenitiesLabel }}</li>
+        <li automation-id="admin-room-amenities-value" *ngFor="let amenity of room.amenities">{{ amenity | roomAmenitiesLabel }}</li>
       </ul>
       <p *ngIf="!room.amenities.length">Нет ни одной особенности</p>
     </app-admin-value>
   </app-admin-group>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button mat-dialog-close>Закрыть</button>
+  <button automation-id="admin-room-close" mat-raised-button mat-dialog-close>Закрыть</button>
 </mat-dialog-actions>

@@ -17,7 +17,6 @@ import { AdminPersonViewDialogComponentPo } from './admin-person-view-dialog.po'
 describe('AdminPersonViewDialogComponent', () => {
   let pageObject: AdminPersonViewDialogComponentPo;
   let fixture: ComponentFixture<AdminPersonViewDialogComponent>;
-  let datePipe: DatePipe;
 
   beforeEach(
     waitForAsync(() => {
@@ -26,10 +25,10 @@ describe('AdminPersonViewDialogComponent', () => {
           RouterTestingModule,
           MatDialogModule,
           MatButtonModule,
-          MockModule(AdminBuildingLinkModule),
           AdminViewSharedModule,
           PersonSharedModule,
           NavigationSharedModule,
+          MockModule(AdminBuildingLinkModule),
         ],
         declarations: [AdminPersonViewDialogComponent],
         providers: [
@@ -45,7 +44,6 @@ describe('AdminPersonViewDialogComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminPersonViewDialogComponent);
     pageObject = new AdminPersonViewDialogComponentPo(fixture);
-    datePipe = new DatePipe('en');
   });
 
   it('should create', () => {
