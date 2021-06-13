@@ -1,5 +1,6 @@
 <ng-container *ngIf="dots">
   <div
+    automation-id="carousel-dots-item"
     class="carousel-dot"
     *ngFor="let dot of dots; let index = index"
     [class.is-active]="index === active"
