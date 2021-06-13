@@ -1,28 +1,43 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { MockComponents } from 'ng-mocks';
+import { MockModule } from 'ng-mocks';
+
+import { IconsModule } from '@app/ui/icons';
 
 import { FooterComponent } from './footer.component';
+import { FooterComponentPo } from './footer.po';
 
 describe('FooterComponent', () => {
-  let component: FooterComponent;
+  let pageObject: FooterComponentPo;
   let fixture: ComponentFixture<FooterComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MatButtonModule],
-      declarations: [FooterComponent, MockComponents(MatIcon)],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      void TestBed.configureTestingModule({
+        imports: [MatButtonModule, MockModule(IconsModule)],
+        declarations: [FooterComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FooterComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    pageObject = new FooterComponentPo(fixture);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should show footer', () => {
+    fixture.detectChanges();
+
+    expect(pageObject.frooterCopyrightText).toBe('© 2021 Barinb. Все права защищены.');
+    expect(pageObject.footerLinkFacebookHref).toBe('//facebook.com');
+    expect(pageObject.footerLinkTwitterHref).toBe('//twitter.com');
+    expect(pageObject.footerLinkYoutubeHref).toBe('//youtube.com');
+    expect(pageObject.footerLinkTelegramHref).toBe('//telegram.org');
   });
 });
