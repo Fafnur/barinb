@@ -1,4 +1,13 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Описание</mat-label>
-  <textarea rows="3" placeholder="Описание" type="number" name="room[description]" matInput [id]="id" [formControl]="control"></textarea>
+  <mat-label automation-id="admin-room-description-label">Описание</mat-label>
+  <textarea
+    automation-id="admin-room-description-control"
+    rows="3"
+    placeholder="Описание"
+    type="number"
+    name="room[description]"
+    matInput
+    [id]="id"
+    [formControl]="control"
+  ></textarea>
 </mat-form-field>
