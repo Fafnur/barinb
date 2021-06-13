@@ -5,9 +5,9 @@ import { take, takeUntil, tap } from 'rxjs/operators';
 
 import { RoomExtended, RoomManager } from '@app/rooms/manager';
 
-import { AdminRoomEditDialogComponent } from '../admin-room-edit-dialog';
-import { AdminRoomRemoveDialogComponent } from '../admin-room-remove-dialog';
-import { AdminRoomViewDialogComponent } from '../admin-room-view-dialog';
+import { AdminRoomEditDialogComponent } from '../admin-room-edit-dialog/admin-room-edit-dialog.component';
+import { AdminRoomRemoveDialogComponent } from '../admin-room-remove-dialog/admin-room-remove-dialog.component';
+import { AdminRoomViewDialogComponent } from '../admin-room-view-dialog/admin-room-view-dialog.component';
 
 @Component({
   selector: 'app-admin-room-actions',
