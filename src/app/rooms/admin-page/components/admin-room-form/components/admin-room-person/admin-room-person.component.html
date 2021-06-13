@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Собственник</mat-label>
-  <mat-select class="admin-person-options" [formControl]="control" [id]="id">
+  <mat-label automation-id="admin-room-person-label">Собственник</mat-label>
+  <mat-select automation-id="admin-room-person-control" class="admin-person-options" [formControl]="control" [id]="id">
     <mat-option class="admin-person-option" *ngFor="let person of persons" [value]="person.id">
       <div class="admin-person-avatar">
         <img class="admin-person-source" [src]="person.avatar" alt="{{ person.firstName }}" />

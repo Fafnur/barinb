@@ -1,41 +1,66 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MockModule } from 'ng-mocks';
-import { of } from 'rxjs';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ReplaySubject } from 'rxjs';
+import { mock, when } from 'ts-mockito';
 
+import { providerOf } from '@app/core/testing';
+import { Person } from '@app/persons/common';
 import { PersonService } from '@app/persons/service';
 import { PersonSharedModule } from '@app/persons/shared';
+import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 
 import { AdminRoomPersonComponent } from './admin-room-person.component';
+import { AdminRoomPersonComponentPo } from './admin-room-person.po';
+
+@Component({
+  template: `<app-admin-room-person [control]="control"></app-admin-room-person>`,
+})
+export class WrapperComponent {
+  control = new FormControl(null, []);
+}
 
 describe('AdminRoomPersonComponent', () => {
-  let component: AdminRoomPersonComponent;
-  let fixture: ComponentFixture<AdminRoomPersonComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MatInputModule, MatSelectModule, ReactiveFormsModule, MockModule(PersonSharedModule)],
-      declarations: [AdminRoomPersonComponent],
-      providers: [
-        {
-          provide: PersonService,
-          useValue: {
-            persons$: of(),
-          } as Partial<PersonService>,
-        },
-      ],
-    }).compileComponents();
-  });
+  let pageObject: AdminRoomPersonComponentPo;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
+  let personServiceMock: PersonService;
+  let persons$: ReplaySubject<Person[]>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminRoomPersonComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    personServiceMock = mock(PersonService);
+
+    persons$ = new ReplaySubject<Person[]>(1);
+  });
+
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NoopAnimationsModule, MatInputModule, MatSelectModule, ReactiveFormsModule, PersonSharedModule],
+        declarations: [AdminRoomPersonComponent, WrapperComponent],
+        providers: [providerOf(PersonService, personServiceMock)],
+      }).compileComponents();
+    })
+  );
+
+  beforeEach(() => {
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new AdminRoomPersonComponentPo(fixtureWrapper);
+    when(personServiceMock.persons$).thenReturn(persons$);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should set label and control', () => {
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.adminRoomAddressLabelText).toBe('Собственник');
+    expect(pageObject.adminRoomAddressControlId).toBe(ROOMS_IDS[RoomField.Person]);
   });
 });
