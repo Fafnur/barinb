@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill" *ngIf="control">
-  <mat-label>Здание</mat-label>
-  <mat-select class="admin-building-options" [formControl]="control" [id]="id">
+  <mat-label automation-id="admin-room-building-label">Здание</mat-label>
+  <mat-select automation-id="admin-room-building-control" class="admin-building-options" [formControl]="control" [id]="id">
     <mat-option class="admin-building-option" *ngFor="let building of buildings" [value]="building.id">
       <div class="admin-building-address">{{ building.city }}, {{ building.address }}</div>
     </mat-option>
