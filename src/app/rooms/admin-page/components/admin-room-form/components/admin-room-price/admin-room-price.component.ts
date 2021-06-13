@@ -36,8 +36,4 @@ export class AdminRoomPriceComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
-  onReset(): void {
-    this.control?.reset();
-  }
 }

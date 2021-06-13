@@ -1,29 +1,49 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 
 import { AdminRoomPriceComponent } from './admin-room-price.component';
+import { AdminRoomPriceComponentPo } from './admin-room-price.po';
+
+@Component({
+  template: `<app-admin-room-price [control]="control"></app-admin-room-price>`,
+})
+export class WrapperComponent {
+  control = new FormControl(null, []);
+}
 
 describe('AdminRoomPriceComponent', () => {
-  let component: AdminRoomPriceComponent;
-  let fixture: ComponentFixture<AdminRoomPriceComponent>;
+  let pageObject: AdminRoomPriceComponentPo;
+  let fixtureWrapper: ComponentFixture<WrapperComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule],
-      declarations: [AdminRoomPriceComponent],
-    }).compileComponents();
-  });
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NoopAnimationsModule, MatInputModule, ReactiveFormsModule],
+        declarations: [AdminRoomPriceComponent, WrapperComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminRoomPriceComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixtureWrapper = TestBed.createComponent(WrapperComponent);
+    pageObject = new AdminRoomPriceComponentPo(fixtureWrapper);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixtureWrapper.detectChanges();
+
+    expect(fixtureWrapper.componentInstance).toBeTruthy();
+  });
+
+  it('should set label and control', () => {
+    fixtureWrapper.detectChanges();
+
+    expect(pageObject.adminRoomPriceLabelText).toBe('Цена за ночь');
+    expect(pageObject.adminRoomPriceControlId).toBe(ROOMS_IDS[RoomField.Price]);
   });
 });
