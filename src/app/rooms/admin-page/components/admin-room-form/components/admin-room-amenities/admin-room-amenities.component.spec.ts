@@ -45,7 +45,7 @@ describe('AdminRoomAmenitiesComponent', () => {
   it('should set label and control', () => {
     fixtureWrapper.detectChanges();
 
-    expect(pageObject.adminRoomAddressLabelText).toBe('Особенности');
-    expect(pageObject.adminRoomAddressControlId).toBe(ROOMS_IDS[RoomField.Amenities]);
+    expect(pageObject.adminRoomAmenitiesLabelText).toBe('Особенности');
+    expect(pageObject.adminRoomAmenitiesControlId).toBe(ROOMS_IDS[RoomField.Amenities]);
   });
 });

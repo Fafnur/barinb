@@ -10,15 +10,15 @@ enum AdminRoomBathroomsAutomation {
 }
 
 export class AdminRoomBathroomsComponentPo extends PageObject<WrapperComponent> {
-  get adminRoomAddressControl(): DebugElement | null {
+  get adminRoomBathroomsControl(): DebugElement | null {
     return this.getByAutomationId(AdminRoomBathroomsAutomation.AdminRoomBathroomsControl);
   }
 
-  get adminRoomAddressControlId(): string | null {
-    return this.adminRoomAddressControl?.attributes['id'] ?? null;
+  get adminRoomBathroomsControlId(): string | null {
+    return this.adminRoomBathroomsControl?.attributes['id'] ?? null;
   }
 
-  get adminRoomAddressLabelText(): string | null {
+  get adminRoomBathroomsLabelText(): string | null {
     return this.text(AdminRoomBathroomsAutomation.AdminRoomBathroomsLabel);
   }
 }
