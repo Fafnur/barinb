@@ -17,7 +17,6 @@ import { RoomField, ROOMS_IDS } from '@app/rooms/common';
 export class AdminRoomPhotosComponent implements OnInit, OnDestroy {
   @Input() control!: FormControl | null;
 
-  visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
