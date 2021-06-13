@@ -1,27 +1,87 @@
 # Barinb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
+Barinb - пример "тестового" Angular приложения с использованием лучших практик.
 
-## Development server
+Проект представляет собой реализацию одной из частей приложения для бронирования жилья (апартаментов или номера в отеле)
+.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Для пользователя отображается список доступных вариантов на гугл карте. При клике на пин с вариантом, показывается
+доступная информация по варианту, и при клике на на изображение происходит переход на страницу выбранного варианта.
 
-## Code scaffolding
+Интерфейс приложения ориентирован на два вида: мобильная версия и версия для настольного компьютера.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+И если в десктопной версии приложения сразу отображаются доступные варианты в виде списка и карта, то в мобильном
+приложении отображается только один из предложенных вариантов, который можно изменить, кликнув по плавающей кнопке рядом
+с футером.
 
-## Build
+![Cabinet](./docs/cabinet.gif)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Также приложение реализует админ панель для 3 сущностей: Номер (Апартаменты), Отель (Здание) и Собственник (Хозяин).
 
-## Running unit tests
+В данном приложении собственник может иметь несколько зданий, а каждое здание может содержать несколько номеров (
+апартаментов).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Интерфейс админ панели также ориентирован на два вида: мобильная версия и версия для настольного компьютера, где в
+мобильной версии представлен список сущностей, а в десктопной версии отображается таблица.
 
-## Running end-to-end tests
+![Admin](./docs/admin.gif)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Установка
 
-## Further help
+Установка yarn, angular-cli и зависимостей для приложения.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Для того чтобы продолжить, у вас должна быть установлен NodeJS. Подробнее об установке можно посмотреть в [офф. документации NodeJS](https://nodejs.org/en/download/package-manager/)
+
+### Установка Yarn
+
+В проекте, в качестве менеджера пакетов используется [Yarn](https://yarnpkg.com/).
+Установите и настройте yarn для своей OS (https://classic.yarnpkg.com/en/docs/install#debian-stable).
+
+После установки проверьте, что `yarn global bin` указывает на домашний каталог:
+
+```shell script
+yarn global bin
+// output: /home/<your-username>/.yarn/bin
+```
+
+### Установка Ng
+
+Для установки Angular cli, запустите команду:
+
+```shell script
+yarn global add @angular/cli
+```
+
+Для проверки установки запустить команду:
+
+```shell script
+ng
+```
+
+Подробнее о Angular cli можно посмотреть в [офф. документации](https://angular.io/cli)
+
+### Установка зависимостей
+
+После клонирования приложения необходимо установить зависимости с помощью yarn:
+
+```shell script
+yarn install
+```
+
+Для запуска приложения можно использовать команду:
+
+```shell script
+ng serve
+```
+
+### Альтернативная установка
+
+Если нет желания разворачивать NodeJS, то можно запустить проект используя Docker. 
+
+Чтобы поднять контейнер с приложением и контейнером nginx, который будет разравать статику, запустите команду:
+
+```shell script
+docker-compose up -d
+```
+
+## Описание проекта
