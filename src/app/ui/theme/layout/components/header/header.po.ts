@@ -1,7 +1,8 @@
+import { DebugElement } from '@angular/core';
+
 import { PageObject } from '@app/core/testing';
 
 import { HeaderComponent } from './header.component';
-import { DebugElement } from '@angular/core';
 
 enum HeaderAutomation {
   HeaderLogo = 'header-logo',

@@ -78,6 +78,7 @@ export function navigation<T, A extends Action>(component: Type<any>, opts: Hand
   return (source: ActionStateStream<T, A>): any => {
     const nav = source.pipe(
       mapActionAndState(),
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       filter(([action, state]) => isStateSnapshot(action)),
       map(([action, state]) => {
         if (!isStateSnapshot(action)) {
@@ -90,7 +91,7 @@ export function navigation<T, A extends Action>(component: Type<any>, opts: Hand
       }),
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      filter(([snapshot, state]) => !!snapshot)
+      filter(([snapshot]) => !!snapshot)
     );
 
     return nav.pipe(switchMap(runWithErrorHandling(opts.run, opts.onError)));

@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MockModule } from 'ng-mocks';
 import { ReplaySubject } from 'rxjs';
-import { deepEqual, mock, verify, when } from 'ts-mockito';
+import { mock, when } from 'ts-mockito';
 
 import { castMapMarkerConfigs } from '@app/booking/service';
 import { BOOKING_VARIANT_STUB } from '@app/booking/state';

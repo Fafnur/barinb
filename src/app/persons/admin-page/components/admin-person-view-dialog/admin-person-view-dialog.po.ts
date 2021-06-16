@@ -1,7 +1,8 @@
+import { DebugElement } from '@angular/core';
+
 import { PageObject } from '@app/core/testing';
 
 import { AdminPersonViewDialogComponent } from './admin-person-view-dialog.component';
-import { DebugElement } from '@angular/core';
 
 enum AdminPersonViewDialogAutomation {
   AdminPersonNameLabel = 'admin-person-name-label',
