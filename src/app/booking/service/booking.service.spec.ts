@@ -6,29 +6,27 @@ import { deepEqual, mock, verify, when } from 'ts-mockito';
 import { BookingDetails, BookingVariant } from '@app/booking/common';
 import { BOOKING_DETAILS_STUB, BOOKING_VARIANT_STUB, BookingFacade } from '@app/booking/state';
 import { Building } from '@app/buildings/common';
-import { BuildingService } from '@app/buildings/service';
-import { BUILDINGS_STUB } from '@app/buildings/state';
+import { BuildingFacade, BUILDINGS_STUB } from '@app/buildings/state';
 import { providerOf } from '@app/core/testing';
 import { Room } from '@app/rooms/common';
-import { RoomService } from '@app/rooms/service';
-import { ROOMS_STUB } from '@app/rooms/state';
+import { RoomFacade, ROOMS_STUB } from '@app/rooms/state';
 
 import { BookingService, castMapMarkerConfigs } from './booking.service';
 
 describe('BookingService', () => {
   let service: BookingService;
-  let roomServiceMock: RoomService;
+  let roomFacadeMock: RoomFacade;
   let rooms$: ReplaySubject<Room[]>;
-  let buildingServiceMock: BuildingService;
+  let buildingFacadeMock: BuildingFacade;
   let buildings$: ReplaySubject<Building[]>;
   let bookingFacadeMock: BookingFacade;
   let bookingVariant$: ReplaySubject<BookingVariant>;
   let bookingDetails$: ReplaySubject<BookingDetails>;
 
   beforeEach(() => {
-    roomServiceMock = mock(RoomService);
+    roomFacadeMock = mock(RoomFacade);
     rooms$ = new ReplaySubject<Room[]>(1);
-    buildingServiceMock = mock(BuildingService);
+    buildingFacadeMock = mock(BuildingFacade);
     buildings$ = new ReplaySubject<Building[]>(1);
     bookingFacadeMock = mock(BookingFacade);
     bookingVariant$ = new ReplaySubject<BookingVariant>(1);
@@ -40,8 +38,8 @@ describe('BookingService', () => {
       TestBed.configureTestingModule({
         providers: [
           BookingService,
-          providerOf(RoomService, roomServiceMock),
-          providerOf(BuildingService, buildingServiceMock),
+          providerOf(RoomFacade, roomFacadeMock),
+          providerOf(BuildingFacade, buildingFacadeMock),
           providerOf(BookingFacade, bookingFacadeMock),
         ],
       }).compileComponents();
@@ -49,8 +47,8 @@ describe('BookingService', () => {
   );
 
   beforeEach(() => {
-    when(roomServiceMock.rooms$).thenReturn(rooms$);
-    when(buildingServiceMock.buildings$).thenReturn(buildings$);
+    when(roomFacadeMock.rooms$).thenReturn(rooms$);
+    when(buildingFacadeMock.buildings$).thenReturn(buildings$);
     when(bookingFacadeMock.bookingVariant$).thenReturn(bookingVariant$);
     when(bookingFacadeMock.bookingDetails$).thenReturn(bookingDetails$);
     // after init all props, get service

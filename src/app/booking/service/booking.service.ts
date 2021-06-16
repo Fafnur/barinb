@@ -5,10 +5,10 @@ import { filter, map } from 'rxjs/operators';
 import { BookingDetails, BookingVariant } from '@app/booking/common';
 import { BookingFacade } from '@app/booking/state';
 import { Building } from '@app/buildings/common';
-import { BuildingService } from '@app/buildings/service';
+import { BuildingFacade } from '@app/buildings/state';
 import { MapMarkerConfig } from '@app/maps/common';
 import { Room } from '@app/rooms/common';
-import { RoomService } from '@app/rooms/service';
+import { RoomFacade } from '@app/rooms/state';
 
 export function getFirstRoomOnBuilding(building: Building, rooms: Room[]): Room | null {
   const firstRoomId = building.rooms.length ? building.rooms[0] : null;
@@ -35,8 +35,11 @@ export function castMapMarkerConfigs(bookingVariants: BookingVariant[]): MapMark
 export class BookingService {
   bookingVariant$: Observable<BookingVariant> = this.bookingFacade.bookingVariant$.pipe(filter<any>(Boolean));
 
-  bookingVariants$: Observable<BookingVariant[]> = combineLatest([this.buildingService.buildings$, this.roomService.rooms$]).pipe(
-    map(([buildings, rooms]) =>
+  bookingVariants$: Observable<BookingVariant[]> = combineLatest([
+    this.buildingFacade.buildings$.pipe(filter<any>(Boolean)),
+    this.roomFacade.rooms$.pipe(filter<any>(Boolean)),
+  ]).pipe(
+    map(([buildings, rooms]: [Building[], Room[]]) =>
       buildings
         .filter((building) => building.rooms.length)
         .map((building) => ({ ...building, firstRoom: getFirstRoomOnBuilding(building, rooms) }))
@@ -48,8 +51,8 @@ export class BookingService {
   mapMarkers$: Observable<MapMarkerConfig[]> = this.bookingVariants$.pipe(map(castMapMarkerConfigs));
 
   constructor(
-    private readonly buildingService: BuildingService,
-    private readonly roomService: RoomService,
+    private readonly buildingFacade: BuildingFacade,
+    private readonly roomFacade: RoomFacade,
     private readonly bookingFacade: BookingFacade
   ) {}
 
