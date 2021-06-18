@@ -1,6 +1,8 @@
 @import 'src/stylesheets/utils';
 
 :host {
+  display: block;
+
   @each $breakpoint, $width in $grid-breakpoints {
     @include media-breakpoint-up($breakpoint) {
       &.row-#{$breakpoint} {

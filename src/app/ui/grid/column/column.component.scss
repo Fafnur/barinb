@@ -20,5 +20,6 @@
 }
 
 :host {
+  display: block;
   @include make-columns();
 }
