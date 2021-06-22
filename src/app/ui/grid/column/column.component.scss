@@ -5,6 +5,8 @@
     @media (min-width: $width) {
       &.#{$columnName}-#{$breakpoint} {
         flex: 1 0 0;
+        padding-right: $gutter;
+        padding-left: $gutter;
       }
 
       @for $column from 1 through $columnsCount {
