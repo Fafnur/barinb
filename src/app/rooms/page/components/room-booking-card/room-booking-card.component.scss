@@ -3,9 +3,9 @@
 
 :host {
   display: block;
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem 0;
   border: 1px solid mat.get-color-from-palette(mat.$gray-palette, 300);
-  border-radius: 1rem;
+  border-radius: 0.25rem;
   padding: 1rem;
 }
 
