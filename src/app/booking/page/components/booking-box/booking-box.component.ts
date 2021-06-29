@@ -23,7 +23,7 @@ export class BookingBoxComponent implements OnInit {
 
   onClick(bookingVariant: BookingVariant): void {
     if (bookingVariant.firstRoom?.id) {
-      void this.navigationService.navigate(NavigationPath.RoomPage, { id: bookingVariant.firstRoom?.id });
+      void this.navigationService.navigateByUrl(NavigationPath.RoomPage, { id: bookingVariant.firstRoom?.id });
     }
   }
 }
