@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import 'src/stylesheets/utils';
 
 @mixin make-columns($columnName: 'column', $gutter: 1rem, $columnsCount: 12) {
@@ -18,7 +19,7 @@
 
       @for $column from 1 through $columnsCount {
         &.#{$columnName}-#{$breakpoint}-#{$column} {
-          width: percentage($column / $columnsCount);
+          width: math.percentage($column / $columnsCount);
         }
       }
     }
