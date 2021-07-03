@@ -53,7 +53,7 @@ describe('BookingPortletComponent', () => {
   beforeEach(() => {
     fixtureWrapper = TestBed.createComponent(WrapperComponent);
     pageObject = new BookingPortletComponentPo(fixtureWrapper);
-    when(navigationServiceMock.navigate(anything(), anything(), anything())).thenReturn();
+    when(navigationServiceMock.navigateByUrl(anything(), anything(), anything())).thenReturn();
     when(navigationServiceMock.getRoute(anything(), anything())).thenReturn(['rooms', BOOKING_VARIANT_STUB.firstRoom?.id ?? 1]);
   });
 
@@ -99,6 +99,6 @@ describe('BookingPortletComponent', () => {
     pageObject.triggerBookingPortletCarouselSelected();
     fixtureWrapper.detectChanges();
 
-    verify(navigationServiceMock.navigate(NavigationPath.RoomPage, deepEqual({ id: BOOKING_VARIANT_STUB.firstRoom?.id }))).once();
+    verify(navigationServiceMock.navigateByUrl(NavigationPath.RoomPage, deepEqual({ id: BOOKING_VARIANT_STUB.firstRoom?.id }))).once();
   });
 });

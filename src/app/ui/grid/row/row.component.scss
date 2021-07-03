@@ -12,6 +12,15 @@
         height: 100%;
         margin: 0 -1rem;
       }
+
+      &.row-#{$breakpoint}.no-padding {
+        margin: 0;
+      }
+
+      &.row-#{$breakpoint}.no-padding ::ng-deep > [class^='column-#{$breakpoint}'] {
+        padding-right: 0;
+        padding-left: 0;
+      }
     }
   }
 }

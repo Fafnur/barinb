@@ -62,6 +62,6 @@ describe('RoomHeaderComponent', () => {
 
     pageObject.triggerRoomHeaderCloseClick();
 
-    verify(navigationServiceMock.navigate(NavigationPath.Home)).once();
+    verify(navigationServiceMock.navigateByUrl(NavigationPath.Home)).once();
   });
 });

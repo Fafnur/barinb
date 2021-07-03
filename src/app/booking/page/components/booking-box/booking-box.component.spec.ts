@@ -41,7 +41,7 @@ describe('BookingBoxComponent', () => {
     fixture = TestBed.createComponent(BookingBoxComponent);
     pageObject = new BookingBoxComponentPo(fixture);
     when(bookingServiceMock.bookingVariant$).thenReturn(bookingVariant$);
-    when(navigationServiceMock.navigate(anything(), anything(), anything())).thenReturn();
+    when(navigationServiceMock.navigateByUrl(anything(), anything(), anything())).thenReturn();
   });
 
   it('should create', () => {
@@ -76,6 +76,6 @@ describe('BookingBoxComponent', () => {
     pageObject.triggerBookingBox();
     fixture.detectChanges();
 
-    verify(navigationServiceMock.navigate(NavigationPath.RoomPage, deepEqual({ id: BOOKING_VARIANT_STUB.firstRoom?.id }))).once();
+    verify(navigationServiceMock.navigateByUrl(NavigationPath.RoomPage, deepEqual({ id: BOOKING_VARIANT_STUB.firstRoom?.id }))).once();
   });
 });

@@ -20,7 +20,7 @@ export class BookingPortletComponent {
 
   onSelected(): void {
     if (this.bookingVariant?.firstRoom?.id) {
-      void this.navigationService.navigate(NavigationPath.RoomPage, { id: this.bookingVariant.firstRoom?.id });
+      void this.navigationService.navigateByUrl(NavigationPath.RoomPage, { id: this.bookingVariant.firstRoom?.id });
     }
   }
 }

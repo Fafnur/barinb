@@ -1,5 +1,3 @@
-import { TestBed } from '@angular/core/testing';
-
 import { LocalStorage } from './local.storage';
 
 describe('LocalStorage', () => {
@@ -7,12 +5,8 @@ describe('LocalStorage', () => {
   const key = 'local';
   const value = 'New Value';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      providers: [LocalStorage],
-    }).compileComponents();
-
-    service = TestBed.inject(LocalStorage);
+  beforeEach(() => {
+    service = new LocalStorage();
   });
 
   it('should create', () => {

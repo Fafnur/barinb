@@ -23,7 +23,7 @@ export class BookingCardComponent implements OnInit {
 
   onSelected(bookingVariant: BookingVariant): void {
     if (bookingVariant.firstRoom?.id) {
-      this.navigationService.navigate(NavigationPath.RoomPage, { id: bookingVariant.firstRoom.id });
+      this.navigationService.navigateByUrl(NavigationPath.RoomPage, { id: bookingVariant.firstRoom.id });
     }
   }
 }

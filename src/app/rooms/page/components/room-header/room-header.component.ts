@@ -16,6 +16,6 @@ export class RoomHeaderComponent {
   constructor(private readonly navigationService: NavigationService) {}
 
   onBack(): void {
-    void this.navigationService.navigate(NavigationPath.Home);
+    void this.navigationService.navigateByUrl(NavigationPath.Home);
   }
 }
