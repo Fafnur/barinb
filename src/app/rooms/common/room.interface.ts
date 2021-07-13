@@ -82,7 +82,7 @@ export const ROOM_AMENITIES_LABELS: Record<RoomAmenities, string> = {
   [RoomAmenities.CookingBasics]: 'Кухонные принадлежности',
   [RoomAmenities.Elevator]: 'Лифт',
   [RoomAmenities.FreeParking]: 'Бесплатная парковка',
-  [RoomAmenities.LongTermStays]: 'Долгострочная аренда',
+  [RoomAmenities.LongTermStays]: 'Долгосрочная аренда',
   [RoomAmenities.AirConditioning]: 'Кондиционер',
   [RoomAmenities.CarbonMonoxideAlarm]: 'Сигнализация угарного газа',
   [RoomAmenities.PrivateEntrance]: 'Отдельный вход',
